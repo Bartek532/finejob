@@ -3,8 +3,8 @@ import { UserAPI } from "../../lib/api/user";
 import { useForm } from "react-hook-form";
 import { EMAIL_REGEX, PASSWORD_REGEX } from "../../lib/utils/consts";
 import type { UserLoginData } from "../../types";
-import { Input } from "../Input";
-import { PasswordInput } from "../PasswordInput";
+import { Input } from "../Input/Input";
+import { PasswordInput } from "../Input/PasswordInput";
 
 export const LoginForm = () => {
   const [error, setError] = useState("");

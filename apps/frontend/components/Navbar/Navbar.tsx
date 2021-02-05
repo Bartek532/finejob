@@ -6,16 +6,25 @@ import Person from "../../assets/icons/nav/person.svg";
 import Logo from "../../assets/icons/logo.svg";
 
 import styles from "./Navbar.module.scss";
+import classnames from "classnames";
+import { useRouter } from "next/router";
 
 export const Navbar = () => {
+  const { pathname } = useRouter();
   return (
     <nav className={styles.nav}>
       <section className={styles.left}>
         <Link href="/about">
-          <About />
+          <About
+            className={classnames({ [styles.active]: pathname === "/about" })}
+          />
         </Link>
         <Link href="/search/main">
-          <Search />
+          <Search
+            className={classnames({
+              [styles.active]: pathname === "/search/main",
+            })}
+          />
         </Link>
       </section>
       <Link href="/">
@@ -25,10 +34,18 @@ export const Navbar = () => {
       </Link>
       <section className={styles.right}>
         <Link href="/search/location">
-          <Location />
+          <Location
+            className={classnames({
+              [styles.active]: pathname === "/search/location",
+            })}
+          />
         </Link>
         <Link href="/auth/login">
-          <Person />
+          <Person
+            className={classnames({
+              [styles.active]: pathname === "/auth/login",
+            })}
+          />
         </Link>
       </section>
     </nav>

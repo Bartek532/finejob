@@ -1,0 +1,72 @@
+.field {
+  font-family: "Roboto", sans-serif;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 32px;
+  font-size: 0.75rem;
+  position: relative;
+  background: #fff;
+  border-radius: 15px;
+  width: 82%;
+  border: 0 none;
+
+  .input {
+    width: 100%;
+    height: 50px;
+    border: 0 none;
+    position: relative;
+    background-color: #fff;
+    background: transparent;
+    border-radius: 15px;
+    padding: 0 19px;
+    z-index: 2;
+    outline: 0 none;
+    box-shadow: 1px 2px 5px 1px rgba(168, 155, 155, 0.25);
+  }
+
+  .label {
+    position: absolute;
+    top: 11px;
+    left: 9px;
+    z-index: 1;
+    color: #d2d0d0;
+    background: #fff;
+    padding: 6px 14px;
+    border-radius: 15px;
+    transition: 0.3s;
+    text-transform: capitalize;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      border-radius: 15px;
+      box-shadow: 1px 2px 5px 1px rgba(168, 155, 155, 0.25);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+  }
+
+  .focused {
+    transform: translate(11px, -25px);
+    z-index: 3;
+    font-size: 0.65rem;
+    transition: 0.3s;
+
+    &::after {
+      opacity: 1;
+      transform: opacity 0.3s;
+    }
+  }
+
+  &__location {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-45%);
+    right: 14px;
+    z-index: 100;
+  }
+}

@@ -11,6 +11,7 @@
     "@reduxjs/toolkit": "^1.5.0",
     "@svgr/webpack": "^5.5.0",
     "axios": "^0.21.1",
+    "classnames": "^2.2.6",
     "date-fns": "^2.11.1",
     "gray-matter": "^4.0.2",
     "next": "^10.0.0",
@@ -24,6 +25,7 @@
     "remark-html": "^12.0.0"
   },
   "devDependencies": {
+    "@types/classnames": "^2.2.11",
     "@types/node": "^14.14.22",
     "@types/react": "^17.0.0",
     "@types/react-redux": "^7.1.16",
