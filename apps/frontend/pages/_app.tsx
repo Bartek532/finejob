@@ -3,6 +3,7 @@ import { Provider } from "react-redux";
 import { createWrapper } from "next-redux-wrapper";
 import { store } from "../store";
 import type { AppProps } from "next/app";
+import "../global.scss";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
