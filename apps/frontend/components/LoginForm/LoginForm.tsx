@@ -1,29 +1,22 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { UserAPI } from "../../lib/api/user";
-import type { ChangeEvent, FormEvent } from "react";
+import { useForm } from "react-hook-form";
+import { EMAIL_REGEX, PASSWORD_REGEX } from "../../lib/utils/consts";
+import type { UserLoginData } from "../../types";
+import { Input } from "../Input";
+import { PasswordInput } from "../PasswordInput";
 
 export const LoginForm = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
-  };
+  const { handleSubmit, errors, register } = useForm();
 
-  const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value);
-  };
-
-  const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setLoading(true);
-
+  const handleFormSubmit = async ({ email, password }: UserLoginData) => {
     try {
       const { data, status } = await UserAPI.login(email, password);
       if (status !== 200) {
-        setErrors(data.message);
+        setError(data.message);
       }
     } catch (error) {
       console.error(error);
@@ -35,28 +28,33 @@ export const LoginForm = () => {
   if (loading) {
     return <p>Loading...</p>;
   }
-
   return (
     <>
-      <h2>{errors}</h2>
-      <form onSubmit={handleFormSubmit}>
-        <label htmlFor="email">Email: </label>
-        <input
-          type="email"
+      <form onSubmit={handleSubmit(handleFormSubmit)}>
+        <Input
           name="email"
-          id="email"
-          value={email}
-          onChange={handleEmailChange}
+          inputRef={register({
+            required: { value: true, message: "Email is required." },
+            pattern: {
+              value: EMAIL_REGEX,
+              message: "Email must be a valid email.",
+            },
+          })}
+        />
+        {errors.email && <span>{errors.email.message}</span>}
+
+        <PasswordInput
+          inputRef={register({
+            required: { value: true, message: "Password is required." },
+            pattern: {
+              value: PASSWORD_REGEX,
+              message:
+                "Password must contain an uppercase letter, a special character, a number and must be at least 8 characters long.",
+            },
+          })}
         />
 
-        <label htmlFor="password">Password: </label>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          value={password}
-          onChange={handlePasswordChange}
-        />
+        {errors.password && <span>{errors.password.message}</span>}
 
         <button>Login</button>
       </form>
