@@ -5,12 +5,15 @@ import { EMAIL_REGEX, PASSWORD_REGEX } from "../../lib/utils/consts";
 import type { UserLoginData } from "../../types";
 import { Input } from "../Input/Input";
 import { PasswordInput } from "../Input/PasswordInput";
+import { MainButton } from "../MainButton/MainButton";
 
 export const LoginForm = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const { handleSubmit, errors, register } = useForm();
+  const { handleSubmit, errors, register } = useForm({
+    reValidateMode: "onBlur",
+  });
 
   const handleFormSubmit = async ({ email, password }: UserLoginData) => {
     try {
@@ -33,6 +36,7 @@ export const LoginForm = () => {
       <form onSubmit={handleSubmit(handleFormSubmit)}>
         <Input
           name="email"
+          error={errors.email}
           inputRef={register({
             required: { value: true, message: "Email is required." },
             pattern: {
@@ -41,9 +45,9 @@ export const LoginForm = () => {
             },
           })}
         />
-        {errors.email && <span>{errors.email.message}</span>}
 
         <PasswordInput
+          error={errors.password}
           inputRef={register({
             required: { value: true, message: "Password is required." },
             pattern: {
@@ -54,9 +58,7 @@ export const LoginForm = () => {
           })}
         />
 
-        {errors.password && <span>{errors.password.message}</span>}
-
-        <button>Login</button>
+        <MainButton text="Login" />
       </form>
     </>
   );
