@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import { UserAPI } from "../../lib/api/user";
 import { useForm } from "react-hook-form";
-import { EMAIL_REGEX, PASSWORD_REGEX } from "../../lib/utils/consts";
+import { inputValidation } from "../../lib/utils/consts";
 import type { UserLoginData } from "../../types";
 import { Input } from "../Input/Input";
-import { PasswordInput } from "../Input/PasswordInput";
+
 import { MainButton } from "../MainButton/MainButton";
+import styles from "./LoginForm.module.scss";
 
 export const LoginForm = () => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const { handleSubmit, errors, register } = useForm({
+  const { handleSubmit, errors, register, watch } = useForm({
     reValidateMode: "onBlur",
   });
 
@@ -32,34 +33,21 @@ export const LoginForm = () => {
     return <p>Loading...</p>;
   }
   return (
-    <>
-      <form onSubmit={handleSubmit(handleFormSubmit)}>
-        <Input
-          name="email"
-          error={errors.email}
-          inputRef={register({
-            required: { value: true, message: "Email is required." },
-            pattern: {
-              value: EMAIL_REGEX,
-              message: "Email must be a valid email.",
-            },
-          })}
-        />
+    <form onSubmit={handleSubmit(handleFormSubmit)} className={styles.form}>
+      <Input
+        name="email"
+        error={errors.email}
+        inputRef={register(inputValidation.email)}
+      />
 
-        <PasswordInput
-          error={errors.password}
-          inputRef={register({
-            required: { value: true, message: "Password is required." },
-            pattern: {
-              value: PASSWORD_REGEX,
-              message:
-                "Password must contain an uppercase letter, a special character, a number and must be at least 8 characters long.",
-            },
-          })}
-        />
+      <Input
+        name="password"
+        type="password"
+        error={errors.password}
+        inputRef={register(inputValidation.password)}
+      />
 
-        <MainButton text="Login" />
-      </form>
-    </>
+      <MainButton text="Login" />
+    </form>
   );
 };

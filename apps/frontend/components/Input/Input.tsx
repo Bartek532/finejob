@@ -1,6 +1,8 @@
 import type { TextInputProps } from "../../types";
 import styles from "./Input.module.scss";
 import { ChangeEvent, useState, useCallback } from "react";
+import Eye from "../../assets/icons/password/eye.svg";
+import ClosedEye from "../../assets/icons/password/eye-closed.svg";
 import classnames from "classnames";
 
 export const Input = ({
@@ -8,12 +10,15 @@ export const Input = ({
   name,
   inputRef,
   error,
+  onChange,
+  value,
 }: TextInputProps) => {
   const [isInputFocused, setIsInputFocused] = useState(false);
-  const [inputValue, setInputValue] = useState("");
+  const [localInputValue, setlocalInputValue] = useState("");
+  const [inputType, setInputType] = useState(type);
 
   const handleInputChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    setInputValue(e.target.value);
+    setlocalInputValue(e.target.value);
   }, []);
 
   return (
@@ -21,22 +26,43 @@ export const Input = ({
       <label htmlFor={name} className={styles.wrapper}>
         <span
           className={classnames(styles.placeholder, {
-            [styles.focused]: isInputFocused || inputValue.length > 0,
+            [styles.focused]: isInputFocused || localInputValue.length > 0,
           })}
         >
           {name}
         </span>
         <input
-          type={type}
+          type={inputType}
           name={name}
           id={name}
-          value={inputValue}
-          onChange={handleInputChange}
+          value={value || localInputValue}
+          onChange={onChange || handleInputChange}
           ref={inputRef}
-          className={styles.input}
+          className={classnames(styles.input, {
+            [styles.withIcon]: name === "password",
+          })}
           onFocus={() => setIsInputFocused(true)}
           onBlur={() => setIsInputFocused(false)}
         />
+        {name === "password" ? (
+          inputType === "password" ? (
+            <button
+              className={styles.eye}
+              type="button"
+              onClick={() => setInputType("text")}
+            >
+              <ClosedEye />
+            </button>
+          ) : (
+            <button
+              className={styles.eye}
+              type="button"
+              onClick={() => setInputType("password")}
+            >
+              <Eye />
+            </button>
+          )
+        ) : null}
       </label>
       {error ? <span className={styles.error}>{error.message}</span> : null}
     </div>

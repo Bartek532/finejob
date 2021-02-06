@@ -1,5 +1,5 @@
 .btn {
-  padding: 11px 33px;
+  padding: 12px 35px;
   border-radius: 30px;
   background-color: #f59b66;
   position: relative;
@@ -9,6 +9,7 @@
   justify-content: center;
   align-items: center;
   color: #fff;
+  color: $color;
   cursor: pointer;
   font-family: "Comfortaa", cursive;
   transition: transform 0.3s;
@@ -26,7 +27,8 @@
     transition: opacity 0.2s ease-in-out;
   }
 
-  &:hover {
+  &:hover,
+  &:focus {
     transform: translateY(4px);
     transition: transform 0.2s ease-in-out;
 

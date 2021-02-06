@@ -1,7 +1,6 @@
-.form {
-  width: 100%;
+.content {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-flow: column wrap;
+  min-height: 100vh;
 }

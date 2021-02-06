@@ -14,17 +14,21 @@ export const Navbar = () => {
   return (
     <nav className={styles.nav}>
       <section className={styles.left}>
-        <Link href="/about">
-          <About
+        <Link href="/about" as="/about">
+          <div
             className={classnames({ [styles.active]: pathname === "/about" })}
-          />
+          >
+            <About />
+          </div>
         </Link>
         <Link href="/search/main">
-          <Search
+          <div
             className={classnames({
               [styles.active]: pathname === "/search/main",
             })}
-          />
+          >
+            <Search />
+          </div>
         </Link>
       </section>
       <Link href="/">
@@ -34,18 +38,22 @@ export const Navbar = () => {
       </Link>
       <section className={styles.right}>
         <Link href="/search/location">
-          <Location
+          <div
             className={classnames({
               [styles.active]: pathname === "/search/location",
             })}
-          />
+          >
+            <Location />
+          </div>
         </Link>
         <Link href="/auth/login">
-          <Person
+          <div
             className={classnames({
               [styles.active]: pathname === "/auth/login",
             })}
-          />
+          >
+            <Person />
+          </div>
         </Link>
       </section>
     </nav>

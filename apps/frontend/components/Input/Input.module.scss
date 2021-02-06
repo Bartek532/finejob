@@ -1,7 +1,13 @@
 .field {
   font-family: "Roboto", sans-serif;
-  margin-bottom: 32px;
+  margin-bottom: 27px;
   font-size: 0.75rem;
+  max-width: 430px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column wrap;
 
   .wrapper {
     position: relative;
@@ -10,10 +16,11 @@
     width: 82%;
     display: block;
     margin: 3px 0;
+    box-shadow: 1px 2px 5px 1px rgba(168, 155, 155, 0.25);
 
     .input {
       width: 100%;
-      height: 50px;
+      height: 55px;
       border: 0 none;
       position: relative;
       background: transparent;
@@ -21,12 +28,15 @@
       padding: 0 19px;
       z-index: 2;
       outline: 0 none;
-      box-shadow: 1px 2px 5px 1px rgba(168, 155, 155, 0.25);
+
+      &.withIcon {
+        width: 83%;
+      }
     }
 
     .placeholder {
       position: absolute;
-      top: 11px;
+      top: 14px;
       left: 9px;
       z-index: 1;
       color: #d2d0d0;
@@ -61,12 +71,23 @@
         transform: opacity 0.3s;
       }
     }
+
+    .eye {
+      position: absolute;
+      top: 50%;
+      right: 20px;
+      background-color: transparent;
+      border: 0 none;
+      transform: translateY(-46%);
+      z-index: 100;
+      cursor: pointer;
+    }
   }
 
   .error {
     color: #f59b66;
-    padding: 0 7px;
-    max-width: 82vw;
+    padding: 3px 50px;
+    align-self: flex-start;
   }
 
   &__location {
