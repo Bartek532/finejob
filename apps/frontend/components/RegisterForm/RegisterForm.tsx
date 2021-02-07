@@ -1,40 +1,23 @@
 import { useState } from "react";
 import { UserAPI } from "../../lib/api/user";
-import type { ChangeEvent, FormEvent } from "react";
+import { useForm } from "react-hook-form";
+import { Input } from "../Input/Input";
+import { inputValidation } from "../../lib/utils/consts";
+import type { UserRegisterData } from "../../types";
+
+import { MainButton } from "../MainButton/MainButton";
+import styles from "./RegisterForm.module.scss";
 
 export const RegisterForm = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setEmail(e.target.value);
-  };
+  const { handleSubmit, errors, register, watch } = useForm({
+    reValidateMode: "onBlur",
+  });
 
-  const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setPassword(e.target.value);
-  };
-
-  const handleNameChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setName(e.target.value);
-  };
-
-  const handleFormSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setLoading(true);
-
-    try {
-      const { data, status } = await UserAPI.register(name, email, password);
-      if (status !== 200) {
-        setErrors(data.message);
-      }
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
+  const handleFormSubmit = async (data: UserRegisterData) => {
+    console.log(data);
   };
 
   if (loading) {
@@ -42,37 +25,33 @@ export const RegisterForm = () => {
   }
 
   return (
-    <>
-      <h2>{errors}</h2>
-      <form onSubmit={handleFormSubmit}>
-        <label htmlFor="email">Name: </label>
-        <input
-          type="text"
-          name="name"
-          id="name"
-          value={name}
-          onChange={handleNameChange}
-        />
-        <label htmlFor="email">Email: </label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          value={email}
-          onChange={handleEmailChange}
-        />
+    <form onSubmit={handleSubmit(handleFormSubmit)} className={styles.form}>
+      <Input
+        name="name"
+        error={errors.name}
+        inputRef={register(inputValidation.other)}
+      />
 
-        <label htmlFor="password">Password: </label>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          value={password}
-          onChange={handlePasswordChange}
-        />
+      <Input
+        name="company"
+        error={errors.company}
+        inputRef={register(inputValidation.other)}
+      />
 
-        <button>Register</button>
-      </form>
-    </>
+      <Input
+        name="email"
+        error={errors.email}
+        inputRef={register(inputValidation.email)}
+      />
+
+      <Input
+        name="password"
+        type="password"
+        error={errors.password}
+        inputRef={register(inputValidation.password)}
+      />
+
+      <MainButton text="Create an account" />
+    </form>
   );
 };

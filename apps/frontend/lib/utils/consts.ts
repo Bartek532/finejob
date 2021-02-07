@@ -17,4 +17,11 @@ export const inputValidation = {
         "Password must contain an uppercase letter, a special character, a number and must be at least 8 characters long.",
     },
   },
+  other: {
+    required: { value: true, message: "This field is required." },
+    minLength: {
+      value: 3,
+      message: "This field must be at least 3 characters. ",
+    },
+  },
 };

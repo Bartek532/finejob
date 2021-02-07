@@ -1,4 +1,5 @@
 import styles from "./MainButton.module.scss";
+import Image from "next/image";
 
 export const MainButton = ({
   text,
@@ -14,10 +15,7 @@ export const MainButton = ({
       {text ? (
         text
       ) : (
-        <img
-          src={require(`../../assets/icons/buttons/${icon}.svg`).default}
-          alt={icon}
-        />
+        <Image src={`/icons/buttons/${icon}.svg`} alt={icon} layout="fill" />
       )}
     </button>
   );

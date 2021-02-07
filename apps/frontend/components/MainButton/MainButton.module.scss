@@ -9,9 +9,9 @@
   justify-content: center;
   align-items: center;
   color: #fff;
-  color: $color;
   cursor: pointer;
   font-family: "Comfortaa", cursive;
+  margin: 20px 0;
   transition: transform 0.3s;
 
   &::after {

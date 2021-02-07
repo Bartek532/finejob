@@ -1,0 +1,21 @@
+.btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 0 none;
+  background-color: #f59b66;
+  position: relative;
+  box-shadow: 0 0 10px 1px rgba(245, 155, 102, 0.5);
+
+  &.corner {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+  }
+
+  &:focus {
+    box-shadow: none;
+    transform: translateY(4px);
+    transition: 0.2s ease-in-out;
+  }
+}

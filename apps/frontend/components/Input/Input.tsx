@@ -1,8 +1,8 @@
 import type { TextInputProps } from "../../types";
 import styles from "./Input.module.scss";
 import { ChangeEvent, useState, useCallback } from "react";
-import Eye from "../../assets/icons/password/eye.svg";
-import ClosedEye from "../../assets/icons/password/eye-closed.svg";
+import Eye from "../../public/icons/password/eye.svg";
+import ClosedEye from "../../public/icons/password/eye-closed.svg";
 import classnames from "classnames";
 
 export const Input = ({

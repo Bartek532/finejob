@@ -1,9 +1,9 @@
 import Link from "next/link";
-import Search from "../../assets/icons/nav/search.svg";
-import About from "../../assets/icons/nav/about.svg";
-import Location from "../../assets/icons/nav/location.svg";
-import Person from "../../assets/icons/nav/person.svg";
-import Logo from "../../assets/icons/logo.svg";
+import Search from "../../public/icons/nav/search.svg";
+import About from "../../public/icons/nav/about.svg";
+import Location from "../../public/icons/nav/location.svg";
+import Person from "../../public/icons/nav/person.svg";
+import Logo from "../../public/icons/logo.svg";
 
 import styles from "./Navbar.module.scss";
 import classnames from "classnames";
@@ -14,7 +14,7 @@ export const Navbar = () => {
   return (
     <nav className={styles.nav}>
       <section className={styles.left}>
-        <Link href="/about" as="/about">
+        <Link href="/about">
           <div
             className={classnames({ [styles.active]: pathname === "/about" })}
           >

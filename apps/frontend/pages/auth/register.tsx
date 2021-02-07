@@ -1,11 +1,13 @@
 import { RegisterForm } from "../../components/RegisterForm/RegisterForm";
+import { Layout } from "../../components/Layout/Layout";
+import { ActionButton } from "../../components/ActionButton/ActionButton";
 
 const register = () => {
   return (
-    <>
-      <h1>Register!</h1>
+    <Layout>
+      <ActionButton icon="back" corner />
       <RegisterForm />
-    </>
+    </Layout>
   );
 };
 
