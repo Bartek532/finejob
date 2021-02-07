@@ -3,9 +3,12 @@
   height: 34px;
   border-radius: 50%;
   border: 0 none;
-  background-color: #f59b66;
+  background-color: var(--primary-orange);
   position: relative;
-  box-shadow: 0 0 10px 1px rgba(245, 155, 102, 0.5);
+  outline: 0 none;
+  cursor: pointer;
+  box-shadow: 0 0 10px 1px var(--orange-shadow-color);
+  transition: 0.2s;
 
   &.corner {
     position: absolute;
@@ -13,7 +16,8 @@
     left: 10px;
   }
 
-  &:focus {
+  &:focus,
+  &:hover {
     box-shadow: none;
     transform: translateY(4px);
     transition: 0.2s ease-in-out;

@@ -1,7 +1,7 @@
+@import "../../styles/_mixins";
+
 .content {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex;
   flex-flow: column wrap;
   padding: 70px 0 120px 0;
   min-height: 100vh;

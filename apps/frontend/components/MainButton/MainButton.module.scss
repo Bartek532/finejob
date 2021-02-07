@@ -1,28 +1,23 @@
+@import "../../styles/_mixins";
+
 .btn {
   padding: 12px 35px;
   border-radius: 30px;
-  background-color: #f59b66;
+  background-color: var(--primary-orange);
   position: relative;
+  @include flex;
   border: 0 none;
-  display: flex;
   outline: 0 none;
-  justify-content: center;
-  align-items: center;
-  color: #fff;
+  color: var(--primary-white);
   cursor: pointer;
   font-family: "Comfortaa", cursive;
   margin: 20px 0;
   transition: transform 0.3s;
 
   &::after {
-    position: absolute;
-    content: "";
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
+    @include pseudo;
     border-radius: 30px;
-    box-shadow: 0 3px 20px 2px rgba(245, 155, 102, 0.5);
+    box-shadow: 0 3px 20px 2px var(--orange-shadow-color);
     opacity: 1;
     transition: opacity 0.2s ease-in-out;
   }

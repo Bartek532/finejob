@@ -1,15 +1,13 @@
+@import "../../styles/_mixins";
+
 .form {
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex;
   flex-flow: column wrap;
 }
 
 .info {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include flex;
   flex-flow: column wrap;
   margin-top: 45px;
   .subtitle {
@@ -21,7 +19,7 @@
   .register {
     font-weight: bold;
     text-decoration: underline;
-    color: #000;
+    color: var(--primary-black);
     display: block;
     margin-top: 5px;
     &:hover {

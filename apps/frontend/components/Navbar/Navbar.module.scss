@@ -1,3 +1,5 @@
+@import "../../styles/_mixins";
+
 .nav {
   position: fixed;
   bottom: 0;
@@ -9,10 +11,8 @@
   .right {
     height: 66px;
     width: 50%;
-    background-color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
+    background-color: var(--primary-white);
+    @include flex(space-evenly);
   }
 
   .left {
@@ -26,26 +26,14 @@
   }
 
   .active svg path {
-    fill: #b661b4;
+    fill: var(--primary-violet);
   }
 
   .center {
-    position: absolute;
-    left: 50%;
+    @include pseudo(36px, 0, 50%, var(--primary-orange));
     transform: translate(-50%, 14px);
-    width: 36px;
     height: 36px;
-    background-color: #f59b66;
     border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .icon {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-48%, -52%);
-    }
+    @include flex;
   }
 }
