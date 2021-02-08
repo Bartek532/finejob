@@ -5,4 +5,20 @@
   flex-flow: column wrap;
   padding: 70px 0 120px 0;
   min-height: 100vh;
+  width: 100vw;
+  position: relative;
+  max-width: 1200px;
+
+  .logo {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    cursor: pointer;
+  }
+}
+
+@media all and (min-width: 1000px) {
+  .content {
+    padding: 45px 0 0 0;
+  }
 }

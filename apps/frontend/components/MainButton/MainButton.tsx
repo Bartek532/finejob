@@ -15,7 +15,12 @@ export const MainButton = ({
       {text ? (
         text
       ) : (
-        <Image src={`/icons/buttons/${icon}.svg`} alt={icon} layout="fill" />
+        <Image
+          src={`/icons/buttons/${icon}.svg`}
+          alt={icon}
+          width={16}
+          height={16}
+        />
       )}
     </button>
   );

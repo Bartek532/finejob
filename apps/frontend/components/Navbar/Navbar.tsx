@@ -13,49 +13,51 @@ export const Navbar = () => {
   const { pathname } = useRouter();
   return (
     <nav className={styles.nav}>
-      <section className={styles.left}>
+      <div className={styles.left}>
         <Link href="/about">
-          <div
-            className={classnames({ [styles.active]: pathname === "/about" })}
-          >
+          <a className={classnames({ [styles.active]: pathname === "/about" })}>
             <About />
-          </div>
+            <span className={styles.label}>About</span>
+          </a>
         </Link>
         <Link href="/search/main">
-          <div
+          <a
             className={classnames({
               [styles.active]: pathname === "/search/main",
             })}
           >
             <Search />
-          </div>
+            <span className={styles.label}>Search</span>
+          </a>
         </Link>
-      </section>
+      </div>
       <Link href="/">
         <div className={styles.center}>
           <Logo />
         </div>
       </Link>
-      <section className={styles.right}>
+      <div className={styles.right}>
         <Link href="/search/location">
-          <div
+          <a
             className={classnames({
               [styles.active]: pathname === "/search/location",
             })}
           >
             <Location />
-          </div>
+            <span className={styles.label}>Search by location</span>
+          </a>
         </Link>
         <Link href="/auth/login">
-          <div
+          <a
             className={classnames({
               [styles.active]: pathname === "/auth/login",
             })}
           >
             <Person />
-          </div>
+            <span className={styles.label}>sign in</span>
+          </a>
         </Link>
-      </section>
+      </div>
     </nav>
   );
 };

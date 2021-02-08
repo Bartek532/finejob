@@ -1,9 +1,10 @@
 import { Layout } from "../components/Layout/Layout";
+import { MainSection } from "../components/MainSection/MainSection";
 
 const Home = () => {
   return (
     <Layout>
-      <h1>Home</h1>
+      <MainSection />
     </Layout>
   );
 };

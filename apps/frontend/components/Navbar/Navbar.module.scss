@@ -3,7 +3,7 @@
 .nav {
   position: fixed;
   bottom: 0;
-  left: 0;
+  right: 0;
   display: flex;
   width: 100%;
 
@@ -25,6 +25,14 @@
     padding-left: 20px;
   }
 
+  .label {
+    display: none;
+  }
+
+  svg {
+    cursor: pointer;
+  }
+
   .active svg path {
     fill: var(--primary-violet);
   }
@@ -35,5 +43,47 @@
     height: 36px;
     border-radius: 50%;
     @include flex;
+  }
+}
+
+@media all and (min-width: 1000px) {
+  .nav {
+    position: absolute;
+    bottom: 89.2%;
+    right: 40px;
+    width: auto;
+
+    .left,
+    .right {
+      background-color: transparent;
+      padding: 0;
+      width: auto;
+    }
+
+    .label {
+      display: inline-block;
+      text-transform: uppercase;
+      margin: 0 23px;
+      cursor: pointer;
+      color: var(--primary-black);
+      transition: color 0.3s;
+
+      &:hover {
+        color: var(--primary-orange);
+        transition: color 0.3s;
+      }
+    }
+
+    svg {
+      display: none;
+    }
+
+    .center {
+      display: none;
+    }
+
+    .active .label {
+      color: var(--primary-orange);
+    }
   }
 }
