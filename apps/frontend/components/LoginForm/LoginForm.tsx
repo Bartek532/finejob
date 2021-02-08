@@ -10,29 +10,14 @@ import { MainButton } from "../MainButton/MainButton";
 import styles from "./LoginForm.module.scss";
 
 export const LoginForm = () => {
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
-
-  const { handleSubmit, errors, register, watch } = useForm({
+  const { handleSubmit, errors, register } = useForm({
     reValidateMode: "onBlur",
   });
 
   const handleFormSubmit = async ({ email, password }: UserLoginData) => {
-    try {
-      const { data, status } = await UserAPI.login(email, password);
-      if (status !== 200) {
-        setError(data.message);
-      }
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setLoading(false);
-    }
+    await UserAPI.login(email, password);
   };
 
-  if (loading) {
-    return <p>Loading...</p>;
-  }
   return (
     <>
       <form onSubmit={handleSubmit(handleFormSubmit)} className={styles.form}>

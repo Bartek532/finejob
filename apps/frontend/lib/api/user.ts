@@ -1,25 +1,27 @@
-import axios from "axios";
+import { fetcher } from "../utils/fetcher";
+import { setLoading } from "../../store/mainSlice";
+import { useDispatch } from "react-redux";
 
 export const UserAPI = {
   login: async (email: string, password: string) => {
     try {
-      return await axios.post(`/api/users/login`, {
+      await fetcher("/api/users/login", "POST", {
         email,
-        password
+        password,
       });
     } catch (error) {
-      return error.response;
+      console.log(error.message);
     }
   },
   register: async (name: string, email: string, password: string) => {
     try {
-      return await axios.post(`/api/users/register`, {
+      await fetcher("/api/users/register", "POST", {
         name,
         email,
-        password
+        password,
       });
     } catch (error) {
-      return error.response;
+      console.log(error.message);
     }
-  }
+  },
 };
