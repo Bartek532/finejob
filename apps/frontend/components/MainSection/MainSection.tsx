@@ -2,10 +2,21 @@ import { Input } from "../Input/Input";
 import { MainButton } from "../MainButton/MainButton";
 import styles from "./MainSection.module.scss";
 import Image from "next/image";
+import FullLogo from "../../public/icons/full-logo.svg";
+import { useWindowSize } from "../../lib/hooks/useWindowSize";
+import Link from "next/link";
 
 export const MainSection = () => {
+  const { width } = useWindowSize();
   return (
     <section className={styles.main}>
+      {width! < 1000 ? (
+        <Link href="/">
+          <a className={styles.logo}>
+            <FullLogo />
+          </a>
+        </Link>
+      ) : null}
       <article className={styles.wrapper}>
         <h1 className={styles.title}>
           Your <span className={styles.violet}>next job</span> is here.
@@ -19,7 +30,9 @@ export const MainSection = () => {
           job.
         </div>
       </article>
-      <Image src="/images/career.svg" width={450} height={350} />
+      <article className={styles.image}>
+        <Image src="/images/career.svg" width={450} height={350} />
+      </article>
     </section>
   );
 };

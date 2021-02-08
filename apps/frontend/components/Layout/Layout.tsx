@@ -10,7 +10,9 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
     <div className={styles.content}>
       {width! > 1000 ? (
         <Link href="/">
-          <FullLogo className={styles.logo} />
+          <a className={styles.logo}>
+            <FullLogo />
+          </a>
         </Link>
       ) : null}
       {children}

@@ -6,6 +6,7 @@
   right: 0;
   display: flex;
   width: 100%;
+  z-index: 100;
 
   .left,
   .right {
@@ -49,7 +50,8 @@
 @media all and (min-width: 1000px) {
   .nav {
     position: absolute;
-    bottom: 89.2%;
+    top: 30px;
+    height: 66px;
     right: 40px;
     width: auto;
 

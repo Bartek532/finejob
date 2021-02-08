@@ -3,6 +3,12 @@
   @include flex(space-evenly);
   width: 100%;
 
+  .logo {
+    position: absolute;
+    top: 20px;
+    left: 24px;
+  }
+
   .wrapper {
     @include flex;
     flex-flow: column wrap;
@@ -10,8 +16,9 @@
 
     .title {
       font-size: 3.1rem;
-      margin: 0 8px 60px 8px;
       text-align: center;
+      margin: 0 8px 60px 8px;
+      padding: 0 20px;
       max-width: 380px;
 
       .violet {
@@ -28,11 +35,30 @@
 
     .subtitle {
       font-size: 0.88rem;
-      line-height: 1.1rem;
+      line-height: 1.16rem;
       color: #7c7c7c;
       text-align: center;
-      margin: 64px 31px;
+      margin: 54px 31px;
+      padding: 0 20px;
       max-width: 380px;
+    }
+  }
+
+  .image {
+    display: none;
+  }
+}
+
+@media all and (min-width: 1000px) {
+  .main {
+    .image {
+      display: block;
+    }
+
+    .wrapper .title {
+      text-align: left;
+      margin-left: 45px;
+      padding: 0;
     }
   }
 }
