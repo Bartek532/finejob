@@ -49,11 +49,12 @@
 
 @media all and (min-width: 1000px) {
   .nav {
-    position: absolute;
-    top: 30px;
+    position: relative;
+    top: 0;
     height: 66px;
-    right: 40px;
+    right: 0;
     width: auto;
+    align-self: flex-end;
 
     .left,
     .right {
@@ -69,6 +70,7 @@
       cursor: pointer;
       color: var(--primary-black);
       transition: color 0.3s;
+      font-size: 0.96rem;
 
       &:hover {
         color: var(--primary-orange);

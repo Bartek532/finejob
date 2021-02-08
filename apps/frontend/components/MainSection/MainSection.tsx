@@ -6,8 +6,17 @@ import FullLogo from "../../public/icons/full-logo.svg";
 import { useWindowSize } from "../../lib/hooks/useWindowSize";
 import Link from "next/link";
 
+import { useForm } from "react-hook-form";
+
 export const MainSection = () => {
   const { width } = useWindowSize();
+
+  const { register, handleSubmit } = useForm();
+
+  const onSearch = ({ search: query }: { search: string }) => {
+    console.log(query);
+  };
+
   return (
     <section className={styles.main}>
       {width! < 1000 ? (
@@ -21,8 +30,8 @@ export const MainSection = () => {
         <h1 className={styles.title}>
           Your <span className={styles.violet}>next job</span> is here.
         </h1>
-        <form className={styles.form}>
-          <Input name="search" type="search" />
+        <form className={styles.form} onSubmit={handleSubmit(onSearch)}>
+          <Input name="search" type="search" inputRef={register} />
           <MainButton icon="search" />
         </form>
         <div className={styles.subtitle}>
@@ -31,7 +40,12 @@ export const MainSection = () => {
         </div>
       </article>
       <article className={styles.image}>
-        <Image src="/images/career.svg" width={450} height={350} />
+        <Image
+          src="/images/career.svg"
+          width={450}
+          height={350}
+          loading="lazy"
+        />
       </article>
     </section>
   );

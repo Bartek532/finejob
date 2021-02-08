@@ -23,11 +23,11 @@
       height: 55px;
       border: 0 none;
       position: relative;
-      background: transparent;
       border-radius: 15px;
       padding: 0 19px;
       z-index: 2;
       outline: 0 none;
+      background: transparent;
 
       &.withIcon {
         width: 83%;
@@ -60,7 +60,7 @@
 
       &::after {
         opacity: 1;
-        transform: opacity 0.3s;
+        transition: opacity 0.3s;
       }
     }
 

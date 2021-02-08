@@ -1,0 +1,133 @@
+@import "../../styles/_mixins";
+
+.wrapper {
+  .offers {
+    font-family: "Poppins", sans-serif;
+    padding: 30px 0;
+
+    .offer {
+      @include flex;
+      flex-flow: column wrap;
+      box-shadow: var(--gray-shadow);
+      border-radius: 15px;
+      width: 270px;
+      cursor: pointer;
+
+      .main {
+        @include flex;
+        flex-flow: column wrap;
+        background: #fdfdfd;
+        padding: 15px 25px 60px 25px;
+        border-radius: 15px 15px 0 0;
+        width: 100%;
+
+        .logo {
+          width: 90px;
+          height: 90px;
+          border-radius: 50%;
+          color: var(--primary-white);
+          @include flex;
+          font-size: 2.4rem;
+          margin: 37px 0;
+
+          $colors: #ef476f, #e0ab2e, #06d6a0, #118ab2, #073b4c;
+          $repeat: 20;
+          @for $i from 1 through $repeat {
+            &:nth-child(#{length($colors)}n + #{$i}) {
+              background: lighten(nth($colors, random(length($colors))), 20%);
+            }
+          }
+        }
+
+        .offerTitle {
+          align-self: flex-start;
+          border-top: 1px solid lightgray;
+          font-size: 0.97rem;
+          font-weight: 600;
+          padding: 15px 0 30px 0;
+          width: 100%;
+        }
+
+        .company {
+          font-size: 0.92rem;
+          font-weight: 500;
+          align-self: flex-start;
+        }
+
+        .location {
+          font-size: 0.88rem;
+          align-self: flex-start;
+          font-weight: 300;
+          margin: 1.5px 0;
+        }
+      }
+
+      .additional {
+        background-color: #faf9fd;
+        width: 100%;
+        @include flex(space-between);
+        padding: 15px 20px;
+        border-radius: 0 0 15px 15px;
+
+        .salary {
+          color: rgba(182, 97, 180, 0.44);
+          font-size: 1.6rem;
+          font-weight: 700;
+        }
+
+        .btn {
+          background-color: transparent;
+          border: 2.3px solid var(--primary-orange);
+          width: 45px;
+          height: 45px;
+          border-radius: 50%;
+          cursor: pointer;
+          transition: background-color 0.3s;
+
+          .icon {
+            transform: translate(1px, 1.3px);
+          }
+        }
+      }
+
+      &:hover {
+        box-shadow: 0 3px 10px 2px rgba(182, 97, 180, 0.56);
+
+        .main {
+          background: linear-gradient(150deg, #d35ca4, #a261d9);
+        }
+
+        .additional {
+          background-color: #aa69d1;
+
+          .salary {
+            color: #fff;
+          }
+
+          .btn {
+            background-color: var(--primary-orange);
+
+            &:hover {
+              background-color: transparent;
+              transition: background-color 0.3s;
+            }
+
+            .icon path {
+              fill: var(--primary-white);
+            }
+          }
+        }
+
+        * {
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+
+@media all and (min-width: 1000px) {
+  .wrapper {
+    align-self: flex-start;
+  }
+}

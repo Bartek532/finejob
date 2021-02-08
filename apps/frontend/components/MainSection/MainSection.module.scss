@@ -2,6 +2,7 @@
 .main {
   @include flex(space-evenly);
   width: 100%;
+  padding: 75px 0 60px 0;
 
   .logo {
     position: absolute;
@@ -12,7 +13,6 @@
   .wrapper {
     @include flex;
     flex-flow: column wrap;
-    margin-top: 20px;
 
     .title {
       font-size: 3.1rem;
@@ -31,6 +31,10 @@
       width: 100%;
       @include flex;
       flex-flow: column wrap;
+
+      input {
+        appearance: none;
+      }
     }
 
     .subtitle {
@@ -51,14 +55,18 @@
 
 @media all and (min-width: 1000px) {
   .main {
+    padding-top: 35px;
     .image {
       display: block;
     }
 
-    .wrapper .title {
-      text-align: left;
-      margin-left: 45px;
-      padding: 0;
+    .wrapper {
+      margin-top: 20px;
+      .title {
+        text-align: left;
+        margin-left: 45px;
+        padding: 0;
+      }
     }
   }
 }

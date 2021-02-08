@@ -14,19 +14,14 @@ export const Input = ({
   value,
 }: TextInputProps) => {
   const [isInputFocused, setIsInputFocused] = useState(false);
-  const [localInputValue, setlocalInputValue] = useState("");
   const [inputType, setInputType] = useState(type);
-
-  const handleInputChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
-    setlocalInputValue(e.target.value);
-  }, []);
 
   return (
     <div className={styles.field}>
       <label htmlFor={name} className={styles.wrapper}>
         <span
           className={classnames(styles.placeholder, {
-            [styles.focused]: isInputFocused || localInputValue.length > 0,
+            [styles.focused]: isInputFocused,
           })}
         >
           {name}
@@ -35,14 +30,13 @@ export const Input = ({
           type={inputType}
           name={name}
           id={name}
-          value={value || localInputValue}
-          onChange={onChange || handleInputChange}
+          value={value}
+          onChange={onChange}
           ref={inputRef}
           className={classnames(styles.input, {
             [styles.withIcon]: name === "password",
           })}
           onFocus={() => setIsInputFocused(true)}
-          onBlur={() => setIsInputFocused(false)}
         />
         {name === "password" ? (
           inputType === "password" ? (

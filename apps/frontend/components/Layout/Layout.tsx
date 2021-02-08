@@ -8,6 +8,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
   const { width } = useWindowSize();
   return (
     <div className={styles.content}>
+      <Navbar />
       {width! > 1000 ? (
         <Link href="/">
           <a className={styles.logo}>
@@ -16,7 +17,6 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
         </Link>
       ) : null}
       {children}
-      <Navbar />
     </div>
   );
 };
