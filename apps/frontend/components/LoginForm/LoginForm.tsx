@@ -11,13 +11,14 @@ import styles from "./LoginForm.module.scss";
 import { useDispatch } from "react-redux";
 
 export const LoginForm = () => {
-  const { handleSubmit, errors, register } = useForm({
+  const { handleSubmit, errors, register, reset } = useForm({
     reValidateMode: "onBlur",
   });
 
   const dispatch = useDispatch();
 
   const handleFormSubmit = async ({ email, password }: UserLoginData) => {
+    reset();
     dispatch(UserAPI.login(email, password));
   };
 

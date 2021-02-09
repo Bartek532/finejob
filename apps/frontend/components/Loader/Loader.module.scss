@@ -1,0 +1,30 @@
+@import "../../styles/_mixins";
+
+.loader {
+  @include flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--primary-background);
+  z-index: 100;
+
+  div {
+    animation: fade 2s infinite ease-out;
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

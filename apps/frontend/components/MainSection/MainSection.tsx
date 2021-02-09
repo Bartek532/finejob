@@ -4,6 +4,8 @@ import styles from "./MainSection.module.scss";
 import Image from "next/image";
 import FullLogo from "../../public/icons/full-logo.svg";
 import { useWindowSize } from "../../lib/hooks/useWindowSize";
+import { JobsAPI } from "../../lib/api/offers";
+import { useDispatch } from "react-redux";
 import Link from "next/link";
 
 import { useForm } from "react-hook-form";
@@ -11,10 +13,14 @@ import { useForm } from "react-hook-form";
 export const MainSection = () => {
   const { width } = useWindowSize();
 
+  const dispatch = useDispatch();
+
   const { register, handleSubmit } = useForm();
 
   const onSearch = ({ search: query }: { search: string }) => {
-    console.log(query);
+    if (query && query.trim().length) {
+      dispatch(JobsAPI.searchByQuery(query));
+    }
   };
 
   return (

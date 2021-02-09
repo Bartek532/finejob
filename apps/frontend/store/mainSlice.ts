@@ -19,14 +19,14 @@ export const slice = createSlice({
     },
   },
   reducers: {
-    setLoading: (state, item) => {
-      state.loading = item.payload;
+    setLoading: (state, { payload }) => {
+      state.loading = payload;
     },
-    showModal: (state, item) => {
+    showModal: (state, { payload }) => {
       state.modal = {
         show: true,
-        type: item.payload.type,
-        message: item.payload.message,
+        type: payload.type,
+        message: payload.message,
       };
     },
     hideModal: state => {

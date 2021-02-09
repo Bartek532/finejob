@@ -1,5 +1,6 @@
 import { Navbar } from "../Navbar/Navbar";
 import { Modal } from "../Modal/Modal";
+import { Loader } from "../Loader/Loader";
 import styles from "./Layout.module.scss";
 import FullLogo from "../../public/icons/full-logo.svg";
 import { useWindowSize } from "../../lib/hooks/useWindowSize";
@@ -10,6 +11,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className={styles.content}>
       <Modal />
+      <Loader />
       <Navbar />
       {width! > 1000 ? (
         <Link href="/">
