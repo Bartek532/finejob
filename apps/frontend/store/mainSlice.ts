@@ -1,15 +1,22 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-type InitialMainState = {
-  query: string;
-  loading: boolean;
+export type InitialMainState = {
+  main: {
+    query: string;
+    loading: boolean;
+    modal: { show: boolean; type: string; message: string };
+  };
 };
 
 export const slice = createSlice({
   name: "main",
   initialState: {
     loading: false,
-    modal: { show: false, type: "", message: "" },
+    modal: {
+      show: false,
+      type: "",
+      message: "",
+    },
   },
   reducers: {
     setLoading: (state, item) => {
@@ -29,7 +36,8 @@ export const slice = createSlice({
 });
 
 export const { setLoading, showModal, hideModal } = slice.actions;
-export const getQuery = (state: InitialMainState) => state.query;
-export const getLoading = (state: InitialMainState) => state.loading;
+export const getQuery = (state: InitialMainState) => state.main.query;
+export const getLoading = (state: InitialMainState) => state.main.loading;
+export const getModalInfo = (state: InitialMainState) => state.main.modal;
 
 export const mainReducer = slice.reducer;

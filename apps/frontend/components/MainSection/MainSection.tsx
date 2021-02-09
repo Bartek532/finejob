@@ -45,6 +45,7 @@ export const MainSection = () => {
           width={450}
           height={350}
           loading="lazy"
+          alt=""
         />
       </article>
     </section>

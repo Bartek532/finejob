@@ -65,7 +65,7 @@
     }
 
     .eye {
-      @include pseudo(auto, 50%, calc(100% - 50px), transparent, 100);
+      @include pseudo(auto, 50%, calc(100% - 50px), transparent, 10);
       height: 50%;
       border: 0 none;
       transform: translateY(-46%);
@@ -84,6 +84,6 @@
     top: 50%;
     transform: translateY(-45%);
     right: 14px;
-    z-index: 100;
+    z-index: 10;
   }
 }

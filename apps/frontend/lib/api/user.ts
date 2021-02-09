@@ -2,10 +2,7 @@ import { fetcher } from "../utils/fetcher";
 import { Action } from "redux";
 import { ThunkAction } from "redux-thunk";
 import { setLoading, showModal } from "../../store/mainSlice";
-
-type RootState = {
-  loading: boolean;
-};
+import type { InitialMainState } from "../../store/mainSlice";
 
 export const UserAPI = {
   login: (
@@ -13,7 +10,7 @@ export const UserAPI = {
     password: string
   ): ThunkAction<
     void,
-    RootState,
+    InitialMainState,
     unknown,
     Action<string>
   > => async dispatch => {
@@ -36,7 +33,7 @@ export const UserAPI = {
     password: string
   ): ThunkAction<
     void,
-    RootState,
+    InitialMainState,
     unknown,
     Action<string>
   > => async dispatch => {
