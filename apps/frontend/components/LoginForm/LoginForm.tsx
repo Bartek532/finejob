@@ -8,14 +8,17 @@ import Link from "next/link";
 
 import { MainButton } from "../MainButton/MainButton";
 import styles from "./LoginForm.module.scss";
+import { useDispatch } from "react-redux";
 
 export const LoginForm = () => {
   const { handleSubmit, errors, register } = useForm({
     reValidateMode: "onBlur",
   });
 
+  const dispatch = useDispatch();
+
   const handleFormSubmit = async ({ email, password }: UserLoginData) => {
-    await UserAPI.login(email, password);
+    dispatch(UserAPI.login(email, password));
   };
 
   return (
