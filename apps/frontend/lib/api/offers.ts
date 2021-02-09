@@ -19,8 +19,8 @@ export const JobsAPI = {
     dispatch(setLoading(true));
 
     try {
-      const results = await fetcher(`/api/offers/search?q=${query}`, "GET");
-      dispatch(setOffers(results));
+      const { data } = await fetcher(`/api/offers/search?q=${query}`, "GET");
+      dispatch(setOffers(data));
     } catch (error) {
       showModal({ type: "error", message: error.message });
     } finally {

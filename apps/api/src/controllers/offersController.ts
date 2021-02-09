@@ -1,7 +1,15 @@
-import { fetchAllOffers, fetchOffersByLocation } from "../services/offers";
+import {
+  fetchAllOffers,
+  fetchOffersByLocation,
+  fetchOffersByQuery,
+} from "../services/offers";
 import type { Request, Response } from "express";
 
 export const getAllOffers = async (req: Request, res: Response) => {
+  res.status(200).json(await fetchAllOffers());
+};
+
+export const getOffersByQuery = async (req: Request, res: Response) => {
   const perPage = (req.query.per_page as string) || 20;
   const page = (req.query.page as string) || 1;
 
@@ -11,7 +19,7 @@ export const getAllOffers = async (req: Request, res: Response) => {
 
   res
     .status(200)
-    .json(await fetchAllOffers(req.query.q as string, perPage, page));
+    .json(await fetchOffersByQuery(req.query.q as string, perPage, page));
 };
 
 export const getOffersByLocation = async (req: Request, res: Response) => {
