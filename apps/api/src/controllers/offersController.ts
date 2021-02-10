@@ -1,12 +1,12 @@
 import {
-  fetchAllOffers,
+  fetchRecomendedOffers,
   fetchOffersByLocation,
   fetchOffersByQuery,
 } from "../services/offers";
 import type { Request, Response } from "express";
 
-export const getAllOffers = async (req: Request, res: Response) => {
-  res.status(200).json(await fetchAllOffers());
+export const getRecommendedOffers = async (req: Request, res: Response) => {
+  res.status(200).json(await fetchRecomendedOffers());
 };
 
 export const getOffersByQuery = async (req: Request, res: Response) => {

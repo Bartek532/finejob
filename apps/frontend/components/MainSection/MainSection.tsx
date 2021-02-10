@@ -15,10 +15,11 @@ export const MainSection = () => {
 
   const dispatch = useDispatch();
 
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
 
   const onSearch = ({ search: query }: { search: string }) => {
     if (query && query.trim().length) {
+      reset();
       dispatch(JobsAPI.searchByQuery(query));
     }
   };

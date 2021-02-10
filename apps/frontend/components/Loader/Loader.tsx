@@ -14,8 +14,8 @@ export const Loader = () => {
     <div className={styles.loader}>
       <Image
         src="/icons/full-logo.svg"
-        width={250}
-        height={70}
+        width={235}
+        height={68}
         alt="Loading..."
       />
     </div>

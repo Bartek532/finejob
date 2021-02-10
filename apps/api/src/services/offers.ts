@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 
-export const fetchAllOffers = async () => {
+export const fetchRecomendedOffers = async () => {
   const response = await fetch(
     `${process.env.BASE_API_URL}/1?app_id=${process.env.JOBS_API_APP_ID}&app_key=${process.env.JOBS_API_APP_KEY}`
   );

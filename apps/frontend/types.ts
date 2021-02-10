@@ -1,27 +1,27 @@
 import type { ChangeEvent } from "react";
 
 export type TextInputProps = {
-  type?: string;
-  name: string;
-  value?: string;
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
-  inputRef?: any;
-  error?: { message: string };
+  readonly type?: string;
+  readonly name: string;
+  readonly value?: string;
+  readonly onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  readonly inputRef?: any;
+  readonly error?: { message: string };
 };
 
 export type PasswordInputProps = {
-  inputRef: any;
-  error: { message: string };
+  readonly inputRef: any;
+  readonly error: { message: string };
 };
 
 export type UserLoginData = {
-  email: string;
-  password: string;
+  readonly email: string;
+  readonly password: string;
 };
 
 export type UserRegisterData = {
-  name: string;
-  company: string;
-  email: string;
-  password: string;
+  readonly name: string;
+  readonly company: string;
+  readonly email: string;
+  readonly password: string;
 };
