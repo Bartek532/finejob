@@ -1,0 +1,86 @@
+@import "../../styles/_mixins";
+
+.wrapper {
+  padding: 40px 0;
+  width: 100%;
+  .mainCounter {
+    @include flex;
+    flex-flow: column wrap;
+    border-top: 2px solid var(--primary-white);
+    border-bottom: 2px solid var(--primary-white);
+    width: 100%;
+    padding: 40px 30px;
+
+    .title {
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+  }
+
+  .jobs {
+    @include flex;
+    flex-wrap: wrap;
+    padding: 60px 20px;
+
+    .data {
+      flex: 0 1 400px;
+      @include flex(space-between);
+      padding: 35px;
+      width: 100%;
+
+      .text {
+        @include flex(center, flex-start);
+        flex-flow: column wrap;
+
+        .label {
+          margin: 5px 0;
+          font-size: 1.1rem;
+        }
+
+        .value {
+          font-weight: bold;
+          color: #7ae582;
+        }
+      }
+
+      .icon {
+        width: 90px;
+        height: 90px;
+        background-color: rgba(182, 97, 180, 0.2);
+        @include flex;
+        border-radius: 50%;
+      }
+
+      &:nth-child(2n + 2) {
+        flex-direction: row-reverse;
+
+        .icon {
+          background-color: rgba(245, 155, 102, 0.2);
+        }
+
+        .text {
+          .value {
+            color: #ff5666;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media all and (min-width: 1000px) {
+  .wrapper .jobs .data {
+    .text {
+      margin: 0 30px;
+
+      .label {
+        font-size: 1.25rem;
+      }
+
+      .value {
+        font-size: 1.1rem;
+      }
+    }
+  }
+}

@@ -1,12 +1,7 @@
 import styles from "./Recommended.module.scss";
 import Forward from "../../public/icons/buttons/forward.svg";
-import { GetStaticProps, InferGetStaticPropsType } from "next";
-import { fetcher } from "../../lib/utils/fetcher";
 
-export const Recommended = ({
-  offers,
-}: InferGetStaticPropsType<typeof getStaticProps>) => {
-  console.log(offers);
+export const Recommended = () => {
   return (
     <section className={styles.wrapper}>
       <h2 className={styles.title}>Recommended Jobs</h2>
@@ -29,18 +24,4 @@ export const Recommended = ({
       </div>
     </section>
   );
-};
-
-export const getStaticProps: GetStaticProps = async () => {
-  const offers = await fetcher("/api/offers/recommended", "GET");
-
-  console.log("XD");
-
-  if (!offers) {
-    return {
-      notFound: true,
-    };
-  }
-
-  return { props: { offers } };
 };

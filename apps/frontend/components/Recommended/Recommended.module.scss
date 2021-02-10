@@ -2,7 +2,7 @@
 
 .wrapper {
   .offers {
-    font-family: "Poppins", sans-serif;
+    font-family: var(--second-font);
     padding: 30px 0;
 
     .offer {
@@ -123,11 +123,5 @@
         }
       }
     }
-  }
-}
-
-@media all and (min-width: 1000px) {
-  .wrapper {
-    align-self: flex-start;
   }
 }
