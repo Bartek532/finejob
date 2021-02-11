@@ -15,6 +15,7 @@
       text-align: center;
       font-weight: bold;
       margin-bottom: 30px;
+      line-height: 1.8rem;
     }
   }
 
@@ -67,6 +68,52 @@
       }
     }
   }
+
+  .mobileApp {
+    padding: 35px 23px;
+    @include flex;
+    flex-wrap: wrap;
+
+    .about {
+      flex: 0 1 400px;
+    }
+
+    .mockup {
+      flex: 0 1 450px;
+      margin-bottom: 45px;
+    }
+
+    .about {
+      .title {
+        font-size: 1.4rem;
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+      .text {
+        font-size: 0.95rem;
+        line-height: 1.5rem;
+      }
+
+      .btn {
+        border: 2px solid var(--primary-orange);
+        color: var(--primary-white);
+        background-color: var(--primary-orange);
+        padding: 8px 27px;
+        text-transform: uppercase;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.2s;
+        margin-top: 7px;
+        font-weight: bold;
+
+        &:hover {
+          color: var(--primary-orange);
+          background-color: var(--primary-background);
+          transition: 0.2s;
+        }
+      }
+    }
+  }
 }
 
 @media all and (min-width: 1000px) {
@@ -82,5 +129,10 @@
         font-size: 1.1rem;
       }
     }
+  }
+
+  .wrapper .mobileApp .mockup {
+    margin: 0;
+    margin-right: 95px;
   }
 }

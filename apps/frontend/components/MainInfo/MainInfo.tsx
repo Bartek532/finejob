@@ -36,6 +36,31 @@ export const MainInfo = () => {
           </div>
         ))}
       </article>
+
+      <article className={styles.mobileApp}>
+        <div className={styles.mockup}>
+          <Image
+            src="/images/first_mockup.png"
+            alt="mockup"
+            width={460}
+            height={525}
+          />
+        </div>
+        <div className={styles.about}>
+          <h3 className={styles.title}>Our mobile app</h3>
+          <p className={styles.text}>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
+            vitae animi deleniti saepe et quos! Nihil illum perferendis fugit
+            fugiat, blanditiis accusamus minus libero unde aliquam
+            exercitationem fuga temporibus dolor. Lorem ipsum dolor sit amet
+            consectetur adipisicing elit. Voluptatibus accusantium facilis illo
+            maiores debitis, placeat explicabo nisi, necessitatibus fugit
+            quaerat optio unde deleniti quasi ipsum! Id culpa eveniet corrupti
+            dolor.
+          </p>
+          <button className={styles.btn}>Check</button>
+        </div>
+      </article>
     </section>
   );
 };

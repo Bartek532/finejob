@@ -3,6 +3,10 @@
 * {
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
+
+  &::selection {
+    background-color: #fff065;
+  }
 }
 body {
   margin: 0;
@@ -13,6 +17,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+button {
+  font-family: "Comfortaa", cursive;
 }
 a {
   text-decoration: none;

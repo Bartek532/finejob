@@ -1,6 +1,7 @@
 import { Layout } from "../components/Layout/Layout";
 import { MainSection } from "../components/MainSection/MainSection";
 import { Recommended } from "../components/Recommended/Recommended";
+import { Footer } from "../components/Footer/Footer";
 import { MainInfo } from "../components/MainInfo/MainInfo";
 import { GetStaticProps, GetStaticPaths } from "next";
 import type { OffersResults } from "../../../types";
@@ -12,6 +13,7 @@ const Home = () => {
       <MainSection />
       <Recommended />
       <MainInfo />
+      <Footer />
     </Layout>
   );
 };
