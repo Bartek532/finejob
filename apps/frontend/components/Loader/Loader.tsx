@@ -2,8 +2,9 @@ import Image from "next/image";
 import styles from "./Loader.module.scss";
 import { getLoading } from "../../store/mainSlice";
 import { useSelector } from "react-redux";
+import { memo } from "react";
 
-export const Loader = () => {
+export const Loader = memo(() => {
   const loading = useSelector(getLoading);
 
   if (!loading) {
@@ -20,4 +21,4 @@ export const Loader = () => {
       />
     </div>
   );
-};
+});

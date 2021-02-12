@@ -4,13 +4,17 @@ import About from "../../public/icons/nav/about.svg";
 import Location from "../../public/icons/nav/location.svg";
 import Person from "../../public/icons/nav/person.svg";
 import Logo from "../../public/icons/logo.svg";
+import { memo } from "react";
 
 import styles from "./Navbar.module.scss";
 import classnames from "classnames";
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
+import { getLoginStatus } from "../../store/mainSlice";
 
-export const Navbar = () => {
+export const Navbar = memo(() => {
   const { pathname } = useRouter();
+  const isLogin = useSelector(getLoginStatus);
   return (
     <nav className={styles.nav}>
       <div className={styles.left}>
@@ -50,14 +54,17 @@ export const Navbar = () => {
         <Link href="/auth/login">
           <a
             className={classnames({
-              [styles.active]: pathname === "/auth/login",
+              [styles.active]:
+                pathname === "/auth/login" || pathname.startsWith("/dashboard"),
             })}
           >
             <Person />
-            <span className={styles.label}>sign in</span>
+            <span className={styles.label}>
+              {isLogin ? "account" : "sign in"}
+            </span>
           </a>
         </Link>
       </div>
     </nav>
   );
-};
+});

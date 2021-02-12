@@ -1,6 +1,7 @@
 import styles from "./Modal.module.scss";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
+import { memo } from "react";
 import { getModalInfo, hideModal } from "../../store/mainSlice";
 
 type ModalActions = {
@@ -8,7 +9,7 @@ type ModalActions = {
   onAccept?: () => void;
 };
 
-export const Modal = ({ onCancel, onAccept }: ModalActions) => {
+export const Modal = memo(({ onCancel, onAccept }: ModalActions) => {
   const modal = useSelector(getModalInfo);
   const dispatch = useDispatch();
 
@@ -54,4 +55,4 @@ export const Modal = ({ onCancel, onAccept }: ModalActions) => {
       </section>
     </div>
   );
-};
+});
