@@ -6,6 +6,7 @@ export type TextInputProps = {
   readonly value?: string;
   readonly onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   readonly inputRef?: any;
+  readonly placeholder?: string;
   readonly error?: { message: string };
 };
 

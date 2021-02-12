@@ -12,6 +12,7 @@ export const Input = ({
   error,
   onChange,
   value,
+  placeholder,
 }: TextInputProps) => {
   const [isInputFocused, setIsInputFocused] = useState(false);
   const [inputType, setInputType] = useState(type);
@@ -24,7 +25,7 @@ export const Input = ({
             [styles.focused]: isInputFocused,
           })}
         >
-          {name}
+          {placeholder || name}
         </span>
         <input
           type={inputType}

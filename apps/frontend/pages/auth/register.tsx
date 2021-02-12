@@ -2,7 +2,7 @@ import { RegisterForm } from "../../components/RegisterForm/RegisterForm";
 import { Layout } from "../../components/Layout/Layout";
 import { ActionButton } from "../../components/ActionButton/ActionButton";
 
-const register = () => {
+const Register = () => {
   return (
     <Layout>
       <ActionButton icon="back" corner />
@@ -11,4 +11,4 @@ const register = () => {
   );
 };
 
-export default register;
+export default Register;
