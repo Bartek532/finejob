@@ -47,7 +47,7 @@ export const RegisterForm = () => {
         inputRef={register(inputValidation.password)}
       />
 
-      <MainButton text="Create an account" />
+      <MainButton text="Create an account" type="submit" />
     </form>
   );
 };

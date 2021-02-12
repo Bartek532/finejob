@@ -26,8 +26,8 @@ export const getOffersByLocation = async (req: Request, res: Response) => {
   const perPage = (req.query.per_page as string) || 20;
   const page = (req.query.page as string) || 1;
 
-  if (!req.query.location) {
-    return res.status(400).json({ message: "Invalid location" });
+  if (!req.query.q) {
+    return res.status(400).json({ message: "Invalid location." });
   }
 
   res

@@ -53,7 +53,7 @@ export const LoginForm = memo(() => {
           inputRef={register(inputValidation.password)}
         />
 
-        <MainButton text="Login" />
+        <MainButton text="Login" type="submit" />
       </form>
       <section className={styles.info}>
         <span className={styles.subtitle}>Don't have an account yet?</span>

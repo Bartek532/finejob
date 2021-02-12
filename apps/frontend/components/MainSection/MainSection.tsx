@@ -7,6 +7,7 @@ import { useWindowSize } from "../../lib/hooks/useWindowSize";
 import { JobsAPI } from "../../lib/api/offers";
 import { useDispatch } from "react-redux";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 import { useForm } from "react-hook-form";
 
@@ -14,6 +15,7 @@ export const MainSection = () => {
   const { width } = useWindowSize();
 
   const dispatch = useDispatch();
+  const router = useRouter();
 
   const { register, handleSubmit, reset } = useForm();
 
@@ -21,6 +23,7 @@ export const MainSection = () => {
     if (query && query.trim().length) {
       reset();
       dispatch(JobsAPI.searchByQuery(query));
+      router.push("/offers");
     }
   };
 
@@ -39,7 +42,7 @@ export const MainSection = () => {
         </h1>
         <form className={styles.form} onSubmit={handleSubmit(onSearch)}>
           <Input name="search" type="search" inputRef={register} />
-          <MainButton icon="search" />
+          <MainButton icon="search" type="submit" />
         </form>
         <div className={styles.subtitle}>
           In last week we helps 1,500 job seekers and employees find the right

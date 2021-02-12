@@ -1,15 +1,25 @@
 import { Input } from "../Input/Input";
 import { MainButton } from "../MainButton/MainButton";
+import { JobsAPI } from "../../lib/api/offers";
+import { useDispatch } from "react-redux";
 import styles from "./SearchSection.module.scss";
 import Image from "next/image";
+import { useRouter } from "next/router";
 
 import { useForm } from "react-hook-form";
 
 export const SearchByLocation = () => {
-  const { handleSubmit, register, reset } = useForm();
+  const dispatch = useDispatch();
+  const router = useRouter();
 
-  const onSearch = () => {
-    reset();
+  const { register, handleSubmit, reset } = useForm();
+
+  const onSearch = ({ location: query }: { location: string }) => {
+    if (query && query.trim().length) {
+      reset();
+      dispatch(JobsAPI.searchByLocation(query));
+      router.push("/offers");
+    }
   };
 
   return (
@@ -20,14 +30,14 @@ export const SearchByLocation = () => {
         </h1>
         <form className={styles.form} onSubmit={handleSubmit(onSearch)}>
           <Input
-            name="search"
+            name="location"
             type="search"
             placeholder="Enter your city"
             inputRef={register}
           />
           <div className={styles.buttons}>
             <MainButton icon="location" />
-            <MainButton icon="search" />
+            <MainButton icon="search" type="submit" />
           </div>
         </form>
         <div className={styles.subtitle}>

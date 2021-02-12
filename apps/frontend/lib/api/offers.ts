@@ -27,4 +27,19 @@ export const JobsAPI = {
       dispatch(setLoading(false));
     }
   },
+  searchByLocation: (location: string): FetchFuncType => async dispatch => {
+    dispatch(setLoading(true));
+    try {
+      const { data } = await fetcher(
+        `/api/offers/location?q=${location}`,
+        "GET"
+      );
+      dispatch(setOffers(data));
+    } catch (error) {
+      console.log(error.message);
+      showModal({ type: "error", message: error.message });
+    } finally {
+      dispatch(setLoading(false));
+    }
+  },
 };

@@ -4,14 +4,14 @@ import Image from "next/image";
 export const MainButton = ({
   text,
   icon,
-  role,
+  type,
 }: {
   text?: string;
   icon?: string;
-  role?: string;
+  type?: "submit" | "reset";
 }) => {
   return (
-    <button className={styles.btn} role={role || ""}>
+    <button className={styles.btn} type={type || "button"}>
       {text ? (
         text
       ) : (
