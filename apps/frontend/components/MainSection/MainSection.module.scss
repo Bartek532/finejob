@@ -2,7 +2,7 @@
 .main {
   @include flex(space-evenly);
   width: 100%;
-  padding: 75px 0 60px 0;
+  padding: 65px 0 70px 0;
 
   .logo {
     position: absolute;
@@ -55,7 +55,7 @@
 
 @media all and (min-width: 1000px) {
   .main {
-    padding-top: 100px;
+    padding-top: 120px;
     .image {
       display: block;
     }

@@ -70,7 +70,7 @@
   }
 
   .mobileApp {
-    padding: 35px 23px;
+    padding: 25px 23px 35px 23px;
     @include flex;
     flex-wrap: wrap;
 
@@ -80,7 +80,7 @@
 
     .mockup {
       flex: 0 1 450px;
-      margin-bottom: 45px;
+      margin-bottom: 65px;
     }
 
     .about {
@@ -133,6 +133,13 @@
 
   .wrapper .mobileApp .mockup {
     margin: 0;
-    margin-right: 95px;
+    margin-right: 45px;
+  }
+}
+
+@media all and (min-width: 1200px) {
+  .wrapper .mobileApp .mockup {
+    margin: 0;
+    margin-right: 85px;
   }
 }

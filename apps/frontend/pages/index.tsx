@@ -4,21 +4,20 @@ import { Recommended } from "../components/Recommended/Recommended";
 import { Footer } from "../components/Footer/Footer";
 import { MainInfo } from "../components/MainInfo/MainInfo";
 import { GetStaticProps, GetStaticPaths } from "next";
-import type { OffersResults } from "../../../types";
+import type { OffersResults } from "../../types";
+import { addRandomColorToLogos } from "../lib/utils/functions";
 import { fetcher } from "../lib/utils/fetcher";
 
-const Home = () => {
+const Home = ({ results }: { results: OffersResults }) => {
   return (
     <Layout>
       <MainSection />
-      <Recommended />
+      <Recommended offers={addRandomColorToLogos(results.results)} />
       <MainInfo />
       <Footer />
     </Layout>
   );
 };
-
-/*
 
 export const getStaticProps: GetStaticProps = async () => {
   try {
@@ -26,7 +25,8 @@ export const getStaticProps: GetStaticProps = async () => {
       "http://localhost:3080/api/offers/recommended",
       "GET"
     );
-    return { props: { offers: data } };
+
+    return { props: { results: data } };
   } catch {
     return {
       notFound: true as const,

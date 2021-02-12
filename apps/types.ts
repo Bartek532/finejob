@@ -21,6 +21,7 @@ export type Offer = {
   salary_max: number;
   salary_min: number;
   title: string;
+  color?: string;
 };
 
 export type OffersResults = {
