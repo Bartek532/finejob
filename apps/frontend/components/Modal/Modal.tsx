@@ -34,8 +34,8 @@ export const Modal = ({ onCancel, onAccept }: ModalActions) => {
     <div className={styles.modal}>
       <section className={styles.window}>
         <Image
-          width={80}
-          height={80}
+          width={70}
+          height={70}
           alt={modal.type}
           className={styles.icon}
           src={`/icons/modal/${modal.type}.svg`}

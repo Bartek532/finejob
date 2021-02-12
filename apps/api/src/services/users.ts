@@ -5,6 +5,11 @@ export const findUserByEmail = (email: string) => {
   return prisma.user.findFirst({ where: { email } });
 };
 
-export const createUser = (name: string, email: string, password: string) => {
-  return prisma.user.create({ data: { name, email, password } });
+export const createUser = (
+  name: string,
+  email: string,
+  company: string,
+  password: string
+) => {
+  return prisma.user.create({ data: { name, email, company, password } });
 };

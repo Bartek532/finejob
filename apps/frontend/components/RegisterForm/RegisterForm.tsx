@@ -1,28 +1,24 @@
-import { useState } from "react";
 import { UserAPI } from "../../lib/api/user";
 import { useForm } from "react-hook-form";
 import { Input } from "../Input/Input";
 import { inputValidation } from "../../lib/utils/consts";
 import type { UserRegisterData } from "../../types";
+import { useDispatch } from "react-redux";
 
 import { MainButton } from "../MainButton/MainButton";
 import styles from "./RegisterForm.module.scss";
 
 export const RegisterForm = () => {
-  const [error, setError] = useState("");
-  const [loading, setLoading] = useState(false);
-
-  const { handleSubmit, errors, register, watch } = useForm({
+  const { handleSubmit, errors, register, reset } = useForm({
     reValidateMode: "onBlur",
   });
 
-  const handleFormSubmit = async (data: UserRegisterData) => {
-    console.log(data);
-  };
+  const dispatch = useDispatch();
 
-  if (loading) {
-    return <p>Loading...</p>;
-  }
+  const handleFormSubmit = async (data: UserRegisterData) => {
+    reset();
+    dispatch(UserAPI.register(data));
+  };
 
   return (
     <form onSubmit={handleSubmit(handleFormSubmit)} className={styles.form}>

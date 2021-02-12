@@ -2,9 +2,9 @@ import { createSlice } from "@reduxjs/toolkit";
 
 export type InitialMainState = {
   main: {
-    query: string;
     loading: boolean;
     modal: { show: boolean; type: string; message: string };
+    isLogIn: boolean;
   };
 };
 
@@ -17,6 +17,7 @@ export const slice = createSlice({
       type: "",
       message: "",
     },
+    isLogIn: false,
   },
   reducers: {
     setLoading: (state, { payload }) => {
@@ -32,12 +33,15 @@ export const slice = createSlice({
     hideModal: state => {
       state.modal = { ...state.modal, show: false };
     },
+    setIsLogin: (state, { payload }) => {
+      state.isLogIn = payload;
+    },
   },
 });
 
-export const { setLoading, showModal, hideModal } = slice.actions;
-export const getQuery = (state: InitialMainState) => state.main.query;
+export const { setLoading, showModal, hideModal, setIsLogin } = slice.actions;
 export const getLoading = (state: InitialMainState) => state.main.loading;
 export const getModalInfo = (state: InitialMainState) => state.main.modal;
+export const getLoginStatus = (state: InitialMainState) => state.main.isLogIn;
 
 export const mainReducer = slice.reducer;

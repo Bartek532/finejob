@@ -1,7 +1,6 @@
 import { Request, Response } from "express";
 import { validateLogin, validateRegister } from "../validation";
 import bcrypt from "bcrypt";
-import crypto from "crypto";
 import jwt from "jsonwebtoken";
 import { findUserByEmail, createUser } from "../services/users";
 
@@ -29,7 +28,7 @@ export const login = async (req: Request, res: Response) => {
   res
     .cookie("token", token, {
       httpOnly: true,
-      sameSite: "lax"
+      sameSite: "lax",
     })
     .json({ message: "Logged in!" });
 };
@@ -50,9 +49,12 @@ export const register = async (req: Request, res: Response) => {
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(req.body.password, salt);
 
-  //const token = crypto.randomBytes(16).toString("hex");
-
-  const user = await createUser(req.body.name, req.body.email, hashedPassword);
+  const user = await createUser(
+    req.body.name,
+    req.body.email,
+    req.body.company,
+    hashedPassword
+  );
 
   return res.status(200).json(user);
 };

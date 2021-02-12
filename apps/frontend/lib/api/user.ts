@@ -1,54 +1,56 @@
 import { fetcher } from "../utils/fetcher";
 import { Action } from "redux";
 import { ThunkAction } from "redux-thunk";
-import { setLoading, showModal } from "../../store/mainSlice";
+import { setLoading, showModal, setIsLogin } from "../../store/mainSlice";
+import type { UserLoginData, UserRegisterData } from "../../types";
 import type { InitialMainState } from "../../store/mainSlice";
 
+type FuncType = ThunkAction<void, InitialMainState, unknown, Action<string>>;
+
 export const UserAPI = {
-  login: (
-    email: string,
-    password: string
-  ): ThunkAction<
-    void,
-    InitialMainState,
-    unknown,
-    Action<string>
-  > => async dispatch => {
+  login: ({ email, password }: UserLoginData): FuncType => async dispatch => {
     dispatch(setLoading(true));
     try {
       await fetcher("/api/users/login", "POST", {
         email,
         password,
       });
+      dispatch(setIsLogin(true));
     } catch (error) {
       dispatch(showModal({ type: "error", message: error.message }));
-      console.log(error.message);
     } finally {
       dispatch(setLoading(false));
     }
   },
-  register: (
-    name: string,
-    email: string,
-    password: string
-  ): ThunkAction<
-    void,
-    InitialMainState,
-    unknown,
-    Action<string>
-  > => async dispatch => {
+  register: ({
+    name,
+    email,
+    company,
+    password,
+  }: UserRegisterData): FuncType => async dispatch => {
     dispatch(setLoading(true));
     try {
       await fetcher("/api/users/register", "POST", {
         name,
         email,
+        company,
         password,
       });
+      dispatch(
+        showModal({ type: "success", message: "Thanks to register. Log in!" })
+      );
     } catch (error) {
       dispatch(showModal({ type: "error", message: error.message }));
-      console.log(error.message);
     } finally {
       dispatch(setLoading(false));
+    }
+  },
+  isLogin: (): FuncType => async dispatch => {
+    try {
+      await fetcher("/api/users/islogin", "GET");
+      dispatch(setIsLogin(true));
+    } catch (error) {
+      console.log(error.message);
     }
   },
 };

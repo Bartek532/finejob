@@ -1,25 +1,40 @@
-import React, { useState } from "react";
 import { UserAPI } from "../../lib/api/user";
 import { useForm } from "react-hook-form";
 import { inputValidation } from "../../lib/utils/consts";
 import type { UserLoginData } from "../../types";
 import { Input } from "../Input/Input";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 import { MainButton } from "../MainButton/MainButton";
 import styles from "./LoginForm.module.scss";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { getLoginStatus } from "../../store/mainSlice";
 
 export const LoginForm = () => {
   const { handleSubmit, errors, register, reset } = useForm({
     reValidateMode: "onBlur",
   });
+  const isLogin = useSelector(getLoginStatus);
+
+  const router = useRouter();
 
   const dispatch = useDispatch();
 
-  const handleFormSubmit = async ({ email, password }: UserLoginData) => {
+  useEffect(() => {
+    if (isLogin) {
+      router.push("/dashboard");
+    }
+  }, [isLogin]);
+
+  useEffect(() => {
+    dispatch(UserAPI.isLogin());
+  }, []);
+
+  const handleFormSubmit = async (data: UserLoginData) => {
     reset();
-    dispatch(UserAPI.login(email, password));
+    dispatch(UserAPI.login(data));
   };
 
   return (
@@ -41,9 +56,6 @@ export const LoginForm = () => {
         <MainButton text="Login" />
       </form>
       <section className={styles.info}>
-        <Link href="/auth/forgot-password">
-          <a className={styles.forgot}>Forgot password? </a>
-        </Link>
         <span className={styles.subtitle}>Don't have an account yet?</span>
 
         <Link href="/auth/register">
