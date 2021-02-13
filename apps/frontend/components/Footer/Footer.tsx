@@ -1,4 +1,5 @@
 import styles from "./Footer.module.scss";
+import Link from "next/link";
 import Image from "next/image";
 
 export const Footer = () => {
@@ -12,7 +13,11 @@ export const Footer = () => {
           make your (and ours &#128513;) life easier thanks to technology. Do
           you want to know more? Check below!
         </p>
-        <button className={styles.btn}>Check out</button>
+        <Link href="https://github.com/Bartek532">
+          <a target="_blank">
+            <button className={styles.btn}>Check out</button>
+          </a>
+        </Link>
       </div>
 
       <div className={styles.image}>

@@ -1,12 +1,14 @@
 import { Layout } from "../../components/Layout/Layout";
 import { DashboardStart } from "../../components/DashboardStart/DashboardStart";
-
+import { AuthChecker } from "../../components/AuthChecker/AuthChecker";
 
 const Dashboard = () => {
   return (
-    <Layout>
-      <DashboardStart />
-    </Layout>
+    <AuthChecker>
+      <Layout>
+        <DashboardStart />
+      </Layout>
+    </AuthChecker>
   );
 };
 
