@@ -2,6 +2,9 @@ import { Input } from "../Input/Input";
 import { MainButton } from "../MainButton/MainButton";
 import { JobsAPI } from "../../lib/api/offers";
 import { useDispatch } from "react-redux";
+import { Modal } from "../Modal/Modal";
+import { showModal, setLoading } from "../../store/mainSlice";
+import { getCityNameByCoordinates } from "../../lib/utils/functions";
 import styles from "./SearchSection.module.scss";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -22,37 +25,71 @@ export const SearchByLocation = () => {
     }
   };
 
+  const searchByLocation = () => {
+    dispatch(setLoading(true));
+
+    if (!("geolocation" in navigator)) {
+      dispatch(
+        showModal({ type: "error", message: "Navigator is not available." })
+      );
+      return;
+    }
+
+    return navigator.geolocation.getCurrentPosition(
+      async ({ coords }) => {
+        const data = await getCityNameByCoordinates(
+          coords.latitude,
+          coords.longitude
+        );
+
+        onSearch({ location: data.address.city });
+      },
+      () => {
+        dispatch(setLoading(false));
+        dispatch(
+          showModal({
+            type: "error",
+            message: "Something went wrong. Try again.",
+          })
+        );
+      }
+    );
+  };
+
   return (
-    <section className={styles.main}>
-      <article className={styles.wrapper}>
-        <h1 className={styles.title}>
-          Your <span className={styles.violet}>location</span> - your jobs.
-        </h1>
-        <form className={styles.form} onSubmit={handleSubmit(onSearch)}>
-          <Input
-            name="location"
-            type="search"
-            placeholder="Enter your city"
-            inputRef={register}
-          />
-          <div className={styles.buttons}>
-            <MainButton icon="location" />
-            <MainButton icon="search" type="submit" />
+    <>
+      <Modal />
+      <section className={styles.main}>
+        <article className={styles.wrapper}>
+          <h1 className={styles.title}>
+            Your <span className={styles.violet}>location</span> - your jobs.
+          </h1>
+          <form className={styles.form} onSubmit={handleSubmit(onSearch)}>
+            <Input
+              name="location"
+              type="search"
+              placeholder="Enter your city"
+              inputRef={register}
+            />
+            <div className={styles.buttons}>
+              <MainButton icon="location" onClick={searchByLocation} />
+              <MainButton icon="search" type="submit" />
+            </div>
+          </form>
+          <div className={styles.subtitle}>
+            You can use this feature to make it easier to find a job near you.
           </div>
-        </form>
-        <div className={styles.subtitle}>
-          You can use this feature to make it easier to find a job near you.
-        </div>
-      </article>
-      <article className={styles.image}>
-        <Image
-          src="/images/map.svg"
-          width={450}
-          height={350}
-          loading="lazy"
-          alt=""
-        />
-      </article>
-    </section>
+        </article>
+        <article className={styles.image}>
+          <Image
+            src="/images/map.svg"
+            width={450}
+            height={350}
+            loading="lazy"
+            alt=""
+          />
+        </article>
+      </section>
+    </>
   );
 };

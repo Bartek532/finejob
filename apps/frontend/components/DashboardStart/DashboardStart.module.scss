@@ -40,6 +40,8 @@
       text-transform: capitalize;
       text-align: center;
       font-size: 0.9rem;
+      background-color: transparent;
+      border: 0 none;
 
       @media all and (min-width: 450px) {
         font-size: 1.15rem;

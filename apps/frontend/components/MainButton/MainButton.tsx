@@ -5,13 +5,15 @@ export const MainButton = ({
   text,
   icon,
   type,
+  onClick,
 }: {
   text?: string;
   icon?: string;
   type?: "submit" | "reset";
+  onClick?: () => void;
 }) => {
   return (
-    <button className={styles.btn} type={type || "button"}>
+    <button className={styles.btn} type={type || "button"} onClick={onClick}>
       {text ? (
         text
       ) : (
