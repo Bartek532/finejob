@@ -1,0 +1,68 @@
+@import "../../styles/_mixins";
+
+.fields {
+  @include flex;
+  .field {
+    flex: 0 1 250px;
+    width: 40vw;
+    max-width: 200px;
+    min-height: 120px;
+    height: 58vw;
+    max-height: 250px;
+    padding: 35px 10px;
+    margin: 10px;
+    border-radius: 10px;
+    @include flex(space-between);
+    flex-flow: column wrap;
+    background-color: #fff;
+    border: 2px solid rgba(0, 0, 0, 0.08);
+    cursor: pointer;
+    transition: transform 0.3s;
+    box-shadow: 0 3px 20px 2px #bebebe;
+    position: relative;
+
+    &:hover {
+      transform: translateY(-25px) rotate(7deg);
+      transform-origin: "100% 100%";
+      transition: all 0.3s;
+
+      &::after {
+        opacity: 1;
+        transition: opacity 0.3s;
+      }
+    }
+    .icon {
+      max-width: 150px;
+      padding: 0 15px;
+    }
+    .label {
+      font-weight: 500;
+      text-transform: capitalize;
+      text-align: center;
+      font-size: 0.9rem;
+
+      @media all and (min-width: 450px) {
+        font-size: 1.15rem;
+      }
+    }
+  }
+}
+
+@media all and (min-width: 1000px) {
+  .fields .field {
+    margin: 20px;
+
+    .icon {
+      padding: 0;
+    }
+  }
+}
+
+@media all and (max-width: 360px) {
+  .fields .field {
+    padding: 30px 10px;
+    .icon {
+      transform: scale(0.85);
+    }
+  }
+}

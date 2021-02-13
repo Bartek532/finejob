@@ -1,9 +1,11 @@
 import { Layout } from "../../components/Layout/Layout";
+import { DashboardStart } from "../../components/DashboardStart/DashboardStart";
+
 
 const Dashboard = () => {
   return (
     <Layout>
-      <h1>Dashboard</h1>
+      <DashboardStart />
     </Layout>
   );
 };
