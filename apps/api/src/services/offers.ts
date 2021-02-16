@@ -1,20 +1,18 @@
 import fetch from "node-fetch";
+import type { Offer } from "../types";
 
-export const fetchRecomendedOffers = async () => {
-  const response = await fetch(
-    `${process.env.BASE_API_URL}/1?app_id=${process.env.JOBS_API_APP_ID}&app_key=${process.env.JOBS_API_APP_KEY}`
-  );
+export const fetchRecomendedOffers = async (): Promise<Offer[]> => {
+  const response = await fetch(process.env.JOBS_API_URL!);
 
   return await response.json();
 };
 
 export const fetchOffersByLocation = async (
   location: string,
-  perPage: string | number,
   page: string | number
-) => {
+): Promise<Offer[]> => {
   const response = await fetch(
-    `${process.env.BASE_API_URL}/${page}?app_id=${process.env.JOBS_API_APP_ID}&app_key=${process.env.JOBS_API_APP_KEY}&results_per_page=${perPage}&where=${location}`
+    `${process.env.JOBS_API_URL}?location=${location}&page=${page}`
   );
 
   return await response.json();
@@ -22,11 +20,10 @@ export const fetchOffersByLocation = async (
 
 export const fetchOffersByQuery = async (
   query: string,
-  perPage: string | number,
   page: string | number
-) => {
+): Promise<Offer[]> => {
   const response = await fetch(
-    `${process.env.BASE_API_URL}/${page}?app_id=${process.env.JOBS_API_APP_ID}&app_key=${process.env.JOBS_API_APP_KEY}&results_per_page=${perPage}&what=${query}`
+    `${process.env.JOBS_API_URL}?search=${query}&page=${page}`
   );
 
   return await response.json();
