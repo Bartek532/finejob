@@ -26,3 +26,17 @@ export type UserRegisterData = {
   readonly email: string;
   readonly password: string;
 };
+
+export type Offer = {
+  readonly id: string;
+  readonly type: string;
+  readonly url: string;
+  readonly created_at: string;
+  readonly company: string;
+  readonly company_url: string;
+  readonly location: string;
+  readonly title: string;
+  readonly description: string;
+  readonly how_to_apply: string;
+  readonly company_logo: string;
+};

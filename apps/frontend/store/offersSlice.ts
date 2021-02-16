@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
+import type { Offer } from "../types";
 
 export type InitialOffersState = {
   offers: {
-    actualSelectedOffer: any;
-    allOffers: any;
+    actualSelectedOffer: Offer;
+    allOffers: Offer[];
   };
 };
 

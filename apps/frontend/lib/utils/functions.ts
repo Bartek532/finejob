@@ -1,11 +1,10 @@
-import { logoColors } from "./consts";
 import axios from "axios";
 import { LOCATION_API_URL } from "./consts";
 
-export const addRandomColorToLogos = (arr: Array<any>) => {
+export const addRandomSalaryToOffer = (arr: Array<any>) => {
   return arr.map(item => ({
     ...item,
-    color: logoColors[Math.floor(Math.random() * logoColors.length)],
+    salary: Math.floor(Math.random() * (30000 - 4000)) + 4000,
   }));
 };
 

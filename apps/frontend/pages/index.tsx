@@ -4,15 +4,15 @@ import { Recommended } from "../components/Recommended/Recommended";
 import { Footer } from "../components/Footer/Footer";
 import { MainInfo } from "../components/MainInfo/MainInfo";
 import { GetStaticProps, GetStaticPaths } from "next";
-import type { OffersResults } from "../../types";
-import { addRandomColorToLogos } from "../lib/utils/functions";
+import type { Offer } from "../types";
+import { addRandomSalaryToOffer } from "../lib/utils/functions";
 import { fetcher } from "../lib/utils/fetcher";
 
-const Home = ({ results }: { results: OffersResults }) => {
+const Home = ({ results }: { results: Offer[] }) => {
   return (
     <Layout>
       <MainSection />
-      <Recommended offers={addRandomColorToLogos(results.results)} />
+      <Recommended offers={addRandomSalaryToOffer(results)} />
       <MainInfo />
       <Footer />
     </Layout>

@@ -5,10 +5,14 @@ import Back from "../../public/icons/buttons/back-simple.svg";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useWindowSize } from "../../lib/hooks/useWindowSize";
-import type { Offer } from "../../../types";
+import type { Offer } from "../../types";
 import classnames from "classnames";
 
-export const Recommended = ({ offers }: { offers: Offer[] }) => {
+export const Recommended = ({
+  offers,
+}: {
+  offers: (Offer & { salary: number })[];
+}) => {
   const { width } = useWindowSize();
   const [scroll, setScroll] = useState(0);
   const baseScrollValue = 450;
@@ -63,7 +67,7 @@ export const Recommended = ({ offers }: { offers: Offer[] }) => {
         </button>
       ) : null}
 
-      <div
+      <article
         className={styles.offers}
         style={{ transform: `translateX(${scroll}px)` }}
         ref={offersContainerRef}
@@ -74,25 +78,24 @@ export const Recommended = ({ offers }: { offers: Offer[] }) => {
               <div
                 className={styles.logo}
                 style={{
-                  backgroundColor: `#${offer.color}`,
+                  backgroundColor: `#eee`,
                 }}
               >
-                {offer.company.display_name.slice(0, 2)}
+                {offer.company.slice(0, 2)}
               </div>
-              <span className={styles.offerTitle}>{offer.title}</span>
-              <span className={styles.company}>
-                {offer.company.display_name}
+
+              <span className={styles.offerTitle}>
+                {offer.title.length > 64
+                  ? `${offer.title.slice(0, 64)}...`
+                  : offer.title}
               </span>
-              <span className={styles.location}>
-                {offer.location.display_name}
-              </span>
+              <span className={styles.company}>{offer.company}</span>
+              <span className={styles.location}>{offer.location}</span>
             </div>
 
             <div className={styles.additional}>
-              <span className={styles.salary}>
-                ${offer.salary_max.toFixed(0)}
-              </span>
-              <Link href={offer.redirect_url}>
+              <span className={styles.salary}>${offer.salary.toFixed(0)}</span>
+              <Link href={offer.how_to_apply}>
                 <button className={styles.btn}>
                   <Forward className={styles.icon} />
                 </button>
@@ -100,7 +103,7 @@ export const Recommended = ({ offers }: { offers: Offer[] }) => {
             </div>
           </article>
         ))}
-      </div>
+      </article>
     </section>
   );
 };
