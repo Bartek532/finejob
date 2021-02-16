@@ -2,6 +2,7 @@ import * as React from "react";
 import styles from "./Recommended.module.scss";
 import Forward from "../../public/icons/buttons/forward.svg";
 import Back from "../../public/icons/buttons/back-simple.svg";
+import { Avatar } from "../Avatar/Avatar";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { useWindowSize } from "../../lib/hooks/useWindowSize";
@@ -75,14 +76,7 @@ export const Recommended = ({
         {offers.map(offer => (
           <article className={styles.offer} key={offer.id}>
             <div className={styles.main}>
-              <div
-                className={styles.logo}
-                style={{
-                  backgroundColor: `#eee`,
-                }}
-              >
-                {offer.company.slice(0, 2)}
-              </div>
+              <Avatar name={offer.company} />
 
               <span className={styles.offerTitle}>
                 {offer.title.length > 64

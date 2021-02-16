@@ -1,0 +1,15 @@
+@import "../../styles/_mixins";
+
+.logo {
+  width: 95px;
+  height: 95px;
+  border-radius: 50%;
+  color: var(--primary-white);
+  margin: 10px;
+  @include flex;
+  font-size: 2.4rem;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: 2px solid var(--primary-white);
+}

@@ -16,4 +16,7 @@ module.exports = {
 
     return config;
   },
+  images: {
+    domains: ["jobs.github.com"],
+  },
 };

@@ -14,7 +14,7 @@
     border-radius: 10px;
     @include flex(space-between);
     flex-flow: column wrap;
-    background-color: #fff;
+    background-color: var(--primary-white);
     border: 2px solid rgba(0, 0, 0, 0.08);
     cursor: pointer;
     transition: transform 0.3s;
