@@ -2,11 +2,11 @@ import { UserAPI } from "../../lib/api/user";
 import { useForm } from "react-hook-form";
 import { inputValidation } from "../../lib/utils/consts";
 import type { UserLoginData } from "../../types";
-import { Input } from "../Input/Input";
+import { Input } from "../../components/Input/Input";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-import { MainButton } from "../MainButton/MainButton";
+import { MainButton } from "../../components/MainButton/MainButton";
 import styles from "./LoginForm.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, memo } from "react";

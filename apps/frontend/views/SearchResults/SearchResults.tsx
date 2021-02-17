@@ -1,4 +1,4 @@
-import { OfferTile } from "../OfferTile/OfferTile";
+import { OfferTile } from "../../components/OfferTile/OfferTile";
 import { useSelector } from "react-redux";
 import { getAllOffers } from "../../store/offersSlice";
 import styles from "./SearchResults.module.scss";

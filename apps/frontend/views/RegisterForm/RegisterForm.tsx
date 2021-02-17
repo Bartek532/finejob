@@ -1,11 +1,11 @@
 import { UserAPI } from "../../lib/api/user";
 import { useForm } from "react-hook-form";
-import { Input } from "../Input/Input";
+import { Input } from "../../components/Input/Input";
 import { inputValidation } from "../../lib/utils/consts";
 import type { UserRegisterData } from "../../types";
 import { useDispatch } from "react-redux";
 
-import { MainButton } from "../MainButton/MainButton";
+import { MainButton } from "../../components/MainButton/MainButton";
 import styles from "./RegisterForm.module.scss";
 
 export const RegisterForm = () => {

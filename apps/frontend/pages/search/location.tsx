@@ -1,4 +1,4 @@
-import { SearchByLocation } from "../../components/Search/SearchByLocation";
+import { SearchByLocation } from "../../views/Search/SearchByLocation";
 import { Layout } from "../../components/Layout/Layout";
 
 const Search = () => {

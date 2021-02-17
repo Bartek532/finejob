@@ -1,11 +1,10 @@
 import { Layout } from "../components/Layout/Layout";
-import { MainSection } from "../components/MainSection/MainSection";
-import { Recommended } from "../components/Recommended/Recommended";
+import { MainSection } from "../views/MainSection/MainSection";
+import { Recommended } from "../views/Recommended/Recommended";
 import { Footer } from "../components/Footer/Footer";
-import { MainInfo } from "../components/MainInfo/MainInfo";
+import { MainInfo } from "../views/MainInfo/MainInfo";
 import { GetStaticProps, GetStaticPaths } from "next";
 import type { Offer } from "../types";
-import { addRandomSalaryToOffer } from "../lib/utils/functions";
 import { fetcher } from "../lib/utils/fetcher";
 
 const Home = ({ results }: { results: Offer[] }) => {

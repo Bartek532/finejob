@@ -1,4 +1,4 @@
-import { Counter } from "../Counter/Counter";
+import { Counter } from "../../components/Counter/Counter";
 import styles from "./MainInfo.module.scss";
 import Image from "next/image";
 

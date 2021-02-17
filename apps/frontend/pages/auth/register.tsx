@@ -1,4 +1,4 @@
-import { RegisterForm } from "../../components/RegisterForm/RegisterForm";
+import { RegisterForm } from "../../views/RegisterForm/RegisterForm";
 import { Layout } from "../../components/Layout/Layout";
 import { ActionButton } from "../../components/ActionButton/ActionButton";
 import { Modal } from "../../components/Modal/Modal";

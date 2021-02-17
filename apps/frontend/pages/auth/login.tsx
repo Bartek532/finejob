@@ -1,4 +1,4 @@
-import { LoginForm } from "../../components/LoginForm/LoginForm";
+import { LoginForm } from "../../views/LoginForm/LoginForm";
 import { Layout } from "../../components/Layout/Layout";
 import { Modal } from "../../components/Modal/Modal";
 

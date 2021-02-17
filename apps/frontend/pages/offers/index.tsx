@@ -1,5 +1,5 @@
 import { Layout } from "../../components/Layout/Layout";
-import { SearchResults } from "../../components/SearchResults/SearchResults";
+import { SearchResults } from "../../views/SearchResults/SearchResults";
 
 const Offers = () => {
   return (

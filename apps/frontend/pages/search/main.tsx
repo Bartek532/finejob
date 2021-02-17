@@ -1,4 +1,4 @@
-import { MainSearch } from "../../components/Search/MainSearch";
+import { MainSearch } from "../../views/Search/MainSearch";
 import { Layout } from "../../components/Layout/Layout";
 
 const Search = () => {

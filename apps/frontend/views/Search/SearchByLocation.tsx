@@ -1,8 +1,8 @@
-import { Input } from "../Input/Input";
-import { MainButton } from "../MainButton/MainButton";
+import { Input } from "../../components/Input/Input";
+import { MainButton } from "../../components/MainButton/MainButton";
 import { JobsAPI } from "../../lib/api/offers";
 import { useDispatch } from "react-redux";
-import { Modal } from "../Modal/Modal";
+import { Modal } from "../../components/Modal/Modal";
 import { showModal, setLoading } from "../../store/mainSlice";
 import { getCityNameByCoordinates } from "../../lib/utils/functions";
 import styles from "./SearchSection.module.scss";
