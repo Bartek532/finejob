@@ -8,3 +8,7 @@ export const getCityNameByCoordinates = async (lat: number, lng: number) => {
 
   return data;
 };
+
+export const prepareQueryToSearch = (query: string) => {
+  return query.trim().toLowerCase().split(" ").join("+");
+};

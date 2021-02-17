@@ -14,6 +14,7 @@ export const SearchResults = () => {
           location={offer.location}
           company={offer.company}
           salary={offer.salary}
+          company_url={offer.company_url}
           key={offer.id}
         />
       ))}

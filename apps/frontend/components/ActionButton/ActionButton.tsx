@@ -22,9 +22,8 @@ export const ActionButton = ({
       <Image
         src={`/icons/buttons/${icon}.svg`}
         alt={icon}
-        width={20}
-        height={20}
-        layout="responsive"
+        width={12}
+        height={12}
         loading="lazy"
       />
     </button>

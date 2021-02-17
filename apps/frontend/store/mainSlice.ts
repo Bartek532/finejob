@@ -5,6 +5,7 @@ export type InitialMainState = {
     loading: boolean;
     modal: { show: boolean; type: string; message: string };
     isLogIn: boolean;
+    query: string;
   };
 };
 
@@ -18,6 +19,7 @@ export const slice = createSlice({
       message: "",
     },
     isLogIn: false,
+    query: "",
   },
   reducers: {
     setLoading: (state, { payload }) => {
@@ -36,12 +38,22 @@ export const slice = createSlice({
     setIsLogin: (state, { payload }) => {
       state.isLogIn = payload;
     },
+    setLastQuery: (state, { payload }) => {
+      state.query = payload;
+    },
   },
 });
 
-export const { setLoading, showModal, hideModal, setIsLogin } = slice.actions;
+export const {
+  setLoading,
+  showModal,
+  hideModal,
+  setIsLogin,
+  setLastQuery,
+} = slice.actions;
 export const getLoading = (state: InitialMainState) => state.main.loading;
 export const getModalInfo = (state: InitialMainState) => state.main.modal;
 export const getLoginStatus = (state: InitialMainState) => state.main.isLogIn;
+export const getLastQuery = (state: InitialMainState) => state.main.query;
 
 export const mainReducer = slice.reducer;

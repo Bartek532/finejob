@@ -5,6 +5,7 @@ import Image from "next/image";
 import FullLogo from "../../public/icons/full-logo.svg";
 import { useWindowSize } from "../../lib/hooks/useWindowSize";
 import { JobsAPI } from "../../lib/api/offers";
+import { prepareQueryToSearch } from "../../lib/utils/functions";
 import { useDispatch } from "react-redux";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -22,7 +23,7 @@ export const MainSection = () => {
   const onSearch = ({ search: query }: { search: string }) => {
     if (query && query.trim().length) {
       reset();
-      dispatch(JobsAPI.searchByQuery(query));
+      dispatch(JobsAPI.searchByQuery(prepareQueryToSearch(query)));
       router.push("/offers");
     }
   };

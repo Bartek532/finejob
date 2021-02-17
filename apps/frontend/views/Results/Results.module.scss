@@ -1,0 +1,19 @@
+@import "../../styles/_mixins";
+
+.results {
+  width: 100%;
+  padding: 0 20px;
+  max-width: 850px;
+  @include flex;
+  flex-flow: column wrap;
+
+  .form {
+    @include flex;
+    width: 100%;
+
+    button {
+      margin-top: -18px;
+      margin-left: -10px;
+    }
+  }
+}

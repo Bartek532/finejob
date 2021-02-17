@@ -4,8 +4,13 @@ import { ThunkAction } from "redux-thunk";
 import type { InitialMainState } from "../../store/mainSlice";
 import type { InitialOffersState } from "../../store/offersSlice";
 
-import { setLoading, showModal } from "../../store/mainSlice";
-import { setOffers } from "../../store/offersSlice";
+import { setLoading, showModal, setLastQuery } from "../../store/mainSlice";
+import {
+  setOffers,
+  setLastOffersApiCallAddress,
+  setLoadMore,
+  setResultsPage,
+} from "../../store/offersSlice";
 
 type FetchFuncType = ThunkAction<
   void,
@@ -17,10 +22,14 @@ type FetchFuncType = ThunkAction<
 export const JobsAPI = {
   searchByQuery: (query: string): FetchFuncType => async dispatch => {
     dispatch(setLoading(true));
+    dispatch(setLastQuery(query));
 
     try {
-      const { data } = await fetcher(`/api/offers/search?q=${query}`, "GET");
+      const apiCallAddress = `/api/offers/search?q=${query}`;
+      const { data } = await fetcher(apiCallAddress, "GET");
       dispatch(setOffers(data));
+      dispatch(setResultsPage(1));
+      dispatch(setLastOffersApiCallAddress(apiCallAddress));
     } catch (error) {
       showModal({ type: "error", message: error.message });
     } finally {
@@ -29,17 +38,39 @@ export const JobsAPI = {
   },
   searchByLocation: (location: string): FetchFuncType => async dispatch => {
     dispatch(setLoading(true));
+    dispatch(setLastQuery(location));
+
     try {
-      const { data } = await fetcher(
-        `/api/offers/location?q=${location}`,
-        "GET"
-      );
+      const apiCallAddress = `/api/offers/location?q=${location}`;
+
+      const { data } = await fetcher(apiCallAddress, "GET");
       dispatch(setOffers(data));
+      dispatch(setResultsPage(1));
+      dispatch(setLastOffersApiCallAddress(apiCallAddress));
     } catch (error) {
       console.log(error.message);
       showModal({ type: "error", message: error.message });
     } finally {
       dispatch(setLoading(false));
+    }
+  },
+
+  loadMore: (): FetchFuncType => async (dispatch, getState) => {
+    const { offers } = getState();
+    dispatch(setLoadMore(true));
+
+    try {
+      const { data } = await fetcher(
+        `${offers.lastOffersApiCallAddress}&page=${offers.resultsPage + 1}`,
+        "GET"
+      );
+      dispatch(setResultsPage(offers.resultsPage + 1));
+      dispatch(setOffers([...offers.allOffers, ...data]));
+    } catch (error) {
+      console.log(error.message);
+      showModal({ type: "error", message: error.message });
+    } finally {
+      dispatch(setLoadMore(false));
     }
   },
 };

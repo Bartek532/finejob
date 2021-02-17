@@ -1,7 +1,9 @@
+@import "../../styles/_mixins";
+
 .offer {
-  width: 88vw;
-  height: 120px;
+  width: 100%;
   background: #fff;
+  padding: 25px 0;
   box-shadow: 0 3px 10px 2px rgba(161, 161, 161, 0.25);
   border-radius: 20px;
   position: relative;
@@ -10,6 +12,7 @@
   align-items: center;
   transition: 0.3s;
   margin: 15px 0;
+  cursor: pointer;
 
   .logo {
     width: 64px;
@@ -20,7 +23,10 @@
   }
 
   .description {
-    margin-top: 15px;
+    margin-top: 5px;
+    .label {
+      display: none;
+    }
     .title {
       margin: 0;
       margin-bottom: 10px;
@@ -64,3 +70,72 @@
     }
   }
 }
+
+@media all and (min-width: 700px) {
+  .offer {
+    display: grid;
+    padding: 25px 20px;
+    grid-template-columns: 0.5fr 4fr 0.7fr;
+
+    .description {
+      display: grid;
+      grid-template-columns: 2.5fr 2fr 2fr;
+      align-items: center;
+
+      .wrapper {
+        margin: 0 20px;
+        .title,
+        .location,
+        .company {
+          margin: 0;
+          margin-bottom: 6px;
+        }
+
+        .location,
+        .company {
+          font-size: 0.85rem;
+          font-weight: bold;
+        }
+
+        .label {
+          display: block;
+          text-transform: uppercase;
+          font-size: 0.6rem;
+        }
+      }
+    }
+  }
+}
+
+/*
+@media all and (min-width: 700px) {
+  .offer {
+    padding: 25px 20px;
+    .description {
+      @include flex;
+
+      .wrapper {
+        margin: 0 20px;
+        .title,
+        .location,
+        .company {
+          margin: 0;
+          margin-bottom: 6px;
+        }
+
+        .location,
+        .company {
+          font-size: 0.85rem;
+          font-weight: bold;
+        }
+
+        .label {
+          display: block;
+          text-transform: uppercase;
+          font-size: 0.6rem;
+        }
+      }
+    }
+  }
+}
+*/

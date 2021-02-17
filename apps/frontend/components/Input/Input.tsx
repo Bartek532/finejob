@@ -13,6 +13,7 @@ export const Input = ({
   onChange,
   value,
   placeholder,
+  shouldBeFocused,
 }: TextInputProps) => {
   const [isInputFocused, setIsInputFocused] = useState(false);
   const [inputType, setInputType] = useState(type);
@@ -22,7 +23,7 @@ export const Input = ({
       <label htmlFor={name} className={styles.wrapper}>
         <span
           className={classnames(styles.placeholder, {
-            [styles.focused]: isInputFocused,
+            [styles.focused]: isInputFocused || shouldBeFocused,
           })}
         >
           {placeholder || name}

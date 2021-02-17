@@ -8,6 +8,7 @@ import { getCityNameByCoordinates } from "../../lib/utils/functions";
 import styles from "./SearchSection.module.scss";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { prepareQueryToSearch } from "../../lib/utils/functions";
 
 import { useForm } from "react-hook-form";
 
@@ -20,7 +21,7 @@ export const SearchByLocation = () => {
   const onSearch = ({ location: query }: { location: string }) => {
     if (query && query.trim().length) {
       reset();
-      dispatch(JobsAPI.searchByLocation(query));
+      dispatch(JobsAPI.searchByLocation(prepareQueryToSearch(query)));
       router.push("/offers");
     }
   };

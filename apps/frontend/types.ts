@@ -8,6 +8,7 @@ export type TextInputProps = {
   readonly inputRef?: any;
   readonly placeholder?: string;
   readonly error?: { message: string };
+  readonly shouldBeFocused: boolean;
 };
 
 export type PasswordInputProps = {
