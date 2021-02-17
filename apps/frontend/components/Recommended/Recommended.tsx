@@ -9,11 +9,7 @@ import { useWindowSize } from "../../lib/hooks/useWindowSize";
 import type { Offer } from "../../types";
 import classnames from "classnames";
 
-export const Recommended = ({
-  offers,
-}: {
-  offers: (Offer & { salary: number })[];
-}) => {
+export const Recommended = ({ offers }: { offers: Offer[] }) => {
   const { width } = useWindowSize();
   const [scroll, setScroll] = useState(0);
   const baseScrollValue = 450;
@@ -76,7 +72,9 @@ export const Recommended = ({
         {offers.map(offer => (
           <article className={styles.offer} key={offer.id}>
             <div className={styles.main}>
-              <Avatar name={offer.company} />
+              <div className={styles.logo}>
+                <Avatar name={offer.company} />
+              </div>
 
               <span className={styles.offerTitle}>
                 {offer.title.length > 64
@@ -89,7 +87,7 @@ export const Recommended = ({
 
             <div className={styles.additional}>
               <span className={styles.salary}>${offer.salary.toFixed(0)}</span>
-              <Link href={offer.how_to_apply}>
+              <Link href={offer.company_url || ""}>
                 <button className={styles.btn}>
                   <Forward className={styles.icon} />
                 </button>

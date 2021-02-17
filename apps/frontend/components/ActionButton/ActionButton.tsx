@@ -10,7 +10,7 @@ export const ActionButton = ({
   corner,
 }: {
   icon: ButtonIcons;
-  corner: boolean;
+  corner?: boolean;
 }) => {
   const router = useRouter();
   return (
@@ -24,6 +24,7 @@ export const ActionButton = ({
         alt={icon}
         width={20}
         height={20}
+        layout="responsive"
         loading="lazy"
       />
     </button>

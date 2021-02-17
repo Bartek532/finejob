@@ -2,7 +2,7 @@ import { memo } from "react";
 import styles from "./Avatar.module.scss";
 import { logoColors } from "../../lib/utils/consts";
 
-export const Avatar = memo(({ img, name }: { img: string; name: string }) => {
+export const Avatar = memo(({ img, name }: { img?: string; name?: string }) => {
   const splittedName = name.split(" ");
 
   if (img) {

@@ -1,0 +1,66 @@
+.offer {
+  width: 88vw;
+  height: 120px;
+  background: #fff;
+  box-shadow: 0 3px 10px 2px rgba(161, 161, 161, 0.25);
+  border-radius: 20px;
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  transition: 0.3s;
+  margin: 15px 0;
+
+  .logo {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    margin: 0 1.1rem;
+    font-size: 1.3rem;
+  }
+
+  .description {
+    margin-top: 15px;
+    .title {
+      margin: 0;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    .location,
+    .company {
+      font-size: 0.75rem;
+      display: block;
+      margin: 1.5px 0;
+    }
+  }
+  .salary {
+    font-size: 1.5rem;
+    color: rgba(182, 97, 180, 0.44);
+    font-weight: bold;
+    position: absolute;
+    top: 12px;
+    right: 16px;
+  }
+
+  .btn {
+    position: absolute;
+    bottom: 11px;
+    right: 14px;
+  }
+
+  &:hover {
+    background: rgb(2, 0, 36);
+    background: linear-gradient(
+      90deg,
+      rgba(2, 0, 36, 1) 0%,
+      rgba(212, 93, 161, 1) 0%,
+      rgba(182, 97, 180, 1) 64%
+    );
+    box-shadow: 0 3px 10px 2px rgba(182, 97, 180, 0.56);
+    transform: translateY(-4px);
+    transition: all 0.6s;
+    * {
+      color: white;
+    }
+  }
+}

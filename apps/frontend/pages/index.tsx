@@ -12,7 +12,7 @@ const Home = ({ results }: { results: Offer[] }) => {
   return (
     <Layout>
       <MainSection />
-      <Recommended offers={addRandomSalaryToOffer(results)} />
+      <Recommended offers={results} />
       <MainInfo />
       <Footer />
     </Layout>

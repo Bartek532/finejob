@@ -39,4 +39,5 @@ export type Offer = {
   readonly description: string;
   readonly how_to_apply: string;
   readonly company_logo: string;
+  readonly salary: number;
 };

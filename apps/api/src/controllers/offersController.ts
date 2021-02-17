@@ -3,10 +3,11 @@ import {
   fetchOffersByLocation,
   fetchOffersByQuery,
 } from "../services/offers";
+import { addRandomSalaryToOffers } from "../utils";
 import type { Request, Response } from "express";
 
 export const getRecommendedOffers = async (req: Request, res: Response) => {
-  res.status(200).json(await fetchRecomendedOffers());
+  res.status(200).json(addRandomSalaryToOffers(await fetchRecomendedOffers()));
 };
 
 export const getOffersByQuery = async (req: Request, res: Response) => {
@@ -16,7 +17,13 @@ export const getOffersByQuery = async (req: Request, res: Response) => {
     return res.status(400).json({ message: "Invalid query" });
   }
 
-  res.status(200).json(await fetchOffersByQuery(req.query.q as string, page));
+  res
+    .status(200)
+    .json(
+      addRandomSalaryToOffers(
+        await fetchOffersByQuery(req.query.q as string, page)
+      )
+    );
 };
 
 export const getOffersByLocation = async (req: Request, res: Response) => {
@@ -28,5 +35,9 @@ export const getOffersByLocation = async (req: Request, res: Response) => {
 
   res
     .status(200)
-    .json(await fetchOffersByLocation(req.query.q as string, page));
+    .json(
+      addRandomSalaryToOffers(
+        await fetchOffersByLocation(req.query.q as string, page)
+      )
+    );
 };
