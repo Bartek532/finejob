@@ -15,9 +15,9 @@ export const Results = () => {
   const resultsPage = useSelector(getActualResultsPage);
   const lastQuery = useSelector(getLastQuery);
   const allOffers = useSelector(getAllOffers);
-  const { register, handleSubmit, reset } = useForm({
-    defaultValues: { search: lastQuery },
-  });
+  const { register, handleSubmit, reset, setValue } = useForm();
+
+  setValue("search", lastQuery);
 
   const onSearch = ({ search: query }: { search: string }) => {
     if (query && query.trim().length) {
