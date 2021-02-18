@@ -2,7 +2,7 @@
 
 .results {
   width: 100%;
-  padding: 0 20px 30px 0;
+  padding: 0 13px 30px 13px;
   max-width: 850px;
   @include flex;
   flex-flow: column wrap;
@@ -10,10 +10,35 @@
   .form {
     @include flex;
     width: 100%;
+    padding-right: 12px;
 
     button {
       margin-top: -18px;
       margin-left: -10px;
+    }
+  }
+
+  .all {
+    @include flex;
+    flex-flow: column wrap;
+    padding: 20px 0 5px 0;
+
+    .text {
+      font-weight: bold;
+      font-size: 1.2rem;
+      letter-spacing: 0.8px;
+    }
+
+    .link {
+      margin-top: 20px;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      color: var(--primary-black);
+      text-decoration: underline;
+
+      &:hover {
+        text-decoration: none;
+      }
     }
   }
 }

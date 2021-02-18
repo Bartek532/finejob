@@ -10,6 +10,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getActualResultsPage, getAllOffers } from "../../store/offersSlice";
 import { getLastQuery } from "../../store/mainSlice";
 import { useForm } from "react-hook-form";
+import Link from "next/link";
 
 export const Results = () => {
   const dispatch = useDispatch();
@@ -29,7 +30,11 @@ export const Results = () => {
 
   return (
     <main className={styles.results}>
-      <form className={styles.form} onSubmit={handleSubmit(onSearch)}>
+      <form
+        className={styles.form}
+        onSubmit={handleSubmit(onSearch)}
+        id="search"
+      >
         <Input
           name="search"
           type="search"
@@ -39,7 +44,16 @@ export const Results = () => {
         <ActionButton icon="search" />
       </form>
       {allOffers.length ? <SearchResults /> : <EmptyResults />}
-      {allOffers.length < 50 * resultsPage ? null : <LoadMore />}
+      {allOffers.length < 50 * resultsPage ? (
+        <div className={styles.all}>
+          <span className={styles.text}>It's all! &#128064;</span>
+          <Link href="#search">
+            <a className={styles.link}>Search again</a>
+          </Link>
+        </div>
+      ) : (
+        <LoadMore />
+      )}
     </main>
   );
 };

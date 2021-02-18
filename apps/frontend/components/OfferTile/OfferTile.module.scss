@@ -23,7 +23,7 @@
   }
 
   .description {
-    margin-top: 5px;
+    margin-top: 12px;
     .label {
       display: none;
     }
@@ -94,6 +94,7 @@
       display: grid;
       grid-template-columns: 2.5fr 2fr 2fr;
       align-items: center;
+      margin: 0;
 
       .wrapper {
         margin: 0 20px;
