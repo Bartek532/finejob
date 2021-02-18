@@ -1,7 +1,7 @@
 import * as React from "react";
 import styles from "./Recommended.module.scss";
 import Forward from "../../public/icons/buttons/forward.svg";
-import Back from "../../public/icons/buttons/back-simple.svg";
+import Back from "../../public/icons/buttons/back.svg";
 import { Avatar } from "../../components/Avatar/Avatar";
 import { useState, useEffect } from "react";
 import Link from "next/link";

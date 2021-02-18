@@ -2,6 +2,7 @@ import { SearchResults } from "../SearchResults/SearchResults";
 import { Input } from "../../components/Input/Input";
 import { ActionButton } from "../../components/ActionButton/ActionButton";
 import { LoadMore } from "../../components/LoadMore/LoadMore";
+import { EmptyResults } from "../../components/EmptyResults/EmptyResults";
 import styles from "./Results.module.scss";
 import { JobsAPI } from "../../lib/api/offers";
 import { prepareQueryToSearch } from "../../lib/utils/functions";
@@ -37,7 +38,7 @@ export const Results = () => {
         />
         <ActionButton icon="search" />
       </form>
-      <SearchResults />
+      {allOffers.length ? <SearchResults /> : <EmptyResults />}
       {allOffers.length < 50 * resultsPage ? null : <LoadMore />}
     </main>
   );

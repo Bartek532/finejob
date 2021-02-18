@@ -2,15 +2,14 @@
 
 .fields {
   @include flex;
+  margin-top: -60px;
   .field {
     flex: 0 1 250px;
     width: 40vw;
     max-width: 200px;
-    min-height: 120px;
-    height: 58vw;
-    max-height: 250px;
+    height: clamp(120px, 58vw, 250px);
     padding: 35px 10px;
-    margin: 10px;
+    margin: 0 10px;
     border-radius: 10px;
     @include flex(space-between);
     flex-flow: column wrap;
