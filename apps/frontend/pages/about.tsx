@@ -1,7 +1,12 @@
-import { Navbar } from "../components/Navbar/Navbar";
+import { Layout } from "../components/Layout/Layout";
+import { AboutSection } from "../views/AboutSection/AboutSection";
 
 const About = () => {
-  return <Navbar />;
+  return (
+    <Layout>
+      <AboutSection />
+    </Layout>
+  );
 };
 
 export default About;
