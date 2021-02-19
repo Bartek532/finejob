@@ -3,7 +3,7 @@
 .about {
   @include flex;
   flex-flow: column wrap;
-  padding: 0 30px;
+  padding: 0 25px;
 
   .title {
     text-transform: uppercase;
@@ -12,6 +12,7 @@
     position: relative;
     padding-bottom: 10px;
     font-size: 1.7rem;
+    transform: translateY(-25px);
 
     &::after {
       @include pseudo(50%, 100%, 25%, var(--primary-orange));
@@ -44,7 +45,7 @@
         padding: 10px;
         height: 1.25em;
         width: 1.25em;
-        background-color: var(--primary-black);
+        background-color: var(--primary-violet);
         text-align: center;
         line-height: 1.25em;
         color: var(--primary-white);
@@ -68,6 +69,7 @@
         &:before {
           right: 100%;
           margin-right: -20px;
+          background-color: var(--primary-orange);
         }
       }
       &:first-child {
@@ -91,10 +93,8 @@
       }
       .image {
         flex: 0 1 370px;
-
-        width: 200px;
-        height: 200px;
-        background: blue;
+        margin-top: 35px;
+        padding: 20px;
       }
     }
   }
