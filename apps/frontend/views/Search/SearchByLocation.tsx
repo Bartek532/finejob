@@ -1,6 +1,5 @@
 import { Input } from "../../components/Input/Input";
 import { MainButton } from "../../components/MainButton/MainButton";
-import { JobsAPI } from "../../lib/api/offers";
 import { useDispatch } from "react-redux";
 import { Modal } from "../../components/Modal/Modal";
 import { showModal, setLoading } from "../../store/mainSlice";
@@ -21,8 +20,10 @@ export const SearchByLocation = () => {
   const onSearch = ({ location: query }: { location: string }) => {
     if (query && query.trim().length) {
       reset();
-      dispatch(JobsAPI.searchByLocation(prepareQueryToSearch(query)));
-      router.push("/offers");
+      router.push({
+        pathname: "/offers",
+        query: { location: prepareQueryToSearch(query) },
+      });
     }
   };
 

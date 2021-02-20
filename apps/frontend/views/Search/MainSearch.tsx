@@ -1,16 +1,12 @@
 import { Input } from "../../components/Input/Input";
 import { MainButton } from "../../components/MainButton/MainButton";
-import { JobsAPI } from "../../lib/api/offers";
-import { useDispatch } from "react-redux";
 import styles from "./SearchSection.module.scss";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { prepareQueryToSearch } from "../../lib/utils/functions";
-
 import { useForm } from "react-hook-form";
 
 export const MainSearch = () => {
-  const dispatch = useDispatch();
   const router = useRouter();
 
   const { register, handleSubmit, reset } = useForm();
@@ -18,8 +14,10 @@ export const MainSearch = () => {
   const onSearch = ({ search: query }: { search: string }) => {
     if (query && query.trim().length) {
       reset();
-      dispatch(JobsAPI.searchByQuery(prepareQueryToSearch(query)));
-      router.push("/offers");
+      router.push({
+        pathname: "/offers",
+        query: { q: prepareQueryToSearch(query) },
+      });
     }
   };
 

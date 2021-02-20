@@ -10,5 +10,5 @@ export const getCityNameByCoordinates = async (lat: number, lng: number) => {
 };
 
 export const prepareQueryToSearch = (query: string) => {
-  return query.trim().toLowerCase().split(" ").join("+");
+  return encodeURIComponent(query.trim());
 };

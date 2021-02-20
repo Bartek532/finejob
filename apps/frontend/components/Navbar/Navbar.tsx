@@ -24,10 +24,10 @@ export const Navbar = memo(() => {
             <span className={styles.label}>About</span>
           </a>
         </Link>
-        <Link href="/search/main">
+        <Link href="/search">
           <a
             className={classnames({
-              [styles.active]: pathname === "/search/main",
+              [styles.active]: pathname === "/search",
             })}
           >
             <Search />
