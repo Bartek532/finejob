@@ -4,7 +4,7 @@ import { ThunkAction } from "redux-thunk";
 import type { InitialMainState } from "../../store/mainSlice";
 import type { InitialOffersState } from "../../store/offersSlice";
 
-import { setLoading, showModal, setLastQuery } from "../../store/mainSlice";
+import { setLoading, showModal } from "../../store/mainSlice";
 import {
   setOffers,
   setLastOffersApiCallAddress,
@@ -22,8 +22,6 @@ type FetchFuncType = ThunkAction<
 export const JobsAPI = {
   searchByQuery: (query: string): FetchFuncType => async dispatch => {
     dispatch(setLoading(true));
-    dispatch(setLastQuery(query));
-
     try {
       const apiCallAddress = `/api/offers/search?q=${query}`;
       const { data } = await fetcher(apiCallAddress, "GET");
@@ -38,8 +36,6 @@ export const JobsAPI = {
   },
   searchByLocation: (location: string): FetchFuncType => async dispatch => {
     dispatch(setLoading(true));
-    dispatch(setLastQuery(location));
-
     try {
       const apiCallAddress = `/api/offers/location?q=${location}`;
 

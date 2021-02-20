@@ -2,7 +2,8 @@
 
 .offer {
   width: 100%;
-  background: #fff;
+  background: var(--primary-white);
+  color: var(--primary-black);
   padding: 25px 0;
   box-shadow: 0 3px 10px 2px rgba(161, 161, 161, 0.25);
   border-radius: 20px;
@@ -41,7 +42,7 @@
   }
   .salary {
     font-size: 1.5rem;
-    color: rgba(182, 97, 180, 0.44);
+    color: rgba(var(--rgb-primary-violet), 0.44);
     font-weight: bold;
     position: absolute;
     top: 12px;
@@ -69,7 +70,7 @@
       90deg,
       rgba(2, 0, 36, 1) 0%,
       rgba(212, 93, 161, 1) 0%,
-      rgba(182, 97, 180, 1) 64%
+      rgba(var(--rgb-primary-violet), 1) 64%
     );
     transform: translateY(-4px);
     transition: all 0.6s;

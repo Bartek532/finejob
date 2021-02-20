@@ -5,13 +5,11 @@ import Back from "../../public/icons/buttons/back.svg";
 import { Avatar } from "../../components/Avatar/Avatar";
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { useWindowSize } from "../../lib/hooks/useWindowSize";
 import type { Offer } from "../../types";
 import classnames from "classnames";
 
 export const Recommended = ({ offers }: { offers: Offer[] }) => {
-  const router = useRouter();
   const { width } = useWindowSize();
   const [scroll, setScroll] = useState(0);
   const baseScrollValue = 450;
@@ -72,35 +70,36 @@ export const Recommended = ({ offers }: { offers: Offer[] }) => {
         ref={offersContainerRef}
       >
         {offers.map(offer => (
-          <article
-            className={styles.offer}
-            key={offer.id}
-            tabIndex={0}
-            onClick={() => router.push(`/offers/${offer.id}`)}
-          >
-            <div className={styles.main}>
-              <div className={styles.logo}>
-                <Avatar name={offer.company} />
-              </div>
+          <Link href={`/offers/${offer.id}`}>
+            <a>
+              <article className={styles.offer} key={offer.id}>
+                <div className={styles.main}>
+                  <div className={styles.logo}>
+                    <Avatar name={offer.company} />
+                  </div>
 
-              <span className={styles.offerTitle}>
-                {offer.title.length > 64
-                  ? `${offer.title.slice(0, 64)}...`
-                  : offer.title}
-              </span>
-              <span className={styles.company}>{offer.company}</span>
-              <span className={styles.location}>{offer.location}</span>
-            </div>
+                  <span className={styles.offerTitle}>
+                    {offer.title.length > 64
+                      ? `${offer.title.slice(0, 64)}...`
+                      : offer.title}
+                  </span>
+                  <span className={styles.company}>{offer.company}</span>
+                  <span className={styles.location}>{offer.location}</span>
+                </div>
 
-            <div className={styles.additional}>
-              <span className={styles.salary}>${offer.salary.toFixed(0)}</span>
-              <Link href={offer.company_url || ""}>
-                <button className={styles.btn}>
-                  <Forward className={styles.icon} />
-                </button>
-              </Link>
-            </div>
-          </article>
+                <div className={styles.additional}>
+                  <span className={styles.salary}>
+                    ${offer.salary.toFixed(0)}
+                  </span>
+                  <Link href={offer.company_url || ""}>
+                    <button className={styles.btn}>
+                      <Forward className={styles.icon} />
+                    </button>
+                  </Link>
+                </div>
+              </article>
+            </a>
+          </Link>
         ))}
       </article>
     </section>
