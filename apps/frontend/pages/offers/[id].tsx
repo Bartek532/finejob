@@ -1,18 +1,17 @@
 import { GetStaticProps, GetStaticPaths } from "next";
+import { Layout } from "../../components/Layout/Layout";
+import { SingleOffer } from "../../views/SingleOffer/SingleOffer";
+
 import type { Offer } from "../../types";
 import { fetcher } from "../../lib/utils/fetcher";
 import { BASIC_API_URL } from "../../lib/utils/consts";
-import { useRouter } from "next/router";
 
 const OfferPage = ({ offer }: { offer: Offer }) => {
-  console.log(offer);
-  const router = useRouter();
-
-  if (router.isFallback) {
-    return <h1>Loading...</h1>;
-  }
-
-  return <h1>Offer</h1>;
+  return (
+    <Layout>
+      <SingleOffer offer={offer} />
+    </Layout>
+  );
 };
 
 export default OfferPage;

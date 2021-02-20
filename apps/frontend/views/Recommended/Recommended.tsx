@@ -70,9 +70,9 @@ export const Recommended = ({ offers }: { offers: Offer[] }) => {
         ref={offersContainerRef}
       >
         {offers.map(offer => (
-          <Link href={`/offers/${offer.id}`}>
+          <Link href={`/offers/${offer.id}`} key={offer.id}>
             <a>
-              <article className={styles.offer} key={offer.id}>
+              <article className={styles.offer}>
                 <div className={styles.main}>
                   <div className={styles.logo}>
                     <Avatar name={offer.company} />
