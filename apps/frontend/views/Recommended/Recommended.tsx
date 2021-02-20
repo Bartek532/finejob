@@ -5,11 +5,13 @@ import Back from "../../public/icons/buttons/back.svg";
 import { Avatar } from "../../components/Avatar/Avatar";
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import { useWindowSize } from "../../lib/hooks/useWindowSize";
 import type { Offer } from "../../types";
 import classnames from "classnames";
 
 export const Recommended = ({ offers }: { offers: Offer[] }) => {
+  const router = useRouter();
   const { width } = useWindowSize();
   const [scroll, setScroll] = useState(0);
   const baseScrollValue = 450;
@@ -21,7 +23,7 @@ export const Recommended = ({ offers }: { offers: Offer[] }) => {
       setScroll(0);
     };
     window.addEventListener("resize", handleResize);
-    () => window.removeEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const handleScrollLeft = () => {
@@ -70,7 +72,12 @@ export const Recommended = ({ offers }: { offers: Offer[] }) => {
         ref={offersContainerRef}
       >
         {offers.map(offer => (
-          <article className={styles.offer} key={offer.id}>
+          <article
+            className={styles.offer}
+            key={offer.id}
+            tabIndex={0}
+            onClick={() => router.push(`/offers/${offer.id}`)}
+          >
             <div className={styles.main}>
               <div className={styles.logo}>
                 <Avatar name={offer.company} />

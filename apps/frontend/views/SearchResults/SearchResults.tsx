@@ -16,6 +16,7 @@ export const SearchResults = () => {
           salary={offer.salary}
           company_url={offer.company_url}
           key={offer.id}
+          id={offer.id}
         />
       ))}
     </section>

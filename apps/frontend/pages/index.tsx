@@ -3,7 +3,8 @@ import { MainSection } from "../views/MainSection/MainSection";
 import { Recommended } from "../views/Recommended/Recommended";
 import { Footer } from "../components/Footer/Footer";
 import { MainInfo } from "../views/MainInfo/MainInfo";
-import { GetStaticProps, GetStaticPaths } from "next";
+import { BASIC_API_URL } from "../lib/utils/consts";
+import { GetStaticProps } from "next";
 import type { Offer } from "../types";
 import { fetcher } from "../lib/utils/fetcher";
 
@@ -21,11 +22,11 @@ const Home = ({ results }: { results: Offer[] }) => {
 export const getStaticProps: GetStaticProps = async () => {
   try {
     const { data } = await fetcher(
-      "http://localhost:3080/api/offers/recommended",
+      `${BASIC_API_URL}/api/offers/recommended`,
       "GET"
     );
 
-    return { props: { results: data } };
+    return { props: { results: data }, revalidate: 1 };
   } catch {
     return {
       notFound: true as const,
@@ -33,22 +34,4 @@ export const getStaticProps: GetStaticProps = async () => {
   }
 };
 
-/*
-export const getStaticPaths: GetStaticPaths = async () => {
-  try {
-    const { data: offers } = await fetcher(
-      "http://localhost:3080/api/offers/recommended",
-      "GET"
-    );
-    return {
-      paths: offers.results.map(({ id }: { id: number }) => ({
-        params: { id },
-      })),
-      fallback: "blocking" as const,
-    };
-  } catch (err) {
-    throw err;
-  }
-};
-*/
 export default Home;

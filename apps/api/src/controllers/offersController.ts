@@ -2,12 +2,15 @@ import {
   fetchRecomendedOffers,
   fetchOffersByLocation,
   fetchOffersByQuery,
+  fetchSingleOffer,
 } from "../services/offers";
-import { addRandomSalaryToOffers } from "../utils";
+import { addRandomSalaryToOffer } from "../utils";
 import type { Request, Response } from "express";
 
 export const getRecommendedOffers = async (req: Request, res: Response) => {
-  res.status(200).json(addRandomSalaryToOffers(await fetchRecomendedOffers()));
+  res
+    .status(200)
+    .json((await fetchRecomendedOffers()).map(addRandomSalaryToOffer));
 };
 
 export const getOffersByQuery = async (req: Request, res: Response) => {
@@ -20,8 +23,8 @@ export const getOffersByQuery = async (req: Request, res: Response) => {
   res
     .status(200)
     .json(
-      addRandomSalaryToOffers(
-        await fetchOffersByQuery(req.query.q as string, page)
+      (await fetchOffersByQuery(req.query.q as string, page)).map(
+        addRandomSalaryToOffer
       )
     );
 };
@@ -36,8 +39,14 @@ export const getOffersByLocation = async (req: Request, res: Response) => {
   res
     .status(200)
     .json(
-      addRandomSalaryToOffers(
-        await fetchOffersByLocation(req.query.q as string, page)
+      (await fetchOffersByLocation(req.query.q as string, page)).map(
+        addRandomSalaryToOffer
       )
     );
+};
+
+export const getSingleOffer = async (req: Request, res: Response) => {
+  res
+    .status(200)
+    .json(addRandomSalaryToOffer(await fetchSingleOffer(req.params.id)));
 };
