@@ -10,8 +10,8 @@ export const Footer = () => {
         <p className={styles.text}>
           We have created many more projects to make life easier. We are
           currently working on further improvements. We do not cease to act to
-          make your (and ours &#128513;) life easier thanks to technology. Do
-          you want to know more? Check below!
+          make your &#40;and ours &#128513;&#41; life easier thanks to
+          technology. Do you want to know more? Check below!
         </p>
         <Link href="https://github.com/Bartek532">
           <a target="_blank">

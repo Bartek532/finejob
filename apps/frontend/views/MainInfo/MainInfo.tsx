@@ -49,14 +49,17 @@ export const MainInfo = () => {
         <div className={styles.about}>
           <h3 className={styles.title}>Our mobile app</h3>
           <p className={styles.text}>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
-            vitae animi deleniti saepe et quos! Nihil illum perferendis fugit
-            fugiat, blanditiis accusamus minus libero unde aliquam
-            exercitationem fuga temporibus dolor. Lorem ipsum dolor sit amet
-            consectetur adipisicing elit. Voluptatibus accusantium facilis illo
-            maiores debitis, placeat explicabo nisi, necessitatibus fugit
-            quaerat optio unde deleniti quasi ipsum! Id culpa eveniet corrupti
-            dolor.
+            We are now working on our mobile application, we are testing new
+            solutions to make job search even easier. Imagine that you will be
+            able to search from everywhere! On the train, on the bus, even in
+            the toilet &#40;&#128513;&#41; Finejob will help you find your dream
+            job. If you have any questions or suggestion give us a feedback.
+            This will help us to improve our application to be the best
+            possible.
+            <strong className={styles.motto}>
+              From users to users &#128521;{" "}
+            </strong>
+            App will be available in the App Store and Google Play soon.
           </p>
           <button className={styles.btn}>Check</button>
         </div>

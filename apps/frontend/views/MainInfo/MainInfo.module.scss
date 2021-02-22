@@ -91,7 +91,12 @@
       }
       .text {
         font-size: 0.95rem;
-        line-height: 1.5rem;
+        line-height: 1.6rem;
+
+        .motto {
+          display: block;
+          margin-bottom: 15px;
+        }
       }
 
       .btn {
