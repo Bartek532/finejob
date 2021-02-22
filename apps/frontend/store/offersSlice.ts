@@ -3,7 +3,7 @@ import type { Offer } from "../types";
 
 export type InitialOffersState = {
   offers: {
-    actualSelectedOffer: Offer;
+    isActualOfferSaved: boolean;
     allOffers: Offer[];
     loadMore: boolean;
     lastOffersApiCallAddress: string;
@@ -14,7 +14,7 @@ export type InitialOffersState = {
 export const slice = createSlice({
   name: "offers",
   initialState: {
-    actualSelectedOffer: {},
+    isActualOfferSaved: false,
     allOffers: [],
     loadMore: false,
     lastOffersApiCallAddress: "",
@@ -24,8 +24,8 @@ export const slice = createSlice({
     setOffers: (state, { payload }) => {
       state.allOffers = payload;
     },
-    setActualSelectedOffer: (state, { payload }) => {
-      state.actualSelectedOffer = state.allOffers.filter(id => id === payload);
+    setIsActualOfferSaved: (state, { payload }) => {
+      state.isActualOfferSaved = payload;
     },
     setLastOffersApiCallAddress: (state, { payload }) => {
       state.lastOffersApiCallAddress = payload;
@@ -41,16 +41,17 @@ export const slice = createSlice({
 
 export const {
   setOffers,
-  setActualSelectedOffer,
+  setIsActualOfferSaved,
   setLastOffersApiCallAddress,
   setLoadMore,
   setResultsPage,
 } = slice.actions;
 
+export const getActualOfferSavedStatus = (state: InitialOffersState) =>
+  state.offers.isActualOfferSaved;
+
 export const getAllOffers = (state: InitialOffersState) =>
   state.offers.allOffers;
-export const getActualSelectedOffer = (state: InitialOffersState) =>
-  state.offers.actualSelectedOffer;
 
 export const getLastAddress = (state: InitialOffersState) =>
   state.offers.lastOffersApiCallAddress;

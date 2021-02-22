@@ -5,6 +5,7 @@ import {
   fetchSingleOffer,
 } from "../services/offers";
 import { addRandomSalaryToOffer } from "../utils";
+import { findOfferInLibrary } from "../services/users";
 import type { Request, Response } from "express";
 
 export const getRecommendedOffers = async (req: Request, res: Response) => {

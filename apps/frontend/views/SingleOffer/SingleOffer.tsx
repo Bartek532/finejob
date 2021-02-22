@@ -29,7 +29,7 @@ export const SingleOffer = ({ offer }: { offer: Offer }) => {
 
         <button className={styles.save} onClick={handleSaveOffer}>
           <Image
-            src="/icons/offer/save.svg"
+            src={`/icons/offer/save.svg`}
             alt="save"
             width={24}
             height={24}
@@ -77,7 +77,7 @@ export const SingleOffer = ({ offer }: { offer: Offer }) => {
             className={styles.link}
           ></span>
         </div>
-        <Link href={offer.company_url}>
+        <Link href={offer.company_url || "/"}>
           <a>
             <MainButton text="Go to company site" />
           </a>

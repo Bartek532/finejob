@@ -13,5 +13,4 @@ router.get("/search", catchAsync(getOffersByQuery));
 router.get("/location", catchAsync(getOffersByLocation));
 router.get("/recommended", catchAsync(getRecommendedOffers));
 router.get("/:id", catchAsync(getSingleOffer));
-
 export default router;
