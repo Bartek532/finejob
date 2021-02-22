@@ -8,9 +8,18 @@ datasource db {
 }
 
 model User {
-  id       Int    @id @default(autoincrement())
-  name     String
-  email    String
-  company  String
-  password String
+  id               Int                @id @default(autoincrement())
+  name             String
+  email            String
+  company          String
+  password         String
+  UserOfferLibrary UserOfferLibrary[]
+}
+
+model UserOfferLibrary {
+  offer_id String
+  user_id  Int
+  User     User   @relation(fields: [user_id], references: [id])
+
+  @@id([offer_id, user_id])
 }

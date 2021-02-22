@@ -19,6 +19,8 @@ export const validateToken = (
     return res.status(401).json({ message: "Invalid token." });
   }
 
+  req.token = token;
+
   if (req.route.path !== "/islogin") {
     next();
   } else {

@@ -12,8 +12,8 @@
 
   &.corner {
     position: absolute;
-    top: 10px;
-    left: 10px;
+    top: 20px;
+    left: 20px;
   }
 
   &:focus,
@@ -21,5 +21,12 @@
     box-shadow: none;
     transform: translateY(4px);
     transition: 0.2s ease-in-out;
+  }
+}
+
+@media all and (min-width: 1000px) {
+  .btn.corner {
+    top: 95px;
+    left: 45px;
   }
 }

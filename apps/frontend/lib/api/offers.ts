@@ -29,7 +29,7 @@ export const JobsAPI = {
       dispatch(setResultsPage(1));
       dispatch(setLastOffersApiCallAddress(apiCallAddress));
     } catch (error) {
-      showModal({ type: "error", message: error.message });
+      dispatch(showModal({ type: "error", message: error.message }));
     } finally {
       dispatch(setLoading(false));
     }
@@ -64,7 +64,7 @@ export const JobsAPI = {
       dispatch(setOffers([...offers.allOffers, ...data]));
     } catch (error) {
       console.log(error.message);
-      showModal({ type: "error", message: error.message });
+      dispatch(showModal({ type: "error", message: error.message }));
     } finally {
       dispatch(setLoadMore(false));
     }

@@ -2,7 +2,12 @@ import { Request, Response } from "express";
 import { validateLogin, validateRegister } from "../validation";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { findUserByEmail, createUser } from "../services/users";
+import {
+  findUserByEmail,
+  createUser,
+  findOfferInLibrary,
+  addOfferToUserLibrary,
+} from "../services/users";
 
 export const login = async (req: Request, res: Response) => {
   const { error } = validateLogin(req.body);
@@ -57,4 +62,18 @@ export const register = async (req: Request, res: Response) => {
   );
 
   return res.status(200).json(user);
+};
+
+export const saveOffer = async (req: Request, res: Response) => {
+  const isOfferInLibrary = await findOfferInLibrary(req.user!.id, req.body.id);
+
+  if (isOfferInLibrary.length) {
+    return res
+      .status(400)
+      .json({ message: "You have already save this offer." });
+  }
+
+  await addOfferToUserLibrary(req.user!.id, req.body.id);
+
+  res.status(200).json({ message: "Offer has been saved!" });
 };
