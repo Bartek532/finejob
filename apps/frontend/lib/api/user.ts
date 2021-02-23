@@ -65,4 +65,16 @@ export const UserAPI = {
       dispatch(setLoading(false));
     }
   },
+  unsaveOffer: (id: string): FuncType => async dispatch => {
+    dispatch(setLoading(true));
+    try {
+      const { data } = await fetcher("/api/users/unsave-offer", "POST", { id });
+      dispatch(showModal({ type: "success", message: data.message }));
+    } catch (error) {
+      console.log(error.message);
+      dispatch(showModal({ type: "error", message: error.message }));
+    } finally {
+      dispatch(setLoading(false));
+    }
+  },
 };

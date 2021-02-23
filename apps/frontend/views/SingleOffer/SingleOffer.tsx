@@ -4,21 +4,53 @@ import { MainButton } from "../../components/MainButton/MainButton";
 import { ActionButton } from "../../components/ActionButton/ActionButton";
 import { UserAPI } from "../../lib/api/user";
 import { Modal } from "../../components/Modal/Modal";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import type { Offer } from "../../types";
+import { useEffect, useState } from "react";
+import { getModalInfo } from "../../store/mainSlice";
 import Image from "next/image";
 import Link from "next/link";
+import { fetcher } from "../../lib/utils/fetcher";
 
 export const SingleOffer = ({ offer }: { offer: Offer }) => {
   const dispatch = useDispatch();
+  const modal = useSelector(getModalInfo);
+  const [isSaved, setIsSaved] = useState(false);
+
   const info = [
     { type: "location", value: offer.location },
     { type: "type", value: offer.type },
     { type: "salary", value: offer.salary + " $" },
   ];
 
+  useEffect(() => {
+    async function checkIsSaved() {
+      try {
+        await fetcher(`/api/offers/saved-offer/${offer.id}`, "GET");
+        setIsSaved(true);
+      } catch {
+        setIsSaved(false);
+      }
+    }
+    checkIsSaved();
+  }, []);
+
+  useEffect(() => {
+    if (modal.show && modal.type === "success") {
+      if (!isSaved) {
+        setIsSaved(true);
+      } else {
+        setIsSaved(false);
+      }
+    }
+  }, [modal]);
+
   const handleSaveOffer = () => {
     dispatch(UserAPI.saveOffer(offer.id));
+  };
+
+  const handleUnsaveOffer = () => {
+    dispatch(UserAPI.unsaveOffer(offer.id));
   };
 
   return (
@@ -27,9 +59,12 @@ export const SingleOffer = ({ offer }: { offer: Offer }) => {
       <section className={styles.offer}>
         <ActionButton icon="back" corner />
 
-        <button className={styles.save} onClick={handleSaveOffer}>
+        <button
+          className={styles.save}
+          onClick={isSaved ? handleUnsaveOffer : handleSaveOffer}
+        >
           <Image
-            src={`/icons/offer/save.svg`}
+            src={`/icons/offer/${isSaved ? "save" : "empty-save"}.svg`}
             alt="save"
             width={24}
             height={24}
@@ -72,16 +107,18 @@ export const SingleOffer = ({ offer }: { offer: Offer }) => {
 
         <div className={styles.apply}>
           <span className={styles.label}>How to apply:</span>
-          <span
+          <div
             dangerouslySetInnerHTML={{ __html: offer.how_to_apply }}
             className={styles.link}
-          ></span>
+          ></div>
         </div>
-        <Link href={offer.company_url || "/"}>
-          <a>
-            <MainButton text="Go to company site" />
-          </a>
-        </Link>
+        {offer.company_url ? (
+          <Link href={offer.company_url}>
+            <a>
+              <MainButton text="Go to company site" />
+            </a>
+          </Link>
+        ) : null}
       </section>
     </>
   );

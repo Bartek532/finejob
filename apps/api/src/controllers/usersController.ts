@@ -7,6 +7,7 @@ import {
   createUser,
   findOfferInLibrary,
   addOfferToUserLibrary,
+  deleteOfferFromLibrary,
 } from "../services/users";
 
 export const login = async (req: Request, res: Response) => {
@@ -76,4 +77,18 @@ export const saveOffer = async (req: Request, res: Response) => {
   await addOfferToUserLibrary(req.user!.id, req.body.id);
 
   res.status(200).json({ message: "Offer has been saved!" });
+};
+
+export const unsaveOffer = async (req: Request, res: Response) => {
+  const isOfferInLibrary = await findOfferInLibrary(req.user!.id, req.body.id);
+
+  if (!isOfferInLibrary.length) {
+    return res
+      .status(400)
+      .json({ message: "You can't unsave an offer which is not in library." });
+  }
+
+  await deleteOfferFromLibrary(req.user!.id, req.body.id);
+
+  res.status(200).json({ message: "Offer has been removed from the library!" });
 };

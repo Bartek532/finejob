@@ -51,3 +51,16 @@ export const getSingleOffer = async (req: Request, res: Response) => {
     .status(200)
     .json(addRandomSalaryToOffer(await fetchSingleOffer(req.params.id)));
 };
+
+export const checkIsOfferSaved = async (req: Request, res: Response) => {
+  const isOfferInLibrary = await findOfferInLibrary(
+    req.user!.id,
+    req.params.id
+  );
+
+  if (isOfferInLibrary.length) {
+    return res.status(200).json({ message: "This offer is saved" });
+  }
+
+  res.status(400).json({ message: "This offer is not saved." });
+};

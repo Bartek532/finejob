@@ -9,7 +9,7 @@
   .save {
     position: absolute;
     top: 22px;
-    right: 30px;
+    right: 25px;
     background-color: transparent;
     border: 0 none;
     cursor: pointer;
@@ -64,7 +64,7 @@
   }
 
   .content {
-    margin: 45px 0 30px 0;
+    padding: 45px 0 30px 0;
     .date {
       color: var(--primary-gray);
       font-size: 0.8rem;
@@ -74,6 +74,7 @@
       font-size: 0.9rem;
       line-height: 1.5rem;
       letter-spacing: 0.5px;
+      word-break: break-word;
 
       h2 {
         margin: 23px 0;
@@ -91,6 +92,7 @@
 
   .apply {
     align-self: flex-start;
+    width: 100%;
 
     .label {
       font-size: 1.15rem;
@@ -102,6 +104,7 @@
     .link {
       a {
         color: var(--primary-orange);
+        word-break: break-all;
 
         &:hover {
           text-decoration: underline;

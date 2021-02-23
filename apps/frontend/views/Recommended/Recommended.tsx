@@ -91,11 +91,13 @@ export const Recommended = ({ offers }: { offers: Offer[] }) => {
                   <span className={styles.salary}>
                     ${offer.salary.toFixed(0)}
                   </span>
-                  <Link href={offer.company_url || "/"}>
-                    <button className={styles.btn}>
-                      <Forward className={styles.icon} />
-                    </button>
-                  </Link>
+                  {offer.company_url ? (
+                    <Link href={offer.company_url}>
+                      <button className={styles.btn}>
+                        <Forward className={styles.icon} />
+                      </button>
+                    </Link>
+                  ) : null}
                 </div>
               </article>
             </a>

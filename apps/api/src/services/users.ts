@@ -32,3 +32,9 @@ export const addOfferToUserLibrary = (userId: number, offerId: string) => {
     },
   });
 };
+
+export const deleteOfferFromLibrary = (userId: number, offerId: string) => {
+  return prisma.userOfferLibrary.delete({
+    where: { offer_id_user_id: { user_id: userId, offer_id: offerId } },
+  });
+};

@@ -35,8 +35,8 @@ export const Modal = memo(({ onCancel, onAccept }: ModalActions) => {
     <div className={styles.modal}>
       <section className={styles.window}>
         <Image
-          width={75}
-          height={75}
+          width={72}
+          height={72}
           alt={modal.type}
           className={styles.icon}
           src={`/icons/modal/${modal.type}.svg`}

@@ -47,11 +47,13 @@ export const OfferTile = ({
             </div>
           </div>
           <span className={styles.salary}>${salary}</span>
-          <Link href={company_url || "/"}>
-            <span className={styles.btn}>
-              <ActionButton icon="forward" />
-            </span>
-          </Link>
+          {company_url ? (
+            <Link href={company_url}>
+              <span className={styles.btn}>
+                <ActionButton icon="forward" />
+              </span>
+            </Link>
+          ) : null}
         </article>
       </a>
     </Link>
