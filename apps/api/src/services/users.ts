@@ -19,7 +19,7 @@ export const findUserById = (id: number) => {
 };
 
 export const findOfferInLibrary = (userId: number, offerId: string) => {
-  return prisma.userOfferLibrary.findMany({
+  return prisma.userOfferLibrary.findFirst({
     where: { AND: [{ user_id: userId }, { offer_id: offerId }] },
   });
 };

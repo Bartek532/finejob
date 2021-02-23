@@ -26,7 +26,7 @@ export const SingleOffer = ({ offer }: { offer: Offer }) => {
   useEffect(() => {
     async function checkIsSaved() {
       try {
-        await fetcher(`/api/offers/saved-offer/${offer.id}`, "GET");
+        await fetcher(`/api/users/saved/${offer.id}`, "GET");
         setIsSaved(true);
       } catch {
         setIsSaved(false);

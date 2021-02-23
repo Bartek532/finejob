@@ -68,7 +68,7 @@ export const register = async (req: Request, res: Response) => {
 export const saveOffer = async (req: Request, res: Response) => {
   const isOfferInLibrary = await findOfferInLibrary(req.user!.id, req.body.id);
 
-  if (isOfferInLibrary.length) {
+  if (isOfferInLibrary) {
     return res
       .status(400)
       .json({ message: "You have already save this offer." });
@@ -80,15 +80,28 @@ export const saveOffer = async (req: Request, res: Response) => {
 };
 
 export const unsaveOffer = async (req: Request, res: Response) => {
-  const isOfferInLibrary = await findOfferInLibrary(req.user!.id, req.body.id);
+  const isOfferInLibrary = await findOfferInLibrary(
+    req.user!.id,
+    req.params.id
+  );
 
-  if (!isOfferInLibrary.length) {
+  if (!isOfferInLibrary) {
     return res
       .status(400)
       .json({ message: "You can't unsave an offer which is not in library." });
   }
 
-  await deleteOfferFromLibrary(req.user!.id, req.body.id);
+  await deleteOfferFromLibrary(req.user!.id, req.params.id);
 
   res.status(200).json({ message: "Offer has been removed from the library!" });
+};
+
+export const getSavedOffer = async (req: Request, res: Response) => {
+  const offer = await findOfferInLibrary(req.user!.id, req.params.id);
+
+  if (offer) {
+    return res.status(200).json(offer);
+  }
+
+  res.status(400).json({ message: "This offer is not saved." });
 };

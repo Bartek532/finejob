@@ -56,7 +56,7 @@ export const UserAPI = {
   saveOffer: (id: string): FuncType => async dispatch => {
     dispatch(setLoading(true));
     try {
-      const { data } = await fetcher("/api/users/save-offer", "POST", { id });
+      const { data } = await fetcher("/api/users/offers", "POST", { id });
       dispatch(showModal({ type: "success", message: data.message }));
     } catch (error) {
       console.log(error.message);
@@ -68,7 +68,7 @@ export const UserAPI = {
   unsaveOffer: (id: string): FuncType => async dispatch => {
     dispatch(setLoading(true));
     try {
-      const { data } = await fetcher("/api/users/unsave-offer", "POST", { id });
+      const { data } = await fetcher(`/api/users/offers/${id}`, "DELETE");
       dispatch(showModal({ type: "success", message: data.message }));
     } catch (error) {
       console.log(error.message);
