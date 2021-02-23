@@ -1,16 +1,16 @@
 import express from "express";
 import { catchAsync } from "../middlewares/errors";
 import {
-  getOffersByQuery,
+  getOffers,
   getRecommendedOffers,
-  getOffersByLocation,
   getSingleOffer,
 } from "../controllers/offersController";
 
+import { validateFilters } from "../middlewares/validateFilters";
+
 const router = express.Router();
 
-router.get("/search", catchAsync(getOffersByQuery));
-router.get("/location", catchAsync(getOffersByLocation));
+router.get("/search", validateFilters, catchAsync(getOffers));
 router.get("/recommended", catchAsync(getRecommendedOffers));
 router.get("/:id", catchAsync(getSingleOffer));
 

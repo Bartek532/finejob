@@ -8,6 +8,7 @@ import {
   findOfferInLibrary,
   addOfferToUserLibrary,
   deleteOfferFromLibrary,
+  fetchUserLibrary,
 } from "../services/users";
 
 export const login = async (req: Request, res: Response) => {
@@ -104,4 +105,8 @@ export const getSavedOffer = async (req: Request, res: Response) => {
   }
 
   res.status(400).json({ message: "This offer is not saved." });
+};
+
+export const getAllSavedOffers = async (req: Request, res: Response) => {
+  res.status(200).json(await fetchUserLibrary(req.user!.id));
 };

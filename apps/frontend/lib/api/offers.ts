@@ -20,32 +20,16 @@ type FetchFuncType = ThunkAction<
 >;
 
 export const JobsAPI = {
-  searchByQuery: (query: string): FetchFuncType => async dispatch => {
+  searchOffers: (path = ""): FetchFuncType => async dispatch => {
     dispatch(setLoading(true));
     try {
-      const apiCallAddress = `/api/offers/search?q=${query}`;
+      const apiCallAddress = `/api/offers/search?${path}`;
       const { data } = await fetcher(apiCallAddress, "GET");
       dispatch(setOffers(data));
       dispatch(setResultsPage(1));
       dispatch(setLastOffersApiCallAddress(apiCallAddress));
     } catch (error) {
       dispatch(showModal({ type: "error", message: error.message }));
-    } finally {
-      dispatch(setLoading(false));
-    }
-  },
-  searchByLocation: (location: string): FetchFuncType => async dispatch => {
-    dispatch(setLoading(true));
-    try {
-      const apiCallAddress = `/api/offers/location?q=${location}`;
-
-      const { data } = await fetcher(apiCallAddress, "GET");
-      dispatch(setOffers(data));
-      dispatch(setResultsPage(1));
-      dispatch(setLastOffersApiCallAddress(apiCallAddress));
-    } catch (error) {
-      console.log(error.message);
-      showModal({ type: "error", message: error.message });
     } finally {
       dispatch(setLoading(false));
     }

@@ -8,15 +8,17 @@ type ButtonIcons = "search" | "back" | "forward" | "edit";
 export const ActionButton = ({
   icon,
   corner,
+  type = "button",
 }: {
   icon: ButtonIcons;
   corner?: boolean;
+  type?: "submit" | "reset" | "button";
 }) => {
   const router = useRouter();
   return (
     <button
       className={classnames(styles.btn, { [styles.corner]: corner })}
-      type="button"
+      type={type}
       onClick={icon === "back" ? () => router.back() : () => false}
     >
       <Image

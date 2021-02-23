@@ -6,6 +6,7 @@ import {
   saveOffer,
   unsaveOffer,
   getSavedOffer,
+  getAllSavedOffers,
 } from "../controllers/usersController";
 import { validateToken } from "../middlewares/validateToken";
 import { validateUser } from "../middlewares/validateUser";
@@ -27,6 +28,13 @@ router.get(
   validateToken,
   validateUser,
   catchAsync(getSavedOffer)
+);
+
+router.get(
+  "/offers",
+  validateToken,
+  validateUser,
+  catchAsync(getAllSavedOffers)
 );
 
 export default router;

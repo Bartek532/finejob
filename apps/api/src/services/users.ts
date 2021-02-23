@@ -1,4 +1,5 @@
 import { PrismaClient } from "@prisma/client";
+import { fetchSingleOffer } from "./offers";
 const prisma = new PrismaClient();
 
 export const findUserByEmail = (email: string) => {
@@ -37,4 +38,21 @@ export const deleteOfferFromLibrary = (userId: number, offerId: string) => {
   return prisma.userOfferLibrary.delete({
     where: { offer_id_user_id: { user_id: userId, offer_id: offerId } },
   });
+};
+
+export const fetchUserLibrary = async (userId: number) => {
+  const offers = await prisma.userOfferLibrary.findMany({
+    where: { user_id: userId },
+  });
+
+  const userLibrary = [];
+
+  for (const offer of offers) {
+    const fetchedOffer = await fetchSingleOffer(offer.offer_id);
+    if (fetchedOffer) {
+      userLibrary.push(fetchedOffer);
+    }
+  }
+
+  return userLibrary;
 };

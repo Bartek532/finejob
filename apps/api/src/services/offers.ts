@@ -7,24 +7,8 @@ export const fetchRecomendedOffers = async (): Promise<Offer[]> => {
   return await response.json();
 };
 
-export const fetchOffersByLocation = async (
-  location: string,
-  page: string | number
-): Promise<Offer[]> => {
-  const response = await fetch(
-    `${process.env.JOBS_API_URL}.json?location=${location}&page=${page}`
-  );
-
-  return await response.json();
-};
-
-export const fetchOffersByQuery = async (
-  query: string,
-  page: string | number
-): Promise<Offer[]> => {
-  const response = await fetch(
-    `${process.env.JOBS_API_URL}.json?search=${query}&page=${page}`
-  );
+export const fetchOffers = async (path: string): Promise<Offer[]> => {
+  const response = await fetch(`${process.env.JOBS_API_URL}.json?${path}`);
 
   return await response.json();
 };

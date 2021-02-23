@@ -20,5 +20,5 @@ export function catchErrors(
 ) {
   res.status(err.status || 500);
   res.json({ message: err.message });
-  console.log(err);
+  console.log(err.status);
 }

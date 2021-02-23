@@ -10,10 +10,14 @@ import { useEffect, useState } from "react";
 import { getModalInfo } from "../../store/mainSlice";
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
+import classnames from "classnames";
 import { fetcher } from "../../lib/utils/fetcher";
+import { prepareQueryToSearch } from "../../lib/utils/functions";
 
 export const SingleOffer = ({ offer }: { offer: Offer }) => {
   const dispatch = useDispatch();
+  const router = useRouter();
   const modal = useSelector(getModalInfo);
   const [isSaved, setIsSaved] = useState(false);
 
@@ -26,7 +30,7 @@ export const SingleOffer = ({ offer }: { offer: Offer }) => {
   useEffect(() => {
     async function checkIsSaved() {
       try {
-        await fetcher(`/api/users/saved/${offer.id}`, "GET");
+        await fetcher(`/api/users/offers/${offer.id}`, "GET");
         setIsSaved(true);
       } catch {
         setIsSaved(false);
@@ -53,6 +57,27 @@ export const SingleOffer = ({ offer }: { offer: Offer }) => {
     dispatch(UserAPI.unsaveOffer(offer.id));
   };
 
+  const handleSearchByCompany = () => {
+    router.replace({
+      pathname: "/offers",
+      query: { q: prepareQueryToSearch(offer.company) },
+    });
+  };
+
+  const handleSearchByField = (key: string) => {
+    if (key === "type") {
+      router.replace({
+        pathname: "/offers",
+        query: { full_time: offer.type === "Full Time" },
+      });
+    } else if (key === "location") {
+      router.replace({
+        pathname: "/offers",
+        query: { location: prepareQueryToSearch(offer.location) },
+      });
+    }
+  };
+
   return (
     <>
       <Modal />
@@ -76,13 +101,25 @@ export const SingleOffer = ({ offer }: { offer: Offer }) => {
             <Avatar name={offer.company} />
           </div>
           <span className={styles.title}>{offer.title}</span>
-          <span className={styles.company}>{offer.company}</span>
+          <button className={styles.company} onClick={handleSearchByCompany}>
+            {offer.company}
+          </button>
         </article>
 
         <div className={styles.more}>
           {info.map(item => (
             <div className={styles.field} key={item.type}>
-              <span className={styles.description}>{item.value}</span>
+              {["type", "location"].includes(item.type) ? (
+                <button
+                  className={classnames(styles.description, styles.searchBtn)}
+                  onClick={() => handleSearchByField(item.type)}
+                >
+                  {item.value}
+                </button>
+              ) : (
+                <span className={styles.description}>{item.value}</span>
+              )}
+
               <div className={styles.icon}>
                 <Image
                   src={`/icons/offer/${item.type}.svg`}

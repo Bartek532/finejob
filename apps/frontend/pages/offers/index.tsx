@@ -1,10 +1,10 @@
 import { Layout } from "../../components/Layout/Layout";
-import { Results } from "../../views/Results/Results";
+import { SearchResults } from "../../views/SearchResults/SearchResults";
 
 const Offers = () => {
   return (
     <Layout>
-      <Results />
+      <SearchResults />
     </Layout>
   );
 };

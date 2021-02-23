@@ -1,7 +1,6 @@
 import {
   fetchRecomendedOffers,
-  fetchOffersByLocation,
-  fetchOffersByQuery,
+  fetchOffers,
   fetchSingleOffer,
 } from "../services/offers";
 import { addRandomSalaryToOffer } from "../utils";
@@ -13,36 +12,19 @@ export const getRecommendedOffers = async (req: Request, res: Response) => {
     .json((await fetchRecomendedOffers()).map(addRandomSalaryToOffer));
 };
 
-export const getOffersByQuery = async (req: Request, res: Response) => {
-  const page = (req.query.page as string) || 1;
+export const getOffers = async (req: Request, res: Response) => {
+  const path = Object.entries(req.query)
+    .map(item => {
+      if (item[0] === "q") {
+        item[0] = "search";
+      }
 
-  if (!req.query.q) {
-    return res.status(400).json({ message: "Invalid query" });
-  }
+      return item;
+    })
+    .map(item => item.join("="))
+    .join("&");
 
-  res
-    .status(200)
-    .json(
-      (await fetchOffersByQuery(req.query.q as string, page)).map(
-        addRandomSalaryToOffer
-      )
-    );
-};
-
-export const getOffersByLocation = async (req: Request, res: Response) => {
-  const page = (req.query.page as string) || 1;
-
-  if (!req.query.q) {
-    return res.status(400).json({ message: "Invalid location." });
-  }
-
-  res
-    .status(200)
-    .json(
-      (await fetchOffersByLocation(req.query.q as string, page)).map(
-        addRandomSalaryToOffer
-      )
-    );
+  res.status(200).json((await fetchOffers(path)).map(addRandomSalaryToOffer));
 };
 
 export const getSingleOffer = async (req: Request, res: Response) => {
