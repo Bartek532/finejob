@@ -1,4 +1,5 @@
 import styles from "./AboutSection.module.scss";
+import { Counter } from "../../components/Counter/Counter";
 import Image from "next/image";
 
 const steps = [
@@ -59,6 +60,16 @@ export const AboutSection = () => {
           </article>
         ))}
       </div>
+
+      <article className={styles.employeeCounter}>
+        <h2 className={styles.label}>
+          <strong>Congrats!</strong> You've joined
+        </h2>
+        <Counter value={2700000} time={5} />
+        <h3 className={styles.subtitle}>
+          other employees who found a job through our app!
+        </h3>
+      </article>
     </section>
   );
 };

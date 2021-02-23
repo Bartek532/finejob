@@ -3,7 +3,8 @@
 .about {
   @include flex;
   flex-flow: column wrap;
-  padding: 0 25px;
+  padding: 0 35px;
+  width: 100%;
 
   .title {
     text-transform: uppercase;
@@ -21,8 +22,7 @@
   }
 
   .steps {
-    min-width: 300px;
-
+    width: 100%;
     .step {
       @include flex(space-evenly);
       flex-wrap: wrap;
@@ -96,6 +96,29 @@
         margin-top: 35px;
         padding: 20px;
       }
+    }
+  }
+
+  .employeeCounter {
+    @include flex;
+    flex-flow: column wrap;
+    padding: 45px 0 35px 0;
+    width: 100%;
+    .label {
+      text-transform: uppercase;
+      letter-spacing: 1.3px;
+      font-weight: normal;
+      font-size: 1.9rem;
+      text-align: center;
+      line-height: 2.4rem;
+      color: var(--primary-orange);
+      padding-bottom: 15px;
+    }
+
+    .subtitle {
+      text-align: center;
+      line-height: 1.5rem;
+      padding-top: 10px;
     }
   }
 }
