@@ -12,7 +12,7 @@ export const AuthChecker = ({ children }: { children: React.ReactNode }) => {
     if (!isUserLogin) {
       router.push("/auth/login");
     }
-  }, []);
+  }, [isUserLogin]);
 
   if (!isUserLogin) {
     return null;

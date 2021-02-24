@@ -3,7 +3,7 @@
 .content {
   @include flex;
   flex-flow: column wrap;
-  padding: 20px 0 85px 0;
+  padding: 50px 0 85px 0;
   width: 100vw;
   min-height: 100vh;
   position: relative;
@@ -35,6 +35,10 @@
 @media all and (min-width: 1000px) {
   .content {
     padding: 120px 40px 0 40px;
-    min-height: auto;
+    min-height: initial;
+
+    .title {
+      font-size: 1.9rem;
+    }
   }
 }

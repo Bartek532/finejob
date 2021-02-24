@@ -38,7 +38,7 @@ export const LoginForm = memo(() => {
   };
 
   return (
-    <>
+    <main className={styles.login}>
       <form onSubmit={handleSubmit(handleFormSubmit)} className={styles.form}>
         <Input
           name="email"
@@ -62,6 +62,6 @@ export const LoginForm = memo(() => {
           <a className={styles.register}>Sign up!</a>
         </Link>
       </section>
-    </>
+    </main>
   );
 });

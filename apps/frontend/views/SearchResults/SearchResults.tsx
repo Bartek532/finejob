@@ -25,16 +25,16 @@ export const SearchResults = memo(() => {
   const allOffers = useSelector(getAllOffers);
   const { register, handleSubmit, reset, setValue } = useForm();
 
-  setValue(
-    "search",
-    decodeURIComponent(
-      (router.query.q as string) || (router.query.location as string) || ""
-    )
-  );
-
   useEffect(() => {
     dispatch(setOffers([]));
     dispatch(JobsAPI.searchOffers(router.asPath.slice(8)));
+
+    setValue(
+      "search",
+      decodeURIComponent(
+        (router.query.q as string) || (router.query.location as string) || ""
+      )
+    );
   }, [router.asPath]);
 
   const onSearch = ({ search: query }: { search: string }) => {

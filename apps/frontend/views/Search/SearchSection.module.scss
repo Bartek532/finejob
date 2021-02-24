@@ -3,8 +3,7 @@
   @include flex;
   width: 100%;
   flex-flow: column-reverse wrap;
-  min-height: 100vh;
-  margin-top: -100px;
+  min-height: 85vh;
 
   .wrapper {
     @include flex;
@@ -64,6 +63,7 @@
   .main {
     flex-flow: row wrap;
     justify-content: space-evenly;
+    margin-top: -40px;
 
     .wrapper {
       margin-top: 20px;

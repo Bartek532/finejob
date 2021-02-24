@@ -4,4 +4,12 @@
   width: 100%;
   @include flex;
   flex-flow: column wrap;
+  min-height: 90vh;
+  padding-top: 20px;
+}
+
+@media all and (min-width: 1000px) {
+  .form {
+    margin-top: -50px;
+  }
 }

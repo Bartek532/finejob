@@ -25,6 +25,21 @@ export const findOfferInLibrary = (userId: number, offerId: string) => {
   });
 };
 
+export const changeUserData = (
+  userId: number,
+  {
+    name,
+    company,
+    email,
+    password,
+  }: { name: string; company: string; email: string; password: string }
+) => {
+  return prisma.user.update({
+    data: { name, company, email, password },
+    where: { id: userId },
+  });
+};
+
 export const addOfferToUserLibrary = (userId: number, offerId: string) => {
   return prisma.userOfferLibrary.create({
     data: {

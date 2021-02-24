@@ -1,6 +1,6 @@
 import type { TextInputProps } from "../../types";
 import styles from "./Input.module.scss";
-import { ChangeEvent, useState, useCallback } from "react";
+import { useState } from "react";
 import Eye from "../../public/icons/password/eye.svg";
 import ClosedEye from "../../public/icons/password/eye-closed.svg";
 import classnames from "classnames";
@@ -40,7 +40,7 @@ export const Input = ({
           })}
           onFocus={() => setIsInputFocused(true)}
         />
-        {name === "password" ? (
+        {name.includes("password") ? (
           inputType === "password" ? (
             <button
               className={styles.eye}

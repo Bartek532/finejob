@@ -1,7 +1,12 @@
 import { fetcher } from "../utils/fetcher";
 import { Action } from "redux";
 import { ThunkAction } from "redux-thunk";
-import { setLoading, showModal, setIsLogin } from "../../store/mainSlice";
+import {
+  setLoading,
+  showModal,
+  setIsLogin,
+  setUser,
+} from "../../store/mainSlice";
 import { setOffers } from "../../store/offersSlice";
 import type { UserLoginData, UserRegisterData } from "../../types";
 import type { InitialMainState } from "../../store/mainSlice";
@@ -46,12 +51,45 @@ export const UserAPI = {
       dispatch(setLoading(false));
     }
   },
+  logout: (): FuncType => async dispatch => {
+    try {
+      await fetcher("/api/users/logout", "GET");
+      dispatch(setIsLogin(false));
+    } catch (error) {
+      console.log(error.message);
+    }
+  },
   isLogin: (): FuncType => async dispatch => {
     try {
       await fetcher("/api/users/islogin", "GET");
       dispatch(setIsLogin(true));
     } catch (error) {
       console.log(error.message);
+    }
+  },
+
+  changeUserData: (data: UserRegisterData): FuncType => async dispatch => {
+    dispatch(setLoading(true));
+    try {
+      await fetcher("/api/users", "POST", data);
+      dispatch(setUser(data));
+      dispatch(showModal({ type: "success", message: "Succesfully updated!" }));
+    } catch (error) {
+      dispatch(showModal({ type: "error", message: error.message }));
+    } finally {
+      dispatch(setLoading(false));
+    }
+  },
+
+  getUserInfo: (): FuncType => async dispatch => {
+    dispatch(setLoading(true));
+    try {
+      const { data } = await fetcher("/api/users", "GET");
+      dispatch(setUser(data));
+    } catch (error) {
+      dispatch(showModal({ type: "error", message: error.message }));
+    } finally {
+      dispatch(setLoading(false));
     }
   },
   saveOffer: (id: string): FuncType => async dispatch => {

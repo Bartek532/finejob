@@ -6,6 +6,7 @@ import {
   findUserByEmail,
   createUser,
   findOfferInLibrary,
+  changeUserData,
   addOfferToUserLibrary,
   deleteOfferFromLibrary,
   fetchUserLibrary,
@@ -65,6 +66,25 @@ export const register = async (req: Request, res: Response) => {
   );
 
   return res.status(200).json(user);
+};
+
+export const logoutUser = async (req: Request, res: Response) => {
+  res.clearCookie("token");
+  res.status(200).json({ message: "Logout!" });
+};
+
+export const getUserInfo = async (req: Request, res: Response) => {
+  res.status(200).json({ ...req.user, password: "" });
+};
+
+export const changeUserInfo = async (req: Request, res: Response) => {
+  const user = await findUserByEmail(req.body.email);
+  if (user && req.user!.id !== user.id) {
+    return res
+      .status(400)
+      .json({ message: "You cannot change an email to other existing email." });
+  }
+  res.status(200).json(await changeUserData(req.user!.id, req.body));
 };
 
 export const saveOffer = async (req: Request, res: Response) => {
