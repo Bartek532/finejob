@@ -4,7 +4,7 @@
   width: 100%;
   background-color: var(--primary-orange);
   color: var(--primary-white);
-  padding: 30px 20px;
+  padding: 30px 20px 15px 20px;
   @include flex;
   flex-wrap: wrap;
   margin: 30px 0 -30px 0;
@@ -51,6 +51,11 @@
       }
     }
   }
+
+  .copyright {
+    padding: 20px;
+    font-size: 0.9rem;
+  }
 }
 
 @media all and (min-width: 1000px) {
@@ -74,9 +79,10 @@
     .image {
       padding: 32px;
     }
+
+    .copyright {
+      padding: 0;
+      padding-top: 20px;
+    }
   }
 }
-
-/*
-#0f1b35
-*/

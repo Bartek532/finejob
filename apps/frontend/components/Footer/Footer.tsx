@@ -28,6 +28,9 @@ export const Footer = () => {
           height={220}
         />
       </div>
+      <div className={styles.copyright}>
+        Copyright &copy; 2021 - Bartosz Zagrodzki
+      </div>
     </footer>
   );
 };
