@@ -5,7 +5,13 @@ import FullLogo from "../../public/icons/full-logo.svg";
 import { useWindowSize } from "../../lib/hooks/useWindowSize";
 import Link from "next/link";
 
-export const Layout = ({ children }: { children: React.ReactNode }) => {
+export const Layout = ({
+  children,
+  title,
+}: {
+  children: React.ReactNode;
+  title?: string;
+}) => {
   const { width } = useWindowSize();
   return (
     <div className={styles.content}>
@@ -18,6 +24,7 @@ export const Layout = ({ children }: { children: React.ReactNode }) => {
           </a>
         </Link>
       ) : null}
+      {title ? <h1 className={styles.title}>{title}</h1> : null}
       {children}
     </div>
   );

@@ -37,8 +37,7 @@ const steps = [
 
 export const AboutSection = () => {
   return (
-    <section className={styles.about}>
-      <h1 className={styles.title}>how it works</h1>
+    <main className={styles.about}>
       <div className={styles.steps}>
         {steps.map(step => (
           <article className={styles.step} key={step.title}>
@@ -70,6 +69,6 @@ export const AboutSection = () => {
           other employees who found a job through our app!
         </h3>
       </article>
-    </section>
+    </main>
   );
 };

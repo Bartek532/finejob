@@ -1,8 +1,10 @@
 import { OfferTile } from "../../components/OfferTile/OfferTile";
 import styles from "./Results.module.scss";
-import type { Offer } from "../../types";
+import { useSelector } from "react-redux";
+import { getAllOffers } from "../../store/offersSlice";
 
-export const Results = ({ offers }: { offers: Offer[] }) => {
+export const Results = () => {
+  const offers = useSelector(getAllOffers);
   return (
     <section className={styles.offers}>
       {offers

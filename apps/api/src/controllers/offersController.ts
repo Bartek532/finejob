@@ -23,7 +23,6 @@ export const getOffers = async (req: Request, res: Response) => {
     })
     .map(item => item.join("="))
     .join("&");
-
   res.status(200).json((await fetchOffers(path)).map(addRandomSalaryToOffer));
 };
 

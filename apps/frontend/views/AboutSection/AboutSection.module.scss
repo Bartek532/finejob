@@ -6,21 +6,6 @@
   padding: 0 35px;
   width: 100%;
 
-  .title {
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-    color: var(--primary-orange);
-    position: relative;
-    padding-bottom: 10px;
-    font-size: 1.7rem;
-    transform: translateY(-25px);
-
-    &::after {
-      @include pseudo(50%, 100%, 25%, var(--primary-orange));
-      height: 7%;
-    }
-  }
-
   .steps {
     width: 100%;
     .step {

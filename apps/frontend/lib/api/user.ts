@@ -2,6 +2,7 @@ import { fetcher } from "../utils/fetcher";
 import { Action } from "redux";
 import { ThunkAction } from "redux-thunk";
 import { setLoading, showModal, setIsLogin } from "../../store/mainSlice";
+import { setOffers } from "../../store/offersSlice";
 import type { UserLoginData, UserRegisterData } from "../../types";
 import type { InitialMainState } from "../../store/mainSlice";
 
@@ -70,6 +71,19 @@ export const UserAPI = {
     try {
       const { data } = await fetcher(`/api/users/offers/${id}`, "DELETE");
       dispatch(showModal({ type: "success", message: data.message }));
+    } catch (error) {
+      console.log(error.message);
+      dispatch(showModal({ type: "error", message: error.message }));
+    } finally {
+      dispatch(setLoading(false));
+    }
+  },
+
+  getSavedOffers: (): FuncType => async dispatch => {
+    dispatch(setLoading(true));
+    try {
+      const { data } = await fetcher(`/api/users/offers`, "GET");
+      dispatch(setOffers(data));
     } catch (error) {
       console.log(error.message);
       dispatch(showModal({ type: "error", message: error.message }));

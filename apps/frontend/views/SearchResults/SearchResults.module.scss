@@ -2,8 +2,6 @@
 
 .results {
   width: 100%;
-  padding: 0 13px 30px 13px;
-  max-width: 850px;
   @include flex;
   flex-flow: column wrap;
 

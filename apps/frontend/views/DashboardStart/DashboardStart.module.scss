@@ -2,7 +2,8 @@
 
 .fields {
   @include flex;
-  margin-top: -60px;
+  min-height: 100vh;
+  margin-top: -100px;
   .field {
     flex: 0 1 250px;
     width: 40vw;
@@ -17,7 +18,7 @@
     border: 2px solid rgba(0, 0, 0, 0.08);
     cursor: pointer;
     transition: transform 0.3s;
-    box-shadow: 0 3px 20px 2px #bebebe;
+    box-shadow: 0 3px 20px 2px var(--primary-gray);
     position: relative;
 
     &:hover {

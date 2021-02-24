@@ -60,7 +60,7 @@ export const SearchResults = memo(() => {
           />
           <ActionButton icon="search" type="submit" />
         </form>
-        {allOffers.length ? <Results offers={allOffers} /> : <EmptyResults />}
+        {allOffers.length ? <Results /> : <EmptyResults />}
         {allOffers.length < 50 * resultsPage && allOffers.length ? (
           <div className={styles.all}>
             <span className={styles.text}>It's all! &#128064;</span>

@@ -4,7 +4,7 @@ import { Footer } from "../components/Footer/Footer";
 
 const About = () => {
   return (
-    <Layout>
+    <Layout title="How it works">
       <AboutSection />
       <Footer />
     </Layout>
