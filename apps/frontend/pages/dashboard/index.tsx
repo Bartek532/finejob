@@ -5,7 +5,7 @@ import { AuthChecker } from "../../components/AuthChecker/AuthChecker";
 const Dashboard = () => {
   return (
     <AuthChecker>
-      <Layout>
+      <Layout title="Dashboard">
         <DashboardStart />
       </Layout>
     </AuthChecker>

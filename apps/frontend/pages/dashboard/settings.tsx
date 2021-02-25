@@ -19,7 +19,7 @@ const Settings = () => {
   return (
     <AuthChecker>
       <Modal onAccept={() => router.push("/dashboard")} />
-      <Layout title="My settings">
+      <Layout title="Settings" headerTitle="My settings">
         <ActionButton icon="back" corner />
         <UserSettings />
       </Layout>

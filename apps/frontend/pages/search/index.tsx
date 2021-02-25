@@ -3,7 +3,7 @@ import { Layout } from "../../components/Layout/Layout";
 
 const Search = () => {
   return (
-    <Layout>
+    <Layout title="Search">
       <MainSearch />
     </Layout>
   );

@@ -12,7 +12,7 @@ const Login = () => {
   });
 
   return (
-    <Layout>
+    <Layout title="Login">
       <Modal />
       <LoginForm />
     </Layout>

@@ -12,7 +12,7 @@ const Saved = () => {
   }, []);
   return (
     <AuthChecker>
-      <Layout title="Saved offers">
+      <Layout title="Saved" headerTitle="saved offers">
         <Results />
       </Layout>
     </AuthChecker>

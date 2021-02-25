@@ -11,7 +11,7 @@ const Register = () => {
     router.push("/auth/login");
   };
   return (
-    <Layout>
+    <Layout title="Register">
       <Modal onAccept={handleModalAccepted} />
       <ActionButton icon="back" corner />
       <RegisterForm />
