@@ -1,0 +1,79 @@
+@import "../../styles/_mixins";
+
+.dashboard {
+  @include flex;
+  flex-flow: column wrap;
+  min-height: 100vh;
+  margin-top: -80px;
+  .fields {
+    @include flex;
+    margin-bottom: 30px;
+
+    .field {
+      flex: 0 1 250px;
+      width: 40vw;
+      max-width: 200px;
+      height: clamp(120px, 58vw, 250px);
+      padding: 35px 10px;
+      margin: 0 10px;
+      border-radius: 10px;
+      @include flex(space-between);
+      flex-flow: column wrap;
+      background-color: var(--primary-white);
+      border: 2px solid rgba(0, 0, 0, 0.08);
+      cursor: pointer;
+      transition: transform 0.3s;
+      box-shadow: 0 3px 20px 2px var(--primary-gray);
+      position: relative;
+
+      &:hover {
+        transform: translateY(-25px) rotate(7deg);
+        transform-origin: "100% 100%";
+        transition: all 0.3s;
+
+        &::after {
+          opacity: 1;
+          transition: opacity 0.3s;
+        }
+      }
+      .icon {
+        max-width: 150px;
+        padding: 0 15px;
+      }
+      .label {
+        font-weight: 500;
+        text-transform: capitalize;
+        text-align: center;
+        font-size: 0.9rem;
+        background-color: transparent;
+        border: 0 none;
+
+        @media all and (min-width: 450px) {
+          font-size: 1.15rem;
+        }
+      }
+    }
+  }
+}
+
+@media all and (min-width: 1000px) {
+  .dashboard .fields {
+    margin-bottom: 30px;
+    .field {
+      margin: 20px;
+
+      .icon {
+        padding: 0;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 360px) {
+  .dashboard .fields .field {
+    padding: 30px 10px;
+    .icon {
+      transform: scale(0.85);
+    }
+  }
+}

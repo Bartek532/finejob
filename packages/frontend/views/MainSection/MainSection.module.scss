@@ -1,0 +1,72 @@
+@import "../../styles/_mixins";
+.main {
+  @include flex(space-evenly);
+  width: 100%;
+  padding: 65px 0 70px 0;
+
+  .logo {
+    position: absolute;
+    top: 20px;
+    left: 24px;
+  }
+
+  .wrapper {
+    @include flex;
+    flex-flow: column wrap;
+
+    .title {
+      font-size: 3.1rem;
+      text-align: center;
+      margin: 0 8px 60px 8px;
+      padding: 0 20px;
+      max-width: 380px;
+
+      .violet {
+        color: #b661b4;
+        font-weight: 1000;
+      }
+    }
+
+    .form {
+      width: 100%;
+      @include flex;
+      flex-flow: column wrap;
+
+      input {
+        appearance: none;
+      }
+    }
+
+    .subtitle {
+      font-size: 0.88rem;
+      line-height: 1.16rem;
+      color: #7c7c7c;
+      text-align: center;
+      margin: 54px 31px;
+      padding: 0 20px;
+      max-width: 380px;
+    }
+  }
+
+  .image {
+    display: none;
+  }
+}
+
+@media all and (min-width: 1000px) {
+  .main {
+    padding-top: 30px;
+    .image {
+      display: block;
+    }
+
+    .wrapper {
+      margin-top: 20px;
+      .title {
+        text-align: left;
+        margin-left: 45px;
+        padding: 0;
+      }
+    }
+  }
+}

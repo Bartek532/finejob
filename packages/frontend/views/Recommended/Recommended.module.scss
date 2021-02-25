@@ -1,0 +1,176 @@
+@import "../../styles/_mixins";
+
+.wrapper {
+  width: 100%;
+  @include flex;
+  flex-flow: column wrap;
+  position: relative;
+  padding: 0 20px;
+
+  .btn {
+    background-color: transparent;
+    border: 2.3px solid var(--primary-orange);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    .icon {
+      transform: translate(1px, 1.3px);
+
+      path {
+        fill: var(--primary-orange);
+      }
+    }
+  }
+
+  .scrollLeft,
+  .scrollRight {
+    display: none;
+  }
+
+  .offers {
+    font-family: var(--second-font);
+    padding: 20px 0 30px 0;
+    max-width: 100%;
+    @include flex(flex-start);
+    overflow-x: scroll;
+    transition: transform 0.3s;
+
+    .offer {
+      @include flex;
+      flex: 0 1 270px;
+      flex-flow: column wrap;
+      box-shadow: var(--gray-shadow);
+      color: var(--primary-black);
+      border-radius: 15px;
+      min-width: 270px;
+      cursor: pointer;
+      margin: 10px;
+
+      .main {
+        @include flex;
+        flex-flow: column wrap;
+        background: #fdfdfd;
+        padding: 7px 25px 40px 25px;
+        border-radius: 15px 15px 0 0;
+        width: 100%;
+        height: 395px;
+
+        .logo {
+          width: 90px;
+          height: 90px;
+          border-radius: 50%;
+          margin: 10px;
+          font-size: 2.4rem;
+        }
+
+        .offerTitle {
+          align-self: flex-start;
+          border-top: 1px solid lightgray;
+          font-size: 0.97rem;
+          font-weight: 600;
+          padding: 15px 0 30px 0;
+          margin-top: 25px;
+          width: 100%;
+        }
+
+        .company {
+          font-size: 0.92rem;
+          font-weight: 500;
+          align-self: flex-start;
+        }
+
+        .location {
+          font-size: 0.88rem;
+          align-self: flex-start;
+          font-weight: 300;
+          margin: 1.5px 0;
+        }
+      }
+
+      .additional {
+        background-color: #faf9fd;
+        width: 100%;
+        @include flex(space-between);
+        padding: 15px 20px;
+        border-radius: 0 0 15px 15px;
+
+        .salary {
+          color: rgba(182, 97, 180, 0.44);
+          font-size: 1.6rem;
+          font-weight: 700;
+        }
+      }
+
+      &:hover {
+        box-shadow: 0 3px 10px 2px rgba(182, 97, 180, 0.56);
+
+        .main {
+          background: linear-gradient(150deg, #d35ca4, #a261d9);
+        }
+
+        .additional {
+          background-color: #aa69d1;
+
+          .salary {
+            color: #fff;
+          }
+
+          .btn {
+            background-color: var(--primary-orange);
+
+            &:hover {
+              background-color: transparent;
+              transition: background-color 0.3s;
+            }
+
+            .icon path {
+              fill: var(--primary-white);
+            }
+          }
+        }
+
+        * {
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .wrapper {
+    overflow-x: hidden;
+
+    .offers {
+      overflow: visible;
+    }
+    .scrollLeft,
+    .scrollRight {
+      display: block;
+      position: absolute;
+      top: 53%;
+      transform: translate(-50%, -50%);
+      z-index: 5;
+      background-color: var(--primary-orange);
+
+      .icon path {
+        fill: var(--primary-white);
+      }
+    }
+
+    .scrollLeft {
+      left: 6%;
+
+      .icon {
+        transform: translate(-2px, 1px);
+      }
+    }
+
+    .scrollRight {
+      right: 2%;
+    }
+  }
+}

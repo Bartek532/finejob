@@ -1,0 +1,22 @@
+@mixin flex($jus: center, $ali: center) {
+  display: flex;
+  justify-content: $jus;
+  align-items: $ali;
+}
+
+@mixin pseudo(
+  $width: 100%,
+  $top: 0,
+  $left: 0,
+  $background: transparent,
+  $index: 1
+) {
+  position: absolute;
+  content: "";
+  top: $top;
+  left: $left;
+  width: $width;
+  height: 100%;
+  background-color: $background;
+  z-index: $index;
+}

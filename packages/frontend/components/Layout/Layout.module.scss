@@ -1,0 +1,44 @@
+@import "../../styles/_mixins";
+
+.content {
+  @include flex;
+  flex-flow: column wrap;
+  padding: 50px 0 85px 0;
+  width: 100vw;
+  min-height: 100vh;
+  position: relative;
+  max-width: 1200px;
+
+  .logo {
+    position: absolute;
+    top: 39px;
+    left: 38px;
+    cursor: pointer;
+  }
+
+  .title {
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--primary-orange);
+    position: relative;
+    padding-bottom: 10px;
+    font-size: 1.7rem;
+    transform: translateY(-25px);
+
+    &::after {
+      @include pseudo(50%, 100%, 25%, var(--primary-orange));
+      height: 7%;
+    }
+  }
+}
+
+@media all and (min-width: 1000px) {
+  .content {
+    padding: 120px 40px 0 40px;
+    min-height: initial;
+
+    .title {
+      font-size: 1.9rem;
+    }
+  }
+}

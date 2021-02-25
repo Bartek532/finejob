@@ -1,0 +1,109 @@
+@import "../../styles/_mixins";
+
+.about {
+  @include flex;
+  flex-flow: column wrap;
+  padding: 0 35px;
+  width: 100%;
+
+  .steps {
+    width: 100%;
+    .step {
+      @include flex(space-evenly);
+      flex-wrap: wrap;
+      border-top: 3px solid;
+      border-image: linear-gradient(
+        to right,
+        var(--primary-orange) 0%,
+        var(--primary-violet) 100%
+      );
+      border-image-slice: 1;
+      border-width: 3px;
+      padding: 40px;
+      counter-increment: article;
+      position: relative;
+
+      &:before {
+        content: counter(article);
+        position: absolute;
+        border-radius: 50%;
+        padding: 10px;
+        height: 1.25em;
+        width: 1.25em;
+        background-color: var(--primary-violet);
+        text-align: center;
+        line-height: 1.25em;
+        color: var(--primary-white);
+        font-size: 1em;
+      }
+
+      &:nth-child(odd) {
+        border-right: 3px solid;
+        padding-left: 0;
+        flex-direction: row-reverse;
+
+        &:before {
+          left: 100%;
+          margin-left: -20px;
+        }
+      }
+      &:nth-child(even) {
+        border-left: 3px solid;
+        padding-right: 0;
+
+        &:before {
+          right: 100%;
+          margin-right: -20px;
+          background-color: var(--primary-orange);
+        }
+      }
+      &:first-child {
+        border-top: 0;
+        border-top-right-radius: 0;
+        border-top-left-radius: 0;
+      }
+      &:last-child {
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+
+      .description {
+        flex: 0 1 400px;
+        .text {
+          font-size: 1em;
+          line-height: 1.75em;
+          margin: 0;
+          position: relative;
+        }
+      }
+      .image {
+        flex: 0 1 370px;
+        margin-top: 35px;
+        padding: 20px;
+      }
+    }
+  }
+
+  .employeeCounter {
+    @include flex;
+    flex-flow: column wrap;
+    padding: 45px 0 35px 0;
+    width: 100%;
+    .label {
+      text-transform: uppercase;
+      letter-spacing: 1.3px;
+      font-weight: normal;
+      font-size: 1.9rem;
+      text-align: center;
+      line-height: 2.4rem;
+      color: var(--primary-orange);
+      padding-bottom: 15px;
+    }
+
+    .subtitle {
+      text-align: center;
+      line-height: 1.5rem;
+      padding-top: 10px;
+    }
+  }
+}

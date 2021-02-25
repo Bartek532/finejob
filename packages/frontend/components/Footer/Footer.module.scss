@@ -1,0 +1,88 @@
+@import "../../styles/_mixins";
+
+.foo {
+  width: 100%;
+  background-color: var(--primary-orange);
+  color: var(--primary-white);
+  padding: 30px 20px 15px 20px;
+  @include flex;
+  flex-wrap: wrap;
+  margin: 30px 0 -30px 0;
+
+  .wrapper,
+  .image {
+    @include flex;
+    flex-flow: column wrap;
+    flex: 0 1 450px;
+  }
+
+  .image {
+    padding: 45px 30px;
+  }
+
+  .wrapper {
+    .title {
+      font-weight: bold;
+      line-height: 1.8rem;
+      text-transform: uppercase;
+    }
+    .text {
+      font-size: 0.95rem;
+      line-height: 1.5rem;
+      text-align: center;
+    }
+
+    .btn {
+      border: 2px solid var(--primary-white);
+      color: var(--primary-orange);
+      background-color: var(--primary-white);
+      padding: 8px 27px;
+      text-transform: uppercase;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.2s;
+      margin: 15px;
+      font-weight: bold;
+
+      &:hover {
+        color: var(--primary-white);
+        background-color: var(--primary-orange);
+        transition: 0.2s;
+      }
+    }
+  }
+
+  .copyright {
+    padding: 20px;
+    font-size: 0.9rem;
+  }
+}
+
+@media all and (min-width: 1000px) {
+  .foo {
+    border-radius: 20px;
+    margin: 30px 0 60px 0;
+
+    .wrapper {
+      align-items: flex-start;
+
+      .text {
+        text-align: left;
+      }
+
+      .btn {
+        margin: 0;
+        margin-top: 15px;
+      }
+    }
+
+    .image {
+      padding: 32px;
+    }
+
+    .copyright {
+      padding: 0;
+      padding-top: 20px;
+    }
+  }
+}

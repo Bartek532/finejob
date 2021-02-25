@@ -1,0 +1,150 @@
+@import "../../styles/_mixins";
+
+.wrapper {
+  padding: 40px 0;
+  width: 100%;
+  .mainCounter {
+    @include flex;
+    flex-flow: column wrap;
+    border-top: 2px solid var(--primary-white);
+    border-bottom: 2px solid var(--primary-white);
+    width: 100%;
+    padding: 40px 30px;
+
+    .title {
+      text-align: center;
+      font-weight: bold;
+      margin-bottom: 30px;
+      line-height: 1.8rem;
+    }
+  }
+
+  .jobs {
+    @include flex;
+    flex-wrap: wrap;
+    padding: 60px 20px;
+
+    .data {
+      flex: 0 1 400px;
+      @include flex(space-between);
+      padding: 35px;
+      width: 100%;
+
+      .text {
+        @include flex(center, flex-start);
+        flex-flow: column wrap;
+
+        .label {
+          margin: 5px 0;
+          font-size: 1.1rem;
+        }
+
+        .value {
+          font-weight: bold;
+          color: #7ae582;
+        }
+      }
+
+      .icon {
+        width: 90px;
+        height: 90px;
+        background-color: rgba(182, 97, 180, 0.2);
+        @include flex;
+        border-radius: 50%;
+      }
+
+      &:nth-child(2n + 2) {
+        flex-direction: row-reverse;
+
+        .icon {
+          background-color: rgba(245, 155, 102, 0.2);
+        }
+
+        .text {
+          .value {
+            color: #ff5666;
+          }
+        }
+      }
+    }
+  }
+
+  .mobileApp {
+    padding: 25px 23px 35px 23px;
+    @include flex;
+    flex-wrap: wrap;
+
+    .about {
+      flex: 0 1 400px;
+    }
+
+    .mockup {
+      flex: 0 1 450px;
+      margin-bottom: 65px;
+    }
+
+    .about {
+      .title {
+        font-size: 1.4rem;
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+      .text {
+        font-size: 0.95rem;
+        line-height: 1.6rem;
+
+        .motto {
+          display: block;
+          margin-bottom: 15px;
+        }
+      }
+
+      .btn {
+        border: 2px solid var(--primary-orange);
+        color: var(--primary-white);
+        background-color: var(--primary-orange);
+        padding: 8px 27px;
+        text-transform: uppercase;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.2s;
+        margin-top: 7px;
+        font-weight: bold;
+
+        &:hover {
+          color: var(--primary-orange);
+          background-color: var(--primary-background);
+          transition: 0.2s;
+        }
+      }
+    }
+  }
+}
+
+@media all and (min-width: 1000px) {
+  .wrapper .jobs .data {
+    .text {
+      margin: 0 30px;
+
+      .label {
+        font-size: 1.25rem;
+      }
+
+      .value {
+        font-size: 1.1rem;
+      }
+    }
+  }
+
+  .wrapper .mobileApp .mockup {
+    margin: 0;
+    margin-right: 45px;
+  }
+}
+
+@media all and (min-width: 1200px) {
+  .wrapper .mobileApp .mockup {
+    margin: 0;
+    margin-right: 85px;
+  }
+}

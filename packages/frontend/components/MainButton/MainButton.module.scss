@@ -1,0 +1,34 @@
+@import "../../styles/_mixins";
+
+.btn {
+  padding: 12px 35px;
+  border-radius: 30px;
+  background-color: var(--primary-orange);
+  position: relative;
+  @include flex;
+  border: 0 none;
+  outline: 0 none;
+  color: var(--primary-white);
+  cursor: pointer;
+  margin: 20px 0;
+  transition: transform 0.3s;
+
+  &::after {
+    @include pseudo;
+    border-radius: 30px;
+    box-shadow: 0 3px 20px 2px rgba(var(--rgb-primary-orange), 0.5);
+    opacity: 1;
+    transition: opacity 0.2s ease-in-out;
+  }
+
+  &:hover,
+  &:focus {
+    transform: translateY(4px);
+    transition: transform 0.2s ease-in-out;
+
+    &::after {
+      opacity: 0;
+      transition: opacity 0.2s ease-in-out;
+    }
+  }
+}
