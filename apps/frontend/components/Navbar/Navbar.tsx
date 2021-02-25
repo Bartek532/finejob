@@ -3,7 +3,7 @@ import Search from "../../public/icons/nav/search.svg";
 import About from "../../public/icons/nav/about.svg";
 import Location from "../../public/icons/nav/location.svg";
 import Person from "../../public/icons/nav/person.svg";
-import Logo from "../../public/icons/logo.svg";
+import Image from "next/image";
 import { memo } from "react";
 
 import styles from "./Navbar.module.scss";
@@ -37,7 +37,7 @@ export const Navbar = memo(() => {
       </div>
       <Link href="/">
         <div className={styles.center}>
-          <Logo />
+          <Image src="/icons/logo.svg" width={22} height={22} alt="logo" />
         </div>
       </Link>
       <div className={styles.right}>
