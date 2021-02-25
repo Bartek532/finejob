@@ -1,5 +1,6 @@
 import { Navbar } from "../Navbar/Navbar";
 import { Loader } from "../Loader/Loader";
+import { CookiesPopup } from "../CookiesPopup/CookiesPopup";
 import styles from "./Layout.module.scss";
 import FullLogo from "../../public/icons/full-logo.svg";
 import { useWindowSize } from "../../lib/hooks/useWindowSize";
@@ -26,6 +27,8 @@ export const Layout = ({
       ) : null}
       {title ? <h1 className={styles.title}>{title}</h1> : null}
       {children}
+
+      <CookiesPopup />
     </div>
   );
 };
