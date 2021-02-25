@@ -2,11 +2,11 @@ import { GetStaticProps, GetStaticPaths } from "next";
 import { Layout } from "../../components/Layout/Layout";
 import { SingleOffer } from "../../views/SingleOffer/SingleOffer";
 
-import type { Offer } from "../../types";
+import type { OfferWithSalary } from "../../../types";
 import { fetcher } from "../../lib/utils/fetcher";
 import { BASIC_API_URL } from "../../lib/utils/consts";
 
-const OfferPage = ({ offer }: { offer: Offer }) => {
+const OfferPage = ({ offer }: { offer: OfferWithSalary }) => {
   return (
     <Layout>
       <SingleOffer offer={offer} />
@@ -16,11 +16,11 @@ const OfferPage = ({ offer }: { offer: Offer }) => {
 
 export default OfferPage;
 
-export const getStaticProps: GetStaticProps = async context => {
+export const getStaticProps: GetStaticProps = async (context) => {
   try {
-    const { data }: { data: Offer } = await fetcher(
+    const { data }: { data: OfferWithSalary } = await fetcher(
       `${BASIC_API_URL}/api/offers/${context.params!.id}`,
-      "GET"
+      "GET",
     );
 
     if (!data) {
@@ -39,12 +39,12 @@ export const getStaticProps: GetStaticProps = async context => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   try {
-    const { data }: { data: Offer[] } = await fetcher(
+    const { data }: { data: OfferWithSalary[] } = await fetcher(
       `${BASIC_API_URL}/api/offers/recommended`,
-      "GET"
+      "GET",
     );
     return {
-      paths: data.map(item => ({
+      paths: data.map((item) => ({
         params: { id: item.id },
       })),
       fallback: "blocking" as const,

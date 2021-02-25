@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../../store/mainSlice";
 import styles from "./UserSettings.module.scss";
@@ -8,9 +9,9 @@ import { inputValidation } from "../../lib/utils/consts";
 import { MainButton } from "../../components/MainButton/MainButton";
 import { useForm } from "react-hook-form";
 import { UserAPI } from "../../lib/api/user";
-import type { UserRegisterData } from "../../types";
+import type { UserRegisterData } from "../../../types";
 
-export const UserSettings = () => {
+export const UserSettings = memo(() => {
   const user = useSelector(getUser);
   const dispatch = useDispatch();
   const { handleSubmit, errors, register, setValue } = useForm({
@@ -69,4 +70,4 @@ export const UserSettings = () => {
       </form>
     </main>
   );
-};
+});

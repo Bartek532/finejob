@@ -1,14 +1,15 @@
+import { memo } from "react";
 import { OfferTile } from "../../components/OfferTile/OfferTile";
 import styles from "./Results.module.scss";
 import { useSelector } from "react-redux";
 import { getAllOffers } from "../../store/offersSlice";
 
-export const Results = () => {
+export const Results = memo(() => {
   const offers = useSelector(getAllOffers);
   return (
     <section className={styles.offers}>
       {offers
-        ? offers.map(offer => (
+        ? offers.map((offer) => (
             <OfferTile
               title={offer.title}
               location={offer.location}
@@ -22,4 +23,4 @@ export const Results = () => {
         : null}
     </section>
   );
-};
+});

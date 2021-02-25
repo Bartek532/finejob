@@ -3,13 +3,17 @@ import styles from "./Recommended.module.scss";
 import Forward from "../../public/icons/buttons/forward.svg";
 import Back from "../../public/icons/buttons/back.svg";
 import { Avatar } from "../../components/Avatar/Avatar";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Link from "next/link";
 import { useWindowSize } from "../../lib/hooks/useWindowSize";
-import type { Offer } from "../../types";
+import type { OfferWithSalary } from "../../../types";
 import classnames from "classnames";
 
-export const Recommended = ({ offers }: { offers: Offer[] }) => {
+type RecommendedSectionProps = {
+  offers: OfferWithSalary[];
+};
+
+export const Recommended = React.memo<RecommendedSectionProps>(({ offers }) => {
   const { width } = useWindowSize();
   const [scroll, setScroll] = useState(0);
   const baseScrollValue = 450;
@@ -24,23 +28,23 @@ export const Recommended = ({ offers }: { offers: Offer[] }) => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  const handleScrollLeft = () => {
+  const handleScrollLeft = useCallback(() => {
     const { x } = offersContainerRef.current?.getBoundingClientRect()!;
     if (x + baseScrollValue >= 0) {
       setScroll(0);
     } else {
-      setScroll(scroll => scroll + baseScrollValue);
+      setScroll((scroll) => scroll + baseScrollValue);
     }
-  };
+  }, [scroll]);
 
-  const handleScrollRight = () => {
+  const handleScrollRight = useCallback(() => {
     const { x } = offersContainerRef.current?.getBoundingClientRect()!;
     if (x - baseScrollValue <= -maxScroll) {
       setScroll(-maxScroll);
     } else {
-      setScroll(scroll => scroll - baseScrollValue);
+      setScroll((scroll) => scroll - baseScrollValue);
     }
-  };
+  }, [scroll]);
 
   return (
     <section className={styles.wrapper}>
@@ -69,7 +73,7 @@ export const Recommended = ({ offers }: { offers: Offer[] }) => {
         style={{ transform: `translateX(${scroll}px)` }}
         ref={offersContainerRef}
       >
-        {offers.map(offer => (
+        {offers.map((offer) => (
           <Link href={`/offers/${offer.id}`} key={offer.id}>
             <a>
               <article className={styles.offer}>
@@ -106,4 +110,4 @@ export const Recommended = ({ offers }: { offers: Offer[] }) => {
       </article>
     </section>
   );
-};
+});

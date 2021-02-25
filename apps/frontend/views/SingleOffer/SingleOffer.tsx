@@ -5,8 +5,8 @@ import { ActionButton } from "../../components/ActionButton/ActionButton";
 import { UserAPI } from "../../lib/api/user";
 import { Modal } from "../../components/Modal/Modal";
 import { useDispatch, useSelector } from "react-redux";
-import type { Offer } from "../../types";
-import { useEffect, useState } from "react";
+import type { OfferWithSalary } from "../../../types";
+import { useEffect, useState, memo, useCallback } from "react";
 import { getModalInfo } from "../../store/mainSlice";
 import Image from "next/image";
 import Link from "next/link";
@@ -15,7 +15,9 @@ import classnames from "classnames";
 import { fetcher } from "../../lib/utils/fetcher";
 import { prepareQueryToSearch } from "../../lib/utils/functions";
 
-export const SingleOffer = ({ offer }: { offer: Offer }) => {
+type SingleOfferProps = { offer: OfferWithSalary };
+
+export const SingleOffer = memo<SingleOfferProps>(({ offer }) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const modal = useSelector(getModalInfo);
@@ -49,34 +51,37 @@ export const SingleOffer = ({ offer }: { offer: Offer }) => {
     }
   }, [modal]);
 
-  const handleSaveOffer = () => {
+  const handleSaveOffer = useCallback(() => {
     dispatch(UserAPI.saveOffer(offer.id));
-  };
+  }, [offer.id]);
 
-  const handleUnsaveOffer = () => {
+  const handleUnsaveOffer = useCallback(() => {
     dispatch(UserAPI.unsaveOffer(offer.id));
-  };
+  }, [offer.id]);
 
-  const handleSearchByCompany = () => {
+  const handleSearchByCompany = useCallback(() => {
     router.replace({
       pathname: "/offers",
       query: { q: prepareQueryToSearch(offer.company) },
     });
-  };
+  }, [offer.company]);
 
-  const handleSearchByField = (key: string) => {
-    if (key === "type") {
-      router.replace({
-        pathname: "/offers",
-        query: { full_time: offer.type === "Full Time" },
-      });
-    } else if (key === "location") {
-      router.replace({
-        pathname: "/offers",
-        query: { location: prepareQueryToSearch(offer.location) },
-      });
-    }
-  };
+  const handleSearchByField = useCallback(
+    (key: string) => {
+      if (key === "type") {
+        router.replace({
+          pathname: "/offers",
+          query: { full_time: offer.type === "Full Time" },
+        });
+      } else if (key === "location") {
+        router.replace({
+          pathname: "/offers",
+          query: { location: prepareQueryToSearch(offer.location) },
+        });
+      }
+    },
+    [offer.type, offer.location],
+  );
 
   return (
     <>
@@ -107,7 +112,7 @@ export const SingleOffer = ({ offer }: { offer: Offer }) => {
         </article>
 
         <div className={styles.more}>
-          {info.map(item => (
+          {info.map((item) => (
             <div className={styles.field} key={item.type}>
               {["type", "location"].includes(item.type) ? (
                 <button
@@ -159,4 +164,4 @@ export const SingleOffer = ({ offer }: { offer: Offer }) => {
       </section>
     </>
   );
-};
+});

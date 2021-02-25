@@ -1,21 +1,22 @@
+import { memo } from "react";
 import { UserAPI } from "../../lib/api/user";
 import { useForm } from "react-hook-form";
 import { Input } from "../../components/Input/Input";
 import { inputValidation } from "../../lib/utils/consts";
-import type { UserRegisterData } from "../../types";
+import type { UserRegisterData } from "../../../types";
 import { useDispatch } from "react-redux";
 
 import { MainButton } from "../../components/MainButton/MainButton";
 import styles from "./RegisterForm.module.scss";
 
-export const RegisterForm = () => {
+export const RegisterForm = memo(() => {
   const { handleSubmit, errors, register, reset } = useForm({
     reValidateMode: "onBlur",
   });
 
   const dispatch = useDispatch();
 
-  const handleFormSubmit = async (data: UserRegisterData) => {
+  const handleFormSubmit = (data: UserRegisterData) => {
     reset();
     dispatch(UserAPI.register(data));
   };
@@ -50,4 +51,4 @@ export const RegisterForm = () => {
       <MainButton text="Create an account" type="submit" />
     </form>
   );
-};
+});

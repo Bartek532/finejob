@@ -58,12 +58,7 @@ export const register = async (req: Request, res: Response) => {
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(req.body.password, salt);
 
-  const user = await createUser(
-    req.body.name,
-    req.body.email,
-    req.body.company,
-    hashedPassword
-  );
+  const user = await createUser({ ...req.body, hashedPassword });
 
   return res.status(200).json(user);
 };
@@ -104,7 +99,7 @@ export const saveOffer = async (req: Request, res: Response) => {
 export const unsaveOffer = async (req: Request, res: Response) => {
   const isOfferInLibrary = await findOfferInLibrary(
     req.user!.id,
-    req.params.id
+    req.params.id,
   );
 
   if (!isOfferInLibrary) {

@@ -1,5 +1,5 @@
 import fetch from "node-fetch";
-import type { Offer } from "../types";
+import type { Offer } from "../../../types";
 
 export const fetchRecomendedOffers = async (): Promise<Offer[]> => {
   const response = await fetch(`${process.env.JOBS_API_URL}.json`);

@@ -5,10 +5,10 @@ import { Footer } from "../components/Footer/Footer";
 import { MainInfo } from "../views/MainInfo/MainInfo";
 import { BASIC_API_URL } from "../lib/utils/consts";
 import { GetStaticProps } from "next";
-import type { Offer } from "../types";
+import type { OfferWithSalary } from "../../types";
 import { fetcher } from "../lib/utils/fetcher";
 
-const Home = ({ results }: { results: Offer[] }) => {
+const Home = ({ results }: { results: OfferWithSalary[] }) => {
   return (
     <Layout>
       <MainSection />
@@ -21,9 +21,9 @@ const Home = ({ results }: { results: Offer[] }) => {
 
 export const getStaticProps: GetStaticProps = async () => {
   try {
-    const { data } = await fetcher(
+    const { data }: { data: OfferWithSalary[] } = await fetcher(
       `${BASIC_API_URL}/api/offers/recommended`,
-      "GET"
+      "GET",
     );
 
     return { props: { results: data }, revalidate: 1 };

@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Input } from "../../components/Input/Input";
 import { MainButton } from "../../components/MainButton/MainButton";
 import { useDispatch } from "react-redux";
@@ -11,7 +12,7 @@ import { prepareQueryToSearch } from "../../lib/utils/functions";
 
 import { useForm } from "react-hook-form";
 
-export const SearchByLocation = () => {
+export const SearchByLocation = memo(() => {
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -32,7 +33,7 @@ export const SearchByLocation = () => {
 
     if (!("geolocation" in navigator)) {
       dispatch(
-        showModal({ type: "error", message: "Navigator is not available." })
+        showModal({ type: "error", message: "Navigator is not available." }),
       );
       return;
     }
@@ -41,7 +42,7 @@ export const SearchByLocation = () => {
       async ({ coords }) => {
         const data = await getCityNameByCoordinates(
           coords.latitude,
-          coords.longitude
+          coords.longitude,
         );
 
         onSearch({ location: data.address.city });
@@ -52,9 +53,9 @@ export const SearchByLocation = () => {
           showModal({
             type: "error",
             message: "Something went wrong. Try again.",
-          })
+          }),
         );
-      }
+      },
     );
   };
 
@@ -94,4 +95,4 @@ export const SearchByLocation = () => {
       </section>
     </>
   );
-};
+});

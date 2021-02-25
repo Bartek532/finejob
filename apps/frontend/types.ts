@@ -16,29 +16,26 @@ export type PasswordInputProps = {
   readonly error: { message: string };
 };
 
-export type UserLoginData = {
-  readonly email: string;
-  readonly password: string;
-};
-
-export type UserRegisterData = {
-  readonly name: string;
-  readonly company: string;
-  readonly email: string;
-  readonly password: string;
-};
-
-export type Offer = {
-  readonly id: string;
-  readonly type: string;
-  readonly url: string;
-  readonly created_at: string;
-  readonly company: string;
-  readonly company_url: string;
-  readonly location: string;
-  readonly title: string;
-  readonly description: string;
-  readonly how_to_apply: string;
-  readonly company_logo: string;
-  readonly salary: number;
+export type LocationAPIResponse = {
+  address: {
+    city: string;
+    country: string;
+    country_code: string;
+    county: string;
+    neighbourhood: string;
+    postcode: string;
+    road: string;
+    school: string;
+    state: "województwo śląskie";
+    state_district: string;
+    suburb: string;
+  };
+  boundingbox: string[];
+  display_name: string;
+  lat: string;
+  licence: string;
+  lon: string;
+  osm_id: string;
+  osm_type: string;
+  place_id: string;
 };

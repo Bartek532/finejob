@@ -1,16 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
+import type { UserRegisterData } from "../../types";
 
 export type InitialMainState = {
   main: {
     loading: boolean;
     modal: { show: boolean; type: string; message: string };
     isLogIn: boolean;
-    user: {
-      name: string;
-      company: string;
-      email: string;
-      password: string;
-    };
+    user: UserRegisterData;
   };
 };
 
@@ -42,7 +38,7 @@ export const slice = createSlice({
         message: payload.message,
       };
     },
-    hideModal: state => {
+    hideModal: (state) => {
       state.modal = { ...state.modal, show: false };
     },
     setIsLogin: (state, { payload }) => {
@@ -61,7 +57,7 @@ export const {
   setIsLogin,
   setUser,
 } = slice.actions;
-export const getLoading = (state: InitialMainState) => state.main.loading;
+export const getLoadingStatus = (state: InitialMainState) => state.main.loading;
 export const getModalInfo = (state: InitialMainState) => state.main.modal;
 export const getLoginStatus = (state: InitialMainState) => state.main.isLogIn;
 export const getUser = (state: InitialMainState) => state.main.user;

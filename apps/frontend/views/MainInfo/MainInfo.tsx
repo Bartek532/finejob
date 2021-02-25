@@ -1,15 +1,16 @@
+import { memo } from "react";
 import { Counter } from "../../components/Counter/Counter";
 import styles from "./MainInfo.module.scss";
 import Image from "next/image";
 
-const jobs = [
+const jobsInfo = [
   { label: "Live jobs", value: 12000, icon: "live" },
   { label: "Page views", value: "5000000+", icon: "eye" },
   { label: "Daily job post", value: "5000+", icon: "calendar" },
   { label: "Saved jobs", value: 6400, icon: "save" },
 ];
 
-export const MainInfo = () => {
+export const MainInfo = memo(() => {
   return (
     <section className={styles.wrapper}>
       <article className={styles.mainCounter}>
@@ -19,7 +20,7 @@ export const MainInfo = () => {
         <Counter value={12000000} time={7} />
       </article>
       <article className={styles.jobs}>
-        {jobs.map(item => (
+        {jobsInfo.map((item) => (
           <div className={styles.data} key={item.label}>
             <div className={styles.text}>
               <span className={styles.label}>{item.label}</span>
@@ -66,4 +67,4 @@ export const MainInfo = () => {
       </article>
     </section>
   );
-};
+});

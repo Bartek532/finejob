@@ -1,3 +1,4 @@
+import { memo } from "react";
 import styles from "./AboutSection.module.scss";
 import { Counter } from "../../components/Counter/Counter";
 import Image from "next/image";
@@ -35,11 +36,11 @@ const steps = [
   },
 ];
 
-export const AboutSection = () => {
+export const AboutSection = memo(() => {
   return (
     <main className={styles.about}>
       <div className={styles.steps}>
-        {steps.map(step => (
+        {steps.map((step) => (
           <article className={styles.step} key={step.title}>
             <div className={styles.description}>
               <h3>{step.title}</h3>
@@ -71,4 +72,4 @@ export const AboutSection = () => {
       </article>
     </main>
   );
-};
+});

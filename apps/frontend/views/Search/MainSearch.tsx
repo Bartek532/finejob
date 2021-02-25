@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Input } from "../../components/Input/Input";
 import { MainButton } from "../../components/MainButton/MainButton";
 import styles from "./SearchSection.module.scss";
@@ -6,7 +7,7 @@ import { useRouter } from "next/router";
 import { prepareQueryToSearch } from "../../lib/utils/functions";
 import { useForm } from "react-hook-form";
 
-export const MainSearch = () => {
+export const MainSearch = memo(() => {
   const router = useRouter();
 
   const { register, handleSubmit, reset } = useForm();
@@ -46,4 +47,4 @@ export const MainSearch = () => {
       </article>
     </section>
   );
-};
+});

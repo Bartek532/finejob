@@ -1,11 +1,11 @@
 import Image from "next/image";
 import styles from "./Loader.module.scss";
-import { getLoading } from "../../store/mainSlice";
+import { getLoadingStatus } from "../../store/mainSlice";
 import { useSelector } from "react-redux";
 import { memo } from "react";
 
 export const Loader = memo(() => {
-  const loading = useSelector(getLoading);
+  const loading = useSelector(getLoadingStatus);
 
   if (!loading) {
     return null;
