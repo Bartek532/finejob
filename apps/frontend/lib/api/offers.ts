@@ -3,7 +3,7 @@ import { Action } from "redux";
 import { ThunkAction } from "redux-thunk";
 import type { InitialMainState } from "../../store/mainSlice";
 import type { InitialOffersState } from "../../store/offersSlice";
-import type { OfferWithSalary } from "../../../types";
+import type { OfferWithSalary } from "@finejob/types";
 
 import { setLoading, showModal } from "../../store/mainSlice";
 import {

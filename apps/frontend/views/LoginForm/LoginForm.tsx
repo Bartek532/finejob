@@ -1,7 +1,7 @@
 import { UserAPI } from "../../lib/api/user";
 import { useForm } from "react-hook-form";
 import { inputValidation } from "../../lib/utils/consts";
-import type { UserLoginData } from "../../../types";
+import type { UserLoginData } from "@finejob/types";
 import { Input } from "../../components/Input/Input";
 import Link from "next/link";
 import { useRouter } from "next/router";

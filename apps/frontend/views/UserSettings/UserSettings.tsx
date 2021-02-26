@@ -9,7 +9,7 @@ import { inputValidation } from "../../lib/utils/consts";
 import { MainButton } from "../../components/MainButton/MainButton";
 import { useForm } from "react-hook-form";
 import { UserAPI } from "../../lib/api/user";
-import type { UserRegisterData } from "../../../types";
+import type { UserRegisterData } from "@finejob/types";
 
 export const UserSettings = memo(() => {
   const user = useSelector(getUser);

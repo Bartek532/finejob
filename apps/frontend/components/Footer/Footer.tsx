@@ -3,6 +3,8 @@ import styles from "./Footer.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 
+const actualDate = new Date().getFullYear();
+
 export const Footer = memo(() => {
   return (
     <footer className={styles.foo}>
@@ -30,7 +32,7 @@ export const Footer = memo(() => {
         />
       </div>
       <div className={styles.copyright}>
-        Copyright &copy; 2021 - Bartosz Zagrodzki
+        Copyright &copy; {actualDate} - Bartosz Zagrodzki
       </div>
     </footer>
   );

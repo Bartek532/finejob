@@ -5,7 +5,7 @@ import { ActionButton } from "../../components/ActionButton/ActionButton";
 import { UserAPI } from "../../lib/api/user";
 import { Modal } from "../../components/Modal/Modal";
 import { useDispatch, useSelector } from "react-redux";
-import type { OfferWithSalary } from "../../../types";
+import type { OfferWithSalary } from "@finejob/types";
 import { useEffect, useState, memo, useCallback } from "react";
 import { getModalInfo } from "../../store/mainSlice";
 import Image from "next/image";

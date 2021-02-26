@@ -1,5 +1,5 @@
 import { memo } from "react";
-import type { OfferWithSalary } from "../../../types";
+import type { OfferWithSalary } from "@finejob/types";
 import styles from "./OfferTile.module.scss";
 import { ActionButton } from "../ActionButton/ActionButton";
 import Link from "next/link";

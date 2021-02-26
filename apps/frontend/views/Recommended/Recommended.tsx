@@ -5,7 +5,7 @@ import { Avatar } from "../../components/Avatar/Avatar";
 import { useState, useEffect, useCallback, memo, createRef } from "react";
 import Link from "next/link";
 import { useWindowSize } from "../../lib/hooks/useWindowSize";
-import type { OfferWithSalary } from "../../../types";
+import type { OfferWithSalary } from "@finejob/types";
 import classnames from "classnames";
 
 type RecommendedSectionProps = {

@@ -3,7 +3,7 @@ import { UserAPI } from "../../lib/api/user";
 import { useForm } from "react-hook-form";
 import { Input } from "../../components/Input/Input";
 import { inputValidation } from "../../lib/utils/consts";
-import type { UserRegisterData } from "../../../types";
+import type { UserRegisterData } from "@finejob/types";
 import { useDispatch } from "react-redux";
 
 import { MainButton } from "../../components/MainButton/MainButton";

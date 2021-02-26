@@ -2,7 +2,7 @@ import { GetStaticProps, GetStaticPaths } from "next";
 import { Layout } from "../../components/Layout/Layout";
 import { SingleOffer } from "../../views/SingleOffer/SingleOffer";
 
-import type { OfferWithSalary } from "../../../types";
+import type { OfferWithSalary } from "@finejob/types";
 import { fetcher } from "../../lib/utils/fetcher";
 import { BASIC_API_URL } from "../../lib/utils/consts";
 

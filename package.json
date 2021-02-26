@@ -6,6 +6,10 @@
       "apps/*"
     ]
   },
+  "scripts": {
+    "build": "yarn workspaces foreach run build",
+    "start": "yarn workspaces server start"
+  },
   "devDependencies": {
     "lerna": "^3.22.1"
   }

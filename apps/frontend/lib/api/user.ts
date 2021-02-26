@@ -13,7 +13,7 @@ import type {
   UserRegisterData,
   User,
   OfferWithSalary,
-} from "../../../types";
+} from "@finejob/types";
 import type { InitialMainState } from "../../store/mainSlice";
 
 type FuncType = ThunkAction<void, InitialMainState, unknown, Action<string>>;

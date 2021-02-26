@@ -1,6 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { fetchSingleOffer } from "./offers";
-import type { UserRegisterData } from "../../../types";
+import type { UserRegisterData } from "@finejob/types";
 const prisma = new PrismaClient();
 
 export const findUserByEmail = (email: string) => {
