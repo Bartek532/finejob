@@ -5,11 +5,11 @@ import { memo } from "react";
 import { getModalInfo, hideModal } from "../../store/mainSlice";
 
 type ModalActions = {
-  onCancel?: () => void;
-  onAccept?: () => void;
+  readonly onCancel?: () => void;
+  readonly onAccept?: () => void;
 };
 
-export const Modal = memo(({ onCancel, onAccept }: ModalActions) => {
+export const Modal = memo<ModalActions>(({ onCancel, onAccept }) => {
   const modal = useSelector(getModalInfo);
   const dispatch = useDispatch();
 

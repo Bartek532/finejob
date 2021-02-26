@@ -32,8 +32,8 @@ export const SearchResults = memo(() => {
     setValue(
       "search",
       decodeURIComponent(
-        (router.query.q as string) || (router.query.location as string) || ""
-      )
+        (router.query.q as string) || (router.query.location as string) || "",
+      ),
     );
   }, [router.asPath]);
 

@@ -1,9 +1,12 @@
+import { memo } from "react";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { getLoginStatus } from "../../store/mainSlice";
 import { useEffect } from "react";
 
-export const AuthChecker = ({ children }: { children: React.ReactNode }) => {
+type AuthCheckerProps = { readonly children: React.ReactNode };
+
+export const AuthChecker = memo<AuthCheckerProps>(({ children }) => {
   const isUserLogin = useSelector(getLoginStatus);
 
   const router = useRouter();
@@ -19,4 +22,4 @@ export const AuthChecker = ({ children }: { children: React.ReactNode }) => {
   }
 
   return <main>{children}</main>;
-};
+});

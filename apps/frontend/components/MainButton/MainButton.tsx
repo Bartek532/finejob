@@ -1,29 +1,29 @@
+import { memo } from "react";
 import styles from "./MainButton.module.scss";
 import Image from "next/image";
 
-export const MainButton = ({
-  text,
-  icon,
-  type,
-  onClick,
-}: {
-  text?: string;
-  icon?: string;
-  type?: "submit" | "reset";
-  onClick?: () => void;
-}) => {
-  return (
-    <button className={styles.btn} type={type || "button"} onClick={onClick}>
-      {text ? (
-        text
-      ) : (
-        <Image
-          src={`/icons/buttons/${icon}.svg`}
-          alt={icon}
-          width={16}
-          height={16}
-        />
-      )}
-    </button>
-  );
+type MainButtonProps = {
+  readonly text?: string;
+  readonly icon?: string;
+  readonly type: "submit" | "reset" | "button";
+  readonly onClick?: () => void;
 };
+
+export const MainButton = memo<MainButtonProps>(
+  ({ text, icon, type, onClick }) => {
+    return (
+      <button className={styles.btn} type={type} onClick={onClick}>
+        {text ? (
+          text
+        ) : (
+          <Image
+            src={`/icons/buttons/${icon}.svg`}
+            alt={icon}
+            width={16}
+            height={16}
+          />
+        )}
+      </button>
+    );
+  },
+);

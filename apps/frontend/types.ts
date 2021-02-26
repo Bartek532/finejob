@@ -17,25 +17,25 @@ export type PasswordInputProps = {
 };
 
 export type LocationAPIResponse = {
-  address: {
-    city: string;
-    country: string;
-    country_code: string;
-    county: string;
-    neighbourhood: string;
-    postcode: string;
-    road: string;
-    school: string;
-    state: "województwo śląskie";
-    state_district: string;
-    suburb: string;
+  readonly address: {
+    readonly city: string;
+    readonly country: string;
+    readonly country_code: string;
+    readonly county: string;
+    readonly neighbourhood: string;
+    readonly postcode: string;
+    readonly road: string;
+    readonly school: string;
+    readonly state: "województwo śląskie";
+    readonly state_district: string;
+    readonly suburb: string;
   };
-  boundingbox: string[];
-  display_name: string;
-  lat: string;
-  licence: string;
-  lon: string;
-  osm_id: string;
-  osm_type: string;
-  place_id: string;
+  readonly boundingbox: string[];
+  readonly display_name: string;
+  readonly lat: string;
+  readonly licence: string;
+  readonly lon: string;
+  readonly osm_id: string;
+  readonly osm_type: string;
+  readonly place_id: string;
 };

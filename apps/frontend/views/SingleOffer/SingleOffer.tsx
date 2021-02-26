@@ -15,7 +15,7 @@ import classnames from "classnames";
 import { fetcher } from "../../lib/utils/fetcher";
 import { prepareQueryToSearch } from "../../lib/utils/functions";
 
-type SingleOfferProps = { offer: OfferWithSalary };
+type SingleOfferProps = { readonly offer: OfferWithSalary };
 
 export const SingleOffer = memo<SingleOfferProps>(({ offer }) => {
   const dispatch = useDispatch();

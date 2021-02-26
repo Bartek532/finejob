@@ -1,19 +1,18 @@
-import * as React from "react";
 import styles from "./Recommended.module.scss";
 import Forward from "../../public/icons/buttons/forward.svg";
 import Back from "../../public/icons/buttons/back.svg";
 import { Avatar } from "../../components/Avatar/Avatar";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, memo } from "react";
 import Link from "next/link";
 import { useWindowSize } from "../../lib/hooks/useWindowSize";
 import type { OfferWithSalary } from "../../../types";
 import classnames from "classnames";
 
 type RecommendedSectionProps = {
-  offers: OfferWithSalary[];
+  readonly offers: OfferWithSalary[];
 };
 
-export const Recommended = React.memo<RecommendedSectionProps>(({ offers }) => {
+export const Recommended = memo<RecommendedSectionProps>(({ offers }) => {
   const { width } = useWindowSize();
   const [scroll, setScroll] = useState(0);
   const baseScrollValue = 450;

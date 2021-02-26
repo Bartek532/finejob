@@ -1,7 +1,10 @@
+import { memo } from "react";
 import CountUp from "react-countup";
 import styles from "./Counter.module.scss";
 
-export const Counter = ({ value, time }: { value: number; time: number }) => {
+type CounterProps = { readonly value: number; readonly time: number };
+
+export const Counter = memo<CounterProps>(({ value, time }) => {
   return (
     <CountUp end={value} duration={time} separator="," delay={0}>
       {({ countUpRef }) => (
@@ -11,4 +14,4 @@ export const Counter = ({ value, time }: { value: number; time: number }) => {
       )}
     </CountUp>
   );
-};
+});

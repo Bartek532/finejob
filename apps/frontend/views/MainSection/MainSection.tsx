@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { Input } from "../../components/Input/Input";
 import { MainButton } from "../../components/MainButton/MainButton";
 import styles from "./MainSection.module.scss";
@@ -10,7 +11,7 @@ import { useRouter } from "next/router";
 
 import { useForm } from "react-hook-form";
 
-export const MainSection = () => {
+export const MainSection = memo(() => {
   const { width } = useWindowSize();
   const router = useRouter();
 
@@ -59,4 +60,4 @@ export const MainSection = () => {
       </article>
     </section>
   );
-};
+});

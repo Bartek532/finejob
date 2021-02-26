@@ -1,8 +1,9 @@
+import { memo } from "react";
 import styles from "./Footer.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 
-export const Footer = () => {
+export const Footer = memo(() => {
   return (
     <footer className={styles.foo}>
       <div className={styles.wrapper}>
@@ -33,4 +34,4 @@ export const Footer = () => {
       </div>
     </footer>
   );
-};
+});

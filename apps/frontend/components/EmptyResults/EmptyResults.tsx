@@ -1,7 +1,8 @@
+import { memo } from "react";
 import styles from "./EmptyResults.module.scss";
 import Image from "next/image";
 
-export const EmptyResults = () => {
+export const EmptyResults = memo(() => {
   return (
     <section className={styles.empty}>
       <div className={styles.wrapper}>
@@ -16,4 +17,4 @@ export const EmptyResults = () => {
       </div>
     </section>
   );
-};
+});

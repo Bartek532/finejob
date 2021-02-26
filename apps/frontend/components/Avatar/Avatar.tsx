@@ -2,7 +2,9 @@ import { memo } from "react";
 import styles from "./Avatar.module.scss";
 import { logoColors } from "../../lib/utils/consts";
 
-export const Avatar = memo(({ img, name }: { img?: string; name?: string }) => {
+type AvatarProps = { readonly img?: string; readonly name?: string };
+
+export const Avatar = memo<AvatarProps>(({ img, name }) => {
   if (img) {
     return (
       <div
