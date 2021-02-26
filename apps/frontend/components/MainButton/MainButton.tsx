@@ -5,7 +5,7 @@ import Image from "next/image";
 type MainButtonProps = {
   readonly text?: string;
   readonly icon?: string;
-  readonly type: "submit" | "reset" | "button";
+  readonly type?: "submit" | "reset" | "button";
   readonly onClick?: () => void;
 };
 

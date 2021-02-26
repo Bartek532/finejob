@@ -4,18 +4,18 @@
   @include flex;
   flex-flow: column wrap;
   min-height: 100vh;
-  margin-top: -80px;
+  margin-top: -5rem;
   .fields {
     @include flex;
-    margin-bottom: 30px;
+    margin-bottom: 1.8rem;
 
     .field {
-      flex: 0 1 250px;
+      flex: 0 1 15.6rem;
       width: 40vw;
-      max-width: 200px;
+      max-width: 12.5rem;
       height: clamp(120px, 58vw, 250px);
-      padding: 35px 10px;
-      margin: 0 10px;
+      padding: 2.2rem 0.7rem;
+      margin: 0 0.6rem;
       border-radius: 10px;
       @include flex(space-between);
       flex-flow: column wrap;
@@ -37,8 +37,8 @@
         }
       }
       .icon {
-        max-width: 150px;
-        padding: 0 15px;
+        max-width: 9.5rem;
+        padding: 0 1rem;
       }
       .label {
         font-weight: 500;
@@ -47,8 +47,9 @@
         font-size: 0.9rem;
         background-color: transparent;
         border: 0 none;
+        cursor: pointer;
 
-        @media all and (min-width: 450px) {
+        @media all and (min-width: 28rem) {
           font-size: 1.15rem;
         }
       }
@@ -56,11 +57,11 @@
   }
 }
 
-@media all and (min-width: 1000px) {
+@media all and (min-width: 62.5rem) {
   .dashboard .fields {
-    margin-bottom: 30px;
+    margin-bottom: 1.9rem;
     .field {
-      margin: 20px;
+      margin: 1.4rem;
 
       .icon {
         padding: 0;
@@ -69,9 +70,9 @@
   }
 }
 
-@media all and (max-width: 360px) {
+@media all and (max-width: 22.5rem) {
   .dashboard .fields .field {
-    padding: 30px 10px;
+    padding: 1.8rem 0.7rem;
     .icon {
       transform: scale(0.85);
     }

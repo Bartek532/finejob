@@ -6,23 +6,23 @@
   width: 100%;
 
   .main {
-    flex: 0 1 400px;
+    flex: 0 1 25rem;
     @include flex;
     flex-flow: column wrap;
     word-break: break-word;
-    padding: 0 15px;
+    padding: 0 1rem;
     width: 100%;
     .logo {
-      width: 110px;
-      height: 110px;
-      margin: 15px;
+      width: 6.8rem;
+      height: 6.8rem;
+      margin: 1rem;
       font-size: 2.6rem;
     }
 
     .name {
       font-weight: bold;
       font-size: 1.25rem;
-      margin: 10px 0 7px 0;
+      margin: 0.65rem 0 0.5rem 0;
       text-align: center;
       line-height: 1.7rem;
     }
@@ -30,26 +30,26 @@
     .company {
       color: var(--primary-gray);
       font-size: 0.9rem;
-      padding-top: 7px;
+      padding-top: 0.5rem;
     }
   }
 
   .form {
     width: 100%;
-    flex: 0 1 400px;
+    flex: 0 1 25rem;
     @include flex;
     flex-flow: column wrap;
-    padding: 40px 0;
+    padding: 2.5rem 0;
   }
 }
 
-@media all and (min-width: 800px) {
+@media all and (min-width: 50rem) {
   .main {
     transform: scale(1.4) translate(-25px, -60px);
   }
 
   .settings .form {
-    margin-top: -30px;
-    height: 590px;
+    margin-top: -1.9rem;
+    height: 36.8rem;
   }
 }

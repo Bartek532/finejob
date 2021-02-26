@@ -14,23 +14,23 @@
     @include flex;
     flex-flow: column wrap;
     width: 85vw;
-    max-width: 450px;
-    min-height: 290px;
+    max-width: 28.1rem;
+    min-height: 18.1rem;
     background-color: var(--primary-white);
     position: relative;
     border-radius: 10px;
-    padding: 0 37px 20px 37px;
+    padding: 0 2.3rem 1.3rem 2.3rem;
 
     .info {
       font-weight: 600;
       font-size: 1.05rem;
       line-height: 1.45rem;
       text-align: center;
-      padding: 30px 0 20px 0;
+      padding: 1.8rem 0 1.3rem 0;
 
       @media all and(min-width:1000px) {
         font-size: 1.1rem;
-        padding: 30px 10px 20px 10px;
+        padding: 1.8rem 0.65rem 1.3rem 0.65rem;
       }
     }
 
@@ -41,8 +41,8 @@
 
       .cancel,
       .ok {
-        margin: 0 5px;
-        padding: 8px 17px;
+        margin: 0 0.35rem;
+        padding: 0.5rem 1rem;
         border-radius: 5px;
         font-size: 0.78rem;
         font-weight: 600;

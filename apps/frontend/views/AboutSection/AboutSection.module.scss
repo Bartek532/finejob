@@ -3,7 +3,7 @@
 .about {
   @include flex;
   flex-flow: column wrap;
-  padding: 0 35px;
+  padding: 0 2.1rem;
   width: 100%;
 
   .steps {
@@ -19,7 +19,7 @@
       );
       border-image-slice: 1;
       border-width: 3px;
-      padding: 40px;
+      padding: 2.5rem;
       counter-increment: article;
       position: relative;
 
@@ -68,7 +68,7 @@
       }
 
       .description {
-        flex: 0 1 400px;
+        flex: 0 1 25rem;
         .text {
           font-size: 1em;
           line-height: 1.75em;
@@ -77,9 +77,9 @@
         }
       }
       .image {
-        flex: 0 1 370px;
-        margin-top: 35px;
-        padding: 20px;
+        flex: 0 1 23.1rem;
+        margin-top: 2.2rem;
+        padding: 1.3rem;
       }
     }
   }
@@ -87,7 +87,7 @@
   .employeeCounter {
     @include flex;
     flex-flow: column wrap;
-    padding: 45px 0 35px 0;
+    padding: 2.7rem 0 2.2rem 0;
     width: 100%;
     .label {
       text-transform: uppercase;
@@ -97,13 +97,13 @@
       text-align: center;
       line-height: 2.4rem;
       color: var(--primary-orange);
-      padding-bottom: 15px;
+      padding-bottom: 1rem;
     }
 
     .subtitle {
       text-align: center;
       line-height: 1.5rem;
-      padding-top: 10px;
+      padding-top: 0.65rem;
     }
   }
 }

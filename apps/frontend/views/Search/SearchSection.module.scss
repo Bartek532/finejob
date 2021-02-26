@@ -12,9 +12,9 @@
     .title {
       font-size: 3.1rem;
       text-align: center;
-      margin: 0 8px 60px 8px;
-      padding: 0 20px;
-      max-width: 380px;
+      margin: 0 0.5rem 3.8rem 0.5rem;
+      padding: 0 1.3rem;
+      max-width: 23.7rem;
       display: none;
 
       .violet {
@@ -37,7 +37,7 @@
         @include flex;
 
         button {
-          margin: 30px 10px;
+          margin: 1.9rem 0.6rem;
         }
       }
     }
@@ -47,30 +47,30 @@
       line-height: 1.16rem;
       color: #7c7c7c;
       text-align: center;
-      margin: 54px 31px;
-      padding: 0 20px;
-      max-width: 380px;
+      margin: 3.5rem 2rem;
+      padding: 0 1.3rem;
+      max-width: 23.7rem;
     }
   }
 
   .image {
-    padding-bottom: 73px;
-    width: 220px;
+    padding-bottom: 6.2rem;
+    width: 13.7rem;
   }
 }
 
-@media all and (min-width: 1000px) {
+@media all and (min-width: 62.5rem) {
   .main {
     flex-flow: row wrap;
     justify-content: space-evenly;
-    margin-top: -40px;
+    margin-top: -2.5rem;
 
     .wrapper {
-      margin-top: 20px;
+      margin-top: 1.3rem;
       .title {
         text-align: left;
-        margin-left: 45px;
-        margin-bottom: 65px;
+        margin-left: 2.9rem;
+        margin-bottom: 4rem;
         padding: 0;
         display: block;
       }
@@ -78,7 +78,7 @@
 
     .image {
       padding: 0;
-      margin-left: 30px;
+      margin-left: 2rem;
       width: auto;
     }
   }

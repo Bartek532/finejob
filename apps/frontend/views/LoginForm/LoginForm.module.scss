@@ -14,10 +14,10 @@
   .info {
     @include flex;
     flex-flow: column wrap;
-    margin-top: 45px;
+    margin-top: 2.7rem;
     .subtitle {
       font-size: 0.9rem;
-      margin-top: 40px;
+      margin-top: 2.5rem;
     }
 
     .forgot,
@@ -26,20 +26,20 @@
       text-decoration: underline;
       color: var(--primary-black);
       display: block;
-      margin-top: 5px;
+      margin-top: 0.4rem;
       &:hover {
         text-decoration: none;
       }
     }
 
     .btn {
-      margin: 40px 0 70px 0;
+      margin: 2.5rem 0 4.3rem 0;
     }
   }
 }
 
-@media all and (min-width: 1000px) {
+@media all and (min-width: 62.5rem) {
   .login {
-    margin-top: -50px;
+    margin-top: -2.8rem;
   }
 }

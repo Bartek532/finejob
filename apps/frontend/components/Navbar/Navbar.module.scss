@@ -10,7 +10,7 @@
 
   .left,
   .right {
-    height: 66px;
+    height: 4rem;
     width: 50%;
     background-color: var(--primary-white);
     @include flex(space-evenly);
@@ -18,12 +18,12 @@
 
   .left {
     border-radius: 15px 15px 0 0;
-    padding-right: 20px;
+    padding-right: 1.3rem;
   }
 
   .right {
     border-radius: 15px 15px 0 0;
-    padding-left: 20px;
+    padding-left: 1.3rem;
   }
 
   .label {
@@ -39,9 +39,9 @@
   }
 
   .center {
-    @include pseudo(36px, 0, 50%, var(--primary-orange));
+    @include pseudo(2.2rem, 0, 50%, var(--primary-orange));
     transform: translate(-50%, 14px);
-    height: 36px;
+    height: 2.2rem;
     border-radius: 50%;
     @include flex;
   }
@@ -51,7 +51,7 @@
   .nav {
     position: absolute;
     top: 20px;
-    height: 66px;
+    height: 4.1rem;
     right: 40px;
     width: auto;
 
@@ -65,7 +65,7 @@
     .label {
       display: inline-block;
       text-transform: uppercase;
-      margin: 0 23px;
+      margin: 0 1.55rem;
       cursor: pointer;
       color: var(--primary-black);
       transition: color 0.3s;

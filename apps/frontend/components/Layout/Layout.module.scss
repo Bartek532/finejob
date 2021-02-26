@@ -3,11 +3,12 @@
 .content {
   @include flex;
   flex-flow: column wrap;
-  padding: 50px 0 85px 0;
+  justify-content: flex-start;
+  padding: 3.1rem 0 5.3rem 0;
   width: 100vw;
   min-height: 100vh;
   position: relative;
-  max-width: 1200px;
+  max-width: 75rem;
 
   .logo {
     position: absolute;
@@ -18,10 +19,10 @@
 
   .title {
     text-transform: uppercase;
-    letter-spacing: 1.2px;
+    letter-spacing: 0.07rem;
     color: var(--primary-orange);
     position: relative;
-    padding-bottom: 10px;
+    padding-bottom: 0.6rem;
     font-size: 1.7rem;
     transform: translateY(-25px);
 
@@ -32,10 +33,9 @@
   }
 }
 
-@media all and (min-width: 1000px) {
+@media all and (min-width: 62.5rem) {
   .content {
-    padding: 120px 40px 0 40px;
-    min-height: initial;
+    padding: 7rem 2.5rem 0 2.5rem;
 
     .title {
       font-size: 1.9rem;

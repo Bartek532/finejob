@@ -7,19 +7,19 @@
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
-  padding: 0 20px;
-  padding-bottom: 70px;
+  padding: 0 1.5rem;
+  padding-bottom: 3.9rem;
   background-color: var(--primary-orange);
   color: var(--primary-white);
-  max-width: 1200px;
+  max-width: 75rem;
   line-height: 1.4rem;
   z-index: 9;
 
   .btn {
     text-transform: uppercase;
-    padding: 7px 25px;
+    padding: 0.45rem 1.6rem;
     font-weight: bold;
-    margin: 0 7px;
+    margin: 0 0.47rem;
     cursor: pointer;
     background-color: var(--primary-violet);
     border: 2px solid var(--primary-violet);
@@ -35,8 +35,8 @@
   }
 }
 
-@media all and (min-width: 1000px) {
+@media all and (min-width: 62.5rem) {
   .cookies {
-    padding: 0 30px;
+    padding: 0 1.9rem;
   }
 }

@@ -35,7 +35,9 @@ export const SearchResults = memo(() => {
         (router.query.q as string) || (router.query.location as string) || "",
       ),
     );
-  }, [router.asPath]);
+
+    console.log(router.query.q);
+  }, [router.query]);
 
   const onSearch = ({ search: query }: { search: string }) => {
     if (query && query.trim().length) {

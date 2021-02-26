@@ -1,7 +1,7 @@
 @import "../../styles/_mixins";
 
 .wrapper {
-  padding: 40px 0;
+  padding: 2.5rem 0;
   width: 100%;
   .mainCounter {
     @include flex;
@@ -9,12 +9,12 @@
     border-top: 2px solid var(--primary-white);
     border-bottom: 2px solid var(--primary-white);
     width: 100%;
-    padding: 40px 30px;
+    padding: 2.5rem 1.89rem;
 
     .title {
       text-align: center;
       font-weight: bold;
-      margin-bottom: 30px;
+      margin-bottom: 1.9rem;
       line-height: 1.8rem;
     }
   }
@@ -22,12 +22,12 @@
   .jobs {
     @include flex;
     flex-wrap: wrap;
-    padding: 60px 20px;
+    padding: 3.8rem 1.4rem;
 
     .data {
-      flex: 0 1 400px;
+      flex: 0 1 25rem;
       @include flex(space-between);
-      padding: 35px;
+      padding: 2.1rem;
       width: 100%;
 
       .text {
@@ -35,7 +35,7 @@
         flex-flow: column wrap;
 
         .label {
-          margin: 5px 0;
+          margin: 0.3rem 0;
           font-size: 1.1rem;
         }
 
@@ -46,8 +46,8 @@
       }
 
       .icon {
-        width: 90px;
-        height: 90px;
+        width: 5.6rem;
+        height: 5.6rem;
         background-color: rgba(182, 97, 180, 0.2);
         @include flex;
         border-radius: 50%;
@@ -70,17 +70,17 @@
   }
 
   .mobileApp {
-    padding: 25px 23px 35px 23px;
+    padding: 1.5rem 1.4rem 2.2rem 1.4rem;
     @include flex;
     flex-wrap: wrap;
 
     .about {
-      flex: 0 1 400px;
+      flex: 0 1 25rem;
     }
 
     .mockup {
-      flex: 0 1 450px;
-      margin-bottom: 65px;
+      flex: 0 1 28.1rem;
+      margin-bottom: 4rem;
     }
 
     .about {
@@ -95,7 +95,7 @@
 
         .motto {
           display: block;
-          margin-bottom: 15px;
+          margin-bottom: 1rem;
         }
       }
 
@@ -103,12 +103,12 @@
         border: 2px solid var(--primary-orange);
         color: var(--primary-white);
         background-color: var(--primary-orange);
-        padding: 8px 27px;
+        padding: 0.5rem 1.7rem;
         text-transform: uppercase;
         border-radius: 5px;
         cursor: pointer;
         transition: 0.2s;
-        margin-top: 7px;
+        margin-top: 0.48rem;
         font-weight: bold;
 
         &:hover {
@@ -121,10 +121,10 @@
   }
 }
 
-@media all and (min-width: 1000px) {
+@media all and (min-width: 62.5rem) {
   .wrapper .jobs .data {
     .text {
-      margin: 0 30px;
+      margin: 0 1.9rem;
 
       .label {
         font-size: 1.25rem;
@@ -138,13 +138,13 @@
 
   .wrapper .mobileApp .mockup {
     margin: 0;
-    margin-right: 45px;
+    margin-right: 2.8rem;
   }
 }
 
-@media all and (min-width: 1200px) {
+@media all and (min-width: 75rem) {
   .wrapper .mobileApp .mockup {
     margin: 0;
-    margin-right: 85px;
+    margin-right: 5.3rem;
   }
 }
