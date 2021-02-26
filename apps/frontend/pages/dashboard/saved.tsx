@@ -1,4 +1,5 @@
 import { Layout } from "../../components/Layout/Layout";
+import { ActionButton } from "../../components/ActionButton/ActionButton";
 import { Results } from "../../views/Results/Results";
 import { AuthChecker } from "../../components/AuthChecker/AuthChecker";
 import { useEffect } from "react";
@@ -13,6 +14,7 @@ const Saved = () => {
   return (
     <AuthChecker>
       <Layout title="Saved" headerTitle="saved offers">
+        <ActionButton icon="back" corner />
         <Results />
       </Layout>
     </AuthChecker>

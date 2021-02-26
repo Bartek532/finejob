@@ -8,13 +8,18 @@ import {
   setUser,
 } from "../../store/mainSlice";
 import { setOffers } from "../../store/offersSlice";
-import type { UserLoginData, UserRegisterData } from "../../types";
+import type {
+  UserLoginData,
+  UserRegisterData,
+  User,
+  OfferWithSalary,
+} from "../../../types";
 import type { InitialMainState } from "../../store/mainSlice";
 
 type FuncType = ThunkAction<void, InitialMainState, unknown, Action<string>>;
 
 export const UserAPI = {
-  login: ({ email, password }: UserLoginData): FuncType => async dispatch => {
+  login: ({ email, password }: UserLoginData): FuncType => async (dispatch) => {
     dispatch(setLoading(true));
     try {
       await fetcher("/api/users/login", "POST", {
@@ -33,7 +38,7 @@ export const UserAPI = {
     email,
     company,
     password,
-  }: UserRegisterData): FuncType => async dispatch => {
+  }: UserRegisterData): FuncType => async (dispatch) => {
     dispatch(setLoading(true));
     try {
       await fetcher("/api/users/register", "POST", {
@@ -43,7 +48,7 @@ export const UserAPI = {
         password,
       });
       dispatch(
-        showModal({ type: "success", message: "Thanks to register. Log in!" })
+        showModal({ type: "success", message: "Thanks to register. Log in!" }),
       );
     } catch (error) {
       dispatch(showModal({ type: "error", message: error.message }));
@@ -51,7 +56,7 @@ export const UserAPI = {
       dispatch(setLoading(false));
     }
   },
-  logout: (): FuncType => async dispatch => {
+  logout: (): FuncType => async (dispatch) => {
     try {
       await fetcher("/api/users/logout", "GET");
       dispatch(setIsLogin(false));
@@ -59,7 +64,7 @@ export const UserAPI = {
       console.log(error.message);
     }
   },
-  isLogin: (): FuncType => async dispatch => {
+  isLogin: (): FuncType => async (dispatch) => {
     try {
       await fetcher("/api/users/islogin", "GET");
       dispatch(setIsLogin(true));
@@ -68,7 +73,7 @@ export const UserAPI = {
     }
   },
 
-  changeUserData: (data: UserRegisterData): FuncType => async dispatch => {
+  changeUserData: (data: UserRegisterData): FuncType => async (dispatch) => {
     dispatch(setLoading(true));
     try {
       await fetcher("/api/users", "POST", data);
@@ -81,10 +86,10 @@ export const UserAPI = {
     }
   },
 
-  getUserInfo: (): FuncType => async dispatch => {
+  getUserInfo: (): FuncType => async (dispatch) => {
     dispatch(setLoading(true));
     try {
-      const { data } = await fetcher("/api/users", "GET");
+      const { data }: { data: User } = await fetcher("/api/users", "GET");
       dispatch(setUser(data));
     } catch (error) {
       dispatch(showModal({ type: "error", message: error.message }));
@@ -92,10 +97,16 @@ export const UserAPI = {
       dispatch(setLoading(false));
     }
   },
-  saveOffer: (id: string): FuncType => async dispatch => {
+  saveOffer: (id: string): FuncType => async (dispatch) => {
     dispatch(setLoading(true));
     try {
-      const { data } = await fetcher("/api/users/offers", "POST", { id });
+      const {
+        data,
+      }: { data: { message: string } } = await fetcher(
+        "/api/users/offers",
+        "POST",
+        { id },
+      );
       dispatch(showModal({ type: "success", message: data.message }));
     } catch (error) {
       console.log(error.message);
@@ -104,10 +115,13 @@ export const UserAPI = {
       dispatch(setLoading(false));
     }
   },
-  unsaveOffer: (id: string): FuncType => async dispatch => {
+  unsaveOffer: (id: string): FuncType => async (dispatch) => {
     dispatch(setLoading(true));
     try {
-      const { data } = await fetcher(`/api/users/offers/${id}`, "DELETE");
+      const { data }: { data: { message: string } } = await fetcher(
+        `/api/users/offers/${id}`,
+        "DELETE",
+      );
       dispatch(showModal({ type: "success", message: data.message }));
     } catch (error) {
       console.log(error.message);
@@ -117,10 +131,13 @@ export const UserAPI = {
     }
   },
 
-  getSavedOffers: (): FuncType => async dispatch => {
+  getSavedOffers: (): FuncType => async (dispatch) => {
     dispatch(setLoading(true));
     try {
-      const { data } = await fetcher(`/api/users/offers`, "GET");
+      const { data }: { data: OfferWithSalary[] } = await fetcher(
+        `/api/users/offers`,
+        "GET",
+      );
       dispatch(setOffers(data));
     } catch (error) {
       console.log(error.message);

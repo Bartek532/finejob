@@ -40,6 +40,9 @@ export const Input = memo<TextInputProps>(
               [styles.withIcon]: name === "password",
             })}
             onFocus={() => setIsInputFocused(true)}
+            autoCorrect="off"
+            autoCapitalize="off"
+            spellCheck="false"
           />
           {name.includes("password") ? (
             inputType === "password" ? (

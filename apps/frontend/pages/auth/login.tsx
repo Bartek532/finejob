@@ -9,7 +9,7 @@ const Login = () => {
 
   useEffect(() => {
     router.prefetch("/dashboard");
-  }. []);
+  }, []);
 
   return (
     <Layout title="Login">

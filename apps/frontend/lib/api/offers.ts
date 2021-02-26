@@ -3,6 +3,7 @@ import { Action } from "redux";
 import { ThunkAction } from "redux-thunk";
 import type { InitialMainState } from "../../store/mainSlice";
 import type { InitialOffersState } from "../../store/offersSlice";
+import type { OfferWithSalary } from "../../../types";
 
 import { setLoading, showModal } from "../../store/mainSlice";
 import {
@@ -20,11 +21,14 @@ type FetchFuncType = ThunkAction<
 >;
 
 export const JobsAPI = {
-  searchOffers: (path = ""): FetchFuncType => async dispatch => {
+  searchOffers: (path = ""): FetchFuncType => async (dispatch) => {
     dispatch(setLoading(true));
     try {
       const apiCallAddress = `/api/offers/search?${path}`;
-      const { data } = await fetcher(apiCallAddress, "GET");
+      const { data }: { data: OfferWithSalary[] } = await fetcher(
+        apiCallAddress,
+        "GET",
+      );
       dispatch(setOffers(data));
       dispatch(setResultsPage(1));
       dispatch(setLastOffersApiCallAddress(apiCallAddress));
@@ -40,9 +44,9 @@ export const JobsAPI = {
     dispatch(setLoadMore(true));
 
     try {
-      const { data } = await fetcher(
+      const { data }: { data: OfferWithSalary[] } = await fetcher(
         `${offers.lastOffersApiCallAddress}&page=${offers.resultsPage + 1}`,
-        "GET"
+        "GET",
       );
       dispatch(setResultsPage(offers.resultsPage + 1));
       dispatch(setOffers([...offers.allOffers, ...data]));

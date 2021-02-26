@@ -7,7 +7,7 @@ import { useRouter } from "next/router";
 type ActionButtonProps = {
   readonly icon: "search" | "back" | "forward" | "edit";
   readonly corner?: boolean;
-  readonly type: "submit" | "reset" | "button";
+  readonly type?: "submit" | "reset" | "button";
 };
 
 export const ActionButton = memo<ActionButtonProps>(

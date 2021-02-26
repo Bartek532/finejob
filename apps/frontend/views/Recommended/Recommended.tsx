@@ -2,7 +2,7 @@ import styles from "./Recommended.module.scss";
 import Forward from "../../public/icons/buttons/forward.svg";
 import Back from "../../public/icons/buttons/back.svg";
 import { Avatar } from "../../components/Avatar/Avatar";
-import { useState, useEffect, useCallback, memo } from "react";
+import { useState, useEffect, useCallback, memo, createRef } from "react";
 import Link from "next/link";
 import { useWindowSize } from "../../lib/hooks/useWindowSize";
 import type { OfferWithSalary } from "../../../types";
@@ -17,7 +17,7 @@ export const Recommended = memo<RecommendedSectionProps>(({ offers }) => {
   const [scroll, setScroll] = useState(0);
   const baseScrollValue = 450;
   const maxScroll = 290 * offers.length - (width! < 1400 ? width! + 280 : 1400); //element total width * elements - (screen width + element width || 1400)
-  const offersContainerRef = React.createRef<HTMLDivElement>();
+  const offersContainerRef = createRef<HTMLDivElement>();
 
   useEffect(() => {
     const handleResize = () => {
