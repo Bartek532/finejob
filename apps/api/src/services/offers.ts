@@ -1,5 +1,5 @@
 import axios from "axios";
-import type { Offer } from "../../../types";
+import type { Offer } from "@finejob/types";
 
 export const fetchRecomendedOffers = async () => {
   const { data }: { data: Offer[] } = await axios.get(

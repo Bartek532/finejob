@@ -3,6 +3,7 @@
 .results {
   width: 100%;
   @include flex;
+  justify-content: flex-start;
   flex-flow: column wrap;
   padding-bottom: 1.6rem;
 
