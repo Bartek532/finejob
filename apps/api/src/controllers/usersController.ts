@@ -27,6 +27,8 @@ export const login = async (req: Request, res: Response) => {
       .json({ message: "You don't have an account. Register!" });
   }
 
+  console.log(req.body.password, user.password);
+
   const validPassword = await bcrypt.compare(req.body.password, user.password);
   if (!validPassword) {
     return res.status(401).json({ message: "Invalid password." });
