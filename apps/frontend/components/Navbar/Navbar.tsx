@@ -20,6 +20,7 @@ export const Navbar = memo(() => {
       <div className={styles.left}>
         <Link href="/about">
           <a className={classnames({ [styles.active]: pathname === "/about" })}>
+            <span className="sr-only">about</span>
             <About />
             <span className={styles.label}>About</span>
           </a>
@@ -30,6 +31,7 @@ export const Navbar = memo(() => {
               [styles.active]: pathname === "/search",
             })}
           >
+            <span className="sr-only">search</span>
             <Search />
             <span className={styles.label}>Search</span>
           </a>
@@ -37,6 +39,7 @@ export const Navbar = memo(() => {
       </div>
       <Link href="/">
         <div className={styles.center}>
+          <span className="sr-only">home</span>
           <Image src="/icons/logo.svg" width={22} height={22} alt="logo" />
         </div>
       </Link>
@@ -47,6 +50,7 @@ export const Navbar = memo(() => {
               [styles.active]: pathname === "/search/location",
             })}
           >
+            <span className="sr-only">search by location</span>
             <Location />
             <span className={styles.label}>Search by location</span>
           </a>
@@ -58,6 +62,7 @@ export const Navbar = memo(() => {
                 pathname === "/auth/login" || pathname.startsWith("/dashboard"),
             })}
           >
+            <span className="sr-only">sign in</span>
             <Person />
             <span className={styles.label}>
               {isLogin ? "account" : "sign in"}

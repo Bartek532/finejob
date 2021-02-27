@@ -52,6 +52,7 @@ export const OfferTile = memo<OfferTileProps>(
             {company_url ? (
               <Link href={company_url}>
                 <span className={styles.btn}>
+                  <span className="sr-only">go to company site</span>
                   <ActionButton icon="forward" />
                 </span>
               </Link>
