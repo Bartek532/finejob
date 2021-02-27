@@ -8,7 +8,7 @@
   },
   "scripts": {
     "build": "yarn workspace api build",
-    "start": "yarn workspace frontend start",
+    "start": "yarn workspaces run start",
     "build-front": "yarn workspace frontend build"
   },
   "devDependencies": {
