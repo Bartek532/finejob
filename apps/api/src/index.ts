@@ -15,11 +15,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use("/api/users", users);
 app.use("/api/offers", offers);
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(__dirname + "/public/"));
-
-  app.get(/.*/, (req, res) => res.sendFile(__dirname + "/public/index.html"));
-}
 app.use(notFound);
 app.use(catchErrors);
 
