@@ -7,7 +7,7 @@
     ]
   },
   "scripts": {
-    "build": "yarn workspace api build",
+    "build": "yarn workspaces foreach run build",
     "start": "yarn workspace api start"
   },
   "devDependencies": {
