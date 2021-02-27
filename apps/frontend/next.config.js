@@ -22,4 +22,5 @@ module.exports = {
   images: {
     domains: ["jobs.github.com"],
   },
+  distDir: "build",
 };
