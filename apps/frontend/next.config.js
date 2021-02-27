@@ -1,11 +1,13 @@
 const path = require("path");
-import { BASIC_API_URL } from "./lib/utils/consts";
 module.exports = {
   async rewrites() {
     return [
       {
         source: "/api/:path*",
-        destination: `${BASIC_API_URL}/api/:path*`, // Proxy to Backend
+        destination:
+          process.env.NODE_ENV === "production"
+            ? "https://finejob-backend.herokuapp.com/api/:path*"
+            : "http://localhost:3080/api/:path*", // Proxy to Backend
       },
     ];
   },
