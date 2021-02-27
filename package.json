@@ -8,7 +8,8 @@
   },
   "scripts": {
     "build": "yarn workspace api build",
-    "start": "yarn workspace api start"
+    "start": "yarn workspace frontend start",
+    "build-front": "yarn workspace frontend build"
   },
   "devDependencies": {
     "lerna": "^3.22.1"
