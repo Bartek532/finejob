@@ -81,16 +81,22 @@ export const Recommended = memo<RecommendedSectionProps>(({ offers }) => {
                     <Avatar name={offer.company} />
                   </div>
 
+                  <span className="sr-only">job title</span>
                   <span className={styles.offerTitle}>
                     {offer.title.length > 64
                       ? `${offer.title.slice(0, 64)}...`
                       : offer.title}
                   </span>
+
+                  <span className="sr-only">company</span>
                   <span className={styles.company}>{offer.company}</span>
+
+                  <span className="sr-only">location</span>
                   <span className={styles.location}>{offer.location}</span>
                 </div>
 
                 <div className={styles.additional}>
+                  <span className="sr-only">salary</span>
                   <span className={styles.salary}>
                     ${offer.salary.toFixed(0)}
                   </span>

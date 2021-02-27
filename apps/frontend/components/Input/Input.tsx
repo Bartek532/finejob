@@ -43,6 +43,7 @@ export const Input = memo<TextInputProps>(
             autoCorrect="off"
             autoCapitalize="off"
             spellCheck="false"
+            autoComplete={type === "password" ? "off" : "on"}
           />
           {name.includes("password") ? (
             inputType === "password" ? (
@@ -51,6 +52,8 @@ export const Input = memo<TextInputProps>(
                 type="button"
                 onClick={() => setInputType("text")}
               >
+                <span className="sr-only">show password</span>
+
                 <ClosedEye />
               </button>
             ) : (
@@ -59,6 +62,8 @@ export const Input = memo<TextInputProps>(
                 type="button"
                 onClick={() => setInputType("password")}
               >
+                <span className="sr-only">hide password</span>
+
                 <Eye />
               </button>
             )

@@ -7,10 +7,9 @@ type AvatarProps = { readonly img?: string; readonly name?: string };
 export const Avatar = memo<AvatarProps>(({ img, name }) => {
   if (img) {
     return (
-      <div
-        className={styles.logo}
-        style={{ backgroundImage: `url(${img})` }}
-      ></div>
+      <div className={styles.logo} style={{ backgroundImage: `url(${img})` }}>
+        <span className="sr-only">company logo</span>
+      </div>
     );
   }
 
@@ -26,6 +25,7 @@ export const Avatar = memo<AvatarProps>(({ img, name }) => {
           }`,
         }}
       >
+        <span className="sr-only">company initials</span>
         {splittedName[0][0] +
           (splittedName[1] ? splittedName[1][0] : splittedName[0][1])}
       </div>

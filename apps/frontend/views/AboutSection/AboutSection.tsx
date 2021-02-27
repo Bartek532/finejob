@@ -26,7 +26,7 @@ const steps = [
     title: "Read more",
     image: "read",
     description:
-      "Each offer includes a <strong>description</strong> that was provided by the company that added offer. Information contained there will help you understand what they require of you. Compare your skills with the given stack and <strong>apply!<b/>",
+      "Each offer includes a <strong>description</strong> that was provided by the company that added offer. Information contained there will help you understand what they require of you. Compare your skills with the given stack and <strong>apply!</strong>",
   },
   {
     title: "Apply",

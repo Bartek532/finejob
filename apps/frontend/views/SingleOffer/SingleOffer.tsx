@@ -93,6 +93,7 @@ export const SingleOffer = memo<SingleOfferProps>(({ offer }) => {
           className={styles.save}
           onClick={isSaved ? handleUnsaveOffer : handleSaveOffer}
         >
+          <span className="sr-only">save offer</span>
           <Image
             src={`/icons/offer/${isSaved ? "save" : "empty-save"}.svg`}
             alt="save"
@@ -105,7 +106,10 @@ export const SingleOffer = memo<SingleOfferProps>(({ offer }) => {
           <div className={styles.logo}>
             <Avatar name={offer.company} />
           </div>
+          <span className="sr-only">job title</span>
           <span className={styles.title}>{offer.title}</span>
+
+          <span className="sr-only">company</span>
           <button className={styles.company} onClick={handleSearchByCompany}>
             {offer.company}
           </button>
@@ -114,6 +118,8 @@ export const SingleOffer = memo<SingleOfferProps>(({ offer }) => {
         <div className={styles.more}>
           {info.map((item) => (
             <div className={styles.field} key={item.type}>
+              <span className="sr-only">{item.type}</span>
+
               {["type", "location"].includes(item.type) ? (
                 <button
                   className={classnames(styles.description, styles.searchBtn)}
@@ -138,9 +144,9 @@ export const SingleOffer = memo<SingleOfferProps>(({ offer }) => {
         </div>
 
         <div className={styles.content}>
-          <span className={styles.date}>
+          <time className={styles.date}>
             Updated: {offer.created_at.slice(0, 20)}
-          </span>
+          </time>
           <div
             className={styles.description}
             dangerouslySetInnerHTML={{ __html: offer.description || "xd" }}

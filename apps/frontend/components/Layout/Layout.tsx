@@ -25,15 +25,16 @@ export const Layout = memo<LayoutProps>(
       <div className={styles.content}>
         <Loader />
         <header>
-          {headerTitle ? <h1 className={styles.title}>{headerTitle}</h1> : null}
-          <Navbar />
           {width! > 1000 ? (
             <Link href="/">
               <a className={styles.logo}>
+                <span className="sr-only">home</span>
                 <FullLogo />
               </a>
             </Link>
           ) : null}
+          <Navbar />
+          {headerTitle ? <h1 className={styles.title}>{headerTitle}</h1> : null}
         </header>
         <CookiesPopup />
         {children}
