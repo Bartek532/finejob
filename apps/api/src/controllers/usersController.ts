@@ -27,8 +27,6 @@ export const login = async (req: Request, res: Response) => {
       .json({ message: "You don't have an account. Register!" });
   }
 
-  console.log(req.body.password, user.password);
-
   const validPassword = await bcrypt.compare(req.body.password, user.password);
   if (!validPassword) {
     return res.status(401).json({ message: "Invalid password." });
@@ -60,9 +58,9 @@ export const register = async (req: Request, res: Response) => {
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(req.body.password, salt);
 
-  const user = await createUser({ ...req.body, hashedPassword });
+  const user = await createUser({ ...req.body, password: hashedPassword });
 
-  return res.status(200).json(user);
+  res.status(200).json(user);
 };
 
 export const logoutUser = async (req: Request, res: Response) => {
