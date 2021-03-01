@@ -2,9 +2,8 @@ import styles from "./Recommended.module.scss";
 import Forward from "../../public/icons/buttons/forward.svg";
 import Back from "../../public/icons/buttons/back.svg";
 import { Avatar } from "../../components/Avatar/Avatar";
-import { useState, useEffect, useCallback, memo, createRef } from "react";
+import { useState, useEffect, useCallback, memo, useRef } from "react";
 import Link from "next/link";
-import { useWindowSize } from "../../lib/hooks/useWindowSize";
 import type { OfferWithSalary } from "@finejob/types";
 import classnames from "classnames";
 
@@ -13,16 +12,24 @@ type RecommendedSectionProps = {
 };
 
 export const Recommended = memo<RecommendedSectionProps>(({ offers }) => {
-  const { width } = useWindowSize();
   const [scroll, setScroll] = useState(0);
+  const [offersWrapperWidth, setOffersWrapperWidth] = useState(0);
   const baseScrollValue = 450;
-  const maxScroll = 290 * offers.length - (width! < 1400 ? width! + 280 : 1400); //element total width * elements - (screen width + element width || 1400)
-  const offersContainerRef = createRef<HTMLDivElement>();
+  const allOffersWidth = 290 * offers.length; //element total width * elements
+  const maxScroll = allOffersWidth - offersWrapperWidth;
+  const offersContainerRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
     const handleResize = () => {
       setScroll(0);
+      setOffersWrapperWidth(
+        offersContainerRef.current?.getBoundingClientRect().width!,
+      );
     };
+
+    setOffersWrapperWidth(
+      offersContainerRef.current?.getBoundingClientRect().width!,
+    );
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
