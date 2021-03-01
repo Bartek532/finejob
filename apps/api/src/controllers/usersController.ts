@@ -79,7 +79,17 @@ export const changeUserInfo = async (req: Request, res: Response) => {
       .status(400)
       .json({ message: "You cannot change an email to other existing email." });
   }
-  res.status(200).json(await changeUserData(req.user!.id, req.body));
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(req.body.password, salt);
+
+  res
+    .status(200)
+    .json(
+      await changeUserData(req.user!.id, {
+        ...req.body,
+        password: hashedPassword,
+      }),
+    );
 };
 
 export const saveOffer = async (req: Request, res: Response) => {
