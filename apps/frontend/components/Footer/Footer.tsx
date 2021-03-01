@@ -17,7 +17,7 @@ export const Footer = memo(() => {
           technology. Do you want to know more? Check below!
         </p>
         <Link href="https://github.com/Bartek532">
-          <a target="_blank">
+          <a target="_blank" rel="noopener">
             <button className={styles.btn}>Check out</button>
           </a>
         </Link>
