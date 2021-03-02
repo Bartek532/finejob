@@ -1,14 +1,15 @@
 import { memo } from "react";
 import styles from "./Avatar.module.scss";
 import { logoColors } from "../../lib/utils/consts";
+import Image from "next/image";
 
 type AvatarProps = { readonly img?: string; readonly name?: string };
 
 export const Avatar = memo<AvatarProps>(({ img, name }) => {
   if (img) {
     return (
-      <div className={styles.logo} style={{ backgroundImage: `url(${img})` }}>
-        <span className="sr-only">company logo</span>
+      <div className={styles.logo}>
+        <Image src={`${img}`} layout="fill" alt="company logo" />
       </div>
     );
   }

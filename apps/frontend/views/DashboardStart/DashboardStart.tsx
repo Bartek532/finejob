@@ -15,8 +15,8 @@ export const DashboardStart = memo(() => {
   const router = useRouter();
   const dispatch = useDispatch();
   const handleLogout = () => {
-    router.push("/auth/login");
     dispatch(UserAPI.logout());
+    router.push("/auth/login");
   };
   return (
     <main className={styles.dashboard}>

@@ -58,7 +58,9 @@ export const UserAPI = {
   },
   logout: (): FuncType => async (dispatch) => {
     try {
-      await fetcher("/api/users/logout", "GET");
+      console.log("XD");
+      const data = await fetcher("/api/users/logout", "GET");
+      console.log(data);
       dispatch(setIsLogin(false));
     } catch (error) {
       console.log(error.message);
@@ -66,7 +68,7 @@ export const UserAPI = {
   },
   isLogin: (): FuncType => async (dispatch) => {
     try {
-      await fetcher("/api/users/islogin", "GET");
+      await fetcher("/api/users/isLogin", "GET");
       dispatch(setIsLogin(true));
     } catch (error) {
       console.log(error.message);
@@ -90,7 +92,7 @@ export const UserAPI = {
     dispatch(setLoading(true));
     try {
       const { data }: { data: User } = await fetcher("/api/users", "GET");
-      dispatch(setUser(data));
+      dispatch(setUser({ ...data, password: "" }));
     } catch (error) {
       dispatch(showModal({ type: "error", message: error.message }));
     } finally {

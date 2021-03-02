@@ -39,7 +39,7 @@
     flex: 0 1 25rem;
     @include flex;
     flex-flow: column wrap;
-    padding: 2.5rem 0;
+    padding: 2rem 0;
   }
 }
 
@@ -50,6 +50,6 @@
 
   .settings .form {
     margin-top: -1.9rem;
-    height: 36.8rem;
+    padding: 3rem 0;
   }
 }

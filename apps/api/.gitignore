@@ -1,4 +1,3 @@
-node_modules
 .tmp
 .idea
 .idea/
@@ -11,9 +10,6 @@ dist
 # Logs
 logs
 *.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
 
 # Runtime data
 pids
@@ -46,7 +42,6 @@ bower_components
 build/Release
 
 # Dependency directories
-node_modules/
 jspm_packages/
 
 # Optional npm cache directory

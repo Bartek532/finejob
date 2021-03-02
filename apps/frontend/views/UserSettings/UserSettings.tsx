@@ -24,7 +24,9 @@ export const UserSettings = memo(() => {
     setValue("email", user.email);
   }, [user]);
 
-  const handleChangeUserInfo = (data: UserRegisterData) => {
+  const handleChangeUserInfo = (
+    data: UserRegisterData & { oldPassword: string; newPassword: string },
+  ) => {
     dispatch(UserAPI.changeUserData(data));
   };
 
@@ -62,9 +64,17 @@ export const UserSettings = memo(() => {
         />
         <Input
           type="password"
-          name="password"
+          name="oldPassword"
+          placeholder="Actual password"
           inputRef={register(inputValidation.password)}
-          error={errors.password}
+          error={errors.oldPassword}
+        />
+        <Input
+          type="password"
+          name="newPassword"
+          placeholder="New password (if no, repeat actual password)"
+          inputRef={register(inputValidation.password)}
+          error={errors.newPassword}
         />
         <MainButton type="submit" text="Submit" />
       </form>

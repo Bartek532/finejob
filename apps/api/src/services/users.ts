@@ -22,7 +22,7 @@ export const findUserById = (id: number) => {
 
 export const findOfferInLibrary = (userId: number, offerId: string) => {
   return prisma.userOfferLibrary.findFirst({
-    where: { AND: [{ user_id: userId }, { offer_id: offerId }] },
+    where: { AND: [{ userId }, { offerId }] },
   });
 };
 
@@ -39,7 +39,7 @@ export const changeUserData = (
 export const addOfferToUserLibrary = (userId: number, offerId: string) => {
   return prisma.userOfferLibrary.create({
     data: {
-      offer_id: offerId,
+      offerId,
       User: { connect: { id: userId } },
     },
   });
@@ -47,19 +47,19 @@ export const addOfferToUserLibrary = (userId: number, offerId: string) => {
 
 export const deleteOfferFromLibrary = (userId: number, offerId: string) => {
   return prisma.userOfferLibrary.delete({
-    where: { offer_id_user_id: { user_id: userId, offer_id: offerId } },
+    where: { offerId_userId: { userId, offerId } },
   });
 };
 
 export const fetchUserLibrary = async (userId: number) => {
   const offers = await prisma.userOfferLibrary.findMany({
-    where: { user_id: userId },
+    where: { userId },
   });
 
   const userLibrary = [];
 
   for (const offer of offers) {
-    const fetchedOffer = await fetchSingleOffer(offer.offer_id);
+    const fetchedOffer = await fetchSingleOffer(offer.offerId);
     if (fetchedOffer) {
       userLibrary.push(fetchedOffer);
     }

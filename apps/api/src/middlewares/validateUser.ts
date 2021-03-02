@@ -5,14 +5,14 @@ import jwt from "jsonwebtoken";
 export const validateUser = async (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
   const { id } = jwt.decode(req.token!) as { id: number; iat: number };
 
   const user = await findUserById(id);
 
   if (!user) {
-    return res.status(400).json({ message: "Account doesn't exist." });
+    return res.status(401).json({ message: "Account doesn't exist." });
   }
 
   req.user = user;

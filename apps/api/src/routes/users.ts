@@ -19,7 +19,7 @@ const router = express.Router();
 router.get("/", validateToken, validateUser, catchAsync(getUserInfo));
 router.post("/login", catchAsync(login));
 router.post("/register", catchAsync(register));
-router.get("/islogin", validateToken);
+router.get("/isLogin", validateToken);
 router.get("/logout", validateToken, validateUser, catchAsync(logoutUser));
 router.post("/", validateToken, validateUser, catchAsync(changeUserInfo));
 
@@ -28,20 +28,20 @@ router.delete(
   "/offers/:id",
   validateToken,
   validateUser,
-  catchAsync(unsaveOffer)
+  catchAsync(unsaveOffer),
 );
 router.get(
   "/offers/:id",
   validateToken,
   validateUser,
-  catchAsync(getSavedOffer)
+  catchAsync(getSavedOffer),
 );
 
 router.get(
   "/offers",
   validateToken,
   validateUser,
-  catchAsync(getAllSavedOffers)
+  catchAsync(getAllSavedOffers),
 );
 
 export default router;

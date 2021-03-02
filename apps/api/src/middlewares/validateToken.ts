@@ -4,14 +4,13 @@ import { Request, Response, NextFunction } from "express";
 export const validateToken = (
   req: Request,
   res: Response,
-  next: NextFunction
+  next: NextFunction,
 ) => {
-  const cookie = req.headers.cookie;
-  if (!cookie) {
+  const token = req.cookies.token;
+
+  if (!token) {
     return res.status(401).json({ message: "Access denied. Log in!" });
   }
-
-  const token = cookie.split("=")[1];
 
   try {
     jwt.verify(token, process.env.SECRET_TOKEN as string);
@@ -21,7 +20,7 @@ export const validateToken = (
 
   req.token = token;
 
-  if (req.route.path !== "/islogin") {
+  if (req.route.path !== "/isLogin") {
     next();
   } else {
     res.status(200).json({ message: "Valid token." });

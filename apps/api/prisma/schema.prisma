@@ -9,17 +9,17 @@ datasource db {
 
 model User {
   id               Int                @id @default(autoincrement())
-  name             String
-  email            String
-  company          String
-  password         String
+  name             String             @db.VarChar(255)
+  email            String             @unique @db.VarChar(255)
+  company          String             @db.VarChar(255)
+  password         String             @db.VarChar(255)
   UserOfferLibrary UserOfferLibrary[]
 }
 
 model UserOfferLibrary {
-  offer_id String
-  user_id  Int
-  User     User   @relation(fields: [user_id], references: [id])
+  offerId String @db.VarChar(255)
+  userId  Int
+  User    User   @relation(fields: [userId], references: [id])
 
-  @@id([offer_id, user_id])
+  @@id([offerId, userId])
 }

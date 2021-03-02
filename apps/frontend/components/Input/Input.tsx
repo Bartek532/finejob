@@ -45,7 +45,7 @@ export const Input = memo<TextInputProps>(
             spellCheck="false"
             autoComplete={type === "password" ? "off" : "on"}
           />
-          {name.includes("password") ? (
+          {name.toLowerCase().includes("password") ? (
             inputType === "password" ? (
               <button
                 className={styles.eye}
