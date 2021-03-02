@@ -6,6 +6,7 @@ import Person from "../../public/icons/nav/person.svg";
 import Image from "next/image";
 import { memo } from "react";
 
+import { useWindowSize } from "../../lib/hooks/useWindowSize";
 import styles from "./Navbar.module.scss";
 import classnames from "classnames";
 import { useRouter } from "next/router";
@@ -14,24 +15,31 @@ import { getLoginStatus } from "../../store/mainSlice";
 
 export const Navbar = memo(() => {
   const { pathname } = useRouter();
+  const { width } = useWindowSize();
   const isLogin = useSelector(getLoginStatus);
   return (
     <nav className={styles.nav}>
       <div className={styles.left}>
         <Link href="/about">
-          <a className={classnames({ [styles.active]: pathname === "/about" })}>
-            <span className="sr-only">about</span>
+          <a
+            className={classnames(
+              { [styles.active]: pathname === "/about" },
+              styles.link,
+            )}
+          >
             <About />
             <span className={styles.label}>About</span>
           </a>
         </Link>
         <Link href="/search">
           <a
-            className={classnames({
-              [styles.active]: pathname === "/search",
-            })}
+            className={classnames(
+              {
+                [styles.active]: pathname === "/search",
+              },
+              styles.link,
+            )}
           >
-            <span className="sr-only">search</span>
             <Search />
             <span className={styles.label}>Search</span>
           </a>
@@ -46,26 +54,33 @@ export const Navbar = memo(() => {
       <div className={styles.right}>
         <Link href="/search/location">
           <a
-            className={classnames({
-              [styles.active]: pathname === "/search/location",
-            })}
+            className={classnames(
+              {
+                [styles.active]: pathname === "/search/location",
+              },
+              styles.link,
+            )}
           >
-            <span className="sr-only">search by location</span>
             <Location />
-            <span className={styles.label}>Search by location</span>
+            <span className={styles.label}>
+              {width! > 1000 ? "Search by location" : "Geosearch"}
+            </span>
           </a>
         </Link>
         <Link href="/auth/login">
           <a
-            className={classnames({
-              [styles.active]:
-                pathname === "/auth/login" || pathname.startsWith("/dashboard"),
-            })}
+            className={classnames(
+              {
+                [styles.active]:
+                  pathname === "/auth/login" ||
+                  pathname.startsWith("/dashboard"),
+              },
+              styles.link,
+            )}
           >
-            <span className="sr-only">sign in</span>
             <Person />
             <span className={styles.label}>
-              {isLogin ? "account" : "sign in"}
+              {isLogin ? "Account" : "Sign in"}
             </span>
           </a>
         </Link>

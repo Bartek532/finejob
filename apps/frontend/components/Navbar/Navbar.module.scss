@@ -21,21 +21,33 @@
     padding-right: 1.3rem;
   }
 
+  .link {
+    @include flex;
+    flex-flow: column wrap;
+    .label {
+      color: var(--primary-black);
+      font-size: 0.65rem;
+      padding-top: 0.48rem;
+    }
+  }
+
   .right {
     border-radius: 15px 15px 0 0;
     padding-left: 1.3rem;
-  }
-
-  .label {
-    display: none;
   }
 
   svg {
     cursor: pointer;
   }
 
-  .active svg path {
-    fill: var(--primary-violet);
+  .active {
+    svg path {
+      fill: var(--primary-violet);
+    }
+
+    .label {
+      color: var(--primary-violet);
+    }
   }
 
   .center {
@@ -62,18 +74,20 @@
       width: auto;
     }
 
-    .label {
-      display: inline-block;
-      text-transform: uppercase;
-      margin: 0 1.55rem;
-      cursor: pointer;
-      color: var(--primary-black);
-      transition: color 0.3s;
-      font-size: 0.95rem;
-
-      &:hover {
-        color: var(--primary-orange);
+    .link {
+      .label {
+        display: inline-block;
+        text-transform: uppercase;
+        margin: 0 1.55rem;
+        cursor: pointer;
+        color: var(--primary-black);
         transition: color 0.3s;
+        font-size: 0.95rem;
+
+        &:hover {
+          color: var(--primary-orange);
+          transition: color 0.3s;
+        }
       }
     }
 
