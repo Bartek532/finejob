@@ -3,6 +3,7 @@
 .add {
   @include flex;
   flex-flow: column wrap;
+  padding: 0.8rem 0;
   width: 100%;
   .form {
     @include flex;
@@ -12,25 +13,33 @@
 
     .textarea {
       width: 82%;
-      max-width: 82%;
       border: 0 none;
       border-radius: 15px;
       box-shadow: var(--gray-shadow);
       padding: 1rem 1.2rem;
+      line-height: 1.3rem;
       &::placeholder {
         color: var(--primary-gray);
       }
+    }
 
-      &.apply {
-        margin: 1.4rem 0;
-      }
+    .error {
+      color: var(--primary-orange);
+      padding: 0.4rem 2.7rem;
+      align-self: flex-start;
+      font-family: "Roboto", sans-serif;
+      font-size: 0.8rem;
     }
 
     .checkboxes {
-      width: 100%;
+      width: 85%;
       @include flex;
       flex-wrap: wrap;
-      padding-top: 1.2rem;
+      padding: 1.5rem 0;
+    }
+
+    .btn {
+      padding: 1.3rem 0;
     }
   }
 }

@@ -57,4 +57,18 @@ export const JobsAPI = {
       dispatch(setLoadMore(false));
     }
   },
+  createOffer: (offer: OfferWithSalary): FetchFuncType => async (dispatch) => {
+    dispatch(setLoading(true));
+    try {
+      await fetcher("/api/offers", "POST", { ...offer });
+      dispatch(
+        showModal({ type: "success", message: "Your offer has been added!" }),
+      );
+    } catch (error) {
+      console.log(error.message);
+      dispatch(showModal({ type: "error", message: error.message }));
+    } finally {
+      dispatch(setLoading(false));
+    }
+  },
 };

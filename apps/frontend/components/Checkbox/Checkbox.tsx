@@ -5,14 +5,25 @@ type CheckboxProps = {
   readonly label: string;
   readonly value?: string;
   readonly name: string;
+  readonly checked?: boolean;
+  readonly inputRef?: any;
 };
 
-export const Checkbox = memo<CheckboxProps>(({ label, value, name }) => {
-  return (
-    <label className={styles.container}>
-      <input type="radio" className={styles.input} name={name} />
-      <span className={styles.checkmark}></span>
-      {label}
-    </label>
-  );
-});
+export const Checkbox = memo<CheckboxProps>(
+  ({ label, value, name, checked, inputRef }) => {
+    return (
+      <label className={styles.container}>
+        <input
+          type="radio"
+          className={styles.input}
+          name={name}
+          value={value || label}
+          checked={checked}
+          ref={inputRef}
+        />
+        <span className={styles.checkmark}></span>
+        {label}
+      </label>
+    );
+  },
+);
