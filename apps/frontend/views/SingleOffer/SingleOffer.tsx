@@ -68,10 +68,10 @@ export const SingleOffer = memo<SingleOfferProps>(({ offer }) => {
 
   const handleSearchByField = useCallback(
     (key: string) => {
-      if (key === "type") {
+      if (key === "type" && offer.type === "Full Time") {
         router.replace({
           pathname: "/offers",
-          query: { full_time: offer.type === "Full Time" },
+          query: { full_time: true },
         });
       } else if (key === "location") {
         router.replace({

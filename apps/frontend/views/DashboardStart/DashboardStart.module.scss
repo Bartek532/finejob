@@ -4,18 +4,17 @@
   @include flex;
   flex-flow: column wrap;
   min-height: 100vh;
-  margin-top: -5rem;
   .fields {
     @include flex;
+    flex-wrap: wrap;
     margin-bottom: 1.8rem;
 
     .field {
-      flex: 0 1 15.6rem;
       width: 40vw;
       max-width: 12.5rem;
       height: clamp(120px, 58vw, 250px);
       padding: 2.2rem 0.7rem;
-      margin: 0 0.6rem;
+      margin: 0.8rem 0.6rem;
       border-radius: 10px;
       @include flex(space-between);
       flex-flow: column wrap;
@@ -23,8 +22,15 @@
       border: 2px solid rgba(0, 0, 0, 0.08);
       cursor: pointer;
       transition: transform 0.3s;
-      box-shadow: 0 3px 20px 2px var(--primary-gray);
       position: relative;
+
+      &::after {
+        @include pseudo;
+        box-shadow: 0 3px 20px 2px var(--primary-gray);
+        opacity: 0;
+        border-radius: inherit;
+        transition: opacity 0.3s;
+      }
 
       &:hover {
         transform: translateY(-25px) rotate(7deg);
@@ -47,6 +53,7 @@
         font-size: 0.9rem;
         background-color: transparent;
         border: 0 none;
+        line-height: 1.2rem;
         cursor: pointer;
 
         @media all and (min-width: 28rem) {
@@ -58,13 +65,16 @@
 }
 
 @media all and (min-width: 62.5rem) {
-  .dashboard .fields {
-    margin-bottom: 1.9rem;
-    .field {
-      margin: 1.4rem;
+  .dashboard {
+    margin-top: -4.7rem;
+    .fields {
+      margin-bottom: 1.9rem;
+      .field {
+        margin: 1.4rem;
 
-      .icon {
-        padding: 0;
+        .icon {
+          padding: 0;
+        }
       }
     }
   }

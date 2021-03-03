@@ -7,6 +7,8 @@ import { UserAPI } from "../../lib/api/user";
 import { MainButton } from "../../components/MainButton/MainButton";
 
 const fields = [
+  { label: "my offers", icon: "offers" },
+  { label: "add an offer", icon: "create" },
   { label: "saved", icon: "saved" },
   { label: "settings", icon: "settings" },
 ];
@@ -25,7 +27,9 @@ export const DashboardStart = memo(() => {
           <article
             className={styles.field}
             key={field.icon}
-            onClick={() => router.push(`/dashboard/${field.label}`)}
+            onClick={() =>
+              router.push(`/dashboard/${field.label.split(" ").join("-")}`)
+            }
           >
             <div className={styles.icon}>
               <Image
