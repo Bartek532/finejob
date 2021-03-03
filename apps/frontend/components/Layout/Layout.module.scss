@@ -4,7 +4,7 @@
   @include flex;
   flex-flow: column wrap;
   justify-content: flex-start;
-  padding: 3.1rem 0 5.3rem 0;
+  padding: 4.1rem 0 5.3rem 0;
   width: 100vw;
   min-height: 100vh;
   position: relative;
@@ -35,7 +35,7 @@
 
 @media all and (min-width: 62.5rem) {
   .content {
-    padding: 7rem 2.5rem 0 2.5rem;
+    padding: 7.3rem 2.5rem 0 2.5rem;
 
     .title {
       font-size: 1.9rem;

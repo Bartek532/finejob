@@ -1,0 +1,36 @@
+@import "../../styles/_mixins";
+
+.add {
+  @include flex;
+  flex-flow: column wrap;
+  width: 100%;
+  .form {
+    @include flex;
+    flex-flow: column wrap;
+    width: 100%;
+    max-width: 26.8rem;
+
+    .textarea {
+      width: 82%;
+      max-width: 82%;
+      border: 0 none;
+      border-radius: 15px;
+      box-shadow: var(--gray-shadow);
+      padding: 1rem 1.2rem;
+      &::placeholder {
+        color: var(--primary-gray);
+      }
+
+      &.apply {
+        margin: 1.4rem 0;
+      }
+    }
+
+    .checkboxes {
+      width: 100%;
+      @include flex;
+      flex-wrap: wrap;
+      padding-top: 1.2rem;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+@import "../../styles/_mixins";
+
+.container {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  font-size: 0.8rem;
+  user-select: none;
+  @include flex;
+  text-transform: uppercase;
+  margin: 0.5rem;
+
+  .input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+
+    &:checked ~ .checkmark {
+      background-color: var(--primary-orange);
+    }
+  }
+
+  .checkmark {
+    height: 20px;
+    width: 20px;
+    margin-right: 30px;
+    border-radius: 50%;
+    position: relative;
+    border: 3px solid var(--primary-orange);
+  }
+}
