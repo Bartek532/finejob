@@ -14,7 +14,7 @@ const steps = [
     title: "Choose",
     image: "choose",
     description:
-      "After you tell us what you are looking for we listing you dozens of offers. But don't worry! First, you will see max <strong>100</strong> offers, so you can carefully and efficiently choose. But if you can't find anything for yourself, load more offers! We will inform you when the offers end and you have to search again. <strong>Don't give up!</strong>",
+      "After you tell us what you are looking for we listing you dozens of offers. But don't worry! First, you will see up to <strong>100</strong> offers, so you can carefully and efficiently choose. But if you can't find anything for yourself, load more offers! We will inform you when the offers end and you have to search again. <strong>Don't give up!</strong>",
   },
   {
     title: "Save",

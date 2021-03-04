@@ -106,7 +106,10 @@ export const changeUserInfo = async (req: Request, res: Response) => {
 };
 
 export const saveOffer = async (req: Request, res: Response) => {
-  const isOfferInLibrary = await findOfferInLibrary(req.user!.id, req.body.id);
+  const isOfferInLibrary = await findOfferInLibrary(
+    req.user!.id,
+    req.body.id.toString(),
+  );
 
   if (isOfferInLibrary) {
     return res
@@ -114,7 +117,7 @@ export const saveOffer = async (req: Request, res: Response) => {
       .json({ message: "You have already save this offer." });
   }
 
-  await addOfferToUserLibrary(req.user!.id, req.body.id);
+  await addOfferToUserLibrary(req.user!.id, req.body.id.toString());
 
   res.status(201).json({ message: "Offer has been saved!" });
 };

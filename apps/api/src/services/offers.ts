@@ -6,10 +6,10 @@ import { addRandomSalaryToOffer } from "../utils";
 const prisma = new PrismaClient();
 
 type Query = {
-  readonly q?: string;
-  readonly location?: string;
-  readonly full_time?: string;
-  readonly page?: string;
+  readonly q: string;
+  readonly location: string;
+  readonly full_time: string;
+  readonly page: string;
 };
 
 export const fetchRecomendedOffers = async () => {
@@ -25,22 +25,39 @@ export const fetchOffers = async (query: Query) => {
     ...(await prisma.offer.findMany({
       where: {
         OR: [
-          { title: { contains: query.q, mode: "insensitive" } },
-          { company: { contains: query.q, mode: "insensitive" } },
           {
-            location: {
-              contains: query.location || query.q,
+            title: {
+              contains: decodeURIComponent(query.q),
               mode: "insensitive",
             },
           },
-          { description: { contains: query.q, mode: "insensitive" } },
+          {
+            company: {
+              contains: decodeURIComponent(query.q),
+              mode: "insensitive",
+            },
+          },
+          {
+            location: {
+              contains:
+                decodeURIComponent(query.location) ||
+                decodeURIComponent(query.q),
+              mode: "insensitive",
+            },
+          },
+          {
+            description: {
+              contains: decodeURIComponent(query.q),
+              mode: "insensitive",
+            },
+          },
           {
             type: {
               contains: query.full_time
                 ? query.full_time === "true"
                   ? "Full Time"
                   : "Part Time"
-                : query.q,
+                : decodeURIComponent(query.q),
               mode: "insensitive",
             },
           },

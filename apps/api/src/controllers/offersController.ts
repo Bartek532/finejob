@@ -12,7 +12,7 @@ export const getRecommendedOffers = async (req: Request, res: Response) => {
 };
 
 export const getOffers = async (req: Request, res: Response) => {
-  res.status(200).json(await fetchOffers(req.query));
+  res.status(200).json(await fetchOffers(req.query as any));
 };
 
 export const getSingleOffer = async (req: Request, res: Response) => {
