@@ -1,20 +1,19 @@
 //Github Jobs
 
 export type Offer = {
-  readonly id: string;
+  readonly id: number;
   readonly type: string;
-  readonly url: string;
-  readonly created_at: string;
+  readonly created_at: any;
   readonly company: string;
-  readonly company_url: string;
+  readonly company_url: string | null;
   readonly location: string;
   readonly title: string;
   readonly description: string;
   readonly how_to_apply: string;
-  readonly company_logo: string;
+  readonly company_logo?: string;
 };
 
-export type OfferWithSalary = Offer & { salary: number };
+export type OfferWithSalary = Offer & { salary: string | number };
 
 //Adzuna
 /*

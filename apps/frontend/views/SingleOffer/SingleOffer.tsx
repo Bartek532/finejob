@@ -145,7 +145,7 @@ export const SingleOffer = memo<SingleOfferProps>(({ offer }) => {
 
         <div className={styles.content}>
           <time className={styles.date}>
-            Updated: {offer.created_at.slice(0, 20)}
+            Created: {offer.created_at.slice(0, 20)}
           </time>
           <div
             className={styles.description}

@@ -145,7 +145,5 @@ export const getSavedOffer = async (req: Request, res: Response) => {
 };
 
 export const getAllSavedOffers = async (req: Request, res: Response) => {
-  res
-    .status(200)
-    .json((await fetchUserLibrary(req.user!.id)).map(addRandomSalaryToOffer));
+  res.status(200).json(await fetchUserLibrary(req.user!.id));
 };

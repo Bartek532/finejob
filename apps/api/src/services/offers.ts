@@ -1,26 +1,102 @@
+import { PrismaClient } from "@prisma/client";
 import axios from "axios";
-import type { Offer } from "@finejob/types";
+import type { Offer, OfferWithSalary } from "@finejob/types";
+import { addRandomSalaryToOffer } from "../utils";
+
+const prisma = new PrismaClient();
+
+type Query = {
+  readonly q?: string;
+  readonly location?: string;
+  readonly full_time?: string;
+  readonly page?: string;
+};
 
 export const fetchRecomendedOffers = async () => {
   const { data }: { data: Offer[] } = await axios.get(
     `${process.env.JOBS_API_URL}.json`,
   );
 
-  return data;
+  return data.map(addRandomSalaryToOffer);
 };
 
-export const fetchOffers = async (path: string) => {
+export const fetchOffers = async (query: Query) => {
+  let offers = [
+    ...(await prisma.offer.findMany({
+      where: {
+        OR: [
+          { title: { contains: query.q, mode: "insensitive" } },
+          { company: { contains: query.q, mode: "insensitive" } },
+          {
+            location: {
+              contains: query.location || query.q,
+              mode: "insensitive",
+            },
+          },
+          { description: { contains: query.q, mode: "insensitive" } },
+          {
+            type: {
+              contains: query.full_time
+                ? query.full_time === "true"
+                  ? "Full Time"
+                  : "Part Time"
+                : query.q,
+              mode: "insensitive",
+            },
+          },
+        ],
+      },
+    })),
+  ];
+
+  const page = Number(query.page) || 0;
+  offers = offers.slice(page * 50, (page + 1) * 50);
+
+  const path = Object.entries(query)
+    .map((item) => {
+      if (item[0] === "q") {
+        item[0] = "search";
+      }
+
+      return item;
+    })
+    .map((item) => item.join("="))
+    .join("&");
+
   const { data }: { data: Offer[] } = await axios.get(
     `${process.env.JOBS_API_URL}.json?${path}`,
   );
 
-  return data;
+  return [...offers, ...data.map(addRandomSalaryToOffer)];
 };
 
 export const fetchSingleOffer = async (id: string) => {
+  const idIsNumber = !Number.isNaN(Number(id));
+  if (idIsNumber) {
+    const offer = await prisma.offer.findUnique({
+      where: { id: Number(id) },
+    });
+
+    return offer;
+  }
+
   const { data }: { data: Offer } = await axios.get(
     `${process.env.JOBS_API_URL}/${id}.json`,
   );
+  return addRandomSalaryToOffer(data);
+};
 
-  return data;
+export const addOffer = async (
+  userId: number,
+  { ...data }: OfferWithSalary,
+) => {
+  const offer = await prisma.offer.create({
+    data: {
+      ...data,
+      salary: data.salary as string,
+    },
+  });
+  await prisma.userOffer.create({ data: { userId, offerId: offer.id } });
+
+  return offer;
 };

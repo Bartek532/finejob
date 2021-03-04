@@ -18,7 +18,7 @@ export const Checkbox = memo<CheckboxProps>(
           className={styles.input}
           name={name}
           value={value || label}
-          checked={checked}
+          defaultChecked={checked}
           ref={inputRef}
         />
         <span className={styles.checkmark}></span>

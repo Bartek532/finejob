@@ -4,7 +4,10 @@ import {
   getOffers,
   getRecommendedOffers,
   getSingleOffer,
+  createOffer,
 } from "../controllers/offersController";
+import { validateToken } from "../middlewares/validateToken";
+import { validateUser } from "../middlewares/validateUser";
 
 import { validateFilters } from "../middlewares/validateFilters";
 
@@ -13,5 +16,6 @@ const router = express.Router();
 router.get("/search", validateFilters, catchAsync(getOffers));
 router.get("/recommended", catchAsync(getRecommendedOffers));
 router.get("/:id", catchAsync(getSingleOffer));
+router.post("/", validateToken, validateUser, catchAsync(createOffer));
 
 export default router;

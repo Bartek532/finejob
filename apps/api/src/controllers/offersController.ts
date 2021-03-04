@@ -2,8 +2,10 @@ import {
   fetchRecomendedOffers,
   fetchOffers,
   fetchSingleOffer,
+  addOffer,
 } from "../services/offers";
 import { addRandomSalaryToOffer } from "../utils";
+import { validateOffer } from "../validation";
 import type { Request, Response } from "express";
 
 export const getRecommendedOffers = async (req: Request, res: Response) => {
@@ -13,21 +15,20 @@ export const getRecommendedOffers = async (req: Request, res: Response) => {
 };
 
 export const getOffers = async (req: Request, res: Response) => {
-  const path = Object.entries(req.query)
-    .map(item => {
-      if (item[0] === "q") {
-        item[0] = "search";
-      }
-
-      return item;
-    })
-    .map(item => item.join("="))
-    .join("&");
-  res.status(200).json((await fetchOffers(path)).map(addRandomSalaryToOffer));
+  res.status(200).json(await fetchOffers(req.query));
 };
 
 export const getSingleOffer = async (req: Request, res: Response) => {
+  res.status(200).json(await fetchSingleOffer(req.params.id));
+};
+
+export const createOffer = async (req: Request, res: Response) => {
+  const { error } = validateOffer(req.body);
+  if (error) {
+    return res.status(400).json({ message: error.details[0].message });
+  }
+
   res
     .status(200)
-    .json(addRandomSalaryToOffer(await fetchSingleOffer(req.params.id)));
+    .json(addOffer(req.user!.id, { ...req.body, company: req.user!.company }));
 };

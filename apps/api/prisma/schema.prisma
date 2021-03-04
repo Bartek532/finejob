@@ -13,6 +13,7 @@ model User {
   email            String             @unique @db.VarChar(255)
   company          String             @db.VarChar(255)
   password         String             @db.VarChar(255)
+  UserOffer        UserOffer[]
   UserOfferLibrary UserOfferLibrary[]
 }
 
@@ -22,4 +23,32 @@ model UserOfferLibrary {
   User    User   @relation(fields: [userId], references: [id])
 
   @@id([offerId, userId])
+}
+
+model Offer {
+  id           Int         @id @default(autoincrement())
+  title        String      @db.VarChar(255)
+  company      String?     @db.VarChar(255)
+  location     String      @db.VarChar(255)
+  type         String?     @db.VarChar(255)
+  salary       String      @db.VarChar(255)
+  description  String      @db.VarChar(255)
+  how_to_apply String      @db.VarChar(255)
+  company_url  String?     @db.VarChar(255)
+  created_at   DateTime    @default(now()) @db.Timestamp(6)
+  UserOffer    UserOffer[]
+}
+
+model UserOffer {
+  offerId Int
+  userId  Int
+  Offer   Offer @relation(fields: [offerId], references: [id])
+  User    User  @relation(fields: [userId], references: [id])
+
+  @@id([offerId, userId])
+}
+
+enum job_type {
+  full_time @map("full time")
+  part_time @map("part time")
 }

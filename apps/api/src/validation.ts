@@ -32,3 +32,17 @@ export const validateChangeUserInfo = (data: Request) => {
 
   return schema.validate(data);
 };
+
+export const validateOffer = (data: Request) => {
+  const schema = Joi.object({
+    title: Joi.string().required().min(6),
+    location: Joi.string().required().min(3),
+    salary: Joi.string().required().min(3),
+    type: Joi.string().required().min(4),
+    description: Joi.string().required().min(10),
+    how_to_apply: Joi.string().required().min(6),
+    company_url: Joi.string(),
+  });
+
+  return schema.validate(data);
+};
