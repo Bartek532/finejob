@@ -10,11 +10,14 @@ import classnames from "classnames";
 import { JobsAPI } from "../../lib/api/offers";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/router";
 
 export const AddOffer = memo(() => {
-  const { register, handleSubmit, errors } = useForm({
+  const { register, handleSubmit, errors, reset } = useForm({
     reValidateMode: "onBlur",
   });
+
+  const router = useRouter();
 
   const dispatch = useDispatch();
 
@@ -23,9 +26,14 @@ export const AddOffer = memo(() => {
     console.log(data);
   };
 
+  const handleAcceptModal = () => {
+    reset();
+    router.push("/dashboard");
+  };
+
   return (
     <>
-      <Modal />
+      <Modal onAccept={handleAcceptModal} />
       <main className={styles.add}>
         <form className={styles.form} onSubmit={handleSubmit(handleAddOffer)}>
           <Input

@@ -41,7 +41,7 @@ export const validateOffer = (data: Request) => {
     type: Joi.string().required().min(4),
     description: Joi.string().required().min(10),
     how_to_apply: Joi.string().required().min(6),
-    company_url: Joi.string(),
+    company_url: Joi.string().optional().allow(""),
   });
 
   return schema.validate(data);

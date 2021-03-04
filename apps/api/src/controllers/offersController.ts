@@ -4,14 +4,11 @@ import {
   fetchSingleOffer,
   addOffer,
 } from "../services/offers";
-import { addRandomSalaryToOffer } from "../utils";
 import { validateOffer } from "../validation";
 import type { Request, Response } from "express";
 
 export const getRecommendedOffers = async (req: Request, res: Response) => {
-  res
-    .status(200)
-    .json((await fetchRecomendedOffers()).map(addRandomSalaryToOffer));
+  res.status(200).json(await fetchRecomendedOffers());
 };
 
 export const getOffers = async (req: Request, res: Response) => {

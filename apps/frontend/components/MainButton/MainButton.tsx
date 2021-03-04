@@ -12,7 +12,7 @@ type MainButtonProps = {
 export const MainButton = memo<MainButtonProps>(
   ({ text, icon, type, onClick }) => {
     return (
-      <button className={styles.btn} type={type} onClick={onClick}>
+      <button className={styles.btn} type={type || "submit"} onClick={onClick}>
         {text ? (
           text
         ) : (

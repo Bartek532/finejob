@@ -75,8 +75,12 @@ export const SearchByLocation = memo(() => {
               inputRef={register}
             />
             <div className={styles.buttons}>
-              <MainButton icon="location" onClick={searchByLocation} />
-              <MainButton icon="search" type="submit" />
+              <MainButton
+                icon="location"
+                onClick={searchByLocation}
+                type="button"
+              />
+              <MainButton icon="search" />
             </div>
           </form>
           <div className={styles.subtitle}>
