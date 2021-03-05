@@ -53,74 +53,76 @@ export const Recommended = memo<RecommendedSectionProps>(({ offers }) => {
   }, [scroll]);
 
   return (
-    <section className={styles.wrapper}>
-      <h2 className={styles.title}>Recommended Jobs</h2>
+    <section className={styles.recommended}>
+      <div className={styles.wrapper}>
+        <h2 className={styles.title}>Recommended Jobs</h2>
 
-      {scroll !== 0 ? (
-        <button
-          className={classnames(styles.scrollLeft, styles.btn)}
-          onClick={handleScrollLeft}
+        {scroll !== 0 ? (
+          <button
+            className={classnames(styles.scrollLeft, styles.btn)}
+            onClick={handleScrollLeft}
+          >
+            <Back className={styles.icon} />
+          </button>
+        ) : null}
+
+        {scroll !== -maxScroll ? (
+          <button
+            className={classnames(styles.scrollRight, styles.btn)}
+            onClick={handleScrollRight}
+          >
+            <Forward className={styles.icon} />
+          </button>
+        ) : null}
+
+        <article
+          className={styles.offers}
+          style={{ transform: `translateX(${scroll}px)` }}
+          ref={offersContainerRef}
         >
-          <Back className={styles.icon} />
-        </button>
-      ) : null}
+          {offers.map((offer) => (
+            <Link href={`/offers/${offer.id}`} key={offer.id}>
+              <a>
+                <article className={styles.offer}>
+                  <div className={styles.main}>
+                    <div className={styles.logo}>
+                      <Avatar name={offer.company} />
+                    </div>
 
-      {scroll !== -maxScroll ? (
-        <button
-          className={classnames(styles.scrollRight, styles.btn)}
-          onClick={handleScrollRight}
-        >
-          <Forward className={styles.icon} />
-        </button>
-      ) : null}
+                    <span className="sr-only">job title</span>
+                    <span className={styles.offerTitle}>
+                      {offer.title.length > 64
+                        ? `${offer.title.slice(0, 64)}...`
+                        : offer.title}
+                    </span>
 
-      <article
-        className={styles.offers}
-        style={{ transform: `translateX(${scroll}px)` }}
-        ref={offersContainerRef}
-      >
-        {offers.map((offer) => (
-          <Link href={`/offers/${offer.id}`} key={offer.id}>
-            <a>
-              <article className={styles.offer}>
-                <div className={styles.main}>
-                  <div className={styles.logo}>
-                    <Avatar name={offer.company} />
+                    <span className="sr-only">company</span>
+                    <span className={styles.company}>{offer.company}</span>
+
+                    <span className="sr-only">location</span>
+                    <span className={styles.location}>{offer.location}</span>
                   </div>
 
-                  <span className="sr-only">job title</span>
-                  <span className={styles.offerTitle}>
-                    {offer.title.length > 64
-                      ? `${offer.title.slice(0, 64)}...`
-                      : offer.title}
-                  </span>
-
-                  <span className="sr-only">company</span>
-                  <span className={styles.company}>{offer.company}</span>
-
-                  <span className="sr-only">location</span>
-                  <span className={styles.location}>{offer.location}</span>
-                </div>
-
-                <div className={styles.additional}>
-                  <span className="sr-only">salary</span>
-                  <span className={styles.salary}>
-                    ${offer.salary.toFixed(0)}
-                  </span>
-                  {offer.company_url ? (
-                    <Link href={offer.company_url}>
-                      <button className={styles.btn}>
-                        <span className="sr-only">link to company site</span>
-                        <Forward className={styles.icon} />
-                      </button>
-                    </Link>
-                  ) : null}
-                </div>
-              </article>
-            </a>
-          </Link>
-        ))}
-      </article>
+                  <div className={styles.additional}>
+                    <span className="sr-only">salary</span>
+                    <span className={styles.salary}>
+                      ${offer.salary.toFixed(0)}
+                    </span>
+                    {offer.company_url ? (
+                      <Link href={offer.company_url}>
+                        <button className={styles.btn}>
+                          <span className="sr-only">link to company site</span>
+                          <Forward className={styles.icon} />
+                        </button>
+                      </Link>
+                    ) : null}
+                  </div>
+                </article>
+              </a>
+            </Link>
+          ))}
+        </article>
+      </div>
     </section>
   );
 });

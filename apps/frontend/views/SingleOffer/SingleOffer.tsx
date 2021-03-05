@@ -4,14 +4,15 @@ import { MainButton } from "../../components/MainButton/MainButton";
 import { ActionButton } from "../../components/ActionButton/ActionButton";
 import { Modal } from "../../components/Modal/Modal";
 import { OfferControls } from "../../components/OfferControls/OfferControls";
-import { useSelector } from "react-redux";
 import type { OfferWithSalary } from "@finejob/types";
-import { useEffect, useState, memo, useCallback } from "react";
+import { memo, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import classnames from "classnames";
 import { prepareQueryToSearch } from "../../lib/utils/functions";
+
+import Moment from "react-moment";
 
 type SingleOfferProps = { readonly offer: OfferWithSalary };
 
@@ -96,12 +97,13 @@ export const SingleOffer = memo<SingleOfferProps>(({ offer }) => {
         </div>
 
         <div className={styles.content}>
-          <time className={styles.date}>
-            Created: {offer.created_at.slice(0, 20)}
-          </time>
+          <span className={styles.date}>
+            Created:{" "}
+            <Moment date={offer.created_at} format="dddd DD/MM/YY hh:mm A" />
+          </span>
           <div
             className={styles.description}
-            dangerouslySetInnerHTML={{ __html: offer.description || "xd" }}
+            dangerouslySetInnerHTML={{ __html: offer.description }}
           ></div>
         </div>
 
