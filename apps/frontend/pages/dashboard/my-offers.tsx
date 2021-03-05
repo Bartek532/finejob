@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 const MyOffers = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(UserAPI.getMyCreatedOffers());
+    dispatch(UserAPI.getUserOffers("created"));
   }, []);
   return (
     <AuthChecker>

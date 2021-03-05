@@ -9,8 +9,7 @@ import {
   saveOffer,
   unsaveOffer,
   getSavedOffer,
-  getAllSavedOffers,
-  getOffersCreatedByUser,
+  getUserOffers,
 } from "../controllers/usersController";
 import { validateToken } from "../middlewares/validateToken";
 import { validateUser } from "../middlewares/validateUser";
@@ -24,8 +23,8 @@ router.get("/isLogin", validateToken);
 router.get("/logout", validateToken, validateUser, catchAsync(logoutUser));
 router.post("/", validateToken, validateUser, catchAsync(changeUserInfo));
 
-/*
 router.post("/offers", validateToken, validateUser, catchAsync(saveOffer));
+
 router.delete(
   "/offers/:id",
   validateToken,
@@ -39,19 +38,6 @@ router.get(
   catchAsync(getSavedOffer),
 );
 
-router.get(
-  "/offers",
-  validateToken,
-  validateUser,
-  catchAsync(getAllSavedOffers),
-);
-*/
-
-router.get(
-  "/offers/created",
-  validateToken,
-  validateUser,
-  catchAsync(getOffersCreatedByUser),
-);
+router.get("/offers", validateToken, validateUser, catchAsync(getUserOffers));
 
 export default router;

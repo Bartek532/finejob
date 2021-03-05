@@ -133,27 +133,11 @@ export const UserAPI = {
     }
   },
 
-  getSavedOffers: (): FuncType => async (dispatch) => {
+  getUserOffers: (type: "created" | "saved"): FuncType => async (dispatch) => {
     dispatch(setLoading(true));
     try {
       const { data }: { data: OfferWithSalary[] } = await fetcher(
-        `/api/users/offers`,
-        "GET",
-      );
-      dispatch(setOffers(data));
-    } catch (error) {
-      console.log(error.message);
-      dispatch(showModal({ type: "error", message: error.message }));
-    } finally {
-      dispatch(setLoading(false));
-    }
-  },
-
-  getMyCreatedOffers: (): FuncType => async (dispatch) => {
-    dispatch(setLoading(true));
-    try {
-      const { data }: { data: OfferWithSalary[] } = await fetcher(
-        `/api/users/offers/created`,
+        `/api/users/offers?type=${type}`,
         "GET",
       );
       dispatch(setOffers(data));

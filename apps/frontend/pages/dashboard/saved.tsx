@@ -9,7 +9,7 @@ import { useDispatch } from "react-redux";
 const Saved = () => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(UserAPI.getSavedOffers());
+    dispatch(UserAPI.getUserOffers("saved"));
   }, []);
   return (
     <AuthChecker>

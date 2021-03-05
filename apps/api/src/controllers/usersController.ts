@@ -140,17 +140,21 @@ export const unsaveOffer = async (req: Request, res: Response) => {
 export const getSavedOffer = async (req: Request, res: Response) => {
   const offer = await findOfferInLibrary(req.user!.id, req.params.id);
 
-  if (offer) {
-    return res.status(200).json(offer);
+  if (!offer) {
+    return res.status(404).json({ message: "This offer is not saved." });
   }
 
-  res.status(404).json({ message: "This offer is not saved." });
+  res.status(200).json(offer);
 };
 
-export const getAllSavedOffers = async (req: Request, res: Response) => {
-  res.status(200).json(await fetchUserLibrary(req.user!.id));
-};
+export const getUserOffers = async (req: Request, res: Response) => {
+  if (req.query.type === "saved") {
+    return res.status(200).json(await fetchUserLibrary(req.user!.id));
+  }
 
-export const getOffersCreatedByUser = async (req: Request, res: Response) => {
-  res.status(200).json(await fetchOffersCreatedByUsers(req.user!.id));
+  if (req.query.type === "created") {
+    return res.status(200).json(await fetchOffersCreatedByUsers(req.user!.id));
+  }
+
+  res.status(400).json({ message: "Invalid parameters." });
 };
