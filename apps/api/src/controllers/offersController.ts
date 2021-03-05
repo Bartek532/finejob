@@ -3,6 +3,7 @@ import {
   fetchOffers,
   fetchSingleOffer,
   addOffer,
+  removeOffer,
 } from "../services/offers";
 import { validateOffer } from "../validation";
 import type { Request, Response } from "express";
@@ -28,4 +29,8 @@ export const createOffer = async (req: Request, res: Response) => {
   res
     .status(200)
     .json(addOffer(req.user!.id, { ...req.body, company: req.user!.company }));
+};
+
+export const deleteOffer = async (req: Request, res: Response) => {
+  res.status(200).json(removeOffer(req.user!.id, Number(req.params.id)));
 };

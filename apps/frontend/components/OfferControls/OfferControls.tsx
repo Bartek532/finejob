@@ -1,5 +1,6 @@
 import styles from "./OfferControls.module.scss";
 import { UserAPI } from "../../lib/api/user";
+import { JobsAPI } from "../../lib/api/offers";
 import { fetcher } from "../../lib/utils/fetcher";
 import Image from "next/image";
 import { useDispatch, useSelector } from "react-redux";
@@ -46,6 +47,10 @@ export const OfferControls = memo<OfferControlsProps>(({ offerId }) => {
     dispatch(UserAPI.unsaveOffer(offerId));
   }, [offerId]);
 
+  const handleDeleteOffer = useCallback(() => {
+    dispatch(JobsAPI.deleteOffer(offerId as number));
+  }, [offerId]);
+
   useEffect(() => {
     checkIsSaved();
     checkIsCreatedByUser();
@@ -69,7 +74,10 @@ export const OfferControls = memo<OfferControlsProps>(({ offerId }) => {
               height={24}
             />
           </button>
-          <button className={classnames(styles.control, styles.delete)}>
+          <button
+            className={classnames(styles.control, styles.delete)}
+            onClick={handleDeleteOffer}
+          >
             <Image
               src="/icons/offer/delete.svg"
               alt="delete"

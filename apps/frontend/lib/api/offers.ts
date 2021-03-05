@@ -71,4 +71,16 @@ export const JobsAPI = {
       dispatch(setLoading(false));
     }
   },
+  deleteOffer: (id: number): FetchFuncType => async (dispatch) => {
+    dispatch(setLoading(true));
+    try {
+      await fetcher(`/api/offers/${id}`, "DELETE");
+      dispatch(showModal({ type: "success", message: "Offer was deleted!" }));
+    } catch (error) {
+      console.log(error.message);
+      dispatch(showModal({ type: "error", message: error.message }));
+    } finally {
+      dispatch(setLoading(false));
+    }
+  },
 };

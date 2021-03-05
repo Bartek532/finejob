@@ -119,3 +119,10 @@ export const addOffer = async (
 
   return offer;
 };
+
+export const removeOffer = async (userId: number, offerId: number) => {
+  await prisma.userOffer.delete({
+    where: { offerId_userId: { userId, offerId } },
+  });
+  return prisma.offer.delete({ where: { id: offerId } });
+};
