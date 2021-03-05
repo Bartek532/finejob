@@ -105,7 +105,10 @@ export const fetchSingleOffer = async (id: string) => {
   return addRandomSalaryToOffer(data);
 };
 
-export const addOffer = async (userId: number, data: OfferWithSalary) => {
+export const addOffer = async (
+  userId: number,
+  data: OfferWithSalary & { id: number },
+) => {
   const offer = await prisma.offer.create({
     data: {
       ...data,

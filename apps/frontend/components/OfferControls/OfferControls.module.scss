@@ -1,0 +1,26 @@
+@import "../../styles/_mixins";
+
+.controls {
+  position: absolute;
+  top: 24px;
+  right: 20px;
+  @include flex;
+
+  .control {
+    background-color: transparent;
+    margin: 0 4px;
+    border: 0 none;
+    cursor: pointer;
+  }
+}
+
+@media all and (min-width: 62.5rem) {
+  .controls {
+    top: 94px;
+    right: 70px;
+
+    .control {
+      margin: 0 6px;
+    }
+  }
+}

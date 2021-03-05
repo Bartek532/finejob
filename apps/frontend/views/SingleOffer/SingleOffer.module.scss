@@ -6,15 +6,6 @@
   padding: 0 2.4rem;
   padding-bottom: 1.3rem;
 
-  .save {
-    position: absolute;
-    top: 22px;
-    right: 25px;
-    background-color: transparent;
-    border: 0 none;
-    cursor: pointer;
-  }
-
   .main {
     @include flex;
     flex-flow: column wrap;
@@ -144,12 +135,5 @@
     grid-template-columns: 1fr 1fr 1fr;
     align-content: center;
     margin-top: 1.9rem;
-  }
-}
-
-@media all and (min-width: 62.5rem) {
-  .offer .save {
-    top: 94px;
-    right: 70px;
   }
 }

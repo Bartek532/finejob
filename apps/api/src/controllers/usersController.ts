@@ -9,10 +9,11 @@ import jwt from "jsonwebtoken";
 import {
   findUserByEmail,
   createUser,
-  findOfferInLibrary,
   changeUserData,
   addOfferToUserLibrary,
   deleteOfferFromLibrary,
+  fetchSavedOffer,
+  fetchCreatedOffer,
   fetchUserLibrary,
   fetchOffersCreatedByUsers,
 } from "../services/users";
@@ -106,7 +107,7 @@ export const changeUserInfo = async (req: Request, res: Response) => {
 };
 
 export const saveOffer = async (req: Request, res: Response) => {
-  const isOfferInLibrary = await findOfferInLibrary(
+  const isOfferInLibrary = await fetchSavedOffer(
     req.user!.id,
     req.body.id.toString(),
   );
@@ -123,10 +124,7 @@ export const saveOffer = async (req: Request, res: Response) => {
 };
 
 export const unsaveOffer = async (req: Request, res: Response) => {
-  const isOfferInLibrary = await findOfferInLibrary(
-    req.user!.id,
-    req.params.id,
-  );
+  const isOfferInLibrary = await fetchSavedOffer(req.user!.id, req.params.id);
 
   if (!isOfferInLibrary) {
     return res.status(404);
@@ -137,14 +135,23 @@ export const unsaveOffer = async (req: Request, res: Response) => {
   res.status(200).json({ message: "Offer has been removed from the library!" });
 };
 
-export const getSavedOffer = async (req: Request, res: Response) => {
-  const offer = await findOfferInLibrary(req.user!.id, req.params.id);
-
-  if (!offer) {
-    return res.status(404).json({ message: "This offer is not saved." });
+export const getUserOffer = async (req: Request, res: Response) => {
+  if (req.query.type === "saved") {
+    return res
+      .status(200)
+      .json(await fetchSavedOffer(req.user!.id, req.params.id));
   }
 
-  res.status(200).json(offer);
+  if (req.query.type === "created") {
+    if (Number.isNaN(Number(req.params.id))) {
+      return res.status(400);
+    }
+    return res
+      .status(200)
+      .json(await fetchCreatedOffer(req.user!.id, Number(req.params.id)));
+  }
+
+  res.status(400).json({ message: "Invalid parameters." });
 };
 
 export const getUserOffers = async (req: Request, res: Response) => {

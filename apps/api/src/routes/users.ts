@@ -8,7 +8,7 @@ import {
   changeUserInfo,
   saveOffer,
   unsaveOffer,
-  getSavedOffer,
+  getUserOffer,
   getUserOffers,
 } from "../controllers/usersController";
 import { validateToken } from "../middlewares/validateToken";
@@ -31,11 +31,12 @@ router.delete(
   validateUser,
   catchAsync(unsaveOffer),
 );
+
 router.get(
   "/offers/:id",
   validateToken,
   validateUser,
-  catchAsync(getSavedOffer),
+  catchAsync(getUserOffer),
 );
 
 router.get("/offers", validateToken, validateUser, catchAsync(getUserOffers));

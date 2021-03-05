@@ -47,8 +47,3 @@ model UserOffer {
 
   @@id([offerId, userId])
 }
-
-enum job_type {
-  full_time @map("full time")
-  part_time @map("part time")
-}

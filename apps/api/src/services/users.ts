@@ -20,9 +20,15 @@ export const findUserById = (id: number) => {
   return prisma.user.findUnique({ where: { id } });
 };
 
-export const findOfferInLibrary = (userId: number, offerId: string) => {
-  return prisma.userOfferLibrary.findFirst({
-    where: { AND: [{ userId }, { offerId }] },
+export const fetchSavedOffer = (userId: number, offerId: string) => {
+  return prisma.userOfferLibrary.findUnique({
+    where: { offerId_userId: { userId, offerId } },
+  });
+};
+
+export const fetchCreatedOffer = (userId: number, offerId: number) => {
+  return prisma.userOffer.findUnique({
+    where: { offerId_userId: { userId, offerId } },
   });
 };
 

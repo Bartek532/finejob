@@ -2,62 +2,27 @@ import styles from "./SingleOffer.module.scss";
 import { Avatar } from "../../components/Avatar/Avatar";
 import { MainButton } from "../../components/MainButton/MainButton";
 import { ActionButton } from "../../components/ActionButton/ActionButton";
-import { UserAPI } from "../../lib/api/user";
 import { Modal } from "../../components/Modal/Modal";
-import { useDispatch, useSelector } from "react-redux";
+import { OfferControls } from "../../components/OfferControls/OfferControls";
+import { useSelector } from "react-redux";
 import type { OfferWithSalary } from "@finejob/types";
 import { useEffect, useState, memo, useCallback } from "react";
-import { getModalInfo } from "../../store/mainSlice";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import classnames from "classnames";
-import { fetcher } from "../../lib/utils/fetcher";
 import { prepareQueryToSearch } from "../../lib/utils/functions";
 
 type SingleOfferProps = { readonly offer: OfferWithSalary };
 
 export const SingleOffer = memo<SingleOfferProps>(({ offer }) => {
-  const dispatch = useDispatch();
   const router = useRouter();
-  const modal = useSelector(getModalInfo);
-  const [isSaved, setIsSaved] = useState(false);
 
   const info = [
     { type: "location", value: offer.location },
     { type: "type", value: offer.type },
     { type: "salary", value: offer.salary + " $" },
   ];
-
-  useEffect(() => {
-    async function checkIsSaved() {
-      try {
-        await fetcher(`/api/users/offers/${offer.id}`, "GET");
-        setIsSaved(true);
-      } catch {
-        setIsSaved(false);
-      }
-    }
-    checkIsSaved();
-  }, []);
-
-  useEffect(() => {
-    if (modal.show && modal.type === "success") {
-      if (!isSaved) {
-        setIsSaved(true);
-      } else {
-        setIsSaved(false);
-      }
-    }
-  }, [modal]);
-
-  const handleSaveOffer = useCallback(() => {
-    dispatch(UserAPI.saveOffer(offer.id));
-  }, [offer.id]);
-
-  const handleUnsaveOffer = useCallback(() => {
-    dispatch(UserAPI.unsaveOffer(offer.id));
-  }, [offer.id]);
 
   const handleSearchByCompany = useCallback(() => {
     router.replace({
@@ -88,20 +53,7 @@ export const SingleOffer = memo<SingleOfferProps>(({ offer }) => {
       <Modal />
       <section className={styles.offer}>
         <ActionButton icon="back" corner />
-
-        <button
-          className={styles.save}
-          onClick={isSaved ? handleUnsaveOffer : handleSaveOffer}
-        >
-          <span className="sr-only">save offer</span>
-          <Image
-            src={`/icons/offer/${isSaved ? "save" : "empty-save"}.svg`}
-            alt="save"
-            width={24}
-            height={24}
-          />
-        </button>
-
+        <OfferControls offerId={offer.id} />
         <article className={styles.main}>
           <div className={styles.logo}>
             <Avatar name={offer.company} />

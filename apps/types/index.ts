@@ -1,7 +1,7 @@
 //Github Jobs
 
 export type Offer = {
-  readonly id: number;
+  readonly id: string | number;
   readonly type: string;
   readonly created_at: any;
   readonly company: string;

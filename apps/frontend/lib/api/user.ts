@@ -99,7 +99,7 @@ export const UserAPI = {
       dispatch(setLoading(false));
     }
   },
-  saveOffer: (id: string): FuncType => async (dispatch) => {
+  saveOffer: (id: string | number): FuncType => async (dispatch) => {
     dispatch(setLoading(true));
     try {
       const {
@@ -117,7 +117,7 @@ export const UserAPI = {
       dispatch(setLoading(false));
     }
   },
-  unsaveOffer: (id: string): FuncType => async (dispatch) => {
+  unsaveOffer: (id: string | number): FuncType => async (dispatch) => {
     dispatch(setLoading(true));
     try {
       const { data }: { data: { message: string } } = await fetcher(
