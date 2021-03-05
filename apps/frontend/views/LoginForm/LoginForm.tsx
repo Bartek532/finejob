@@ -42,14 +42,14 @@ export const LoginForm = memo(() => {
       <form onSubmit={handleSubmit(handleFormSubmit)} className={styles.form}>
         <Input
           name="email"
-          error={errors.email}
+          error={errors.email?.message}
           inputRef={register(inputValidation.email)}
         />
 
         <Input
           name="password"
           type="password"
-          error={errors.password}
+          error={errors.password?.message}
           inputRef={register(inputValidation.password)}
         />
 

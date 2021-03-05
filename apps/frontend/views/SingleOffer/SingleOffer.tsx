@@ -53,7 +53,7 @@ export const SingleOffer = memo<SingleOfferProps>(({ offer }) => {
       <Modal />
       <section className={styles.offer}>
         <ActionButton icon="back" corner />
-        <OfferControls offerId={offer.id} />
+        <OfferControls offer={offer} />
         <article className={styles.main}>
           <div className={styles.logo}>
             <Avatar name={offer.company} />

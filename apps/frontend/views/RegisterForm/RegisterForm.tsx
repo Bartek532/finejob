@@ -25,26 +25,26 @@ export const RegisterForm = memo(() => {
     <form onSubmit={handleSubmit(handleFormSubmit)} className={styles.form}>
       <Input
         name="name"
-        error={errors.name}
+        error={errors.name?.message}
         inputRef={register(inputValidation.other)}
       />
 
       <Input
         name="company"
-        error={errors.company}
+        error={errors.company?.message}
         inputRef={register(inputValidation.other)}
       />
 
       <Input
         name="email"
-        error={errors.email}
+        error={errors.email?.message}
         inputRef={register(inputValidation.email)}
       />
 
       <Input
         name="password"
         type="password"
-        error={errors.password}
+        error={errors.password?.message}
         inputRef={register(inputValidation.password)}
       />
 

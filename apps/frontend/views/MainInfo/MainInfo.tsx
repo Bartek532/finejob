@@ -41,7 +41,7 @@ export const MainInfo = memo(() => {
       <article className={styles.mobileApp}>
         <div className={styles.mockup}>
           <Image
-            src="/images/first_mockup.png"
+            src="/images/mockups/mobile-app.png"
             alt="mockup"
             width={460}
             height={525}

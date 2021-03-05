@@ -4,27 +4,47 @@ import { MainButton } from "../../components/MainButton/MainButton";
 import { Modal } from "../../components/Modal/Modal";
 import { Checkbox } from "../../components/Checkbox/Checkbox";
 import { inputValidation } from "../../lib/utils/consts";
-import { memo } from "react";
+import { memo, useState, useEffect } from "react";
 import type { OfferWithSalary } from "@finejob/types";
 import classnames from "classnames";
 import { JobsAPI } from "../../lib/api/offers";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
+import { setEditingOffer } from "../../store/offersSlice";
 
-export const AddOffer = memo(() => {
+type AddOfferProps = {
+  readonly isEditing: boolean;
+  readonly offer: OfferWithSalary;
+};
+
+export const AddOffer = memo<AddOfferProps>(({ offer, isEditing }) => {
   const { register, handleSubmit, errors, reset } = useForm({
     reValidateMode: "onBlur",
+    defaultValues: offer,
   });
+
+  const [areInputsFocused] = useState(!!offer);
 
   const router = useRouter();
 
   const dispatch = useDispatch();
 
   const handleAddOffer = (data: OfferWithSalary) => {
-    dispatch(JobsAPI.createOffer(data));
-    console.log(data);
+    if (isEditing) {
+      console.log(data);
+      //dispatch(JobsAPI.editOffer(data));
+    } else {
+      dispatch(JobsAPI.createOffer(data));
+    }
   };
+
+  useEffect(() => {
+    return () => {
+      reset();
+      dispatch(setEditingOffer({ value: false, offer: {} }));
+    };
+  }, []);
 
   const handleAcceptModal = () => {
     reset();
@@ -39,12 +59,14 @@ export const AddOffer = memo(() => {
           <Input
             name="title"
             inputRef={register(inputValidation.other)}
-            error={errors.title}
+            error={errors.title?.message}
+            shouldBeFocused={areInputsFocused}
           />
           <Input
             name="location"
             inputRef={register(inputValidation.other)}
-            error={errors.salary}
+            error={errors.salary?.message}
+            shouldBeFocused={areInputsFocused}
           />
 
           <Input
@@ -52,7 +74,8 @@ export const AddOffer = memo(() => {
             placeholder="salary (in $)"
             type="number"
             inputRef={register(inputValidation.other)}
-            error={errors.salary}
+            error={errors.salary?.message}
+            shouldBeFocused={areInputsFocused}
           />
 
           <textarea
@@ -97,10 +120,13 @@ export const AddOffer = memo(() => {
             name="company_url"
             placeholder="Company site (optional)"
             inputRef={register}
+            shouldBeFocused={
+              areInputsFocused ? (offer.company_url ? true : false) : false
+            }
           />
 
           <div className={styles.btn}>
-            <MainButton text="Submit" />
+            <MainButton text={`${isEditing ? "Update" : "Create"}`} />
           </div>
         </form>
       </main>

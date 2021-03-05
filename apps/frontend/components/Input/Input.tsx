@@ -69,7 +69,7 @@ export const Input = memo<TextInputProps>(
             )
           ) : null}
         </label>
-        {error ? <span className={styles.error}>{error.message}</span> : null}
+        {error ? <span className={styles.error}>{error}</span> : null}
       </div>
     );
   },

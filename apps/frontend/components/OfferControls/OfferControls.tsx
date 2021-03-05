@@ -7,21 +7,25 @@ import { useDispatch, useSelector } from "react-redux";
 import { getModalInfo } from "../../store/mainSlice";
 import { memo, useState, useEffect, useCallback } from "react";
 import classnames from "classnames";
+import { useRouter } from "next/router";
+import { setEditingOffer } from "../../store/offersSlice";
+import { OfferWithSalary } from "@finejob/types";
 
 type OfferControlsProps = {
-  readonly offerId: string | number;
+  readonly offer: OfferWithSalary;
 };
 
-export const OfferControls = memo<OfferControlsProps>(({ offerId }) => {
+export const OfferControls = memo<OfferControlsProps>(({ offer }) => {
   const modal = useSelector(getModalInfo);
   const dispatch = useDispatch();
+  const router = useRouter();
   const [isSaved, setIsSaved] = useState(false);
   const [isCreatedByUser, setIsCreatedByUser] = useState(false);
 
   const checkIsSaved = async () => {
     try {
       const { data } = await fetcher(
-        `/api/users/offers/${offerId}?type=saved`,
+        `/api/users/offers/${offer.id}?type=saved`,
         "GET",
       );
       setIsSaved(!!data);
@@ -32,7 +36,7 @@ export const OfferControls = memo<OfferControlsProps>(({ offerId }) => {
 
   const checkIsCreatedByUser = async () => {
     try {
-      await fetcher(`/api/users/offers/${offerId}?type=created`, "GET");
+      await fetcher(`/api/users/offers/${offer.id}?type=created`, "GET");
       setIsCreatedByUser(true);
     } catch {
       setIsCreatedByUser(false);
@@ -40,16 +44,21 @@ export const OfferControls = memo<OfferControlsProps>(({ offerId }) => {
   };
 
   const handleSaveOffer = useCallback(() => {
-    dispatch(UserAPI.saveOffer(offerId));
-  }, [offerId]);
+    dispatch(UserAPI.saveOffer(offer.id));
+  }, [offer.id]);
 
   const handleUnsaveOffer = useCallback(() => {
-    dispatch(UserAPI.unsaveOffer(offerId));
-  }, [offerId]);
+    dispatch(UserAPI.unsaveOffer(offer.id));
+  }, [offer.id]);
 
   const handleDeleteOffer = useCallback(() => {
-    dispatch(JobsAPI.deleteOffer(offerId as number));
-  }, [offerId]);
+    dispatch(JobsAPI.deleteOffer(offer.id as number));
+  }, [offer.id]);
+
+  const handleEditOffer = useCallback(() => {
+    dispatch(setEditingOffer({ value: true, offer }));
+    router.push("/dashboard/offer");
+  }, [offer.id]);
 
   useEffect(() => {
     checkIsSaved();
@@ -66,7 +75,10 @@ export const OfferControls = memo<OfferControlsProps>(({ offerId }) => {
     <div className={styles.controls}>
       {isCreatedByUser ? (
         <>
-          <button className={classnames(styles.control, styles.edit)}>
+          <button
+            className={classnames(styles.control, styles.edit)}
+            onClick={handleEditOffer}
+          >
             <Image
               src="/icons/offer/edit.svg"
               alt="edit"

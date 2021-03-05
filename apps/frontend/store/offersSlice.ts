@@ -3,29 +3,32 @@ import type { OfferWithSalary } from "../../types";
 
 export type InitialOffersState = {
   offers: {
-    isActualOfferSaved: boolean;
     allOffers: OfferWithSalary[];
     loadMore: boolean;
     lastOffersApiCallAddress: string;
     resultsPage: number;
+    editOffer: {
+      value: boolean;
+      offer: OfferWithSalary;
+    };
   };
 };
 
 export const slice = createSlice({
   name: "offers",
   initialState: {
-    isActualOfferSaved: false,
     allOffers: [],
     loadMore: false,
     lastOffersApiCallAddress: "",
     resultsPage: 1,
+    editOffer: {
+      value: false,
+      offer: {},
+    },
   },
   reducers: {
     setOffers: (state, { payload }) => {
       state.allOffers = payload;
-    },
-    setIsActualOfferSaved: (state, { payload }) => {
-      state.isActualOfferSaved = payload;
     },
     setLastOffersApiCallAddress: (state, { payload }) => {
       state.lastOffersApiCallAddress = payload;
@@ -36,19 +39,19 @@ export const slice = createSlice({
     setResultsPage: (state, { payload }) => {
       state.resultsPage = payload;
     },
+    setEditingOffer: (state, { payload }) => {
+      state.editOffer = payload;
+    },
   },
 });
 
 export const {
   setOffers,
-  setIsActualOfferSaved,
   setLastOffersApiCallAddress,
   setLoadMore,
   setResultsPage,
+  setEditingOffer,
 } = slice.actions;
-
-export const getActualOfferSavedStatus = (state: InitialOffersState) =>
-  state.offers.isActualOfferSaved;
 
 export const getAllOffers = (state: InitialOffersState) =>
   state.offers.allOffers;
@@ -61,5 +64,8 @@ export const getLoadMoreStatus = (state: InitialOffersState) =>
 
 export const getActualResultsPage = (state: InitialOffersState) =>
   state.offers.resultsPage;
+
+export const getEditingOfferStatus = (state: InitialOffersState) =>
+  state.offers.editOffer;
 
 export const offersReducer = slice.reducer;

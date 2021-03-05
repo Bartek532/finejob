@@ -8,7 +8,7 @@ import { MainButton } from "../../components/MainButton/MainButton";
 
 const fields = [
   { label: "my offers", icon: "offers" },
-  { label: "add an offer", icon: "create" },
+  { label: "add an offer", icon: "create", link: "offer" },
   { label: "saved", icon: "saved" },
   { label: "settings", icon: "settings" },
 ];
@@ -28,7 +28,9 @@ export const DashboardStart = memo(() => {
             className={styles.field}
             key={field.icon}
             onClick={() =>
-              router.push(`/dashboard/${field.label.split(" ").join("-")}`)
+              router.push(
+                `/dashboard/${field.link || field.label.split(" ").join("-")}`,
+              )
             }
           >
             <div className={styles.icon}>
