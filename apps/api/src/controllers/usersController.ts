@@ -14,8 +14,8 @@ import {
   addOfferToUserLibrary,
   deleteOfferFromLibrary,
   fetchUserLibrary,
+  fetchOffersCreatedByUsers,
 } from "../services/users";
-import { addRandomSalaryToOffer } from "../utils";
 
 export const login = async (req: Request, res: Response) => {
   const { error } = validateLogin(req.body);
@@ -149,4 +149,8 @@ export const getSavedOffer = async (req: Request, res: Response) => {
 
 export const getAllSavedOffers = async (req: Request, res: Response) => {
   res.status(200).json(await fetchUserLibrary(req.user!.id));
+};
+
+export const getOffersCreatedByUser = async (req: Request, res: Response) => {
+  res.status(200).json(await fetchOffersCreatedByUsers(req.user!.id));
 };

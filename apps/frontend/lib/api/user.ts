@@ -148,4 +148,20 @@ export const UserAPI = {
       dispatch(setLoading(false));
     }
   },
+
+  getMyCreatedOffers: (): FuncType => async (dispatch) => {
+    dispatch(setLoading(true));
+    try {
+      const { data }: { data: OfferWithSalary[] } = await fetcher(
+        `/api/users/offers/created`,
+        "GET",
+      );
+      dispatch(setOffers(data));
+    } catch (error) {
+      console.log(error.message);
+      dispatch(showModal({ type: "error", message: error.message }));
+    } finally {
+      dispatch(setLoading(false));
+    }
+  },
 };

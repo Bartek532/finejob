@@ -67,3 +67,12 @@ export const fetchUserLibrary = async (userId: number) => {
 
   return userLibrary;
 };
+
+export const fetchOffersCreatedByUsers = async (userId: number) => {
+  const offers = await prisma.userOffer.findMany({
+    where: { userId },
+    include: { Offer: true },
+  });
+
+  return offers.map((item) => item.Offer);
+};

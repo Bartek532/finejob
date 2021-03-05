@@ -21,7 +21,7 @@ export const fetchRecomendedOffers = async () => {
 };
 
 export const fetchOffers = async (query: Query) => {
-  let offers = [
+  const offers = [
     ...(await prisma.offer.findMany({
       where: {
         OR: [
@@ -67,7 +67,6 @@ export const fetchOffers = async (query: Query) => {
   ];
 
   const page = Number(query.page) || 0;
-  offers = offers.slice(page * 50, (page + 1) * 50);
 
   const path = Object.entries(query)
     .map((item) => {
@@ -84,7 +83,10 @@ export const fetchOffers = async (query: Query) => {
     `${process.env.JOBS_API_URL}.json?${path}`,
   );
 
-  return [...offers, ...data.map(addRandomSalaryToOffer)];
+  return [
+    ...offers.slice(page * 50, (page + 1) * 50),
+    ...data.map(addRandomSalaryToOffer),
+  ];
 };
 
 export const fetchSingleOffer = async (id: string) => {
@@ -103,10 +105,7 @@ export const fetchSingleOffer = async (id: string) => {
   return addRandomSalaryToOffer(data);
 };
 
-export const addOffer = async (
-  userId: number,
-  { ...data }: OfferWithSalary,
-) => {
+export const addOffer = async (userId: number, data: OfferWithSalary) => {
   const offer = await prisma.offer.create({
     data: {
       ...data,
