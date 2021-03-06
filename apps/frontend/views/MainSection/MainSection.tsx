@@ -6,6 +6,8 @@ import Image from "next/image";
 import FullLogo from "../../public/icons/full-logo.svg";
 import { useWindowSize } from "../../lib/hooks/useWindowSize";
 import { prepareQueryToSearch } from "../../lib/utils/functions";
+import { ThemeSwitch } from "../../components/ThemeSwitch/ThemeSwitch";
+
 import Link from "next/link";
 import { useRouter } from "next/router";
 
@@ -30,11 +32,16 @@ export const MainSection = memo(() => {
   return (
     <section className={styles.main}>
       {width! < 1000 ? (
-        <Link href="/">
-          <a className={styles.logo}>
-            <FullLogo />
-          </a>
-        </Link>
+        <>
+          <Link href="/">
+            <a className={styles.logo}>
+              <FullLogo />
+            </a>
+          </Link>
+          <div className={styles.theme}>
+            <ThemeSwitch />
+          </div>
+        </>
       ) : null}
       <article className={styles.wrapper}>
         <h1 className={styles.title}>

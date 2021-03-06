@@ -12,7 +12,7 @@
   .right {
     height: 4rem;
     width: 50%;
-    background-color: var(--primary-white);
+    background-color: var(--field);
     @include flex(space-evenly);
   }
 
@@ -38,6 +38,10 @@
 
   svg {
     cursor: pointer;
+
+    path {
+      fill: var(--primary-black);
+    }
   }
 
   .active {

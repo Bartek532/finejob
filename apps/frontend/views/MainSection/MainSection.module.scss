@@ -10,6 +10,12 @@
     left: 24px;
   }
 
+  .theme {
+    position: absolute;
+    top: 22px;
+    right: 25px;
+  }
+
   .wrapper {
     @include flex;
     flex-flow: column wrap;
