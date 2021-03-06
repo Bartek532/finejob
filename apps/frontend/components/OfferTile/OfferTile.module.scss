@@ -2,10 +2,10 @@
 
 .offer {
   width: 100%;
-  background: var(--primary-white);
+  background: var(--field);
   color: var(--primary-black);
   padding: 1.5rem 0;
-  box-shadow: 0 3px 10px 2px rgba(161, 161, 161, 0.25);
+  box-shadow: var(--gray-shadow);
   border-radius: 20px;
   position: relative;
   display: flex;

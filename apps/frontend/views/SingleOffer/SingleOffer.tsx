@@ -98,7 +98,7 @@ export const SingleOffer = memo<SingleOfferProps>(({ offer }) => {
 
         <div className={styles.content}>
           <span className={styles.date}>
-            Created:{" "}
+            <span>Created: </span>
             <Moment date={offer.created_at} format="dddd DD/MM/YY hh:mm A" />
           </span>
           <div

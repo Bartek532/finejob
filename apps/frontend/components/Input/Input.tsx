@@ -45,29 +45,31 @@ export const Input = memo<TextInputProps>(
             spellCheck="false"
             autoComplete={type === "password" ? "off" : "on"}
           />
-          {name.toLowerCase().includes("password") ? (
-            inputType === "password" ? (
-              <button
-                className={styles.eye}
-                type="button"
-                onClick={() => setInputType("text")}
-              >
-                <span className="sr-only">show password</span>
+          <div className={styles.btn}>
+            {name.toLowerCase().includes("password") ? (
+              inputType === "password" ? (
+                <button
+                  className={styles.eye}
+                  type="button"
+                  onClick={() => setInputType("text")}
+                >
+                  <span className="sr-only">show password</span>
 
-                <ClosedEye />
-              </button>
-            ) : (
-              <button
-                className={styles.eye}
-                type="button"
-                onClick={() => setInputType("password")}
-              >
-                <span className="sr-only">hide password</span>
+                  <ClosedEye />
+                </button>
+              ) : (
+                <button
+                  className={styles.eye}
+                  type="button"
+                  onClick={() => setInputType("password")}
+                >
+                  <span className="sr-only">hide password</span>
 
-                <Eye />
-              </button>
-            )
-          ) : null}
+                  <Eye />
+                </button>
+              )
+            ) : null}
+          </div>
         </label>
         {error ? <span className={styles.error}>{error}</span> : null}
       </div>

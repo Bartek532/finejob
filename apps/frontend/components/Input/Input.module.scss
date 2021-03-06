@@ -11,7 +11,7 @@
 
   .wrapper {
     position: relative;
-    background: var(--primary-white);
+    background: var(--field);
     border-radius: 15px;
     width: 82%;
     display: block;
@@ -35,7 +35,7 @@
     }
 
     .placeholder {
-      @include pseudo(auto, 14px, 9px, var(--primary-white), 1);
+      @include pseudo(auto, 14px, 9px, var(--field), 1);
       height: auto;
       color: var(--primary-gray);
       padding: 0.4rem 0.75rem;
@@ -70,6 +70,10 @@
       border: 0 none;
       transform: translateY(-46%);
       cursor: pointer;
+    }
+
+    .btn svg path {
+      fill: var(--primary-black);
     }
   }
 

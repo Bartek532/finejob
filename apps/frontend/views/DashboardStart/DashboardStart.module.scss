@@ -18,29 +18,15 @@
       border-radius: 10px;
       @include flex(space-between);
       flex-flow: column wrap;
-      background-color: var(--primary-white);
+      background-color: var(--field);
       border: 2px solid rgba(0, 0, 0, 0.08);
       cursor: pointer;
       transition: transform 0.3s;
-      position: relative;
-
-      &::after {
-        @include pseudo;
-        box-shadow: 0 3px 20px 2px var(--primary-gray);
-        opacity: 0;
-        border-radius: inherit;
-        transition: opacity 0.3s;
-      }
 
       &:hover {
         transform: translateY(-25px) rotate(7deg);
         transform-origin: "100% 100%";
         transition: all 0.3s;
-
-        &::after {
-          opacity: 1;
-          transition: opacity 0.3s;
-        }
       }
       .icon {
         max-width: 9.5rem;

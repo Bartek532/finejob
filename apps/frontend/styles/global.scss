@@ -5,6 +5,7 @@ html {
 * {
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
+  color: var(--primary-black);
 
   &::selection {
     background-color: #fff065;

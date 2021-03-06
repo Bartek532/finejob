@@ -27,17 +27,18 @@ export const Layout = memo<LayoutProps>(
         <Loader />
         <header>
           {width! > 1000 ? (
-            <Link href="/">
-              <a className={styles.logo}>
-                <span className="sr-only">home</span>
-                <FullLogo />
-              </a>
-            </Link>
+            <>
+              <Link href="/">
+                <a className={styles.logo}>
+                  <span className="sr-only">home</span>
+                  <FullLogo />
+                </a>
+              </Link>
+              <div className={styles.theme}>
+                <ThemeSwitch />
+              </div>
+            </>
           ) : null}
-
-          <div className={styles.theme}>
-            <ThemeSwitch />
-          </div>
 
           <Navbar />
           {headerTitle ? <h1 className={styles.title}>{headerTitle}</h1> : null}

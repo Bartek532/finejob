@@ -18,6 +18,7 @@
       box-shadow: var(--gray-shadow);
       padding: 1rem 1.2rem;
       line-height: 1.3rem;
+      background-color: var(--field);
       &::placeholder {
         color: var(--primary-gray);
       }
@@ -35,7 +36,7 @@
       padding: 0.4rem 2.7rem;
       align-self: flex-start;
       font-family: "Roboto", sans-serif;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
     }
 
     .checkboxes {

@@ -61,17 +61,9 @@ export const fetchUserLibrary = async (userId: number) => {
   const offers = await prisma.userOfferLibrary.findMany({
     where: { userId },
   });
-
-  const userLibrary = [];
-
-  for (const offer of offers) {
-    const fetchedOffer = await fetchSingleOffer(offer.offerId);
-    if (fetchedOffer) {
-      userLibrary.push(fetchedOffer);
-    }
-  }
-
-  return userLibrary;
+  return Promise.all([
+    ...offers.map(async (offer) => await fetchSingleOffer(offer.offerId)),
+  ]);
 };
 
 export const fetchOffersCreatedByUser = (userId: number) => {

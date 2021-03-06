@@ -113,7 +113,9 @@ export const addOffer = (userId: number, data: OfferWithSalary) => {
 };
 
 export const removeOffer = async (offerId: string) => {
-  return prisma.offer.delete({
+  await prisma.userOfferLibrary.deleteMany({ where: { offerId } });
+
+  return await prisma.offer.delete({
     where: { id: offerId },
   });
 };

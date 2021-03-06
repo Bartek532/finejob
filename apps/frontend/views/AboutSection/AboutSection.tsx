@@ -63,7 +63,7 @@ export const AboutSection = memo(() => {
 
       <article className={styles.employeeCounter}>
         <h2 className={styles.label}>
-          <strong>Congrats!</strong> You've joined
+          <strong className={styles.strong}>Congrats!</strong> You've joined
         </h2>
         <Counter value={2700000} time={5} />
         <h3 className={styles.subtitle}>
