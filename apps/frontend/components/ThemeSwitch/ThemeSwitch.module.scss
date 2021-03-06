@@ -1,0 +1,52 @@
+@import "../../styles/_mixins";
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 2.6rem;
+  height: 1.5rem;
+
+  .input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+
+    &:checked + .slider {
+      background-color: var(--primary-orange);
+    }
+
+    &:focus + .slider {
+      box-shadow: 0 0 1px var(--primary-orange);
+    }
+
+    &:checked + .slider .circle {
+      transform: translateX(1.07rem);
+    }
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: all 0.4s;
+    border-radius: 34px;
+
+    .circle {
+      position: absolute;
+      content: "";
+      height: 1.135rem;
+      width: 1.135rem;
+      left: 0.2rem;
+      bottom: 0.18rem;
+      padding: 0 1px 0.5px 0;
+      background-color: #fff;
+      border-radius: 50%;
+      transition: all 0.4s;
+      @include flex;
+    }
+  }
+}

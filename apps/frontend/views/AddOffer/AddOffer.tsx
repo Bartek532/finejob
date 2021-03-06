@@ -35,7 +35,7 @@ export const AddOffer = memo<AddOfferProps>(({ offer, isEditing }) => {
       console.log(data);
       //dispatch(JobsAPI.editOffer(data));
     } else {
-      dispatch(JobsAPI.createOffer(data));
+      dispatch(JobsAPI.createOffer({ ...data, salary: Number(data.salary) }));
     }
   };
 

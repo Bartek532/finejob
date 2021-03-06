@@ -17,6 +17,10 @@
     cursor: pointer;
   }
 
+  .theme {
+    position: absolute;
+  }
+
   .title {
     text-transform: uppercase;
     letter-spacing: 0.07rem;
@@ -39,6 +43,11 @@
 
     .title {
       font-size: 1.9rem;
+    }
+
+    .theme {
+      top: 2.6rem;
+      left: 11rem;
     }
   }
 }

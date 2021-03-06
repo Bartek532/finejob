@@ -26,9 +26,9 @@ export const fetchSavedOffer = (userId: number, offerId: string) => {
   });
 };
 
-export const fetchCreatedOffer = (userId: number, offerId: number) => {
-  return prisma.userOffer.findUnique({
-    where: { offerId_userId: { userId, offerId } },
+export const fetchCreatedOffer = (userId: number, offerId: string) => {
+  return prisma.offer.findFirst({
+    where: { AND: [{ id: offerId }, { userId }] },
   });
 };
 
@@ -74,11 +74,8 @@ export const fetchUserLibrary = async (userId: number) => {
   return userLibrary;
 };
 
-export const fetchOffersCreatedByUsers = async (userId: number) => {
-  const offers = await prisma.userOffer.findMany({
+export const fetchOffersCreatedByUser = (userId: number) => {
+  return prisma.offer.findMany({
     where: { userId },
-    include: { Offer: true },
   });
-
-  return offers.map((item) => item.Offer);
 };

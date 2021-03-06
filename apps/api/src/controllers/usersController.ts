@@ -15,7 +15,7 @@ import {
   fetchSavedOffer,
   fetchCreatedOffer,
   fetchUserLibrary,
-  fetchOffersCreatedByUsers,
+  fetchOffersCreatedByUser,
 } from "../services/users";
 
 export const login = async (req: Request, res: Response) => {
@@ -143,12 +143,9 @@ export const getUserOffer = async (req: Request, res: Response) => {
   }
 
   if (req.query.type === "created") {
-    if (Number.isNaN(Number(req.params.id))) {
-      return res.status(400);
-    }
     return res
       .status(200)
-      .json(await fetchCreatedOffer(req.user!.id, Number(req.params.id)));
+      .json(await fetchCreatedOffer(req.user!.id, req.params.id));
   }
 
   res.status(400).json({ message: "Invalid parameters." });
@@ -160,7 +157,7 @@ export const getUserOffers = async (req: Request, res: Response) => {
   }
 
   if (req.query.type === "created") {
-    return res.status(200).json(await fetchOffersCreatedByUsers(req.user!.id));
+    return res.status(200).json(await fetchOffersCreatedByUser(req.user!.id));
   }
 
   res.status(400).json({ message: "Invalid parameters." });

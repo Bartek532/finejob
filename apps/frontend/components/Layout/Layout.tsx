@@ -3,6 +3,7 @@ import { Navbar } from "../Navbar/Navbar";
 import { Loader } from "../Loader/Loader";
 import { CookiesPopup } from "../CookiesPopup/CookiesPopup";
 import styles from "./Layout.module.scss";
+import { ThemeSwitch } from "../ThemeSwitch/ThemeSwitch";
 import { NextSeo } from "next-seo";
 
 import { titleTemplate as defaultTitleTemplate } from "../../pages/_app";
@@ -33,6 +34,11 @@ export const Layout = memo<LayoutProps>(
               </a>
             </Link>
           ) : null}
+
+          <div className={styles.theme}>
+            <ThemeSwitch />
+          </div>
+
           <Navbar />
           {headerTitle ? <h1 className={styles.title}>{headerTitle}</h1> : null}
         </header>

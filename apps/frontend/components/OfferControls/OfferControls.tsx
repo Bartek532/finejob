@@ -52,7 +52,8 @@ export const OfferControls = memo<OfferControlsProps>(({ offer }) => {
   }, [offer.id]);
 
   const handleDeleteOffer = useCallback(() => {
-    dispatch(JobsAPI.deleteOffer(offer.id as number));
+    dispatch(JobsAPI.deleteOffer(offer.id));
+    router.back();
   }, [offer.id]);
 
   const handleEditOffer = useCallback(() => {

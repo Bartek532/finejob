@@ -21,6 +21,8 @@ export const fetchRecomendedOffers = async () => {
 };
 
 export const fetchOffers = async (query: Query) => {
+  const page = Number(query.page) || 0;
+
   const offers = [
     ...(await prisma.offer.findMany({
       where: {
@@ -63,10 +65,10 @@ export const fetchOffers = async (query: Query) => {
           },
         ],
       },
+      skip: page * 50,
+      take: 50,
     })),
   ];
-
-  const page = Number(query.page) || 0;
 
   const path = Object.entries(query)
     .map((item) => {
@@ -83,46 +85,35 @@ export const fetchOffers = async (query: Query) => {
     `${process.env.JOBS_API_URL}.json?${path}`,
   );
 
-  return [
-    ...offers.slice(page * 50, (page + 1) * 50),
-    ...data.map(addRandomSalaryToOffer),
-  ];
+  return [...offers, ...data.map(addRandomSalaryToOffer)];
 };
 
-export const fetchSingleOffer = async (id: string) => {
-  const idIsNumber = !Number.isNaN(Number(id));
-  if (idIsNumber) {
-    const offer = await prisma.offer.findUnique({
-      where: { id: Number(id) },
-    });
+export const fetchSingleOffer = async (offerId: string) => {
+  const offer = await prisma.offer.findUnique({
+    where: { id: offerId },
+  });
 
+  if (offer) {
     return offer;
   }
 
   const { data }: { data: Offer } = await axios.get(
-    `${process.env.JOBS_API_URL}/${id}.json`,
+    `${process.env.JOBS_API_URL}/${offerId}.json`,
   );
   return addRandomSalaryToOffer(data);
 };
 
-export const addOffer = async (
-  userId: number,
-  data: OfferWithSalary & { id: number },
-) => {
-  const offer = await prisma.offer.create({
+export const addOffer = (userId: number, data: OfferWithSalary) => {
+  return prisma.offer.create({
     data: {
       ...data,
-      salary: data.salary as string,
+      userId,
     },
   });
-  await prisma.userOffer.create({ data: { userId, offerId: offer.id } });
-
-  return offer;
 };
 
-export const removeOffer = async (userId: number, offerId: number) => {
-  await prisma.userOffer.delete({
-    where: { offerId_userId: { userId, offerId } },
+export const removeOffer = async (offerId: string) => {
+  return prisma.offer.delete({
+    where: { id: offerId },
   });
-  return prisma.offer.delete({ where: { id: offerId } });
 };

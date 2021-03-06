@@ -28,9 +28,17 @@ export const createOffer = async (req: Request, res: Response) => {
 
   res
     .status(200)
-    .json(addOffer(req.user!.id, { ...req.body, company: req.user!.company }));
+    .json(
+      await addOffer(req.user!.id, { ...req.body, company: req.user!.company }),
+    );
 };
 
 export const deleteOffer = async (req: Request, res: Response) => {
-  res.status(200).json(removeOffer(req.user!.id, Number(req.params.id)));
+  const offer = await fetchSingleOffer(req.params.id);
+
+  if (offer.userId === req.user!.id) {
+    return res.status(200).json(await removeOffer(req.params.id));
+  }
+
+  res.status(400);
 };
