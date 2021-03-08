@@ -4,6 +4,8 @@ import styles from "./OfferTile.module.scss";
 import { ActionButton } from "../ActionButton/ActionButton";
 import Link from "next/link";
 import { Avatar } from "../Avatar/Avatar";
+import Company from "../../public/icons/offer/company.svg";
+import Location from "../../public/icons/offer/location.svg";
 
 type OfferTileProps = Pick<
   OfferWithSalary,
@@ -23,26 +25,30 @@ export const OfferTile = memo<OfferTileProps>(
               <div className={styles.wrapper}>
                 <span className="sr-only">job title</span>
                 <h4 className={styles.title}>
-                  {title.length > 20 ? title.slice(0, 17) + "..." : title}
+                  {title.length > 120 ? title.slice(0, 117) + "..." : title}
                 </h4>
-                <span className={styles.label}>job</span>
               </div>
-              <div className={styles.wrapper}>
-                <span className="sr-only">company</span>
+              <div className={styles.additional}>
+                <div className={styles.wrapper}>
+                  <span className="sr-only">company</span>
 
-                <span className={styles.company}>
-                  {company.length > 19 ? company.slice(0, 16) + "..." : company}
-                </span>
-                <span className={styles.label}>Company</span>
-              </div>
-              <div className={styles.wrapper}>
-                <span className="sr-only">location</span>
-                <span className={styles.location}>
-                  {location.length > 20
-                    ? location.slice(0, 17) + "..."
-                    : location}
-                </span>
-                <span className={styles.label}>Location</span>
+                  <span className={styles.company}>
+                    <Company className={styles.icon} />
+                    {company.length > 39
+                      ? company.slice(0, 36) + "..."
+                      : company}
+                  </span>
+                </div>
+                <div className={styles.wrapper}>
+                  <span className="sr-only">location</span>
+
+                  <span className={styles.location}>
+                    <Location className={styles.icon} />
+                    {location.length > 50
+                      ? location.slice(0, 47) + "..."
+                      : location}
+                  </span>
+                </div>
               </div>
             </div>
 

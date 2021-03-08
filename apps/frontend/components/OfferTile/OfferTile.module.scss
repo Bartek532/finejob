@@ -8,8 +8,8 @@
   box-shadow: var(--gray-shadow);
   border-radius: 20px;
   position: relative;
-  display: flex;
-  justify-content: flex-start;
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
   align-items: center;
   transition: 0.3s;
   margin: 1rem 0;
@@ -24,20 +24,26 @@
   }
 
   .description {
-    margin-top: 0.7rem;
-    .label {
-      display: none;
-    }
+    margin-top: 0.75rem;
     .title {
       margin: 0;
       margin-bottom: 0.57rem;
       font-weight: bold;
+      line-height: 1.3rem;
     }
     .location,
     .company {
       font-size: 0.75rem;
       display: block;
       margin: 0.1rem 0;
+
+      .icon {
+        display: none;
+      }
+    }
+
+    .company {
+      display: none;
     }
   }
   .salary {
@@ -80,42 +86,54 @@
       transition: opacity 0.3s;
     }
     * {
-      color: white;
+      color: var(--primary-white);
     }
   }
 }
 
 @media all and (min-width: 700px) {
   .offer {
-    display: grid;
     padding: 1.5rem 1.3rem;
     grid-template-columns: 0.5fr 4fr 0.7fr;
 
     .description {
-      display: grid;
-      grid-template-columns: 2.5fr 2fr 2fr;
-      align-items: center;
-      margin: 0;
+      @include flex(center, flex-start);
+      flex-flow: column wrap;
+      align-self: center;
+      margin-top: 0.3rem;
+
+      .additional {
+        @include flex;
+        color: var(--primary-gray);
+      }
 
       .wrapper {
         margin: 0 1.3rem;
-        .title,
-        .location,
-        .company {
-          margin: 0;
-          margin-bottom: 0.57rem;
-        }
 
         .location,
         .company {
-          font-size: 0.85rem;
-          font-weight: bold;
-        }
-
-        .label {
           display: block;
-          text-transform: uppercase;
-          font-size: 0.6rem;
+          font-size: 0.85rem;
+          color: var(--primary-gray);
+          @include flex;
+
+          .icon {
+            display: block;
+            margin-right: 0.6rem;
+          }
+        }
+      }
+    }
+
+    &:hover {
+      .description .additional .wrapper {
+        .location,
+        .company {
+          color: var(--primary-white);
+        }
+
+        .icon path {
+          fill: var(--primary-white);
         }
       }
     }

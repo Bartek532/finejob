@@ -2,7 +2,6 @@
 
 .full {
   @include flex;
-
   .label {
     color: var(--primary-black);
     align-self: flex-end;

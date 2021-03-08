@@ -113,6 +113,7 @@ export const Recommended = memo<RecommendedSectionProps>(({ offers }) => {
                         className={styles.btn}
                         href={offer.company_url}
                         onClick={(e) => e.stopPropagation()}
+                        rel="noopener"
                       >
                         <span className="sr-only">link to company site</span>
                         <Forward className={styles.icon} />

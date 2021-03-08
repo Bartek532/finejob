@@ -1,6 +1,5 @@
 import { memo } from "react";
 import styles from "./Footer.module.scss";
-import Link from "next/link";
 import Image from "next/image";
 
 const actualDate = new Date().getFullYear();
@@ -16,11 +15,9 @@ export const Footer = memo(() => {
           make your &#40;and ours &#128513;&#41; life easier thanks to
           technology. Do you want to know more? Check below!
         </p>
-        <Link href="https://github.com/Bartek532">
-          <a target="_blank" rel="noopener">
-            <button className={styles.btn}>Check out</button>
-          </a>
-        </Link>
+        <a href="https://github.com/Bartek532" target="_blank" rel="noopener">
+          <button className={styles.btn}>Check out</button>
+        </a>
       </div>
 
       <div className={styles.image}>

@@ -114,7 +114,7 @@ export const SingleOffer = memo<SingleOfferProps>(({ offer }) => {
           ></div>
         </div>
         {offer.company_url ? (
-          <a href={offer.company_url}>
+          <a href={offer.company_url} rel="noopener">
             <MainButton text="Go to company site" />
           </a>
         ) : null}
