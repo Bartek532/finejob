@@ -2,7 +2,7 @@ import { useCallback, useState, useEffect } from "react";
 
 export function useLocalStorage<T extends string>(
   key: string,
-  defaultValue: T
+  defaultValue: T,
 ) {
   const [value, setValue] = useState<T | null>(null);
 
@@ -24,7 +24,7 @@ export function useLocalStorage<T extends string>(
         console.error(err);
       }
     },
-    [key]
+    [key],
   );
 
   return [value, setStoredValue] as const;

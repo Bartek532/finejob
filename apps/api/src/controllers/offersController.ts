@@ -4,6 +4,7 @@ import {
   fetchSingleOffer,
   addOffer,
   removeOffer,
+  changeOffer,
 } from "../services/offers";
 import { validateOffer } from "../validation";
 import type { Request, Response } from "express";
@@ -38,6 +39,16 @@ export const deleteOffer = async (req: Request, res: Response) => {
 
   if (offer.userId === req.user!.id) {
     return res.status(200).json(await removeOffer(req.params.id));
+  }
+
+  res.status(400);
+};
+
+export const editOffer = async (req: Request, res: Response) => {
+  const offer = await fetchSingleOffer(req.params.id);
+
+  if (offer.userId === req.user!.id) {
+    return res.status(200).json(await changeOffer(req.params.id, req.body));
   }
 
   res.status(400);

@@ -1,6 +1,6 @@
 @import "../../styles/_mixins";
 
-.add {
+.wrapper {
   @include flex;
   flex-flow: column wrap;
   padding: 0.8rem 0 1.3rem 0;
@@ -35,7 +35,7 @@
       color: var(--primary-orange);
       padding: 0.4rem 2.7rem;
       align-self: flex-start;
-      font-family: "Roboto", sans-serif;
+      font-family: var(--input-font);
       font-size: 0.75rem;
     }
 

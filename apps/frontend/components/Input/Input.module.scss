@@ -1,7 +1,7 @@
 @import "../../styles/_mixins";
 
 .field {
-  font-family: "Roboto", sans-serif;
+  font-family: var(--input-font);
   margin-bottom: 1.2rem;
   font-size: 0.75rem;
   max-width: 26.8rem;

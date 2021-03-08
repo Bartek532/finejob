@@ -119,3 +119,7 @@ export const removeOffer = async (offerId: string) => {
     where: { id: offerId },
   });
 };
+
+export const changeOffer = (offerId: string, data: OfferWithSalary) => {
+  return prisma.offer.update({ where: { id: offerId }, data });
+};

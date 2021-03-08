@@ -50,14 +50,12 @@ export const OfferTile = memo<OfferTileProps>(
 
             <span className={styles.salary}>${salary}</span>
             {company_url ? (
-              <a
-                className={styles.btn}
-                href={company_url}
-                onClick={(e) => e.stopPropagation()}
-              >
-                <span className="sr-only">go to company site</span>
-                <ActionButton icon="forward" />
-              </a>
+              <Link href={company_url}>
+                <span className={styles.btn}>
+                  <span className="sr-only">go to company site</span>
+                  <ActionButton icon="forward" />
+                </span>
+              </Link>
             ) : null}
           </article>
         </a>

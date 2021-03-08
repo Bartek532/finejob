@@ -8,7 +8,7 @@ import { getModalInfo } from "../../store/mainSlice";
 import { memo, useState, useEffect, useCallback } from "react";
 import classnames from "classnames";
 import { useRouter } from "next/router";
-import { setEditingOffer } from "../../store/offersSlice";
+import { setEditedOffer } from "../../store/offersSlice";
 import { OfferWithSalary } from "@finejob/types";
 
 type OfferControlsProps = {
@@ -60,8 +60,7 @@ export const OfferControls = memo<OfferControlsProps>(({ offer }) => {
   }, [offer.id]);
 
   const handleEditOffer = useCallback(() => {
-    dispatch(setEditingOffer({ value: true, offer }));
-    router.push("/dashboard/offer");
+    router.push(`/dashboard/my-offers/edit?id=${offer.id}`);
   }, [offer.id]);
 
   useEffect(() => {

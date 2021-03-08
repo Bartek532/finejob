@@ -8,7 +8,7 @@ import { MainButton } from "../../components/MainButton/MainButton";
 
 const fields = [
   { label: "my offers", icon: "offers" },
-  { label: "add an offer", icon: "create", link: "offer" },
+  { label: "add an offer", icon: "create" },
   { label: "saved", icon: "saved" },
   { label: "settings", icon: "settings" },
 ];

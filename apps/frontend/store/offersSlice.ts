@@ -7,10 +7,6 @@ export type InitialOffersState = {
     loadMore: boolean;
     lastOffersApiCallAddress: string;
     resultsPage: number;
-    editOffer: {
-      value: boolean;
-      offer: OfferWithSalary;
-    };
   };
 };
 
@@ -21,10 +17,6 @@ export const slice = createSlice({
     loadMore: false,
     lastOffersApiCallAddress: "",
     resultsPage: 1,
-    editOffer: {
-      value: false,
-      offer: {},
-    },
   },
   reducers: {
     setOffers: (state, { payload }) => {
@@ -39,9 +31,6 @@ export const slice = createSlice({
     setResultsPage: (state, { payload }) => {
       state.resultsPage = payload;
     },
-    setEditingOffer: (state, { payload }) => {
-      state.editOffer = payload;
-    },
   },
 });
 
@@ -50,7 +39,6 @@ export const {
   setLastOffersApiCallAddress,
   setLoadMore,
   setResultsPage,
-  setEditingOffer,
 } = slice.actions;
 
 export const getAllOffers = (state: InitialOffersState) =>
@@ -64,8 +52,5 @@ export const getLoadMoreStatus = (state: InitialOffersState) =>
 
 export const getActualResultsPage = (state: InitialOffersState) =>
   state.offers.resultsPage;
-
-export const getEditingOfferStatus = (state: InitialOffersState) =>
-  state.offers.editOffer;
 
 export const offersReducer = slice.reducer;

@@ -83,4 +83,20 @@ export const JobsAPI = {
       dispatch(setLoading(false));
     }
   },
+  editOffer: (id: string, data: OfferWithSalary): FetchFuncType => async (
+    dispatch,
+  ) => {
+    dispatch(setLoading(true));
+    try {
+      await fetcher(`/api/offers/${id}`, "PUT", { ...data });
+      dispatch(
+        showModal({ type: "success", message: "Offer has been changed!" }),
+      );
+    } catch (error) {
+      console.log(error.message);
+      dispatch(showModal({ type: "error", message: error.message }));
+    } finally {
+      dispatch(setLoading(false));
+    }
+  },
 };

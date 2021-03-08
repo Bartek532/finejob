@@ -1,4 +1,4 @@
-import styles from "./AddOffer.module.scss";
+import styles from "./OfferForm.module.scss";
 import { Input } from "../../components/Input/Input";
 import { MainButton } from "../../components/MainButton/MainButton";
 import { Modal } from "../../components/Modal/Modal";
@@ -11,14 +11,13 @@ import { JobsAPI } from "../../lib/api/offers";
 import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
-import { setEditingOffer } from "../../store/offersSlice";
 
-type AddOfferProps = {
-  readonly isEditing: boolean;
-  readonly offer: OfferWithSalary;
+type OfferFormProps = {
+  readonly offer?: OfferWithSalary;
+  readonly type: "add" | "edit";
 };
 
-export const AddOffer = memo<AddOfferProps>(({ offer, isEditing }) => {
+export const OfferForm = memo<OfferFormProps>(({ offer, type }) => {
   const { register, handleSubmit, errors, reset } = useForm({
     reValidateMode: "onBlur",
     defaultValues: offer,
@@ -30,19 +29,19 @@ export const AddOffer = memo<AddOfferProps>(({ offer, isEditing }) => {
 
   const dispatch = useDispatch();
 
-  const handleAddOffer = (data: OfferWithSalary) => {
-    if (isEditing) {
-      console.log(data);
-      //dispatch(JobsAPI.editOffer(data));
+  const handleFormSubmit = (data: OfferWithSalary) => {
+    if (type === "edit") {
+      dispatch(JobsAPI.editOffer(offer!.id, { ...data }));
     } else {
       dispatch(JobsAPI.createOffer({ ...data, salary: Number(data.salary) }));
     }
   };
 
   useEffect(() => {
+    console.log(offer);
+
     return () => {
       reset();
-      dispatch(setEditingOffer({ value: false, offer: {} }));
     };
   }, []);
 
@@ -54,8 +53,8 @@ export const AddOffer = memo<AddOfferProps>(({ offer, isEditing }) => {
   return (
     <>
       <Modal onAccept={handleAcceptModal} />
-      <main className={styles.add}>
-        <form className={styles.form} onSubmit={handleSubmit(handleAddOffer)}>
+      <main className={styles.wrapper}>
+        <form className={styles.form} onSubmit={handleSubmit(handleFormSubmit)}>
           <Input
             name="title"
             inputRef={register(inputValidation.other)}
@@ -121,12 +120,12 @@ export const AddOffer = memo<AddOfferProps>(({ offer, isEditing }) => {
             placeholder="Company site (optional)"
             inputRef={register}
             shouldBeFocused={
-              areInputsFocused ? (offer.company_url ? true : false) : false
+              areInputsFocused ? (offer?.company_url ? true : false) : false
             }
           />
 
           <div className={styles.btn}>
-            <MainButton text={`${isEditing ? "Update" : "Create"}`} />
+            <MainButton text={`${type === "add" ? "Create" : "Update"}`} />
           </div>
         </form>
       </main>
