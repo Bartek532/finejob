@@ -1,6 +1,7 @@
 import { memo } from "react";
 import { Navbar } from "../Navbar/Navbar";
 import { Loader } from "../Loader/Loader";
+import { Logo } from "../Logo/Logo";
 import { CookiesPopup } from "../CookiesPopup/CookiesPopup";
 import styles from "./Layout.module.scss";
 import { ThemeSwitch } from "../ThemeSwitch/ThemeSwitch";
@@ -31,7 +32,7 @@ export const Layout = memo<LayoutProps>(
               <Link href="/">
                 <a className={styles.logo}>
                   <span className="sr-only">home</span>
-                  <FullLogo />
+                  <Logo withLabel />
                 </a>
               </Link>
               <div className={styles.theme}>

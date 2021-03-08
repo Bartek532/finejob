@@ -17,6 +17,8 @@
   --second-font: "Poppins", sans-serif;
 
   --gray-shadow: 1px 2px 5px 1px rgba(168, 155, 155, 0.25);
+
+  --primary-selection: #fff065;
 }
 
 [data-theme="dark"] {
@@ -26,13 +28,5 @@
   --gray-shadow: 1px 2px 5px 1px rgba(168, 155, 155, 0.1);
   --light-gray: rgb(60, 63, 63);
   --primary-gray: #a7a2a2;
+  --primary-selection: #25a18e;
 }
-
-/*
-#18191a	(24,25,26)
-#242526	(36,37,38)
-#3a3b3c	(58,59,60)
-#e4e6eb	(228,230,235)
-#b0b3b8	(176,179,184)
-
-*/

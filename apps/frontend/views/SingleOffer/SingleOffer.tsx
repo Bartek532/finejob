@@ -7,7 +7,6 @@ import { OfferControls } from "../../components/OfferControls/OfferControls";
 import type { OfferWithSalary } from "@finejob/types";
 import { memo, useCallback } from "react";
 import Image from "next/image";
-import Link from "next/link";
 import { useRouter } from "next/router";
 import classnames from "classnames";
 import { prepareQueryToSearch } from "../../lib/utils/functions";
@@ -115,11 +114,9 @@ export const SingleOffer = memo<SingleOfferProps>(({ offer }) => {
           ></div>
         </div>
         {offer.company_url ? (
-          <Link href={offer.company_url}>
-            <a>
-              <MainButton text="Go to company site" />
-            </a>
-          </Link>
+          <a href={offer.company_url}>
+            <MainButton text="Go to company site" />
+          </a>
         ) : null}
       </section>
     </>

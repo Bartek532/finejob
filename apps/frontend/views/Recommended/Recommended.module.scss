@@ -16,19 +16,17 @@
 
     .btn {
       background-color: transparent;
+      display: block;
       border: 2.3px solid var(--primary-orange);
       width: 2.85rem;
       height: 2.85rem;
       border-radius: 50%;
       cursor: pointer;
       transition: background-color 0.3s;
+      @include flex;
 
-      .icon {
-        transform: translate(1px, 1.3px);
-
-        path {
-          fill: var(--primary-orange);
-        }
+      .icon path {
+        fill: var(--primary-orange);
       }
     }
 

@@ -36,8 +36,11 @@ export const OfferControls = memo<OfferControlsProps>(({ offer }) => {
 
   const checkIsCreatedByUser = async () => {
     try {
-      await fetcher(`/api/users/offers/${offer.id}?type=created`, "GET");
-      setIsCreatedByUser(true);
+      const { data } = await fetcher(
+        `/api/users/offers/${offer.id}?type=created`,
+        "GET",
+      );
+      setIsCreatedByUser(!!data);
     } catch {
       setIsCreatedByUser(false);
     }

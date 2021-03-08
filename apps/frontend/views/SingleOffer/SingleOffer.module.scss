@@ -83,6 +83,10 @@
       line-height: 1.5rem;
       letter-spacing: 0.5px;
       word-break: break-word;
+      pre {
+        word-break: break-word;
+        white-space: pre-wrap;
+      }
 
       h2 {
         margin: 1.5rem 0;

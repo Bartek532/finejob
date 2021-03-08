@@ -5,7 +5,6 @@ import Location from "../../public/icons/nav/location.svg";
 import Person from "../../public/icons/nav/person.svg";
 import Image from "next/image";
 import { memo } from "react";
-
 import { useWindowSize } from "../../lib/hooks/useWindowSize";
 import styles from "./Navbar.module.scss";
 import classnames from "classnames";

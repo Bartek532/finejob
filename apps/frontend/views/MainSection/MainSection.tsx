@@ -3,7 +3,7 @@ import { Input } from "../../components/Input/Input";
 import { MainButton } from "../../components/MainButton/MainButton";
 import styles from "./MainSection.module.scss";
 import Image from "next/image";
-import FullLogo from "../../public/icons/full-logo.svg";
+import { Logo } from "../../components/Logo/Logo";
 import { useWindowSize } from "../../lib/hooks/useWindowSize";
 import { prepareQueryToSearch } from "../../lib/utils/functions";
 import { ThemeSwitch } from "../../components/ThemeSwitch/ThemeSwitch";
@@ -35,7 +35,7 @@ export const MainSection = memo(() => {
         <>
           <Link href="/">
             <a className={styles.logo}>
-              <FullLogo />
+              <Logo withLabel />
             </a>
           </Link>
           <div className={styles.theme}>

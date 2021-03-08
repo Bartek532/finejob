@@ -1,0 +1,15 @@
+@import "../../styles/_mixins";
+
+.full {
+  @include flex;
+
+  .label {
+    color: var(--primary-black);
+    align-self: flex-end;
+    margin-left: 0.5rem;
+  }
+
+  .violet {
+    color: var(--primary-violet);
+  }
+}
