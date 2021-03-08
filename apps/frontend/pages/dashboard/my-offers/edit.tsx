@@ -3,7 +3,7 @@ import { ActionButton } from "../../../components/ActionButton/ActionButton";
 import { OfferForm } from "../../../components/OfferForm/OfferForm";
 import { useEffect, useState } from "react";
 import { fetcher } from "../../../lib/utils/fetcher";
-import { getUser, setLoading } from "../../../store/mainSlice";
+import { setLoading } from "../../../store/mainSlice";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import type { OfferWithSalary } from "@finejob/types";
@@ -21,7 +21,6 @@ const Offer = () => {
           `/api/users/offers/${router.asPath.slice(29)}?type=created`,
           "GET",
         );
-        console.log(data);
         setOffer(data);
       } catch {
         router.push("/auth/login");

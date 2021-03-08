@@ -8,7 +8,6 @@ import { getModalInfo } from "../../store/mainSlice";
 import { memo, useState, useEffect, useCallback } from "react";
 import classnames from "classnames";
 import { useRouter } from "next/router";
-import { setEditedOffer } from "../../store/offersSlice";
 import { OfferWithSalary } from "@finejob/types";
 
 type OfferControlsProps = {

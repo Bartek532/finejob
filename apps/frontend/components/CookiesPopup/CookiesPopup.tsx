@@ -13,7 +13,7 @@ export const CookiesPopup = memo(() => {
   if (accepted === "not-accepted") {
     return (
       <div className={styles.cookies}>
-        <p>
+        <p className={styles.text}>
           This website, like almost every website in the internet, uses cookies
           &#127850;
         </p>

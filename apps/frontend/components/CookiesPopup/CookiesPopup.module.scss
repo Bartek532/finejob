@@ -10,10 +10,13 @@
   padding: 0 1.5rem;
   padding-bottom: 3.9rem;
   background-color: var(--primary-orange);
-  color: var(--primary-white);
   max-width: 75rem;
-  line-height: 1.4rem;
   z-index: 9;
+
+  .text {
+    color: var(--primary-white);
+    line-height: 1.4rem;
+  }
 
   .btn {
     text-transform: uppercase;

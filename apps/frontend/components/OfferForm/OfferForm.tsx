@@ -20,7 +20,6 @@ type OfferFormProps = {
 export const OfferForm = memo<OfferFormProps>(({ offer, type }) => {
   const { register, handleSubmit, errors, reset } = useForm({
     reValidateMode: "onBlur",
-    defaultValues: offer,
   });
 
   const [areInputsFocused] = useState(!!offer);
@@ -31,23 +30,27 @@ export const OfferForm = memo<OfferFormProps>(({ offer, type }) => {
 
   const handleFormSubmit = (data: OfferWithSalary) => {
     if (type === "edit") {
-      dispatch(JobsAPI.editOffer(offer!.id, { ...data }));
+      dispatch(
+        JobsAPI.editOffer(offer!.id, { ...data, salary: Number(data.salary) }),
+      );
     } else {
       dispatch(JobsAPI.createOffer({ ...data, salary: Number(data.salary) }));
     }
   };
 
   useEffect(() => {
-    console.log(offer);
-
     return () => {
       reset();
     };
   }, []);
 
+  useEffect(() => {
+    reset(offer);
+  }, [offer]);
+
   const handleAcceptModal = () => {
     reset();
-    router.push("/dashboard");
+    router.back();
   };
 
   return (
