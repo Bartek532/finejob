@@ -45,6 +45,11 @@ export const deleteOffer = async (req: Request, res: Response) => {
 };
 
 export const editOffer = async (req: Request, res: Response) => {
+  const { error } = validateOffer(req.body);
+  if (error) {
+    return res.status(400).json({ message: error.details[0].message });
+  }
+
   const offer = await fetchSingleOffer(req.params.id);
 
   if (offer.userId === req.user!.id) {

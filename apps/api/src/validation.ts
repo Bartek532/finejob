@@ -12,10 +12,10 @@ export const validateLogin = (data: Request) => {
 
 export const validateRegister = (data: Request) => {
   const schema = Joi.object({
-    name: Joi.string().min(3).required(),
+    name: Joi.string().min(3).required().max(35),
     email: Joi.string().min(6).required().email(),
     password: Joi.string().min(8).required(),
-    company: Joi.string().min(3).required(),
+    company: Joi.string().min(3).max(30).required(),
   });
 
   return schema.validate(data);
@@ -23,11 +23,11 @@ export const validateRegister = (data: Request) => {
 
 export const validateChangeUserInfo = (data: Request) => {
   const schema = Joi.object({
-    name: Joi.string().min(3).required(),
+    name: Joi.string().min(3).required().max(35),
     email: Joi.string().min(6).required().email(),
     oldPassword: Joi.string().min(8).required(),
     newPassword: Joi.string().min(8).required(),
-    company: Joi.string().min(3).required(),
+    company: Joi.string().min(3).required().max(30),
   });
 
   return schema.validate(data);
@@ -35,9 +35,9 @@ export const validateChangeUserInfo = (data: Request) => {
 
 export const validateOffer = (data: Request) => {
   const schema = Joi.object({
-    title: Joi.string().required().min(6),
-    location: Joi.string().required().min(3),
-    salary: Joi.number().required().min(3),
+    title: Joi.string().required().min(6).max(150),
+    location: Joi.string().required().min(3).max(35),
+    salary: Joi.number().required().min(3).max(99999),
     type: Joi.string().required().min(4),
     description: Joi.string().required().min(10),
     how_to_apply: Joi.string().required().min(6),

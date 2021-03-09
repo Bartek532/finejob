@@ -8,9 +8,10 @@ import { memo, useState, useEffect } from "react";
 import type { OfferWithSalary } from "@finejob/types";
 import classnames from "classnames";
 import { JobsAPI } from "../../lib/api/offers";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
+import { getModalInfo } from "../../store/mainSlice";
 
 type OfferFormProps = {
   readonly offer?: OfferWithSalary;
@@ -21,6 +22,8 @@ export const OfferForm = memo<OfferFormProps>(({ offer, type }) => {
   const { register, handleSubmit, errors, reset } = useForm({
     reValidateMode: "onBlur",
   });
+
+  const modal = useSelector(getModalInfo);
 
   const [areInputsFocused] = useState(!!offer);
 
@@ -53,9 +56,15 @@ export const OfferForm = memo<OfferFormProps>(({ offer, type }) => {
     router.back();
   };
 
+  const handleCancelModal = () => {
+    if (type === "add" && modal.show && modal.type === "success") {
+      reset();
+    }
+  };
+
   return (
     <>
-      <Modal onAccept={handleAcceptModal} />
+      <Modal onAccept={handleAcceptModal} onCancel={handleCancelModal} />
       <main className={styles.wrapper}>
         <form className={styles.form} onSubmit={handleSubmit(handleFormSubmit)}>
           <Input
