@@ -7,7 +7,7 @@ import {
   setIsLogin,
   setUser,
 } from "../../store/mainSlice";
-import { setOffers, setEditedOffer } from "../../store/offersSlice";
+import { setOffers } from "../../store/offersSlice";
 import type {
   UserLoginData,
   UserRegisterData,
