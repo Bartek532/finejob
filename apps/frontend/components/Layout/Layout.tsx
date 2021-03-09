@@ -9,7 +9,6 @@ import { NextSeo } from "next-seo";
 
 import { titleTemplate as defaultTitleTemplate } from "../../pages/_app";
 
-import FullLogo from "../../public/icons/full-logo.svg";
 import { useWindowSize } from "../../lib/hooks/useWindowSize";
 import Link from "next/link";
 

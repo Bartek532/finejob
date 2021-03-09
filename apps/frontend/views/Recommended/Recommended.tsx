@@ -97,6 +97,7 @@ export const Recommended = memo<RecommendedSectionProps>(({ offers }) => {
                     </span>
 
                     <span className="sr-only">company</span>
+
                     <span className={styles.company}>{offer.company}</span>
 
                     <span className="sr-only">location</span>

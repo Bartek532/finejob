@@ -31,7 +31,7 @@ export const UserSettings = memo(() => {
   };
 
   return (
-    <main className={styles.settings}>
+    <section className={styles.settings}>
       <div className={styles.main}>
         <div className={styles.logo}>
           <Avatar name={user.name} />
@@ -78,6 +78,6 @@ export const UserSettings = memo(() => {
         />
         <MainButton type="submit" text="Submit" />
       </form>
-    </main>
+    </section>
   );
 });

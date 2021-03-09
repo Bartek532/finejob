@@ -21,16 +21,14 @@ export const DashboardStart = memo(() => {
     router.push("/auth/login");
   };
   return (
-    <main className={styles.dashboard}>
+    <div className={styles.dashboard}>
       <section className={styles.fields}>
         {fields.map((field) => (
           <article
             className={styles.field}
             key={field.icon}
             onClick={() =>
-              router.push(
-                `/dashboard/${field.link || field.label.split(" ").join("-")}`,
-              )
+              router.push(`/dashboard/${field.label.split(" ").join("-")}`)
             }
           >
             <div className={styles.icon}>
@@ -47,6 +45,6 @@ export const DashboardStart = memo(() => {
         ))}
       </section>
       <MainButton text="Logout" onClick={handleLogout} />
-    </main>
+    </div>
   );
 });

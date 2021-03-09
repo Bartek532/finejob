@@ -115,16 +115,3 @@ export const OfferControls = memo<OfferControlsProps>(({ offer }) => {
     </div>
   );
 });
-
-/*
-
-  useEffect(() => {
-    if (modal.show && modal.type === "success") {
- 
-        setIsSaved(true);
-      } else {
-        setIsSaved(false);
-      }     if (!isSaved) {
-    }
-  }, [modal]);
-  */
