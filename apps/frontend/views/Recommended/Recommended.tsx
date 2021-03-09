@@ -62,6 +62,7 @@ export const Recommended = memo<RecommendedSectionProps>(({ offers }) => {
             className={classnames(styles.scrollLeft, styles.btn)}
             onClick={handleScrollLeft}
           >
+            <span className="sr-only">scroll left</span>
             <Back className={styles.icon} />
           </button>
         ) : null}
@@ -71,6 +72,7 @@ export const Recommended = memo<RecommendedSectionProps>(({ offers }) => {
             className={classnames(styles.scrollRight, styles.btn)}
             onClick={handleScrollRight}
           >
+            <span className="sr-only">scroll right</span>
             <Forward className={styles.icon} />
           </button>
         ) : null}
@@ -83,6 +85,7 @@ export const Recommended = memo<RecommendedSectionProps>(({ offers }) => {
           {offers.map((offer) => (
             <Link href={`/offers/${offer.id}`} key={offer.id}>
               <a>
+                <span className="sr-only">single offer</span>
                 <article className={styles.offer}>
                   <div className={styles.main}>
                     <div className={styles.logo}>

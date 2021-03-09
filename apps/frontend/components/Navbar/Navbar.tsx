@@ -18,72 +18,84 @@ export const Navbar = memo(() => {
   const isLogin = useSelector(getLoginStatus);
   return (
     <nav className={styles.nav}>
-      <div className={styles.left}>
-        <Link href="/about">
-          <a
-            className={classnames(
-              { [styles.active]: pathname === "/about" },
-              styles.link,
-            )}
-          >
-            <About />
-            <span className={styles.label}>About</span>
-          </a>
-        </Link>
-        <Link href="/search">
-          <a
-            className={classnames(
-              {
-                [styles.active]: pathname === "/search",
-              },
-              styles.link,
-            )}
-          >
-            <Search />
-            <span className={styles.label}>Search</span>
-          </a>
-        </Link>
-      </div>
-      <Link href="/">
-        <div className={styles.center}>
-          <span className="sr-only">home</span>
-          <Image src="/icons/logo.svg" width={22} height={22} alt="logo" />
+      <ul className={styles.list}>
+        <div className={styles.left}>
+          <li className={styles.listItem}>
+            <Link href="/about">
+              <a
+                className={classnames(
+                  { [styles.active]: pathname === "/about" },
+                  styles.link,
+                )}
+              >
+                <About />
+                <span className={styles.label}>About</span>
+              </a>
+            </Link>
+          </li>
+          <li className={styles.listItem}>
+            <Link href="/search">
+              <a
+                className={classnames(
+                  {
+                    [styles.active]: pathname === "/search",
+                  },
+                  styles.link,
+                )}
+              >
+                <Search />
+                <span className={styles.label}>Search</span>
+              </a>
+            </Link>
+          </li>
         </div>
-      </Link>
-      <div className={styles.right}>
-        <Link href="/search/location">
-          <a
-            className={classnames(
-              {
-                [styles.active]: pathname === "/search/location",
-              },
-              styles.link,
-            )}
-          >
-            <Location />
-            <span className={styles.label}>
-              {width! > 1000 ? "Search by location" : "Geosearch"}
-            </span>
-          </a>
-        </Link>
-        <Link href="/auth/login">
-          <a
-            className={classnames(
-              {
-                [styles.active]:
-                  pathname === "/auth/login" ||
-                  pathname.startsWith("/dashboard"),
-              },
-              styles.link,
-            )}
-          >
-            <Person />
-            <span className={styles.label}>
-              {isLogin ? "Account" : "Sign in"}
-            </span>
-          </a>
-        </Link>
-      </div>
+        <li className={styles.listItem}>
+          <Link href="/">
+            <div className={styles.center}>
+              <span className="sr-only">home</span>
+              <Image src="/icons/logo.svg" width={22} height={22} alt="logo" />
+            </div>
+          </Link>
+        </li>
+        <div className={styles.right}>
+          <li className={styles.listItem}>
+            <Link href="/search/location">
+              <a
+                className={classnames(
+                  {
+                    [styles.active]: pathname === "/search/location",
+                  },
+                  styles.link,
+                )}
+              >
+                <Location />
+                <span className={styles.label}>
+                  {width! > 1000 ? "Search by location" : "Geosearch"}
+                </span>
+              </a>
+            </Link>
+          </li>
+          <li className={styles.listItem}>
+            <Link href="/auth/login">
+              <a
+                className={classnames(
+                  {
+                    [styles.active]:
+                      pathname === "/auth/login" ||
+                      pathname.startsWith("/dashboard"),
+                  },
+                  styles.link,
+                )}
+              >
+                <Person />
+                <span className={styles.label}>
+                  {isLogin ? "Account" : "Sign in"}
+                </span>
+              </a>
+            </Link>
+          </li>
+        </div>
+      </ul>
     </nav>
   );
 });
