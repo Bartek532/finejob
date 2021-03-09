@@ -26,7 +26,7 @@ type HTTPMethod =
 export const fetcher = async (
   path: string,
   method: HTTPMethod,
-  data?: object
+  data?: object,
 ) => {
   try {
     return await axios({
@@ -38,6 +38,7 @@ export const fetcher = async (
       data: data || {},
     });
   } catch (err) {
+    console.log(err);
     throw new Error(err.response?.data.message);
   }
 };
