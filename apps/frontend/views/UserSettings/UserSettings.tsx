@@ -32,13 +32,13 @@ export const UserSettings = memo(() => {
 
   return (
     <section className={styles.settings}>
-      <div className={styles.main}>
+      <article className={styles.main}>
         <div className={styles.logo}>
           <Avatar name={user.name} />
         </div>
         <span className={styles.name}>{user.name}</span>
         <span className={styles.company}>{user.company}</span>
-      </div>
+      </article>
 
       <form
         className={styles.form}

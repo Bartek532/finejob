@@ -1,9 +1,8 @@
-import { memo } from "react";
 import styles from "./EmptyResults.module.scss";
 import Image from "next/image";
 import { useLocalStorage } from "../../lib/hooks/useLocalStorage";
 
-export const EmptyResults = memo(() => {
+export const EmptyResults = () => {
   const [theme] = useLocalStorage("theme", "light");
   return (
     <section className={styles.empty}>
@@ -19,9 +18,9 @@ export const EmptyResults = memo(() => {
           src={`/images/gifs/${theme === "light" ? "empty" : "empty-dark"}.gif`}
           width={400}
           height={400}
-          alt="empty"
+          alt="boy with empty boxes"
         />
       </div>
     </section>
   );
-});
+};

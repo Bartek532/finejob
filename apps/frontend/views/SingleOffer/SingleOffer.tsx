@@ -9,9 +9,8 @@ import { memo, useCallback } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import classnames from "classnames";
+import * as dayjs from 'dayjs'
 import { prepareQueryToSearch } from "../../lib/utils/functions";
-
-import Moment from "react-moment";
 
 type SingleOfferProps = { readonly offer: OfferWithSalary };
 
@@ -98,7 +97,7 @@ export const SingleOffer = memo<SingleOfferProps>(({ offer }) => {
         <div className={styles.content}>
           <span className={styles.date}>
             <span>Created: </span>
-            <Moment date={offer.created_at} format="dddd DD/MM/YY hh:mm A" />
+            <time>{dayjs(offer.created_at).format("dddd DD/MM/YY h:m A")}</time>
           </span>
           <div
             className={styles.description}

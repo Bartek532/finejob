@@ -1,4 +1,3 @@
-import { memo } from "react";
 import { UserAPI } from "../../lib/api/user";
 import { useForm } from "react-hook-form";
 import { Input } from "../../components/Input/Input";
@@ -9,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { MainButton } from "../../components/MainButton/MainButton";
 import styles from "./RegisterForm.module.scss";
 
-export const RegisterForm = memo(() => {
+export const RegisterForm = () => {
   const { handleSubmit, errors, register, reset } = useForm({
     reValidateMode: "onBlur",
   });
@@ -51,4 +50,4 @@ export const RegisterForm = memo(() => {
       <MainButton text="Create an account" type="submit" />
     </form>
   );
-});
+};

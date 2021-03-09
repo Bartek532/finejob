@@ -24,6 +24,11 @@
       cursor: pointer;
       transition: background-color 0.3s;
       @include flex;
+      outline: 0 none;
+
+      &:focus {
+        border: 2px solid var(--primary-black);
+      }
 
       .icon path {
         fill: var(--primary-orange);

@@ -1,4 +1,3 @@
-import { memo } from "react";
 import { Input } from "../../components/Input/Input";
 import { MainButton } from "../../components/MainButton/MainButton";
 import styles from "./MainSection.module.scss";
@@ -13,7 +12,7 @@ import { useRouter } from "next/router";
 
 import { useForm } from "react-hook-form";
 
-export const MainSection = memo(() => {
+export const MainSection = () => {
   const { width } = useWindowSize();
   const router = useRouter();
 
@@ -43,7 +42,7 @@ export const MainSection = memo(() => {
           </div>
         </>
       ) : null}
-      <article className={styles.wrapper}>
+      <div className={styles.wrapper}>
         <h1 className={styles.title}>
           Your <span className={styles.violet}>next job</span> is here.
         </h1>
@@ -55,8 +54,8 @@ export const MainSection = memo(() => {
           In last week we helps 1,500 job seekers and employees find the right
           job.
         </div>
-      </article>
-      <article className={styles.image}>
+      </div>
+      <div className={styles.image}>
         <Image
           src="/images/career.svg"
           width={450}
@@ -64,7 +63,7 @@ export const MainSection = memo(() => {
           loading="lazy"
           alt=""
         />
-      </article>
+      </div>
     </section>
   );
-});
+};

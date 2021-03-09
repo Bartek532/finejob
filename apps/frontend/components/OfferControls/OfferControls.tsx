@@ -83,7 +83,7 @@ export const OfferControls = memo<OfferControlsProps>(({ offer }) => {
           >
             <Image
               src="/icons/offer/edit.svg"
-              alt="edit"
+              alt="pencil"
               width={24}
               height={24}
             />
@@ -94,7 +94,7 @@ export const OfferControls = memo<OfferControlsProps>(({ offer }) => {
           >
             <Image
               src="/icons/offer/delete.svg"
-              alt="delete"
+              alt="rubbish"
               width={24}
               height={24}
             />

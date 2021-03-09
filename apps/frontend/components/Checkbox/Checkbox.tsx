@@ -6,7 +6,7 @@ type CheckboxProps = {
   readonly value?: string;
   readonly name: string;
   readonly checked?: boolean;
-  readonly inputRef?: any;
+  readonly inputRef?: React.Ref<HTMLInputElement>;
 };
 
 export const Checkbox = memo<CheckboxProps>(

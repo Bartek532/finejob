@@ -14,6 +14,7 @@ export const ThemeSwitch = memo(() => {
 
   return (
     <label className={styles.switch}>
+      <span className="sr-only">switch theme</span>
       <input
         type="checkbox"
         className={styles.input}
@@ -22,7 +23,12 @@ export const ThemeSwitch = memo(() => {
       />
       <div className={styles.slider}>
         <div className={styles.circle}>
-          <Image src={`/icons/theme/${theme}.svg`} width={14} height={14} />
+          <Image
+            src={`/icons/theme/${theme}.svg`}
+            width={14}
+            height={14}
+            alt=""
+          />
         </div>
       </div>
     </label>

@@ -1,10 +1,9 @@
-import { memo } from "react";
 import styles from "./Footer.module.scss";
 import Image from "next/image";
 
 const actualDate = new Date().getFullYear();
 
-export const Footer = memo(() => {
+export const Footer = () => {
   return (
     <footer className={styles.foo}>
       <div className={styles.wrapper}>
@@ -33,4 +32,4 @@ export const Footer = memo(() => {
       </div>
     </footer>
   );
-});
+};

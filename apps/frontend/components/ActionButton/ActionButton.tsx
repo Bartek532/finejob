@@ -19,9 +19,10 @@ export const ActionButton = memo<ActionButtonProps>(
         type={type}
         onClick={icon === "back" ? () => router.back() : () => false}
       >
+        <span className="sr-only">{icon}</span> 
         <Image
           src={`/icons/buttons/${icon}.svg`}
-          alt={icon}
+          alt=""
           width={12}
           height={12}
           loading="lazy"

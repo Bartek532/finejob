@@ -16,12 +16,15 @@ export const MainButton = memo<MainButtonProps>(
         {text ? (
           text
         ) : (
-          <Image
-            src={`/icons/buttons/${icon}.svg`}
-            alt={icon}
-            width={16}
-            height={16}
-          />
+          <>
+            <Image
+              src={`/icons/buttons/${icon}.svg`}
+              alt=""
+              width={16}
+              height={16}
+            />
+            <span className="sr-only">{icon}</span>
+          </>
         )}
       </button>
     );

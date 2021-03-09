@@ -1,10 +1,9 @@
-import { memo } from "react";
 import styles from "./CookiesPopup.module.scss";
 import { useLocalStorage } from "../../lib/hooks/useLocalStorage";
 
 type CookiesPreferences = "not-accepted" | "accepted";
 
-export const CookiesPopup = memo(() => {
+export const CookiesPopup = () => {
   const [accepted, setAccepted] = useLocalStorage<CookiesPreferences>(
     "cookies-accepted",
     "not-accepted",
@@ -25,4 +24,4 @@ export const CookiesPopup = memo(() => {
   }
 
   return null;
-});
+};

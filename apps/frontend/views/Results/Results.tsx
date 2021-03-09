@@ -1,10 +1,9 @@
-import { memo } from "react";
 import { OfferTile } from "../../components/OfferTile/OfferTile";
 import styles from "./Results.module.scss";
 import { useSelector } from "react-redux";
 import { getAllOffers } from "../../store/offersSlice";
 
-export const Results = memo(() => {
+export const Results = () => {
   const offers = useSelector(getAllOffers);
   return (
     <section className={styles.offers}>
@@ -23,4 +22,4 @@ export const Results = memo(() => {
         : null}
     </section>
   );
-});
+};

@@ -1,4 +1,3 @@
-import { memo } from "react";
 import { Counter } from "../../components/Counter/Counter";
 import styles from "./MainInfo.module.scss";
 import Image from "next/image";
@@ -10,7 +9,7 @@ const jobsInfo = [
   { label: "Saved jobs", value: 6400, icon: "save" },
 ];
 
-export const MainInfo = memo(() => {
+export const MainInfo = () => {
   return (
     <section className={styles.wrapper}>
       <article className={styles.mainCounter}>
@@ -42,7 +41,7 @@ export const MainInfo = memo(() => {
         <div className={styles.mockup}>
           <Image
             src="/images/mockups/mobile-app.png"
-            alt="mockup"
+            alt="mobile app mockup"
             width={460}
             height={525}
           />
@@ -67,4 +66,4 @@ export const MainInfo = memo(() => {
       </article>
     </section>
   );
-});
+};

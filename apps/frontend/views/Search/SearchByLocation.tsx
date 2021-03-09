@@ -1,4 +1,3 @@
-import { memo } from "react";
 import { Input } from "../../components/Input/Input";
 import { MainButton } from "../../components/MainButton/MainButton";
 import { useDispatch } from "react-redux";
@@ -12,7 +11,7 @@ import { prepareQueryToSearch } from "../../lib/utils/functions";
 
 import { useForm } from "react-hook-form";
 
-export const SearchByLocation = memo(() => {
+export const SearchByLocation = () => {
   const dispatch = useDispatch();
   const router = useRouter();
 
@@ -87,7 +86,7 @@ export const SearchByLocation = memo(() => {
             You can use this feature to make it easier to find a job near you.
           </div>
         </article>
-        <article className={styles.image}>
+        <div className={styles.image}>
           <Image
             src="/images/map.svg"
             width={450}
@@ -95,8 +94,8 @@ export const SearchByLocation = memo(() => {
             loading="lazy"
             alt=""
           />
-        </article>
+        </div>
       </section>
     </>
   );
-});
+};

@@ -1,4 +1,3 @@
-import { memo } from "react";
 import styles from "./DashboardStart.module.scss";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -13,7 +12,7 @@ const fields = [
   { label: "settings", icon: "settings" },
 ];
 
-export const DashboardStart = memo(() => {
+export const DashboardStart = () => {
   const router = useRouter();
   const dispatch = useDispatch();
   const handleLogout = () => {
@@ -47,4 +46,4 @@ export const DashboardStart = memo(() => {
       <MainButton text="Logout" onClick={handleLogout} />
     </div>
   );
-});
+};

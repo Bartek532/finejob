@@ -6,11 +6,11 @@ type LogoProps = { readonly withLabel?: boolean };
 
 export const Logo = memo<LogoProps>(({ withLabel }) => {
   if (!withLabel) {
-    return <Image src="/icons/logo.svg" width={30} height={40} alt="logo" />;
+    return <Image src="/icons/logo.svg" width={30} height={40} alt="" />;
   }
   return (
     <div className={styles.full}>
-      <Image src="/icons/logo.svg" width={43} height={25} alt="logo" />
+      <Image src="/icons/logo.svg" width={43} height={25} alt="" />
 
       <span className={styles.label}>
         Fine<span className={styles.violet}>Job</span>

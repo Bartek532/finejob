@@ -17,7 +17,7 @@ export const Recommended = memo<RecommendedSectionProps>(({ offers }) => {
   const baseScrollValue = 450;
   const allOffersWidth = 290 * offers.length; //element total width * elements
   const maxScroll = allOffersWidth - offersWrapperWidth;
-  const offersContainerRef = useRef<HTMLElement | null>(null);
+  const offersContainerRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     const handleResize = () => {
@@ -75,7 +75,7 @@ export const Recommended = memo<RecommendedSectionProps>(({ offers }) => {
           </button>
         ) : null}
 
-        <article
+        <div
           className={styles.offers}
           style={{ transform: `translateX(${scroll}px)` }}
           ref={offersContainerRef}
@@ -97,7 +97,6 @@ export const Recommended = memo<RecommendedSectionProps>(({ offers }) => {
                     </span>
 
                     <span className="sr-only">company</span>
-
                     <span className={styles.company}>{offer.company}</span>
 
                     <span className="sr-only">location</span>
@@ -125,7 +124,7 @@ export const Recommended = memo<RecommendedSectionProps>(({ offers }) => {
               </a>
             </Link>
           ))}
-        </article>
+        </div>
       </div>
     </section>
   );

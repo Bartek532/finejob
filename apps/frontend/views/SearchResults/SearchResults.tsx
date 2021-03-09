@@ -15,10 +15,10 @@ import {
 } from "../../store/offersSlice";
 import { useForm } from "react-hook-form";
 import { useRouter } from "next/router";
-import { useEffect, memo } from "react";
+import { useEffect } from "react";
 import Link from "next/link";
 
-export const SearchResults = memo(() => {
+export const SearchResults = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const resultsPage = useSelector(getActualResultsPage);
@@ -74,4 +74,4 @@ export const SearchResults = memo(() => {
       </main>
     </>
   );
-});
+};

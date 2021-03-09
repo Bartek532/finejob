@@ -1,18 +1,18 @@
-import type { ChangeEvent } from "react";
+import type { ChangeEvent, Ref } from "react";
 
 export type TextInputProps = {
   readonly type?: string;
   readonly name: string;
   readonly value?: string;
   readonly onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
-  readonly inputRef?: any;
+  readonly inputRef?: Ref<HTMLInputElement>;
   readonly placeholder?: string;
   readonly error?: string;
   readonly shouldBeFocused?: boolean;
 };
 
 export type PasswordInputProps = {
-  readonly inputRef: any;
+  readonly inputRef: Ref<HTMLInputElement>;
   readonly error: { message: string };
 };
 
@@ -26,7 +26,7 @@ export type LocationAPIResponse = {
     readonly postcode: string;
     readonly road: string;
     readonly school: string;
-    readonly state: "województwo śląskie";
+    readonly state: string;
     readonly state_district: string;
     readonly suburb: string;
   };

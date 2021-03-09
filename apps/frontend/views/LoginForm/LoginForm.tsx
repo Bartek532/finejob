@@ -9,10 +9,10 @@ import { useRouter } from "next/router";
 import { MainButton } from "../../components/MainButton/MainButton";
 import styles from "./LoginForm.module.scss";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, memo } from "react";
+import { useEffect } from "react";
 import { getLoginStatus } from "../../store/mainSlice";
 
-export const LoginForm = memo(() => {
+export const LoginForm = () => {
   const { handleSubmit, errors, register, reset } = useForm({
     reValidateMode: "onBlur",
   });
@@ -64,4 +64,4 @@ export const LoginForm = memo(() => {
       </section>
     </main>
   );
-});
+};
