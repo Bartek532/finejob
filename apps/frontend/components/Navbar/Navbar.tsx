@@ -19,36 +19,38 @@ export const Navbar = memo(() => {
   return (
     <nav className={styles.nav}>
       <ul className={styles.list}>
-        <div className={styles.left}>
-          <li className={styles.listItem}>
-            <Link href="/about">
-              <a
-                className={classnames(
-                  { [styles.active]: pathname === "/about" },
-                  styles.link,
-                )}
-              >
-                <About />
-                <span className={styles.label}>About</span>
-              </a>
-            </Link>
-          </li>
-          <li className={styles.listItem}>
-            <Link href="/search">
-              <a
-                className={classnames(
-                  {
-                    [styles.active]: pathname === "/search",
-                  },
-                  styles.link,
-                )}
-              >
-                <Search />
-                <span className={styles.label}>Search</span>
-              </a>
-            </Link>
-          </li>
-        </div>
+        <li className={styles.left}>
+          <ul className={styles.links}>
+            <li className={styles.listItem}>
+              <Link href="/about">
+                <a
+                  className={classnames(
+                    { [styles.active]: pathname === "/about" },
+                    styles.link,
+                  )}
+                >
+                  <About />
+                  <span className={styles.label}>About</span>
+                </a>
+              </Link>
+            </li>
+            <li className={styles.listItem}>
+              <Link href="/search">
+                <a
+                  className={classnames(
+                    {
+                      [styles.active]: pathname === "/search",
+                    },
+                    styles.link,
+                  )}
+                >
+                  <Search />
+                  <span className={styles.label}>Search</span>
+                </a>
+              </Link>
+            </li>
+          </ul>
+        </li>
         <li className={styles.listItem}>
           <Link href="/">
             <div className={styles.center}>
@@ -57,44 +59,46 @@ export const Navbar = memo(() => {
             </div>
           </Link>
         </li>
-        <div className={styles.right}>
-          <li className={styles.listItem}>
-            <Link href="/search/location">
-              <a
-                className={classnames(
-                  {
-                    [styles.active]: pathname === "/search/location",
-                  },
-                  styles.link,
-                )}
-              >
-                <Location />
-                <span className={styles.label}>
-                  {width! > 1000 ? "Search by location" : "Geosearch"}
-                </span>
-              </a>
-            </Link>
-          </li>
-          <li className={styles.listItem}>
-            <Link href="/auth/login">
-              <a
-                className={classnames(
-                  {
-                    [styles.active]:
-                      pathname === "/auth/login" ||
-                      pathname.startsWith("/dashboard"),
-                  },
-                  styles.link,
-                )}
-              >
-                <Person />
-                <span className={styles.label}>
-                  {isLogin ? "Account" : "Sign in"}
-                </span>
-              </a>
-            </Link>
-          </li>
-        </div>
+        <li className={styles.right}>
+          <ul className={styles.links}>
+            <li className={styles.listItem}>
+              <Link href="/search/location">
+                <a
+                  className={classnames(
+                    {
+                      [styles.active]: pathname === "/search/location",
+                    },
+                    styles.link,
+                  )}
+                >
+                  <Location />
+                  <span className={styles.label}>
+                    {width! > 1000 ? "Search by location" : "Geosearch"}
+                  </span>
+                </a>
+              </Link>
+            </li>
+            <li className={styles.listItem}>
+              <Link href="/auth/login">
+                <a
+                  className={classnames(
+                    {
+                      [styles.active]:
+                        pathname === "/auth/login" ||
+                        pathname.startsWith("/dashboard"),
+                    },
+                    styles.link,
+                  )}
+                >
+                  <Person />
+                  <span className={styles.label}>
+                    {isLogin ? "Account" : "Sign in"}
+                  </span>
+                </a>
+              </Link>
+            </li>
+          </ul>
+        </li>
       </ul>
     </nav>
   );

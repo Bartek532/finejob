@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Avatar } from "../Avatar/Avatar";
 import Company from "../../public/icons/offer/company.svg";
 import Location from "../../public/icons/offer/location.svg";
+import { addCommasToNumber } from "../../lib/utils/functions";
 
 type OfferTileProps = Pick<
   OfferWithSalary,
@@ -54,7 +55,7 @@ export const OfferTile = memo<OfferTileProps>(
 
             <span className="sr-only">salary</span>
 
-            <span className={styles.salary}>${salary}</span>
+            <span className={styles.salary}>${addCommasToNumber(salary)}</span>
             {company_url ? (
               <Link href={company_url}>
                 <span className={styles.btn}>

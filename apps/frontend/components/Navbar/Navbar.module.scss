@@ -8,7 +8,8 @@
   width: 100%;
   z-index: 99;
 
-  .list {
+  .list,
+  .list .links {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -18,6 +19,10 @@
     .listItem {
       display: block;
     }
+
+    .links {
+      @include flex(space-evenly);
+    }
   }
 
   .left,
@@ -25,7 +30,7 @@
     height: 4rem;
     width: 50%;
     background-color: var(--field);
-    @include flex(space-evenly);
+    @include flex;
   }
 
   .left {

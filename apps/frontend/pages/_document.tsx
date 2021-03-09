@@ -19,6 +19,10 @@ class MyDocument extends Document {
           <meta name="msapplication-TileColor" content="#f59b66" />
           <meta name="theme-color" content="#f2f2f2" />
           <meta name="apple-mobile-web-app-title" content="Finejob" />
+          <meta
+            name="viewport"
+            content="width=device-width, user-scalable=yes, initial-scale=1.0, viewport-fit=cover"
+          ></meta>
           <script
             dangerouslySetInnerHTML={{
               __html: `

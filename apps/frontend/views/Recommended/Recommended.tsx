@@ -6,6 +6,7 @@ import { useState, useEffect, useCallback, memo, useRef } from "react";
 import Link from "next/link";
 import type { OfferWithSalary } from "@finejob/types";
 import classnames from "classnames";
+import { addCommasToNumber } from "../../lib/utils/functions";
 
 type RecommendedSectionProps = {
   readonly offers: OfferWithSalary[];
@@ -109,7 +110,7 @@ export const Recommended = memo<RecommendedSectionProps>(({ offers }) => {
                   <div className={styles.additional}>
                     <span className="sr-only">salary</span>
                     <span className={styles.salary}>
-                      ${offer.salary.toFixed(0)}
+                      ${addCommasToNumber(offer.salary)}
                     </span>
                     {offer.company_url ? (
                       <a

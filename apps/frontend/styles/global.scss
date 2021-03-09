@@ -20,6 +20,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-bottom: constant(safe-area-inset-bottom);
 }
 
 button {
