@@ -9,7 +9,7 @@ import { memo, useCallback } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import classnames from "classnames";
-import * as dayjs from 'dayjs'
+import dayjs from 'dayjs'
 import { prepareQueryToSearch } from "../../lib/utils/functions";
 
 type SingleOfferProps = { readonly offer: OfferWithSalary };
