@@ -11,14 +11,14 @@
     .step {
       @include flex(space-evenly);
       flex-wrap: wrap;
+      border: 0 none;
       border-top: 3px solid;
       border-image: linear-gradient(
-        to right,
-        var(--primary-orange) 0%,
-        var(--primary-violet) 100%
-      );
-      border-image-slice: 1;
-      border-width: 3px;
+          to right,
+          var(--primary-orange) 0%,
+          var(--primary-violet) 100%
+        )
+        3 round;
       padding: 2.5rem;
       counter-increment: article;
       position: relative;
@@ -59,12 +59,6 @@
       }
       &:first-child {
         border-top: 0;
-        border-top-right-radius: 0;
-        border-top-left-radius: 0;
-      }
-      &:last-child {
-        border-bottom-right-radius: 0;
-        border-bottom-left-radius: 0;
       }
 
       .title {
