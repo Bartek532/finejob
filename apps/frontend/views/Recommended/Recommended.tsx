@@ -113,7 +113,7 @@ export const Recommended = memo<RecommendedSectionProps>(({ offers }) => {
                       ${addCommasToNumber(offer.salary)}
                     </span>
                     {offer.company_url ? (
-                      <Link href={offer.company_url} rel="noopener">
+                      <Link href={offer.company_url}>
                         <div
                           className={styles.btn}
                           onClick={(e) => e.stopPropagation()}
