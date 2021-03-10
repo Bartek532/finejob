@@ -85,7 +85,7 @@ export const Recommended = memo<RecommendedSectionProps>(({ offers }) => {
         >
           {offers.map((offer) => (
             <Link href={`/offers/${offer.id}`} key={offer.id}>
-              <a>
+              <>
                 <span className="sr-only">single offer</span>
                 <article className={styles.offer}>
                   <div className={styles.main}>
@@ -125,7 +125,7 @@ export const Recommended = memo<RecommendedSectionProps>(({ offers }) => {
                     ) : null}
                   </div>
                 </article>
-              </a>
+              </>
             </Link>
           ))}
         </div>

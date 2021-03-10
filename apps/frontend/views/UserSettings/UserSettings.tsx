@@ -47,19 +47,19 @@ export const UserSettings = memo(() => {
         <Input
           name="name"
           inputRef={register(inputValidation.other)}
-          error={errors.name}
+          error={errors.name?.message}
           shouldBeFocused
         />
         <Input
           name="company"
           inputRef={register(inputValidation.other)}
-          error={errors.company}
+          error={errors.company?.message}
           shouldBeFocused
         />
         <Input
           name="email"
           inputRef={register(inputValidation.email)}
-          error={errors.email}
+          error={errors.email?.message}
           shouldBeFocused
         />
         <Input
@@ -67,14 +67,14 @@ export const UserSettings = memo(() => {
           name="oldPassword"
           placeholder="Actual password"
           inputRef={register(inputValidation.password)}
-          error={errors.oldPassword}
+          error={errors.oldPassword?.message}
         />
         <Input
           type="password"
           name="newPassword"
-          placeholder="New password (if no, repeat actual password)"
+          placeholder="New password (if no, repeat actual)"
           inputRef={register(inputValidation.password)}
-          error={errors.newPassword}
+          error={errors.newPassword?.message}
         />
         <MainButton type="submit" text="Submit" />
       </form>

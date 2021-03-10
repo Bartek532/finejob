@@ -52,7 +52,7 @@ export const OfferForm = memo<OfferFormProps>(({ offer, type }) => {
   }, [offer]);
 
   const handleAcceptModal = () => {
-    reset();
+    reset({});
     router.back();
   };
 
@@ -61,7 +61,6 @@ export const OfferForm = memo<OfferFormProps>(({ offer, type }) => {
       reset();
     }
   };
-
   return (
     <>
       <Modal onAccept={handleAcceptModal} onCancel={handleCancelModal} />
@@ -76,7 +75,7 @@ export const OfferForm = memo<OfferFormProps>(({ offer, type }) => {
           <Input
             name="location"
             inputRef={register(inputValidation.other)}
-            error={errors.salary?.message}
+            error={errors.location?.message}
             shouldBeFocused={areInputsFocused}
           />
 

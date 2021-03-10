@@ -3,7 +3,7 @@
 .dashboard {
   @include flex;
   flex-flow: column wrap;
-  min-height: 100vh;
+  min-height: 90vh;
   .fields {
     @include flex;
     flex-wrap: wrap;
@@ -52,7 +52,7 @@
 
 @media all and (min-width: 62.5rem) {
   .dashboard {
-    margin-top: -4.7rem;
+    margin-top: -3.7rem;
     .fields {
       margin-bottom: 1.9rem;
       .field {

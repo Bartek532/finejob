@@ -21,6 +21,9 @@ const Offer = () => {
           `/api/users/offers/${router.asPath.slice(29)}?type=created`,
           "GET",
         );
+        if (!data || !router.asPath.slice(29).length) {
+          router.push("/dashboard");
+        }
         setOffer(data);
       } catch {
         router.push("/auth/login");

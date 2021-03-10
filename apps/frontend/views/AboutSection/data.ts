@@ -15,7 +15,7 @@ export const steps = [
     title: "Save",
     image: "save",
     description:
-      "If you dont't have enough time to get to know the offer you can <strong>save it</strong>. After all you can come back and find saved offers in your <strong>dashboard</strong> in <em>saved</em> section. Don't be afraid and save as many offers as you want. ",
+      "If you don't have enough time to get to know the offer you can <strong>save it</strong>. After all you can come back and find saved offers in your <strong>dashboard</strong> in <em>saved</em> section. Don't be afraid and save as many offers as you want. ",
   },
   {
     title: "Read more",

@@ -10,7 +10,7 @@ export const AboutSection = () => {
         {steps.map((step) => (
           <article className={styles.step} key={step.title}>
             <div className={styles.description}>
-              <h2>{step.title}</h2>
+              <h2 className={styles.title}>{step.title}</h2>
               <p
                 className={styles.text}
                 dangerouslySetInnerHTML={{ __html: step.description }}

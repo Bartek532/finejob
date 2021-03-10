@@ -1,6 +1,6 @@
 import type { TextInputProps } from "../../types";
 import styles from "./Input.module.scss";
-import { useState, memo } from "react";
+import { useState, memo, useRef } from "react";
 import Eye from "../../public/icons/password/eye.svg";
 import ClosedEye from "../../public/icons/password/eye-closed.svg";
 import classnames from "classnames";
@@ -16,15 +16,17 @@ export const Input = memo<TextInputProps>(
     placeholder,
     shouldBeFocused = false,
   }) => {
-    const [isInputFocused, setIsInputFocused] = useState(false);
+    const [isInputFocused, setIsInputFocused] = useState(shouldBeFocused);
     const [inputType, setInputType] = useState(type);
+
+    const input = useRef<HTMLInputElement | null>(null);
 
     return (
       <div className={styles.field}>
         <label htmlFor={name} className={styles.wrapper}>
           <span
             className={classnames(styles.placeholder, {
-              [styles.focused]: isInputFocused || shouldBeFocused,
+              [styles.focused]: isInputFocused || input.current?.value.length,
             })}
           >
             {placeholder || name}
@@ -35,11 +37,15 @@ export const Input = memo<TextInputProps>(
             id={name}
             value={value}
             onChange={onChange}
-            ref={inputRef}
+            ref={(e) => {
+              inputRef!(e);
+              input.current = e;
+            }}
             className={classnames(styles.input, {
               [styles.withIcon]: name === "password",
             })}
             onFocus={() => setIsInputFocused(true)}
+            onBlur={() => setIsInputFocused(false)}
             autoCorrect="off"
             autoCapitalize="off"
             spellCheck="false"
