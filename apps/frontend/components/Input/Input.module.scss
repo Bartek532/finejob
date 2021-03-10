@@ -40,7 +40,7 @@
       color: var(--primary-gray);
       padding: 0.4rem 0.75rem;
       border-radius: 15px;
-      transition: all 0.3s;
+      transition: transform 0.3s, font-size 0.3s;
       text-transform: capitalize;
 
       &::after {
