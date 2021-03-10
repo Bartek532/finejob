@@ -85,7 +85,7 @@ export const Recommended = memo<RecommendedSectionProps>(({ offers }) => {
         >
           {offers.map((offer) => (
             <Link href={`/offers/${offer.id}`} key={offer.id}>
-              <>
+              <a>
                 <span className="sr-only">single offer</span>
                 <article className={styles.offer}>
                   <div className={styles.main}>
@@ -113,19 +113,19 @@ export const Recommended = memo<RecommendedSectionProps>(({ offers }) => {
                       ${addCommasToNumber(offer.salary)}
                     </span>
                     {offer.company_url ? (
-                      <a
-                        className={styles.btn}
-                        href={offer.company_url}
-                        onClick={(e) => e.stopPropagation()}
-                        rel="noopener"
-                      >
-                        <span className="sr-only">link to company site</span>
-                        <Forward className={styles.icon} />
-                      </a>
+                      <Link href={offer.company_url} rel="noopener">
+                        <div
+                          className={styles.btn}
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <span className="sr-only">link to company site</span>
+                          <Forward className={styles.icon} />
+                        </div>
+                      </Link>
                     ) : null}
                   </div>
                 </article>
-              </>
+              </a>
             </Link>
           ))}
         </div>
