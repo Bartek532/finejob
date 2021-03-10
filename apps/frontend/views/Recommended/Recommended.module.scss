@@ -30,8 +30,12 @@
         border: 2px solid var(--primary-black);
       }
 
-      .icon path {
-        fill: var(--primary-orange);
+      .icon {
+        transform: translateX(1px);
+
+        path {
+          fill: var(--primary-orange);
+        }
       }
     }
 
@@ -183,6 +187,10 @@
 
     .scrollRight {
       right: 3%;
+
+      .icon {
+        transform: translate(1px, 1px);
+      }
     }
   }
 }
