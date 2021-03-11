@@ -20,7 +20,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-bottom: calc(constant(safe-area-inset-bottom) + 0.5rem);
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 button {
