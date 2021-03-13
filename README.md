@@ -1,6 +1,4 @@
 <h1 align="center">
-
-<br>
 <img src="https://i.ibb.co/8xwPPx1/finejob-logo.png" alt="finejob logo" width="100%"/>
 
 </h1>
