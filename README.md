@@ -25,14 +25,16 @@ Finejob is an open source project to help people (especially developers) to find
 
 - Frontend
 
-| Tech                                                      | Description                          |
-| --------------------------------------------------------- | ------------------------------------ |
-| [Typescript](https://www.typescriptlang.org/)             | Javascript superset language         |
-| [React](https://reactjs.org/)                             | Library for building user interfaces |
-| [Redux](https://redux.js.org)                             | State container for JS apps          |
-| [Next](https://nextjs.org)                                | Powerful React Framework             |
-| [SCSS](https://sass-lang.com)                             | CSS with superpowers                 |
-| [CSS Modules](https://github.com/css-modules/css-modules) | Styles convention in React           |
+| Tech                                                      | Description                             |
+| --------------------------------------------------------- | --------------------------------------- |
+| [Typescript](https://www.typescriptlang.org/)             | Javascript superset language            |
+| [React](https://reactjs.org/)                             | Library for building user interfaces    |
+| [Redux](https://redux.js.org)                             | State container for JS apps             |
+| [Next](https://nextjs.org)                                | Powerful React Framework                |
+| [SCSS](https://sass-lang.com)                             | CSS with superpowers                    |
+| [CSS Modules](https://github.com/css-modules/css-modules) | Styles convention in React              |
+| [DayJS](https://day.js.org)                               | Js library, helps with formatting dates |
+| [React Hook Form](https://react-hook-form.com)            | Forms with easy-to-use validation       |
 
 <br />
 
