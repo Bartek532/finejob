@@ -40,6 +40,10 @@ export const Layout = memo<LayoutProps>(
             </>
           ) : null}
 
+          <div className={styles.themeHidden} aria-hidden="true">
+            <ThemeSwitch />
+          </div>
+
           <Navbar />
           {headerTitle ? <h1 className={styles.title}>{headerTitle}</h1> : null}
         </header>

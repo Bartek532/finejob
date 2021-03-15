@@ -21,6 +21,14 @@
     position: absolute;
   }
 
+  .themeHidden {
+    opacity: 0;
+    z-index: -10;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+
   .title {
     text-transform: uppercase;
     letter-spacing: 0.07rem;
