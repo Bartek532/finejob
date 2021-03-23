@@ -9,7 +9,7 @@ import { memo, useCallback } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import classnames from "classnames";
-import dayjs from 'dayjs'
+import dayjs from "dayjs";
 import { prepareQueryToSearch } from "../../lib/utils/functions";
 
 type SingleOfferProps = { readonly offer: OfferWithSalary };
@@ -71,7 +71,18 @@ export const SingleOffer = memo<SingleOfferProps>(({ offer }) => {
             <div className={styles.field} key={item.type}>
               <span className="sr-only">{item.type}</span>
 
-              {["type", "location"].includes(item.type) ? (
+              {item.type === "type" ? (
+                item.value === "Full Time" ? (
+                  <button
+                    className={classnames(styles.description, styles.searchBtn)}
+                    onClick={() => handleSearchByField(item.type)}
+                  >
+                    {item.value}
+                  </button>
+                ) : (
+                  <span className={styles.description}>{item.value}</span>
+                )
+              ) : item.type === "location" ? (
                 <button
                   className={classnames(styles.description, styles.searchBtn)}
                   onClick={() => handleSearchByField(item.type)}
