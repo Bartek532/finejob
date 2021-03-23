@@ -79,7 +79,7 @@
       rgba(var(--rgb-primary-violet), 1) 64%
     );
     transform: translateY(-4px);
-    transition: all 0.6s;
+    transition: background 0.6s, transform 0.6s;
 
     &::after {
       opacity: 1;
