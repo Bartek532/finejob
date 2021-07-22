@@ -89,7 +89,12 @@ export const fetchOffers = async (query: Query) => {
     `${process.env.JOBS_API_URL}/search?keywords[]=${query.q}`,
   );
 
-  return [...offers, ...data];
+  return [
+    ...offers,
+    ...data
+      .slice(page * 50, (page + 1) * 50)
+      .map((offer) => normalizeSalaryInOffer(offer)),
+  ];
 };
 
 export const fetchSingleOffer = async (offerId: string) => {
