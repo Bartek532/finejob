@@ -1,16 +1,9 @@
 import { PrismaClient } from "@prisma/client";
 import axios from "axios";
-import type { Offer } from "@finejob/types";
-import { normalizeSalaryInOffer } from "../utils";
+import type { Offer, Query } from "@finejob/types";
+import { normalizeSalaryInOffer, builtQueryToFetchOffers } from "../utils";
 
 const prisma = new PrismaClient();
-
-type Query = {
-  readonly q: string;
-  readonly location: string;
-  readonly full_time: string;
-  readonly page: string;
-};
 
 export const fetchRecomendedOffers = async () => {
   const { data }: { data: Offer[] } = await axios.get(
@@ -55,6 +48,7 @@ export const fetchOffers = async (query: Query) => {
               mode: "insensitive",
             },
           },
+          /*
           {
             type: {
               contains: query.full_time
@@ -65,6 +59,7 @@ export const fetchOffers = async (query: Query) => {
               mode: "insensitive",
             },
           },
+          */
         ],
       },
       skip: page * 50,
@@ -72,21 +67,8 @@ export const fetchOffers = async (query: Query) => {
     })),
   ];
 
-  /*
-  const path = Object.entries(query)
-    .map((item) => {
-      if (item[0] === "q") {
-        item[0] = "search";
-      }
-
-      return item;
-    })
-    .map((item) => item.join("="))
-    .join("&");
-    */
-
   const { data }: { data: Offer[] } = await axios.get(
-    `${process.env.JOBS_API_URL}/search?keywords[]=${query.q}`,
+    `${process.env.JOBS_API_URL}/search?${builtQueryToFetchOffers(query)}`,
   );
 
   return [

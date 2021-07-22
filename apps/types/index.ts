@@ -21,6 +21,13 @@ export type Offer = {
 
 type Skill = { readonly name: string };
 
+export type Query = {
+  readonly q: string;
+  readonly location: string;
+  readonly skills: string;
+  readonly page: string;
+};
+
 //Adzuna
 /*
   export type Offer = {
