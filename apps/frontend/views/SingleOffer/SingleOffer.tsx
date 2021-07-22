@@ -1,5 +1,6 @@
 import styles from "./SingleOffer.module.scss";
 import { Avatar } from "../../components/Avatar/Avatar";
+import { Tag } from "../../components/Tag/Tag";
 import { MainButton } from "../../components/MainButton/MainButton";
 import { ActionButton } from "../../components/ActionButton/ActionButton";
 import { Modal } from "../../components/Modal/Modal";
@@ -16,6 +17,8 @@ type SingleOfferProps = { readonly offer: Offer };
 
 export const SingleOffer = memo<SingleOfferProps>(({ offer }) => {
   const router = useRouter();
+
+  console.log(offer.skills);
 
   const info = [
     { type: "location", value: offer.city },
@@ -45,6 +48,16 @@ export const SingleOffer = memo<SingleOfferProps>(({ offer }) => {
       }
     },
     [offer.workplace_type, offer.city],
+  );
+
+  const handleSearchByTag = useCallback(
+    (name: string) => {
+      router.replace({
+        pathname: "/offers",
+        query: { skills: prepareQueryToSearch(name) },
+      });
+    },
+    [offer.skills],
   );
 
   return (
@@ -104,6 +117,11 @@ export const SingleOffer = memo<SingleOfferProps>(({ offer }) => {
             className={styles.description}
             dangerouslySetInnerHTML={{ __html: offer.body }}
           ></div>
+        </div>
+        <div className={styles.tags}>
+          {offer.skills.map((skill) => (
+            <Tag name={skill.name} onClick={handleSearchByTag} />
+          ))}
         </div>
         {offer.company_url ? (
           <a href={offer.company_url} rel="noopener">
