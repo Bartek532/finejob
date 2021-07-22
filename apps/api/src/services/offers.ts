@@ -1,7 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import axios from "axios";
 import type { Offer } from "@finejob/types";
-import { getRandomSalary } from "../utils";
+import { normalizeSalaryInOffer } from "../utils";
 
 const prisma = new PrismaClient();
 
@@ -16,13 +16,9 @@ export const fetchRecomendedOffers = async () => {
   const { data }: { data: Offer[] } = await axios.get(
     `${process.env.JOBS_API_URL}`,
   );
-  console.log(data.slice(0, 50));
 
-  return data.slice(0, 50).map((item) => {
-    return {
-      ...item,
-      salary: item.employment_types[0]?.salary?.to || getRandomSalary(),
-    };
+  return data.slice(0, 50).map((offer) => {
+    return normalizeSalaryInOffer(offer);
   });
 };
 
@@ -104,9 +100,9 @@ export const fetchSingleOffer = async (offerId: string) => {
   }
 
   const { data }: { data: Offer } = await axios.get(
-    `${process.env.JOBS_API_URL}/${offerId}.json`,
+    `${process.env.JOBS_API_URL}/${offerId}`,
   );
-  return data;
+  return normalizeSalaryInOffer(data);
 };
 
 /*
