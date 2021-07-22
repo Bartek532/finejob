@@ -4,7 +4,7 @@ import { MainButton } from "../../components/MainButton/MainButton";
 import { ActionButton } from "../../components/ActionButton/ActionButton";
 import { Modal } from "../../components/Modal/Modal";
 import { OfferControls } from "../../components/OfferControls/OfferControls";
-import type { OfferWithSalary } from "@finejob/types";
+import type { Offer } from "@finejob/types";
 import { memo, useCallback } from "react";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -12,27 +12,27 @@ import classnames from "classnames";
 import dayjs from "dayjs";
 import { prepareQueryToSearch } from "../../lib/utils/functions";
 
-type SingleOfferProps = { readonly offer: OfferWithSalary };
+type SingleOfferProps = { readonly offer: Offer };
 
 export const SingleOffer = memo<SingleOfferProps>(({ offer }) => {
   const router = useRouter();
 
   const info = [
-    { type: "location", value: offer.location },
-    { type: "type", value: offer.type },
+    { type: "location", value: offer.city },
+    { type: "type", value: offer.workplace_type },
     { type: "salary", value: offer.salary + " $" },
   ];
 
   const handleSearchByCompany = useCallback(() => {
     router.replace({
       pathname: "/offers",
-      query: { q: prepareQueryToSearch(offer.company) },
+      query: { q: prepareQueryToSearch(offer.company_name) },
     });
-  }, [offer.company]);
+  }, [offer.company_name]);
 
   const handleSearchByField = useCallback(
     (key: string) => {
-      if (key === "type" && offer.type === "Full Time") {
+      if (key === "type" && offer.workplace_type === "Full Time") {
         router.replace({
           pathname: "/offers",
           query: { full_time: true },
@@ -40,11 +40,11 @@ export const SingleOffer = memo<SingleOfferProps>(({ offer }) => {
       } else if (key === "location") {
         router.replace({
           pathname: "/offers",
-          query: { location: prepareQueryToSearch(offer.location) },
+          query: { location: prepareQueryToSearch(offer.city) },
         });
       }
     },
-    [offer.type, offer.location],
+    [offer.workplace_type, offer.city],
   );
 
   return (
@@ -55,14 +55,14 @@ export const SingleOffer = memo<SingleOfferProps>(({ offer }) => {
         <OfferControls offer={offer} />
         <article className={styles.main}>
           <div className={styles.logo}>
-            <Avatar name={offer.company} />
+            <Avatar name={offer.company_name} />
           </div>
           <span className="sr-only">job title</span>
           <span className={styles.title}>{offer.title}</span>
 
           <span className="sr-only">company</span>
           <button className={styles.company} onClick={handleSearchByCompany}>
-            {offer.company}
+            {offer.company_name}
           </button>
         </article>
 
@@ -108,19 +108,13 @@ export const SingleOffer = memo<SingleOfferProps>(({ offer }) => {
         <div className={styles.content}>
           <span className={styles.date}>
             <span>Created: </span>
-            <time>{dayjs(offer.created_at).format("dddd DD/MM/YY h:m A")}</time>
+            <time>
+              {dayjs(offer.published_at).format("dddd DD/MM/YY h:m A")}
+            </time>
           </span>
           <div
             className={styles.description}
-            dangerouslySetInnerHTML={{ __html: offer.description }}
-          ></div>
-        </div>
-
-        <div className={styles.apply}>
-          <span className={styles.label}>How to apply:</span>
-          <div
-            dangerouslySetInnerHTML={{ __html: offer.how_to_apply }}
-            className={styles.link}
+            dangerouslySetInnerHTML={{ __html: offer.body }}
           ></div>
         </div>
         {offer.company_url ? (
