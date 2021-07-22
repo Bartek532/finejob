@@ -1,7 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import axios from "axios";
-import type { Offer, OfferWithSalary } from "@finejob/types";
-import { addRandomSalaryToOffer } from "../utils";
+import type { Offer } from "@finejob/types";
+import { getRandomSalary } from "../utils";
 
 const prisma = new PrismaClient();
 
@@ -14,10 +14,16 @@ type Query = {
 
 export const fetchRecomendedOffers = async () => {
   const { data }: { data: Offer[] } = await axios.get(
-    `${process.env.JOBS_API_URL}.json`,
+    `${process.env.JOBS_API_URL}`,
   );
+  console.log(data.slice(0, 50));
 
-  return data.map(addRandomSalaryToOffer);
+  return data.slice(0, 50).map((item) => {
+    return {
+      ...item,
+      salary: item.employment_types[0]?.salary?.to || getRandomSalary(),
+    };
+  });
 };
 
 export const fetchOffers = async (query: Query) => {
@@ -85,7 +91,7 @@ export const fetchOffers = async (query: Query) => {
     `${process.env.JOBS_API_URL}.json?${path}`,
   );
 
-  return [...offers, ...data.map(addRandomSalaryToOffer)];
+  return [...offers, ...data];
 };
 
 export const fetchSingleOffer = async (offerId: string) => {
@@ -100,10 +106,11 @@ export const fetchSingleOffer = async (offerId: string) => {
   const { data }: { data: Offer } = await axios.get(
     `${process.env.JOBS_API_URL}/${offerId}.json`,
   );
-  return addRandomSalaryToOffer(data);
+  return data;
 };
 
-export const addOffer = (userId: number, data: OfferWithSalary) => {
+/*
+export const addOffer = (userId: number, data: Offer) => {
   return prisma.offer.create({
     data: {
       ...data,
@@ -120,6 +127,7 @@ export const removeOffer = async (offerId: string) => {
   });
 };
 
-export const changeOffer = (offerId: string, data: OfferWithSalary) => {
+export const changeOffer = (offerId: string, data: Offer) => {
   return prisma.offer.update({ where: { id: offerId }, data });
 };
+*/

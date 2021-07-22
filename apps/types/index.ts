@@ -12,6 +12,10 @@ export type Offer = {
   readonly company_logo_url?: string;
   readonly userId?: number;
   readonly skills: Skill[];
+  readonly employment_types: {
+    type: string;
+    salary: { from: number; to: number };
+  }[];
   readonly salary: number;
 };
 

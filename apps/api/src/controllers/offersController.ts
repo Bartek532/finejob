@@ -2,9 +2,11 @@ import {
   fetchRecomendedOffers,
   fetchOffers,
   fetchSingleOffer,
+  /*
   addOffer,
   removeOffer,
   changeOffer,
+  */
 } from "../services/offers";
 import { validateOffer } from "../validation";
 import type { Request, Response } from "express";
@@ -21,6 +23,7 @@ export const getSingleOffer = async (req: Request, res: Response) => {
   res.status(200).json(await fetchSingleOffer(req.params.id));
 };
 
+/*
 export const createOffer = async (req: Request, res: Response) => {
   const { error } = validateOffer(req.body);
   if (error) {
@@ -58,3 +61,4 @@ export const editOffer = async (req: Request, res: Response) => {
 
   res.status(400);
 };
+*/
