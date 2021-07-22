@@ -72,6 +72,7 @@ export const fetchOffers = async (query: Query) => {
     })),
   ];
 
+  /*
   const path = Object.entries(query)
     .map((item) => {
       if (item[0] === "q") {
@@ -82,9 +83,10 @@ export const fetchOffers = async (query: Query) => {
     })
     .map((item) => item.join("="))
     .join("&");
+    */
 
   const { data }: { data: Offer[] } = await axios.get(
-    `${process.env.JOBS_API_URL}.json?${path}`,
+    `${process.env.JOBS_API_URL}/search?keywords[]=${query.q}`,
   );
 
   return [...offers, ...data];
