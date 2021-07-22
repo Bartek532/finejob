@@ -57,6 +57,7 @@
       .description {
         margin: 0 0.7rem;
         font-size: 0.95rem;
+        text-transform: capitalize;
 
         &.searchBtn {
           border: 0 none;
@@ -100,31 +101,6 @@
           text-decoration: underline;
         }
       }
-    }
-  }
-
-  .apply {
-    align-self: flex-start;
-    width: 100%;
-
-    .label {
-      font-size: 1.15rem;
-      font-weight: bold;
-      text-transform: uppercase;
-      display: block;
-      margin-bottom: 0.7rem;
-    }
-
-    .link {
-      a {
-        color: var(--primary-orange);
-        word-break: break-all;
-
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-      line-height: 1.5rem;
     }
   }
 }

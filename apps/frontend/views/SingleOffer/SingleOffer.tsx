@@ -32,10 +32,10 @@ export const SingleOffer = memo<SingleOfferProps>(({ offer }) => {
 
   const handleSearchByField = useCallback(
     (key: string) => {
-      if (key === "type" && offer.workplace_type === "Full Time") {
+      if (key === "type") {
         router.replace({
           pathname: "/offers",
-          query: { full_time: true },
+          query: { q: prepareQueryToSearch(offer.workplace_type) },
         });
       } else if (key === "location") {
         router.replace({
@@ -70,19 +70,7 @@ export const SingleOffer = memo<SingleOfferProps>(({ offer }) => {
           {info.map((item) => (
             <div className={styles.field} key={item.type}>
               <span className="sr-only">{item.type}</span>
-
-              {item.type === "type" ? (
-                item.value === "Full Time" ? (
-                  <button
-                    className={classnames(styles.description, styles.searchBtn)}
-                    onClick={() => handleSearchByField(item.type)}
-                  >
-                    {item.value}
-                  </button>
-                ) : (
-                  <span className={styles.description}>{item.value}</span>
-                )
-              ) : item.type === "location" ? (
+              {["type", "location"].includes(item.type) ? (
                 <button
                   className={classnames(styles.description, styles.searchBtn)}
                   onClick={() => handleSearchByField(item.type)}
