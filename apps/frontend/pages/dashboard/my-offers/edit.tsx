@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import type { Offer } from "@finejob/types";
 
-const Offer = () => {
+const EditOffer = () => {
   const dispatch = useDispatch();
   const [offer, setOffer] = useState({} as Offer);
   const router = useRouter();
@@ -43,4 +43,4 @@ const Offer = () => {
   );
 };
 
-export default Offer;
+export default EditOffer;
