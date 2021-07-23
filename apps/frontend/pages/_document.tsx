@@ -44,6 +44,35 @@ class MyDocument extends Document {
             rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,600;1,700&display=swap"
           />
+
+          <meta property="og:title" content="Finejob" />
+          <meta
+            property="og:description"
+            content="Finejob was created primarily for developers (but not only) looking for a job. This app contains thousands of job offers!"
+          />
+          <meta
+            property="og:image"
+            content="https://i.ibb.co/5kHWd8k/finejob-logo-square.png"
+          />
+          <meta property="og:site_name" content="Finejob" />
+          <meta property="og:image:alt" content="Finejob start page preview" />
+          <meta property="og:image:width" content="500" />
+          <meta property="og:image:height" content="500" />
+          <meta property="og:url" content="https://finejob.vercel.app" />
+
+          <meta name="twitter:site" content="@finejob" />
+          <meta name="twitter:title" content="Finejob" />
+          <meta
+            name="twitter:description"
+            content="Finejob was created primarily for developers (but not only) looking for a job. This app contains thousands of job offers!"
+          />
+
+          <meta
+            name="twitter:image:src"
+            content="https://i.ibb.co/5kHWd8k/finejob-logo-square.png"
+          />
+
+          <meta property="og:type" content="website" />
         </Head>
         <body>
           <Main />
