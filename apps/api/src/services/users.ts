@@ -62,7 +62,10 @@ export const fetchUserLibrary = async (userId: number) => {
     where: { userId },
   });
   return Promise.all([
-    ...offers.map(async (offer) => await fetchSingleOffer(offer.offerId)),
+    ...offers.map(
+      async (offer: { userId: number; offerId: string }) =>
+        await fetchSingleOffer(offer.offerId),
+    ),
   ]);
 };
 

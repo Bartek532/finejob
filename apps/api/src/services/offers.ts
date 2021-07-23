@@ -81,7 +81,9 @@ export const fetchSingleOffer = async (offerId: string) => {
   if (offer) {
     return {
       ...offer,
-      skills: offer.skills?.split(",").map((skill) => ({ name: skill.trim() })),
+      skills: offer.skills
+        ?.split(",")
+        .map((skill: string) => ({ name: skill.trim() })),
     };
   }
 
