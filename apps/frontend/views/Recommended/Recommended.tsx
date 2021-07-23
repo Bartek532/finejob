@@ -4,12 +4,12 @@ import Back from "../../public/icons/buttons/back.svg";
 import { Avatar } from "../../components/Avatar/Avatar";
 import { useState, useEffect, useCallback, memo, useRef } from "react";
 import Link from "next/link";
-import type { OfferWithSalary } from "@finejob/types";
+import type { Offer } from "@finejob/types";
 import classnames from "classnames";
 import { addCommasToNumber } from "../../lib/utils/functions";
 
 type RecommendedSectionProps = {
-  readonly offers: OfferWithSalary[];
+  readonly offers: Offer[];
 };
 
 export const Recommended = memo<RecommendedSectionProps>(({ offers }) => {
@@ -90,7 +90,7 @@ export const Recommended = memo<RecommendedSectionProps>(({ offers }) => {
                 <article className={styles.offer}>
                   <div className={styles.main}>
                     <div className={styles.logo}>
-                      <Avatar name={offer.company} />
+                      <Avatar name={offer.company_name} />
                     </div>
 
                     <span className="sr-only">job title</span>
@@ -101,10 +101,10 @@ export const Recommended = memo<RecommendedSectionProps>(({ offers }) => {
                     </span>
 
                     <span className="sr-only">company</span>
-                    <span className={styles.company}>{offer.company}</span>
+                    <span className={styles.company}>{offer.company_name}</span>
 
                     <span className="sr-only">location</span>
-                    <span className={styles.location}>{offer.location}</span>
+                    <span className={styles.location}>{offer.city}</span>
                   </div>
 
                   <div className={styles.additional}>

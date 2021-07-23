@@ -36,11 +36,11 @@ export const validateChangeUserInfo = (data: Request) => {
 export const validateOffer = (data: Request) => {
   const schema = Joi.object({
     title: Joi.string().required().min(6).max(150),
-    location: Joi.string().required().min(3).max(35),
+    city: Joi.string().required().min(3).max(35),
     salary: Joi.number().required().min(3).max(99999),
-    type: Joi.string().required().min(4),
-    description: Joi.string().required().min(10),
-    how_to_apply: Joi.string().required().min(6),
+    experience_level: Joi.string().required().valid("junior", "mid", "senior"),
+    body: Joi.string().required().min(10),
+    skills: Joi.string().required().min(2),
     company_url: Joi.string().optional().allow(""),
   });
 

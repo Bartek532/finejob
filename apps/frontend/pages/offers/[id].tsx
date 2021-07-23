@@ -2,11 +2,11 @@ import { GetStaticProps, GetStaticPaths } from "next";
 import { Layout } from "../../components/Layout/Layout";
 import { SingleOffer } from "../../views/SingleOffer/SingleOffer";
 
-import type { OfferWithSalary } from "@finejob/types";
+import type { Offer } from "@finejob/types";
 import { fetcher } from "../../lib/utils/fetcher";
 import { BASIC_API_URL } from "../../lib/utils/consts";
 
-const OfferPage = ({ offer }: { offer: OfferWithSalary }) => {
+const OfferPage = ({ offer }: { offer: Offer }) => {
   return (
     <Layout>
       <SingleOffer offer={offer} />
@@ -18,7 +18,7 @@ export default OfferPage;
 
 export const getStaticProps: GetStaticProps = async (context) => {
   try {
-    const { data }: { data: OfferWithSalary } = await fetcher(
+    const { data }: { data: Offer } = await fetcher(
       `${BASIC_API_URL}/api/offers/${context.params!.id}`,
       "GET",
     );
@@ -39,7 +39,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   try {
-    const { data }: { data: OfferWithSalary[] } = await fetcher(
+    const { data }: { data: Offer[] } = await fetcher(
       `${BASIC_API_URL}/api/offers/recommended`,
       "GET",
     );

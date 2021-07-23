@@ -11,8 +11,8 @@ export const Results = () => {
         ? offers.map((offer) => (
             <OfferTile
               title={offer.title}
-              location={offer.location}
-              company={offer.company}
+              city={offer.city}
+              company_name={offer.company_name}
               salary={offer.salary}
               company_url={offer.company_url}
               key={offer.id}
