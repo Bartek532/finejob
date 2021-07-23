@@ -1,9 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { OfferWithSalary } from "../../types";
+import type { Offer } from "../../types";
 
 export type InitialOffersState = {
   offers: {
-    allOffers: OfferWithSalary[];
+    allOffers: Offer[];
     loadMore: boolean;
     lastOffersApiCallAddress: string;
     resultsPage: number;

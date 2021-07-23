@@ -3,7 +3,7 @@ import { Action } from "redux";
 import { ThunkAction } from "redux-thunk";
 import type { InitialMainState } from "../../store/mainSlice";
 import type { InitialOffersState } from "../../store/offersSlice";
-import type { OfferWithSalary } from "@finejob/types";
+import type { Offer } from "@finejob/types";
 
 import { setLoading, showModal } from "../../store/mainSlice";
 import {
@@ -27,7 +27,7 @@ export const JobsAPI = {
       dispatch(setLoading(true));
       try {
         const apiCallAddress = `/api/offers/search?${path}`;
-        const { data }: { data: OfferWithSalary[] } = await fetcher(
+        const { data }: { data: Offer[] } = await fetcher(
           apiCallAddress,
           "GET",
         );
@@ -46,7 +46,7 @@ export const JobsAPI = {
     dispatch(setLoadMore(true));
 
     try {
-      const { data }: { data: OfferWithSalary[] } = await fetcher(
+      const { data }: { data: Offer[] } = await fetcher(
         `${offers.lastOffersApiCallAddress}&page=${offers.resultsPage + 1}`,
         "GET",
       );
@@ -60,7 +60,7 @@ export const JobsAPI = {
     }
   },
   createOffer:
-    (offer: OfferWithSalary): FetchFuncType =>
+    (offer: Offer): FetchFuncType =>
     async (dispatch) => {
       dispatch(setLoading(true));
       try {
@@ -89,7 +89,7 @@ export const JobsAPI = {
       }
     },
   editOffer:
-    (id: string, data: OfferWithSalary): FetchFuncType =>
+    (id: string, data: Offer): FetchFuncType =>
     async (dispatch) => {
       dispatch(setLoading(true));
       try {

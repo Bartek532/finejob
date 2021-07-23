@@ -6,18 +6,18 @@ import { fetcher } from "../../../lib/utils/fetcher";
 import { setLoading } from "../../../store/mainSlice";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
-import type { OfferWithSalary } from "@finejob/types";
+import type { Offer } from "@finejob/types";
 
 const Offer = () => {
   const dispatch = useDispatch();
-  const [offer, setOffer] = useState({} as OfferWithSalary);
+  const [offer, setOffer] = useState({} as Offer);
   const router = useRouter();
 
   useEffect(() => {
     async function getUserOffer() {
       dispatch(setLoading(true));
       try {
-        const { data }: { data: OfferWithSalary } = await fetcher(
+        const { data }: { data: Offer } = await fetcher(
           `/api/users/offers/${router.asPath.slice(29)}?type=created`,
           "GET",
         );
