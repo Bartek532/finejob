@@ -19,7 +19,7 @@ export type Offer = {
   readonly salary: number;
 };
 
-type Skill = { readonly name: string };
+export type Skill = { readonly name: string };
 
 export type Query = {
   readonly q: string;

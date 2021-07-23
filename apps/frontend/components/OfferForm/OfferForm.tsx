@@ -5,7 +5,7 @@ import { Modal } from "../../components/Modal/Modal";
 import { Checkbox } from "../../components/Checkbox/Checkbox";
 import { inputValidation } from "../../lib/utils/consts";
 import { memo, useState, useEffect } from "react";
-import type { OfferWithSalary } from "@finejob/types";
+import type { Offer } from "@finejob/types";
 import classnames from "classnames";
 import { JobsAPI } from "../../lib/api/offers";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,7 +14,7 @@ import { useRouter } from "next/router";
 import { getModalInfo } from "../../store/mainSlice";
 
 type OfferFormProps = {
-  readonly offer?: OfferWithSalary;
+  readonly offer?: Offer;
   readonly type: "add" | "edit";
 };
 
@@ -31,7 +31,7 @@ export const OfferForm = memo<OfferFormProps>(({ offer, type }) => {
 
   const dispatch = useDispatch();
 
-  const handleFormSubmit = (data: OfferWithSalary) => {
+  const handleFormSubmit = (data: Offer) => {
     if (type === "edit") {
       dispatch(
         JobsAPI.editOffer(offer!.id, { ...data, salary: Number(data.salary) }),
@@ -73,9 +73,9 @@ export const OfferForm = memo<OfferFormProps>(({ offer, type }) => {
             shouldBeFocused={areInputsFocused}
           />
           <Input
-            name="location"
+            name="city"
             inputRef={register(inputValidation.other)}
-            error={errors.location?.message}
+            error={errors.city?.message}
             shouldBeFocused={areInputsFocused}
           />
 
@@ -89,40 +89,43 @@ export const OfferForm = memo<OfferFormProps>(({ offer, type }) => {
           />
 
           <textarea
-            name="description"
+            name="body"
             className={classnames(styles.description, styles.textarea)}
             cols={30}
             rows={9}
             placeholder="Description..."
             ref={register(inputValidation.other)}
           ></textarea>
-          {errors.description ? (
-            <span className={styles.error}>{errors.description.message}</span>
+          {errors.body ? (
+            <span className={styles.error}>{errors.body.message}</span>
           ) : null}
 
           <div className={styles.checkboxes}>
             <Checkbox
-              label="Full Time"
-              name="type"
+              label="junior"
+              name="experience_level"
               checked
               inputRef={register}
             />
-            <Checkbox label="Part Time" name="type" inputRef={register} />
+            <Checkbox label="mid" name="experience_level" inputRef={register} />
+            <Checkbox
+              label="senior"
+              name="experience_level"
+              inputRef={register}
+            />
           </div>
 
-          <div className={styles.apply}>
+          <div className={styles.skills}>
             <textarea
-              name="how_to_apply"
+              name="skills"
               className={styles.textarea}
               cols={30}
               rows={4}
-              placeholder="How to apply?"
+              placeholder="Skills (separated by comma e.g. JavaScript, HTML etc.)"
               ref={register(inputValidation.other)}
             ></textarea>
-            {errors.how_to_apply ? (
-              <span className={styles.error}>
-                {errors.how_to_apply.message}
-              </span>
+            {errors.skills ? (
+              <span className={styles.error}>{errors.skills.message}</span>
             ) : null}
           </div>
 

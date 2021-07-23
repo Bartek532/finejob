@@ -85,7 +85,10 @@ export const fetchSingleOffer = async (offerId: string) => {
   });
 
   if (offer) {
-    return offer;
+    return {
+      ...offer,
+      skills: offer.skills?.split(",").map((skill) => ({ name: skill.trim() })),
+    };
   }
 
   const { data }: { data: Offer } = await axios.get(
@@ -94,15 +97,20 @@ export const fetchSingleOffer = async (offerId: string) => {
   return normalizeSalaryInOffer(data);
 };
 
-/*
-export const addOffer = (userId: number, data: Offer) => {
+type Experience = "junior" | "mid" | "senior";
+
+export const addOffer = (userId: number, data: Offer & { skills: string }) => {
   return prisma.offer.create({
     data: {
       ...data,
+      experience_level: data.experience_level as Experience,
       userId,
     },
   });
 };
+
+/*
+
 
 export const removeOffer = async (offerId: string) => {
   await prisma.userOfferLibrary.deleteMany({ where: { offerId } });

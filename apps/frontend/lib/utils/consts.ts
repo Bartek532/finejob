@@ -1,4 +1,5 @@
-const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
+const PASSWORD_REGEX =
+  /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/;
 const EMAIL_REGEX = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$/;
 
 export const inputValidation = {
@@ -20,8 +21,8 @@ export const inputValidation = {
   other: {
     required: { value: true, message: "This field is required." },
     minLength: {
-      value: 3,
-      message: "This field must be at least 3 characters. ",
+      value: 2,
+      message: "This field must be at least 2 characters. ",
     },
   },
 };
