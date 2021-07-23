@@ -29,13 +29,13 @@ export const fetchOffers = async (query: Query) => {
             },
           },
           {
-            company: {
+            company_name: {
               contains: decodeURIComponent(query.q),
               mode: "insensitive",
             },
           },
           {
-            location: {
+            city: {
               contains:
                 decodeURIComponent(query.location) ||
                 decodeURIComponent(query.q),
@@ -43,7 +43,7 @@ export const fetchOffers = async (query: Query) => {
             },
           },
           {
-            description: {
+            body: {
               contains: decodeURIComponent(query.q),
               mode: "insensitive",
             },

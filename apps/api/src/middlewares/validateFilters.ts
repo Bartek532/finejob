@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 
-const availableFilters = ["skills", "q", "location", "page"];
+const availableFilters = ["skill", "q", "location", "page"];
 
 export const validateFilters = (
   req: Request,

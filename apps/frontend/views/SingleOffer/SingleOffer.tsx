@@ -22,7 +22,7 @@ export const SingleOffer = memo<SingleOfferProps>(({ offer }) => {
 
   const info = [
     { type: "location", value: offer.city },
-    { type: "type", value: offer.workplace_type },
+    { type: "level", value: offer.experience_level },
     { type: "salary", value: offer.salary + " $" },
   ];
 
@@ -35,10 +35,10 @@ export const SingleOffer = memo<SingleOfferProps>(({ offer }) => {
 
   const handleSearchByField = useCallback(
     (key: string) => {
-      if (key === "type") {
+      if (key === "level") {
         router.replace({
           pathname: "/offers",
-          query: { q: prepareQueryToSearch(offer.workplace_type) },
+          query: { q: prepareQueryToSearch(offer.experience_level) },
         });
       } else if (key === "location") {
         router.replace({
@@ -47,14 +47,14 @@ export const SingleOffer = memo<SingleOfferProps>(({ offer }) => {
         });
       }
     },
-    [offer.workplace_type, offer.city],
+    [offer.experience_level, offer.city],
   );
 
   const handleSearchByTag = useCallback(
     (name: string) => {
       router.replace({
         pathname: "/offers",
-        query: { skills: prepareQueryToSearch(name) },
+        query: { skill: prepareQueryToSearch(name) },
       });
     },
     [offer.skills],
@@ -83,7 +83,7 @@ export const SingleOffer = memo<SingleOfferProps>(({ offer }) => {
           {info.map((item) => (
             <div className={styles.field} key={item.type}>
               <span className="sr-only">{item.type}</span>
-              {["type", "location"].includes(item.type) ? (
+              {["level", "location"].includes(item.type) ? (
                 <button
                   className={classnames(styles.description, styles.searchBtn)}
                   onClick={() => handleSearchByField(item.type)}

@@ -15,7 +15,7 @@ export const builtQueryToFetchOffers = (query: Query) => {
   const aliases: Record<keyof Query, string> = {
     q: "keywords[]",
     location: "locations[]",
-    skills: "skills[]",
+    skill: "skills[]",
     page: "page",
   };
   return Object.entries(query)
