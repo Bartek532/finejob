@@ -1,20 +1,32 @@
-//Github Jobs
+//Just Join
 
 export type Offer = {
   readonly id: string;
-  readonly type: string;
-  readonly created_at: any;
-  readonly company: string;
+  readonly experience_level: string;
+  readonly published_at: any;
+  readonly company_name: string;
   readonly company_url: string | null;
-  readonly location: string;
+  readonly city: string;
   readonly title: string;
-  readonly description: string;
-  readonly how_to_apply: string;
-  readonly company_logo?: string;
+  readonly body: string;
+  readonly company_logo_url?: string;
   readonly userId?: number;
+  readonly skills: Skill[];
+  readonly employment_types: {
+    type: string;
+    salary: { from: number; to: number };
+  }[];
+  readonly salary: number;
 };
 
-export type OfferWithSalary = Offer & { salary: number };
+export type Skill = { readonly name: string };
+
+export type Query = {
+  readonly q: string;
+  readonly location: string;
+  readonly skill: string;
+  readonly page: string;
+};
 
 //Adzuna
 /*

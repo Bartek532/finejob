@@ -1,0 +1,15 @@
+.tag {
+  padding: 0.5rem 0.8rem;
+  color: var(--primary-black);
+  border: 1.5px solid var(--primary-black);
+  border-radius: 5px;
+  background-color: transparent;
+  margin: 0.3rem;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: var(--primary-black);
+    color: var(--field);
+  }
+}

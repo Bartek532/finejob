@@ -8,10 +8,10 @@ import { getModalInfo } from "../../store/mainSlice";
 import { memo, useState, useEffect, useCallback } from "react";
 import classnames from "classnames";
 import { useRouter } from "next/router";
-import { OfferWithSalary } from "@finejob/types";
+import type { Offer } from "@finejob/types";
 
 type OfferControlsProps = {
-  readonly offer: OfferWithSalary;
+  readonly offer: Offer;
 };
 
 export const OfferControls = memo<OfferControlsProps>(({ offer }) => {

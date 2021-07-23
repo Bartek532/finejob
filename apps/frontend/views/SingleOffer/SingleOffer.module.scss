@@ -57,6 +57,7 @@
       .description {
         margin: 0 0.7rem;
         font-size: 0.95rem;
+        text-transform: capitalize;
 
         &.searchBtn {
           border: 0 none;
@@ -73,6 +74,7 @@
 
   .content {
     padding: 2.8rem 0 1.9rem 0;
+    width: 100%;
     .date * {
       color: var(--primary-gray);
       font-size: 0.8rem;
@@ -103,29 +105,8 @@
     }
   }
 
-  .apply {
-    align-self: flex-start;
-    width: 100%;
-
-    .label {
-      font-size: 1.15rem;
-      font-weight: bold;
-      text-transform: uppercase;
-      display: block;
-      margin-bottom: 0.7rem;
-    }
-
-    .link {
-      a {
-        color: var(--primary-orange);
-        word-break: break-all;
-
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-      line-height: 1.5rem;
-    }
+  .tags {
+    margin-bottom: 1rem;
   }
 }
 

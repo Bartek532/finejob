@@ -1,23 +1,18 @@
 import { PrismaClient } from "@prisma/client";
 import axios from "axios";
-import type { Offer, OfferWithSalary } from "@finejob/types";
-import { addRandomSalaryToOffer } from "../utils";
+import type { Offer, Query } from "@finejob/types";
+import { normalizeSalaryInOffer, builtQueryToFetchOffers } from "../utils";
 
 const prisma = new PrismaClient();
 
-type Query = {
-  readonly q: string;
-  readonly location: string;
-  readonly full_time: string;
-  readonly page: string;
-};
-
 export const fetchRecomendedOffers = async () => {
   const { data }: { data: Offer[] } = await axios.get(
-    `${process.env.JOBS_API_URL}.json`,
+    `${process.env.JOBS_API_URL}`,
   );
 
-  return data.map(addRandomSalaryToOffer);
+  return data.slice(0, 50).map((offer) => {
+    return normalizeSalaryInOffer(offer);
+  });
 };
 
 export const fetchOffers = async (query: Query) => {
@@ -34,13 +29,13 @@ export const fetchOffers = async (query: Query) => {
             },
           },
           {
-            company: {
+            company_name: {
               contains: decodeURIComponent(query.q),
               mode: "insensitive",
             },
           },
           {
-            location: {
+            city: {
               contains:
                 decodeURIComponent(query.location) ||
                 decodeURIComponent(query.q),
@@ -48,11 +43,12 @@ export const fetchOffers = async (query: Query) => {
             },
           },
           {
-            description: {
+            body: {
               contains: decodeURIComponent(query.q),
               mode: "insensitive",
             },
           },
+          /*
           {
             type: {
               contains: query.full_time
@@ -63,6 +59,7 @@ export const fetchOffers = async (query: Query) => {
               mode: "insensitive",
             },
           },
+          */
         ],
       },
       skip: page * 50,
@@ -70,22 +67,16 @@ export const fetchOffers = async (query: Query) => {
     })),
   ];
 
-  const path = Object.entries(query)
-    .map((item) => {
-      if (item[0] === "q") {
-        item[0] = "search";
-      }
-
-      return item;
-    })
-    .map((item) => item.join("="))
-    .join("&");
-
   const { data }: { data: Offer[] } = await axios.get(
-    `${process.env.JOBS_API_URL}.json?${path}`,
+    `${process.env.JOBS_API_URL}/search?${builtQueryToFetchOffers(query)}`,
   );
 
-  return [...offers, ...data.map(addRandomSalaryToOffer)];
+  return [
+    ...offers,
+    ...data
+      .slice(page * 50, (page + 1) * 50)
+      .map((offer) => normalizeSalaryInOffer(offer)),
+  ];
 };
 
 export const fetchSingleOffer = async (offerId: string) => {
@@ -94,21 +85,37 @@ export const fetchSingleOffer = async (offerId: string) => {
   });
 
   if (offer) {
-    return offer;
+    return {
+      ...offer,
+      skills: offer.skills?.split(",").map((skill) => ({ name: skill.trim() })),
+    };
   }
 
   const { data }: { data: Offer } = await axios.get(
-    `${process.env.JOBS_API_URL}/${offerId}.json`,
+    `${process.env.JOBS_API_URL}/${offerId}`,
   );
-  return addRandomSalaryToOffer(data);
+  return normalizeSalaryInOffer(data);
 };
 
-export const addOffer = (userId: number, data: OfferWithSalary) => {
+type Experience = "junior" | "mid" | "senior";
+
+export const addOffer = (userId: number, data: Offer & { skills: string }) => {
   return prisma.offer.create({
     data: {
       ...data,
+      experience_level: data.experience_level as Experience,
       userId,
     },
+  });
+};
+
+export const changeOffer = (
+  offerId: string,
+  data: Offer & { skills: string },
+) => {
+  return prisma.offer.update({
+    where: { id: offerId },
+    data: { ...data, experience_level: data.experience_level as Experience },
   });
 };
 
@@ -118,8 +125,4 @@ export const removeOffer = async (offerId: string) => {
   return await prisma.offer.delete({
     where: { id: offerId },
   });
-};
-
-export const changeOffer = (offerId: string, data: OfferWithSalary) => {
-  return prisma.offer.update({ where: { id: offerId }, data });
 };

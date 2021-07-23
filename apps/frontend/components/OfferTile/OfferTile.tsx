@@ -1,5 +1,5 @@
 import { memo } from "react";
-import type { OfferWithSalary } from "@finejob/types";
+import type { Offer } from "@finejob/types";
 import styles from "./OfferTile.module.scss";
 import { ActionButton } from "../ActionButton/ActionButton";
 import Link from "next/link";
@@ -9,18 +9,18 @@ import Location from "../../public/icons/offer/location.svg";
 import { addCommasToNumber } from "../../lib/utils/functions";
 
 type OfferTileProps = Pick<
-  OfferWithSalary,
-  "id" | "title" | "company" | "location" | "salary" | "company_url"
+  Offer,
+  "id" | "title" | "company_name" | "city" | "salary" | "company_url"
 >;
 
 export const OfferTile = memo<OfferTileProps>(
-  ({ id, title, company, location, salary, company_url }) => {
+  ({ id, title, company_name, city, salary, company_url }) => {
     return (
       <Link href={`/offers/${id}`}>
         <a>
           <article className={styles.offer}>
             <div className={styles.logo}>
-              <Avatar name={company} />
+              <Avatar name={company_name} />
             </div>
             <div className={styles.description}>
               <div className={styles.wrapper}>
@@ -35,9 +35,9 @@ export const OfferTile = memo<OfferTileProps>(
 
                   <span className={styles.company}>
                     <Company className={styles.icon} />
-                    {company.length > 39
-                      ? company.slice(0, 36) + "..."
-                      : company}
+                    {company_name.length > 39
+                      ? company_name.slice(0, 36) + "..."
+                      : company_name}
                   </span>
                 </div>
                 <div className={styles.wrapper}>
@@ -45,9 +45,7 @@ export const OfferTile = memo<OfferTileProps>(
 
                   <span className={styles.location}>
                     <Location className={styles.icon} />
-                    {location.length > 50
-                      ? location.slice(0, 47) + "..."
-                      : location}
+                    {city.length > 50 ? city.slice(0, 47) + "..." : city}
                   </span>
                 </div>
               </div>
