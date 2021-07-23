@@ -48,18 +48,12 @@ export const fetchOffers = async (query: Query) => {
               mode: "insensitive",
             },
           },
-          /*
           {
-            type: {
-              contains: query.full_time
-                ? query.full_time === "true"
-                  ? "Full Time"
-                  : "Part Time"
-                : decodeURIComponent(query.q),
+            skills: {
+              contains: decodeURIComponent(query.skill),
               mode: "insensitive",
             },
           },
-          */
         ],
       },
       skip: page * 50,
