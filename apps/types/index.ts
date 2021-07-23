@@ -2,7 +2,7 @@
 
 export type Offer = {
   readonly id: string;
-  readonly workplace_type: string;
+  readonly experience_level: string;
   readonly published_at: any;
   readonly company_name: string;
   readonly company_url: string | null;
