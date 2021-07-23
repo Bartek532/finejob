@@ -60,9 +60,7 @@ export const UserAPI = {
     },
   logout: (): FuncType => async (dispatch) => {
     try {
-      console.log("XD");
-      const data = await fetcher("/api/users/logout", "GET");
-      console.log(data);
+      await fetcher("/api/users/logout", "GET");
       dispatch(setIsLogin(false));
     } catch (error) {
       console.log(error.message);

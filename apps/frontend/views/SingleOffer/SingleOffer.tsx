@@ -18,8 +18,6 @@ type SingleOfferProps = { readonly offer: Offer };
 export const SingleOffer = memo<SingleOfferProps>(({ offer }) => {
   const router = useRouter();
 
-  console.log(offer.skills);
-
   const info = [
     { type: "location", value: offer.city },
     { type: "level", value: offer.experience_level },
