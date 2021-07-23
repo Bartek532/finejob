@@ -21,23 +21,25 @@ type FetchFuncType = ThunkAction<
 >;
 
 export const JobsAPI = {
-  searchOffers: (path = ""): FetchFuncType => async (dispatch) => {
-    dispatch(setLoading(true));
-    try {
-      const apiCallAddress = `/api/offers/search?${path}`;
-      const { data }: { data: OfferWithSalary[] } = await fetcher(
-        apiCallAddress,
-        "GET",
-      );
-      dispatch(setOffers(data));
-      dispatch(setResultsPage(1));
-      dispatch(setLastOffersApiCallAddress(apiCallAddress));
-    } catch (error) {
-      dispatch(showModal({ type: "error", message: error.message }));
-    } finally {
-      dispatch(setLoading(false));
-    }
-  },
+  searchOffers:
+    (path = ""): FetchFuncType =>
+    async (dispatch) => {
+      dispatch(setLoading(true));
+      try {
+        const apiCallAddress = `/api/offers/search?${path}`;
+        const { data }: { data: OfferWithSalary[] } = await fetcher(
+          apiCallAddress,
+          "GET",
+        );
+        dispatch(setOffers(data));
+        dispatch(setResultsPage(1));
+        dispatch(setLastOffersApiCallAddress(apiCallAddress));
+      } catch (error) {
+        dispatch(showModal({ type: "error", message: error.message }));
+      } finally {
+        dispatch(setLoading(false));
+      }
+    },
 
   loadMore: (): FetchFuncType => async (dispatch, getState) => {
     const { offers } = getState();
@@ -57,46 +59,49 @@ export const JobsAPI = {
       dispatch(setLoadMore(false));
     }
   },
-  createOffer: (offer: OfferWithSalary): FetchFuncType => async (dispatch) => {
-    dispatch(setLoading(true));
-    try {
-      await fetcher("/api/offers", "POST", { ...offer });
-      dispatch(
-        showModal({ type: "success", message: "Your offer has been added!" }),
-      );
-    } catch (error) {
-      console.log(error.message);
-      dispatch(showModal({ type: "error", message: error.message }));
-    } finally {
-      dispatch(setLoading(false));
-    }
-  },
-  deleteOffer: (id: string): FetchFuncType => async (dispatch) => {
-    dispatch(setLoading(true));
-    try {
-      await fetcher(`/api/offers/${id}`, "DELETE");
-      dispatch(showModal({ type: "success", message: "Offer was deleted!" }));
-    } catch (error) {
-      console.log(error.message);
-      dispatch(showModal({ type: "error", message: error.message }));
-    } finally {
-      dispatch(setLoading(false));
-    }
-  },
-  editOffer: (id: string, data: OfferWithSalary): FetchFuncType => async (
-    dispatch,
-  ) => {
-    dispatch(setLoading(true));
-    try {
-      await fetcher(`/api/offers/${id}`, "PUT", { ...data });
-      dispatch(
-        showModal({ type: "success", message: "Offer has been changed!" }),
-      );
-    } catch (error) {
-      console.log(error.message);
-      dispatch(showModal({ type: "error", message: error.message }));
-    } finally {
-      dispatch(setLoading(false));
-    }
-  },
+  createOffer:
+    (offer: OfferWithSalary): FetchFuncType =>
+    async (dispatch) => {
+      dispatch(setLoading(true));
+      try {
+        await fetcher("/api/offers", "POST", { ...offer });
+        dispatch(
+          showModal({ type: "success", message: "Your offer has been added!" }),
+        );
+      } catch (error) {
+        console.log(error.message);
+        dispatch(showModal({ type: "error", message: error.message }));
+      } finally {
+        dispatch(setLoading(false));
+      }
+    },
+  deleteOffer:
+    (id: string): FetchFuncType =>
+    async (dispatch) => {
+      dispatch(setLoading(true));
+      try {
+        await fetcher(`/api/offers/${id}`, "DELETE");
+      } catch (error) {
+        console.log(error.message);
+        dispatch(showModal({ type: "error", message: error.message }));
+      } finally {
+        dispatch(setLoading(false));
+      }
+    },
+  editOffer:
+    (id: string, data: OfferWithSalary): FetchFuncType =>
+    async (dispatch) => {
+      dispatch(setLoading(true));
+      try {
+        await fetcher(`/api/offers/${id}`, "PUT", { ...data });
+        dispatch(
+          showModal({ type: "success", message: "Offer has been changed!" }),
+        );
+      } catch (error) {
+        console.log(error.message);
+        dispatch(showModal({ type: "error", message: error.message }));
+      } finally {
+        dispatch(setLoading(false));
+      }
+    },
 };

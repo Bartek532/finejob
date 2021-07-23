@@ -109,8 +109,15 @@ export const addOffer = (userId: number, data: Offer & { skills: string }) => {
   });
 };
 
-/*
-
+export const changeOffer = (
+  offerId: string,
+  data: Offer & { skills: string },
+) => {
+  return prisma.offer.update({
+    where: { id: offerId },
+    data: { ...data, experience_level: data.experience_level as Experience },
+  });
+};
 
 export const removeOffer = async (offerId: string) => {
   await prisma.userOfferLibrary.deleteMany({ where: { offerId } });
@@ -119,8 +126,3 @@ export const removeOffer = async (offerId: string) => {
     where: { id: offerId },
   });
 };
-
-export const changeOffer = (offerId: string, data: Offer) => {
-  return prisma.offer.update({ where: { id: offerId }, data });
-};
-*/

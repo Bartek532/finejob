@@ -5,10 +5,8 @@ import {
   getRecommendedOffers,
   getSingleOffer,
   createOffer,
-  /*
   deleteOffer,
   editOffer,
-  */
 } from "../controllers/offersController";
 import { validateToken } from "../middlewares/validateToken";
 import { validateUser } from "../middlewares/validateUser";
@@ -21,10 +19,7 @@ router.get("/search", validateFilters, catchAsync(getOffers));
 router.get("/recommended", catchAsync(getRecommendedOffers));
 router.get("/:id", catchAsync(getSingleOffer));
 router.post("/", validateToken, validateUser, catchAsync(createOffer));
-
-/*
 router.delete("/:id", validateToken, validateUser, catchAsync(deleteOffer));
 router.put("/:id", validateToken, validateUser, catchAsync(editOffer));
-*/
 
 export default router;

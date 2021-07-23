@@ -133,9 +133,7 @@ export const OfferForm = memo<OfferFormProps>(({ offer, type }) => {
             name="company_url"
             placeholder="Company site (optional)"
             inputRef={register}
-            shouldBeFocused={
-              areInputsFocused ? (offer?.company_url ? true : false) : false
-            }
+            shouldBeFocused={areInputsFocused}
           />
 
           <div className={styles.btn}>

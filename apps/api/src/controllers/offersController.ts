@@ -3,10 +3,8 @@ import {
   fetchOffers,
   fetchSingleOffer,
   addOffer,
-  /*
   removeOffer,
   changeOffer,
-  */
 } from "../services/offers";
 import { validateOffer } from "../validation";
 import type { Request, Response } from "express";
@@ -39,9 +37,6 @@ export const createOffer = async (req: Request, res: Response) => {
   );
 };
 
-/*
-
-
 export const deleteOffer = async (req: Request, res: Response) => {
   const offer = await fetchSingleOffer(req.params.id);
 
@@ -61,9 +56,15 @@ export const editOffer = async (req: Request, res: Response) => {
   const offer = await fetchSingleOffer(req.params.id);
 
   if (offer.userId === req.user!.id) {
-    return res.status(200).json(await changeOffer(req.params.id, req.body));
+    return res
+      .status(200)
+      .json(
+        await changeOffer(req.params.id, {
+          ...req.body,
+          id: slug(`${req.user!.company} ${req.body.title} ${req.body.city}`),
+        }),
+      );
   }
 
   res.status(400);
 };
-*/
