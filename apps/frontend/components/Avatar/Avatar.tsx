@@ -9,13 +9,13 @@ export const Avatar = memo<AvatarProps>(({ img, name }) => {
   if (img) {
     return (
       <div className={styles.logo}>
-        <Image src={`${img}`} layout="fill" alt="company logo" />
+        <Image src={img} layout="fill" alt={name || "company logo"} />
       </div>
     );
   }
 
   if (name) {
-    const splittedName = name.split(" ");
+    const splittedName = name.trim().split(" ");
 
     return (
       <div

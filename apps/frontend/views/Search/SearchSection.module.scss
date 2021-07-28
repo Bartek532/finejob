@@ -4,6 +4,7 @@
   width: 100%;
   flex-flow: column-reverse wrap;
   min-height: 85vh;
+  padding: 4rem 0;
 
   .wrapper {
     @include flex;

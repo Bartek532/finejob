@@ -12,6 +12,7 @@ import { useRouter } from "next/router";
 import classnames from "classnames";
 import dayjs from "dayjs";
 import { prepareQueryToSearch } from "../../lib/utils/functions";
+import Link from "next/link";
 
 type SingleOfferProps = { readonly offer: Offer };
 
@@ -23,13 +24,6 @@ export const SingleOffer = memo<SingleOfferProps>(({ offer }) => {
     { type: "level", value: offer.experience_level },
     { type: "salary", value: offer.salary + " $" },
   ];
-
-  const handleSearchByCompany = useCallback(() => {
-    router.replace({
-      pathname: "/offers",
-      query: { q: prepareQueryToSearch(offer.company_name) },
-    });
-  }, [offer.company_name]);
 
   const handleSearchByField = useCallback(
     (key: string) => {
@@ -72,9 +66,12 @@ export const SingleOffer = memo<SingleOfferProps>(({ offer }) => {
           <span className={styles.title}>{offer.title}</span>
 
           <span className="sr-only">company</span>
-          <button className={styles.company} onClick={handleSearchByCompany}>
-            {offer.company_name}
-          </button>
+          <Link
+            href={`/offers?q=${prepareQueryToSearch(offer.company_name)}`}
+            replace
+          >
+            <a className={styles.company}>{offer.company_name}</a>
+          </Link>
         </article>
 
         <div className={styles.more}>
@@ -86,7 +83,9 @@ export const SingleOffer = memo<SingleOfferProps>(({ offer }) => {
                   className={classnames(styles.description, styles.searchBtn)}
                   onClick={() => handleSearchByField(item.type)}
                 >
-                  {item.value}
+                  {item.value.length > 35
+                    ? item.value.slice(0, 32) + "..."
+                    : item.value}
                 </button>
               ) : (
                 <span className={styles.description}>{item.value}</span>
@@ -117,6 +116,7 @@ export const SingleOffer = memo<SingleOfferProps>(({ offer }) => {
           ></div>
         </div>
         <div className={styles.tags}>
+          <span className="sr-only">skills</span>
           {offer.skills.map((skill) => (
             <Tag name={skill.name} onClick={handleSearchByTag} />
           ))}

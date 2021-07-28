@@ -51,7 +51,7 @@ export const MainSection = () => {
           <MainButton icon="search" type="submit" />
         </form>
         <div className={styles.subtitle}>
-          In last week we helps 1,500 job seekers and employees find the right
+          In last week we help 1,500 job seekers and employees find the right
           job.
         </div>
       </div>

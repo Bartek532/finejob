@@ -8,7 +8,8 @@
   cursor: pointer;
   transition: all 0.2s;
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: var(--primary-black);
     color: var(--field);
   }

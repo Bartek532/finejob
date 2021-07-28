@@ -33,8 +33,6 @@
       color: var(--primary-gray);
       font-size: 0.9rem;
       padding-top: 0.5rem;
-      border: 0 none;
-      background-color: transparent;
       cursor: pointer;
 
       &:hover {
@@ -50,14 +48,17 @@
     flex-wrap: wrap;
 
     .field {
-      @include flex;
-      margin: 0.25rem 0;
+      @include flex(space-between);
+      margin: 0.3rem 0;
       flex-direction: row-reverse;
+      min-width: 50%;
+      padding: 0 0.5rem;
 
       .description {
-        margin: 0 0.7rem;
+        padding: 0 1rem;
         font-size: 0.95rem;
         text-transform: capitalize;
+        word-break: break-word;
 
         &.searchBtn {
           border: 0 none;
@@ -86,6 +87,7 @@
       line-height: 1.5rem;
       letter-spacing: 0.5px;
       word-break: break-word;
+      width: 100%;
       pre {
         word-break: break-word;
         white-space: pre-wrap;
@@ -102,17 +104,21 @@
           text-decoration: underline;
         }
       }
+
+      figure {
+        max-width: 100%;
+        margin: 0;
+        text-align: center;
+      }
+
+      img {
+        max-width: 100%;
+      }
     }
   }
 
   .tags {
     margin-bottom: 1rem;
-  }
-}
-
-@media all and (min-width: 21.8rem) {
-  .offer .more .field {
-    margin: 0.1rem 0.65rem;
   }
 }
 
@@ -122,5 +128,14 @@
     grid-template-columns: 1fr 1fr 1fr;
     align-content: center;
     margin-top: 1.9rem;
+
+    .field {
+      width: auto;
+      justify-content: center;
+
+      .description {
+        margin: 0 1.2rem;
+      }
+    }
   }
 }

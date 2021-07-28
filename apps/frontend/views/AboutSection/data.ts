@@ -27,6 +27,6 @@ export const steps = [
     title: "Apply",
     image: "apply",
     description:
-      "<strong>Last step!</strong> You find your dream job, <strong>congrats!</strong> Now you have to apply. Each offer contains <em>how to apply</em> section which is located after description. There you will find all the links and information you need. <strong>Good luck!</strong>",
+      "<strong>Last step!</strong> You find your dream job, <strong>congrats!</strong> Now you have to apply. Most of the offers contain <em>link to company site</em> which is located after description. There you will find all the information you need. <strong>Good luck!</strong>",
   },
 ];
