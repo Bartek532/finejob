@@ -144,3 +144,5 @@ export const OfferForm = memo<OfferFormProps>(({ offer, type }) => {
     </>
   );
 });
+
+OfferForm.displayName = "OfferForm";

@@ -4,7 +4,6 @@ import About from "../../public/icons/nav/about.svg";
 import Location from "../../public/icons/nav/location.svg";
 import Person from "../../public/icons/nav/person.svg";
 import Image from "next/image";
-import { memo } from "react";
 import { useWindowSize } from "../../lib/hooks/useWindowSize";
 import styles from "./Navbar.module.scss";
 import classnames from "classnames";
@@ -12,7 +11,7 @@ import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
 import { getLoginStatus } from "../../store/mainSlice";
 
-export const Navbar = memo(() => {
+export const Navbar = () => {
   const { pathname } = useRouter();
   const { width } = useWindowSize();
   const isLogin = useSelector(getLoginStatus);
@@ -102,4 +101,4 @@ export const Navbar = memo(() => {
       </ul>
     </nav>
   );
-});
+};

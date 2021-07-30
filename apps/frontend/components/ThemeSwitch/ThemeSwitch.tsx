@@ -1,11 +1,11 @@
 import styles from "./ThemeSwitch.module.scss";
-import { memo, useEffect } from "react";
+import { useEffect } from "react";
 import { useLocalStorage } from "../../lib/hooks/useLocalStorage";
 import Image from "next/image";
 
 type ThemePreferences = "dark" | "light";
 
-export const ThemeSwitch = memo(() => {
+export const ThemeSwitch = () => {
   const [theme, setTheme] = useLocalStorage<ThemePreferences>("theme", "light");
 
   useEffect(() => {
@@ -33,4 +33,4 @@ export const ThemeSwitch = memo(() => {
       </div>
     </label>
   );
-});
+};

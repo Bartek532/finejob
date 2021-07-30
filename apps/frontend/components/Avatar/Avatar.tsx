@@ -35,3 +35,5 @@ export const Avatar = memo<AvatarProps>(({ img, name }) => {
 
   return null;
 });
+
+Avatar.displayName = "Avatar";

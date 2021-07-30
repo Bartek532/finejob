@@ -56,3 +56,5 @@ export const Modal = memo<ModalActions>(({ onCancel, onAccept }) => {
     </div>
   );
 });
+
+Modal.displayName = "Modal";

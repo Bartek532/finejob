@@ -27,3 +27,5 @@ export const Checkbox = memo<CheckboxProps>(
     );
   },
 );
+
+Checkbox.displayName = "Checkbox";

@@ -15,3 +15,5 @@ export const Counter = memo<CounterProps>(({ value, time }) => {
     </CountUp>
   );
 });
+
+Counter.displayName = "Counter";

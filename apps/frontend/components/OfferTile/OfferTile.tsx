@@ -68,3 +68,5 @@ export const OfferTile = memo<OfferTileProps>(
     );
   },
 );
+
+OfferTile.displayName = "OfferTile";

@@ -30,3 +30,5 @@ export const MainButton = memo<MainButtonProps>(
     );
   },
 );
+
+MainButton.displayName = "MainButton";

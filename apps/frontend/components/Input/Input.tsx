@@ -82,3 +82,5 @@ export const Input = memo<TextInputProps>(
     );
   },
 );
+
+Input.displayName = "Input";

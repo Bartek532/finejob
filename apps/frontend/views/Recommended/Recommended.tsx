@@ -133,3 +133,5 @@ export const Recommended = memo<RecommendedSectionProps>(({ offers }) => {
     </section>
   );
 });
+
+Recommended.displayName = "Recommended";

@@ -130,3 +130,5 @@ export const SingleOffer = memo<SingleOfferProps>(({ offer }) => {
     </>
   );
 });
+
+SingleOffer.displayName = "SingleOffer";

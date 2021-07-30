@@ -115,3 +115,5 @@ export const OfferControls = memo<OfferControlsProps>(({ offer }) => {
     </div>
   );
 });
+
+OfferControls.displayName = "OfferControls";

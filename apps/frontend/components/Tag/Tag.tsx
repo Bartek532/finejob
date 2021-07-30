@@ -13,3 +13,5 @@ export const Tag = memo<TagProps>(({ name, onClick }) => {
     </button>
   );
 });
+
+Tag.displayName = "Tag";

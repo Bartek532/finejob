@@ -11,7 +11,7 @@ import { useForm } from "react-hook-form";
 import { UserAPI } from "../../lib/api/user";
 import type { UserRegisterData } from "@finejob/types";
 
-export const UserSettings = memo(() => {
+export const UserSettings = () => {
   const user = useSelector(getUser);
   const dispatch = useDispatch();
   const { handleSubmit, errors, register, setValue } = useForm({
@@ -80,4 +80,4 @@ export const UserSettings = memo(() => {
       </form>
     </section>
   );
-});
+};

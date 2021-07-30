@@ -18,3 +18,5 @@ export const Logo = memo<LogoProps>(({ withLabel }) => {
     </div>
   );
 });
+
+Logo.displayName = "Logo";
