@@ -1,4 +1,3 @@
-import { memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../../store/mainSlice";
 import styles from "./UserSettings.module.scss";
