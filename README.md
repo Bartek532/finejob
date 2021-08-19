@@ -45,7 +45,7 @@ Finejob is an open source project to help people (especially developers) to find
 | [Typescript](https://www.typescriptlang.org/) | Javascript superset language      |
 | [JWT](https://jwt.io)                         | Token managament (e.g. for login) |
 | [Joi](https://joi.dev/api)                    | Library for validation            |
-| [PostgreSQL](https://www.postgresql.org)     | Relational database               |
+| [PostgreSQL](https://www.postgresql.org)      | Relational database               |
 | [Prisma](https://www.prisma.io)               | ORM for TypeScript and Node.js    |
 
 ## Performance 💨
@@ -63,6 +63,10 @@ Finejob is an open source project to help people (especially developers) to find
 git clone https://github.com/Bartek532/finejob.git
 
 yarn install
+
+cp /apps/api/.env-sample /apps/api/.env #set up environment variables
+
+psql finejob < /apps/api/DUMP.sql #set up database
 
 yarn start
 
