@@ -64,9 +64,9 @@ git clone https://github.com/Bartek532/finejob.git
 
 yarn install
 
-cp /apps/api/.env-sample /apps/api/.env #set up environment variables
+cp apps/api/.env-sample apps/api/.env #set up environment variables
 
-psql finejob < /apps/api/DUMP.sql #set up database
+psql finejob < apps/api/DUMP.sql #set up database
 
 yarn start
 
