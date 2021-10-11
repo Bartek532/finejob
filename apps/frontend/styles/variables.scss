@@ -4,6 +4,7 @@
   --field: #fff;
   --primary-orange: #f59b66;
   --rgb-primary-orange: 245, 155, 102;
+  --rgb-primary-orange-shadow: 245, 155, 102;
   --primary-violet: #b661b4;
   --rgb-primary-violet: 182, 97, 180;
   --primary-black: #000;
@@ -13,6 +14,7 @@
   --light-gray: #faf9fd;
   --primary-background: #f2f2f2;
   --rgb-primary-background: 242, 242, 242;
+  --xd: rgb(226, 128, 225);
 
   --second-font: "Poppins", sans-serif;
   --input-font: "Roboto", sans-serif;
@@ -27,7 +29,22 @@
   --field: #3a3b3c;
   --primary-black: #e4e6eb;
   --gray-shadow: 1px 2px 5px 1px rgba(168, 155, 155, 0.1);
+  --rgb-primary-orange-shadow: 155, 99, 61;
   --light-gray: rgb(60, 63, 63);
   --primary-gray: #a7a2a2;
   --primary-selection: #25a18e;
+  --gray-shadow: 1px 2px 5px 1px rgba(58, 53, 53, 0.25);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-background: #242526;
+    --field: #3a3b3c;
+    --primary-black: #e4e6eb;
+    --gray-shadow: 1px 2px 5px 1px rgba(168, 155, 155, 0.1);
+    --rgb-primary-orange-shadow: 155, 99, 61;
+    --light-gray: rgb(60, 63, 63);
+    --primary-gray: #a7a2a2;
+    --primary-selection: #25a18e;
+  }
 }

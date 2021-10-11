@@ -118,7 +118,11 @@ export const SingleOffer = memo<SingleOfferProps>(({ offer }) => {
         <div className={styles.tags}>
           <span className="sr-only">skills</span>
           {offer.skills.map((skill) => (
-            <Tag name={skill.name} onClick={handleSearchByTag} />
+            <Tag
+              name={skill.name}
+              onClick={handleSearchByTag}
+              key={skill.name}
+            />
           ))}
         </div>
         {offer.company_url ? (
