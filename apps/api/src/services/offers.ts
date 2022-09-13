@@ -10,7 +10,7 @@ export const fetchRecomendedOffers = async () => {
     `${process.env.JOBS_API_URL}`,
   );
 
-  return data.slice(0, 50).map((offer) => {
+  return data.slice(0, 20).map((offer) => {
     return normalizeSalaryInOffer(offer);
   });
 };
