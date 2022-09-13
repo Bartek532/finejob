@@ -15,7 +15,7 @@
     "start:front": "yarn workspace frontend run start",
     "start": "concurrently --kill-others-on-fail --names api,front --prefix-colors yellow,green.inverse \"yarn workspace api run start\" \"yarn workspace frontend run start\"",
     "dev": "concurrently --kill-others-on-fail --names api,front --prefix-colors yellow,green.inverse \"yarn dev:api\" \"yarn dev:front\"",
-    "build": "yarn build:client && yarn build:server"
+    "build": "yarn build:front && yarn build:api"
   },
   "devDependencies": {
     "concurrently": "6.3.0",

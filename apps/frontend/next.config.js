@@ -4,10 +4,7 @@ module.exports = {
     return [
       {
         source: "/api/:path*",
-        destination:
-          process.env.NODE_ENV === "production"
-            ? "https://finejob-backend.herokuapp.com/api/:path*"
-            : "http://localhost:3080/api/:path*", // Proxy to Backend
+        destination: process.env.API_URL + "/api/:path*",
       },
     ];
   },
