@@ -3,7 +3,6 @@ import { MainSection } from "../views/MainSection/MainSection";
 import { Recommended } from "../views/Recommended/Recommended";
 import { Footer } from "../components/Footer/Footer";
 import { MainInfo } from "../views/MainInfo/MainInfo";
-import { BASIC_API_URL } from "../lib/utils/consts";
 import { GetStaticProps } from "next";
 import type { Offer } from "../../types";
 import { fetcher } from "../lib/utils/fetcher";
@@ -22,7 +21,7 @@ const Home = ({ results }: { results: Offer[] }) => {
 export const getStaticProps: GetStaticProps = async () => {
   try {
     const { data }: { data: Offer[] } = await fetcher(
-      `${BASIC_API_URL}/api/offers/recommended`,
+      `${process.env.API_URL}/api/offers/recommended`,
       "GET",
     );
 
