@@ -4,7 +4,6 @@ import { SingleOffer } from "../../views/SingleOffer/SingleOffer";
 
 import type { Offer } from "@finejob/types";
 import { fetcher } from "../../lib/utils/fetcher";
-import { BASIC_API_URL } from "../../lib/utils/consts";
 
 const OfferPage = ({ offer }: { offer: Offer }) => {
   return (
@@ -19,7 +18,7 @@ export default OfferPage;
 export const getStaticProps: GetStaticProps = async (context) => {
   try {
     const { data }: { data: Offer } = await fetcher(
-      `${BASIC_API_URL}/api/offers/${context.params!.id}`,
+      `${process.env.API_URL}/api/offers/${context.params!.id}`,
       "GET",
     );
 
@@ -40,7 +39,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   try {
     const { data }: { data: Offer[] } = await fetcher(
-      `${BASIC_API_URL}/api/offers/recommended`,
+      `${process.env.API_URL}/api/offers/recommended`,
       "GET",
     );
     return {

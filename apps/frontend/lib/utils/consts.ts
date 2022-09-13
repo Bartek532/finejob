@@ -29,7 +29,3 @@ export const inputValidation = {
 
 export const logoColors = ["ef476f", "e0ab2e", "06d6a0", "118ab2", "073b4c"];
 export const LOCATION_API_URL = "https://us1.locationiq.com/v1/";
-export const BASIC_API_URL =
-  process.env.NODE_ENV === "production"
-    ? "https://finejob-backend.herokuapp.com"
-    : "http://localhost:3080";
