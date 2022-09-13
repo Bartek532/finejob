@@ -39,7 +39,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   try {
     const { data }: { data: Offer[] } = await fetcher(
-      `${process.env.API_URL}/api/offers/recommended`,
+      `${process.env.API_URL}/api/offers/search`,
       "GET",
     );
     return {
