@@ -11,13 +11,15 @@
     "dev:front": "yarn workspace frontend run dev",
     "build:api": "yarn workspace api build",
     "build:front": "yarn workspace frontend build",
-    "start": "concurrently --kill-others-on-fail --names api,front --prefix-colors yellow,green.inverse 'yarn workspace api run start' 'yarn workspace frontend run start'",
-    "dev": "concurrently --kill-others-on-fail --names api,front --prefix-colors yellow,green.inverse 'yarn dev:api' 'yarn dev:front'",
-    "tsc": "tsc --noEmit"
+    "start:api": "yarn workspace api run start",
+    "start:front": "yarn workspace frontend run start",
+    "start": "concurrently --kill-others-on-fail --names api,front --prefix-colors yellow,green.inverse \"yarn workspace api run start\" \"yarn workspace frontend run start\"",
+    "dev": "concurrently --kill-others-on-fail --names api,front --prefix-colors yellow,green.inverse \"yarn dev:api\" \"yarn dev:front\"",
+    "build": "yarn build:client && yarn build:server"
   },
   "devDependencies": {
     "concurrently": "6.3.0",
-    "lerna": "^3.22.1"
+    "turbo": "1.4.6"
   },
   "engines": {
     "node": "14.x"
