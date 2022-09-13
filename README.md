@@ -13,11 +13,11 @@ Finejob is an open source project to help people (especially developers) to find
 
 - Common
 
-| Tech                             | Description                                       |
-| -------------------------------- | ------------------------------------------------- |
-| [Eslint](https://eslint.org/)    | Javascript Linter                                 |
-| [Prettier](https://prettier.io/) | Code formatter                                    |
-| [Lerna](https://lerna.js.org)    | Tool for managing projects with multiple packages |
+| Tech                                | Description                                       |
+| ----------------------------------- | ------------------------------------------------- |
+| [Eslint](https://eslint.org/)       | Javascript Linter                                 |
+| [Prettier](https://prettier.io/)    | Code formatter                                    |
+| [Turborepo](https://turborepo.org/) | Tool for managing projects with multiple packages |
 
 <br />
 
@@ -38,15 +38,16 @@ Finejob is an open source project to help people (especially developers) to find
 
 - Backend
 
-| Tech                                          | Description                       |
-| --------------------------------------------- | --------------------------------- |
-| [Node](https://nodejs.org/en/)                | JavaScript runtime                |
-| [Express](https://expressjs.com)              | Web framework to Node.js          |
-| [Typescript](https://www.typescriptlang.org/) | Javascript superset language      |
-| [JWT](https://jwt.io)                         | Token managament (e.g. for login) |
-| [Joi](https://joi.dev/api)                    | Library for validation            |
-| [PostgreSQL](https://www.postgresql.org)      | Relational database               |
-| [Prisma](https://www.prisma.io)               | ORM for TypeScript and Node.js    |
+| Tech                                          | Description                                                         |
+| --------------------------------------------- | ------------------------------------------------------------------- |
+| [Node](https://nodejs.org/en/)                | JavaScript runtime                                                  |
+| [Express](https://expressjs.com)              | Web framework to Node.js                                            |
+| [Typescript](https://www.typescriptlang.org/) | Javascript superset language                                        |
+| [JWT](https://jwt.io)                         | Token managament (e.g. for login)                                   |
+| [Joi](https://joi.dev/api)                    | Library for validation                                              |
+| [Docker](https://www.docker.com/)             | An open platform for developing, shipping, and running applications |
+| [PostgreSQL](https://www.postgresql.org)      | Relational database                                                 |
+| [Prisma](https://www.prisma.io)               | ORM for TypeScript and Node.js                                      |
 
 ## Performance 💨
 
@@ -64,11 +65,13 @@ git clone https://github.com/Bartek532/finejob.git
 
 yarn install
 
-cp apps/api/.env-sample apps/api/.env #set up environment variables
+#set up your environment variables
+cp apps/api/.env-sample apps/api/.env
+cp apps/frontend/.env-sample apps/frontend/.env
 
-psql finejob < apps/api/DUMP.sql #set up database
+docker-compose up
 
-yarn start
+yarn dev
 
 ```
 

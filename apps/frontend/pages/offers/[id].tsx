@@ -29,7 +29,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       };
     }
 
-    return { props: { offer: data } };
+    return { props: { offer: data }, revalidate: 3600 };
   } catch {
     return {
       notFound: true as const,
