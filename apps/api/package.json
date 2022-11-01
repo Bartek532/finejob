@@ -6,7 +6,6 @@
   "scripts": {
     "start": "node dist/index.js",
     "dev": "yarn prisma:migrate && nodemon --exec ts-node-dev src/index.ts",
-    "prebuild": "prisma generate",
     "build": "yarn prisma:migrate && tsc",
     "prisma:migrate": "prisma migrate deploy --preview-feature && prisma generate"
   },

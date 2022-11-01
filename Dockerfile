@@ -8,11 +8,11 @@ RUN apt-get update \
 COPY apps/api/package.json /app/
 # install all dependencies
 WORKDIR /app
-RUN npm ci
+RUN npm i
 # copy rest of the files
 COPY . /app/
 # build the app in production mode, generate prisma clien and prune devDependencies
-RUN NODE_ENV=production tsc \
+RUN NODE_ENV=production npm run build:api \
   && npm prune --omit=dev \
   && npx -w backend prisma generate
 
