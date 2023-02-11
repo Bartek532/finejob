@@ -11,6 +11,10 @@ WORKDIR /app
 RUN npm i
 # copy rest of the files
 COPY . /app/
+
+ARG DATABASE_URL
+ENV DATABASE_URL ${DATABASE_URL}
+
 # build the app in production mode, generate prisma clien and prune devDependencies
 RUN NODE_ENV=production npm run build:api \
   && npm prune --omit=dev \
