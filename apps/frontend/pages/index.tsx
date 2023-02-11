@@ -4,7 +4,7 @@ import { Recommended } from "../views/Recommended/Recommended";
 import { Footer } from "../components/Footer/Footer";
 import { MainInfo } from "../views/MainInfo/MainInfo";
 import { GetStaticProps } from "next";
-import type { Offer } from "../../types";
+import type { Offer } from "../../../packages/types";
 import { fetcher } from "../lib/utils/fetcher";
 
 const Home = ({ results }: { results: Offer[] }) => {

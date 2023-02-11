@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { UserRegisterData } from "../../types";
+import type { UserRegisterData } from "../../../packages/types";
 
 export type InitialMainState = {
   main: {
@@ -50,13 +50,8 @@ export const slice = createSlice({
   },
 });
 
-export const {
-  setLoading,
-  showModal,
-  hideModal,
-  setIsLogin,
-  setUser,
-} = slice.actions;
+export const { setLoading, showModal, hideModal, setIsLogin, setUser } =
+  slice.actions;
 export const getLoadingStatus = (state: InitialMainState) => state.main.loading;
 export const getModalInfo = (state: InitialMainState) => state.main.modal;
 export const getLoginStatus = (state: InitialMainState) => state.main.isLogIn;

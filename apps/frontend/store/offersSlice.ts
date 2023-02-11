@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import type { Offer } from "../../types";
+import type { Offer } from "../../../packages/types";
 
 export type InitialOffersState = {
   offers: {

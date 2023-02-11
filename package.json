@@ -1,11 +1,10 @@
 {
   "name": "root",
   "private": true,
-  "workspaces": {
-    "packages": [
-      "apps/*"
-    ]
-  },
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
     "dev:api": "yarn workspace api run dev",
     "dev:front": "yarn workspace frontend run dev",
@@ -15,9 +14,10 @@
     "start:front": "yarn workspace frontend run start",
     "start": "concurrently --kill-others-on-fail --names api,front --prefix-colors yellow,green.inverse \"yarn workspace api run start\" \"yarn workspace frontend run start\"",
     "dev": "concurrently --kill-others-on-fail --names api,front --prefix-colors yellow,green.inverse \"yarn dev:api\" \"yarn dev:front\"",
-    "build": "yarn build:front && yarn build:api"
+    "build": "turbo run build --filter=!frontend"
   },
   "devDependencies": {
+    "@finejob/types": "*",
     "concurrently": "6.3.0",
     "turbo": "1.4.6"
   },
