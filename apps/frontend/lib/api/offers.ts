@@ -35,7 +35,14 @@ export const JobsAPI = {
         dispatch(setResultsPage(1));
         dispatch(setLastOffersApiCallAddress(apiCallAddress));
       } catch (error) {
-        dispatch(showModal({ type: "error", message: error.message }));
+        if (error instanceof Error) {
+          dispatch(showModal({ type: "error", message: error.message }));
+          return;
+        }
+
+        dispatch(
+          showModal({ type: "error", message: "Unknown error occured!" }),
+        );
       } finally {
         dispatch(setLoading(false));
       }
@@ -53,8 +60,13 @@ export const JobsAPI = {
       dispatch(setResultsPage(offers.resultsPage + 1));
       dispatch(setOffers([...offers.allOffers, ...data]));
     } catch (error) {
-      console.log(error.message);
-      dispatch(showModal({ type: "error", message: error.message }));
+      console.log(error);
+      if (error instanceof Error) {
+        dispatch(showModal({ type: "error", message: error.message }));
+        return;
+      }
+
+      dispatch(showModal({ type: "error", message: "Unknown error occured!" }));
     } finally {
       dispatch(setLoadMore(false));
     }
@@ -69,8 +81,15 @@ export const JobsAPI = {
           showModal({ type: "success", message: "Your offer has been added!" }),
         );
       } catch (error) {
-        console.log(error.message);
-        dispatch(showModal({ type: "error", message: error.message }));
+        console.log(error);
+        if (error instanceof Error) {
+          dispatch(showModal({ type: "error", message: error.message }));
+          return;
+        }
+
+        dispatch(
+          showModal({ type: "error", message: "Unknown error occured!" }),
+        );
       } finally {
         dispatch(setLoading(false));
       }
@@ -82,8 +101,15 @@ export const JobsAPI = {
       try {
         await fetcher(`/api/offers/${id}`, "DELETE");
       } catch (error) {
-        console.log(error.message);
-        dispatch(showModal({ type: "error", message: error.message }));
+        console.log(error);
+        if (error instanceof Error) {
+          dispatch(showModal({ type: "error", message: error.message }));
+          return;
+        }
+
+        dispatch(
+          showModal({ type: "error", message: "Unknown error occured!" }),
+        );
       } finally {
         dispatch(setLoading(false));
       }
@@ -98,8 +124,15 @@ export const JobsAPI = {
           showModal({ type: "success", message: "Offer has been changed!" }),
         );
       } catch (error) {
-        console.log(error.message);
-        dispatch(showModal({ type: "error", message: error.message }));
+        console.log(error);
+        if (error instanceof Error) {
+          dispatch(showModal({ type: "error", message: error.message }));
+          return;
+        }
+
+        dispatch(
+          showModal({ type: "error", message: "Unknown error occured!" }),
+        );
       } finally {
         dispatch(setLoading(false));
       }

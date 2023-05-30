@@ -39,6 +39,7 @@ export const fetcher = async (
     });
   } catch (err) {
     console.log(err);
-    throw new Error(err.response?.data.message);
+    //@ts-expect-error
+    throw new Error(err.response?.data.message ?? "Unknown error occured!");
   }
 };

@@ -30,7 +30,14 @@ export const UserAPI = {
         });
         dispatch(setIsLogin(true));
       } catch (error) {
-        dispatch(showModal({ type: "error", message: error.message }));
+        if (error instanceof Error) {
+          dispatch(showModal({ type: "error", message: error.message }));
+          return;
+        }
+
+        dispatch(
+          showModal({ type: "error", message: "Unknown error occured!" }),
+        );
       } finally {
         dispatch(setLoading(false));
       }
@@ -53,7 +60,14 @@ export const UserAPI = {
           }),
         );
       } catch (error) {
-        dispatch(showModal({ type: "error", message: error.message }));
+        if (error instanceof Error) {
+          dispatch(showModal({ type: "error", message: error.message }));
+          return;
+        }
+
+        dispatch(
+          showModal({ type: "error", message: "Unknown error occured!" }),
+        );
       } finally {
         dispatch(setLoading(false));
       }
@@ -63,7 +77,7 @@ export const UserAPI = {
       await fetcher("/api/users/logout", "GET");
       dispatch(setIsLogin(false));
     } catch (error) {
-      console.log(error.message);
+      console.log(error);
     }
   },
   isLogin: (): FuncType => async (dispatch) => {
@@ -71,7 +85,7 @@ export const UserAPI = {
       await fetcher("/api/users/isLogin", "GET");
       dispatch(setIsLogin(true));
     } catch (error) {
-      console.log(error.message);
+      console.log(error);
     }
   },
 
@@ -86,7 +100,14 @@ export const UserAPI = {
           showModal({ type: "success", message: "Succesfully updated!" }),
         );
       } catch (error) {
-        dispatch(showModal({ type: "error", message: error.message }));
+        if (error instanceof Error) {
+          dispatch(showModal({ type: "error", message: error.message }));
+          return;
+        }
+
+        dispatch(
+          showModal({ type: "error", message: "Unknown error occured!" }),
+        );
       } finally {
         dispatch(setLoading(false));
       }
@@ -98,7 +119,12 @@ export const UserAPI = {
       const { data }: { data: User } = await fetcher("/api/users", "GET");
       dispatch(setUser({ ...data, password: "" }));
     } catch (error) {
-      dispatch(showModal({ type: "error", message: error.message }));
+      if (error instanceof Error) {
+        dispatch(showModal({ type: "error", message: error.message }));
+        return;
+      }
+
+      dispatch(showModal({ type: "error", message: "Unknown error occured!" }));
     } finally {
       dispatch(setLoading(false));
     }
@@ -115,8 +141,15 @@ export const UserAPI = {
         );
         dispatch(showModal({ type: "success", message: data.message }));
       } catch (error) {
-        console.log(error.message);
-        dispatch(showModal({ type: "error", message: error.message }));
+        console.log(error);
+        if (error instanceof Error) {
+          dispatch(showModal({ type: "error", message: error.message }));
+          return;
+        }
+
+        dispatch(
+          showModal({ type: "error", message: "Unknown error occured!" }),
+        );
       } finally {
         dispatch(setLoading(false));
       }
@@ -132,8 +165,15 @@ export const UserAPI = {
         );
         dispatch(showModal({ type: "success", message: data.message }));
       } catch (error) {
-        console.log(error.message);
-        dispatch(showModal({ type: "error", message: error.message }));
+        console.log(error);
+        if (error instanceof Error) {
+          dispatch(showModal({ type: "error", message: error.message }));
+          return;
+        }
+
+        dispatch(
+          showModal({ type: "error", message: "Unknown error occured!" }),
+        );
       } finally {
         dispatch(setLoading(false));
       }
@@ -150,8 +190,15 @@ export const UserAPI = {
         );
         dispatch(setOffers(data));
       } catch (error) {
-        console.log(error.message);
-        dispatch(showModal({ type: "error", message: error.message }));
+        console.log(error);
+        if (error instanceof Error) {
+          dispatch(showModal({ type: "error", message: error.message }));
+          return;
+        }
+
+        dispatch(
+          showModal({ type: "error", message: "Unknown error occured!" }),
+        );
       } finally {
         dispatch(setLoading(false));
       }
