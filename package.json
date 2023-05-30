@@ -6,15 +6,15 @@
     "packages/*"
   ],
   "scripts": {
-    "dev:api": "yarn workspace api run dev",
-    "dev:front": "yarn workspace frontend run dev",
-    "build:api": "yarn workspace api build",
-    "build:front": "yarn workspace frontend build",
-    "start:api": "yarn workspace api run start",
-    "start:front": "yarn workspace frontend run start",
-    "start": "concurrently --kill-others-on-fail --names api,front --prefix-colors yellow,green.inverse \"yarn workspace api run start\" \"yarn workspace frontend run start\"",
-    "dev": "concurrently --kill-others-on-fail --names api,front --prefix-colors yellow,green.inverse \"yarn dev:api\" \"yarn dev:front\"",
-    "build": "turbo run build --filter=!frontend"
+    "start": "turbo run start",
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "dev:api": "turbo run dev --filter=api",
+    "dev:front": "turbo run dev --filter=frontend",
+    "build:api": "turbo run build --filter=api",
+    "build:front": "turbo run build --filter=frontend",
+    "start:api": "turbo run start --filter=api",
+    "start:front": "turbo run start --filter=frontend"
   },
   "devDependencies": {
     "@finejob/types": "*",
