@@ -5,9 +5,12 @@
   "main": "index.js",
   "scripts": {
     "start": "node dist/index.js",
-    "dev": "yarn prisma:migrate && nodemon --exec ts-node-dev src/index.ts",
+    "dev": "yarn prisma:migrate:dev && nodemon --exec ts-node-dev src/index.ts",
     "build": "yarn prisma:migrate && tsc",
-    "prisma:migrate": "prisma migrate deploy --preview-feature && prisma generate"
+    "prisma:generate": "prisma generate",
+    "prisma:migrate": "prisma migrate deploy --preview-feature && yarn prisma:generate",
+    "prisma:studio": "prisma studio",
+    "prisma:migrate:dev": "prisma migrate dev && yarn prisma:generate"
   },
   "author": "Bartosz Zagrodzki",
   "license": "ISC",

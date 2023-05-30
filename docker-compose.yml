@@ -13,6 +13,11 @@ services:
       - "5432:5432"
     volumes:
       - postgres:/var/lib/postgresql/data
+  app:
+    build:
+      context: .
+    ports:
+      - "3000:3000"
 
 volumes:
   postgres:
